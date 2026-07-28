@@ -267,6 +267,7 @@ var CARDS = [
     id: "mallory",
     tab: "Mallory",
     photo: "img/mallory.jpg",
+    initials: "MBF",
     theme: "light",
     kicker: "Business & growth",
     name: "Mallory Bailey-Finkley, MBA",
@@ -295,6 +296,7 @@ var CARDS = [
     id: "charles",
     tab: "Charles",
     photo: "img/charles.jpg",
+    initials: "CF",
     theme: "dark",
     kicker: "Real estate & land",
     name: "Charles L. Finkley, Jr., MPA",
@@ -584,10 +586,22 @@ var current = CARDS[0];
    Everything captured from that link is attributed to that event. */
 var EVENT = (new URLSearchParams(location.search).get('e') || '').slice(0,60);
 
-function initials(name){
-  var parts = String(name).replace(/[^A-Za-z .]/g,'').split(/\s+/).filter(Boolean);
+/* Credentials and suffixes are not surnames. "Mallory Bailey-Finkley, MBA"
+   naively initialises to MM and "Charles L. Finkley, Jr., MPA" to CM, because
+   the last token is the qualification. Strip those first — and let any card
+   override the result outright with an `initials` field. */
+var NOT_A_NAME = /^(mba|mpa|mfa|md|phd|dds|jd|cpa|aicp|pe|ra|leed|esq|jr|sr|ii|iii|iv|v)\.?$/i;
+function initials(name, override){
+  if(override) return String(override).toUpperCase();
+  var parts = String(name)
+    .replace(/[^A-Za-z.\-\s]/g,' ')
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter(function(p){ return !NOT_A_NAME.test(p); })
+    .filter(function(p){ return p.replace(/\./g,'').length > 1; });   /* drop middle initials */
   if(!parts.length) return 'N';
-  return (parts[0][0] + (parts.length>1 ? parts[parts.length-1][0] : '')).toUpperCase();
+  if(parts.length === 1) return parts[0].slice(0,2).toUpperCase();
+  return (parts[0][0] + parts[parts.length-1][0]).toUpperCase();
 }
 function avatarHtml(c){
   if(c.photo){
