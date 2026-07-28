@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  NESO sitemap - corrected 28 July 2026.
+  The previous version pointed every URL at https://nesoai.github.io/, the GitHub
+  Pages default under the retired "nesoai" handle. That told search engines the
+  canonical pages lived there rather than on nesohq.com.
+
+  NOTE ON HOSTS: this file lists several subdomains. Cross-host sitemaps are only
+  honoured when every host is verified in the same Google Search Console account.
+  Verify each subdomain, or split this into one sitemap per host and reference each
+  from that host's robots.txt.
+
+  NOTE ON HASH ROUTES: nesohq.com is a single-page app using #/ routing, so /services,
+  /tools, /pricing and /about are fragments, not separate URLs. Search engines will
+  not index them separately and they are deliberately not listed here.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://nesoai.github.io/neso/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://nesoai.github.io/proforma/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://nesoai.github.io/capstack/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://nesoai.github.io/marketscope/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://nesoai.github.io/planforge/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://nesoai.github.io/grantfit/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://nesoai.github.io/buildbrief/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://nesoai.github.io/marketfit/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://nesoai.github.io/siteshaper/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://nesoai.github.io/birdseye/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://nesoai.github.io/mallory/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Hub -->
+  <url><loc>https://nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+
+  <!-- Publication - highest-frequency surface, free issue every 28 days -->
+  <url><loc>https://brief.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+
+  <!-- Reports -->
+  <url><loc>https://birdseye.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- Flagship tool -->
+  <url><loc>https://siteshaper.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- Real estate tools -->
+  <url><loc>https://proforma.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://capstack.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://marketscope.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://buildbrief.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Business tools -->
+  <url><loc>https://planforge.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://marketfit.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://grantfit.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Partner and affiliate program -->
+  <url><loc>https://partners.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
 </urlset>
