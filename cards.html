@@ -1,579 +1,262 @@
-<!DOCTYPE html><html lang="en" data-theme="dark"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>NESO — Cards</title>
-<meta name="robots" content="noindex, nofollow, noarchive">
-<meta name="theme-color" content="#160f1e">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="NESO Cards">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23160f1e'/><path d='M9.09 50 L50 43.18 L90.91 50 L50 56.82 Z' fill='%235B2A86'/><path d='M50 9.09 L56.82 50 L50 90.91 L43.18 50 Z' fill='%23E7B84B'/><circle cx='50' cy='50' r='5.91' fill='%23f2ecf7'/></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>NESO · Cards</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-:root{
- --bg:#160f1e;--bg2:#110b18;--card:#221733;--card2:#2b1e40;--line:#3a2b4c;
- --ink:#f2ecf7;--muted:#b6aac9;--faint:#8a7da0;
- --plum:#be93de;--plum-2:#8b5aae;--plum-core:#5B2A86;--plum-d:#3D1A5C;
- --gold:#E7B84B;--gold-d:#C79A3A;
- --serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
-}
-[data-theme="light"]{
- --bg:#f7f4fb;--bg2:#efe9f6;--card:#ffffff;--card2:#f5eff9;--line:#e5dcef;
- --ink:#241633;--muted:#5f5470;--faint:#8a7f99;
- --plum:#6d3a9e;--plum-2:#7a48a8;--plum-core:#5B2A86;--plum-d:#3D1A5C;
- --gold:#B98A2E;--gold-d:#846213;
-}
-html{-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;
- min-height:100dvh;transition:background .5s ease,color .5s ease}
-a{color:inherit;text-decoration:none}
-svg.i{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-:focus-visible{outline:2px solid var(--plum);outline-offset:3px;border-radius:8px}
+  :root{
+    --ink:#241247;
+    --violet:#6D28D9;
+    --violet-soft:#A78BFA;
+    --lav:#F4F1FB;
+    --night:#0F0A1E;
+    --night-card-a:#1D1236;
+    --night-card-b:#120B24;
+    --hairline-l:rgba(36,18,71,.14);
+    --hairline-d:rgba(167,139,250,.28);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{
+    font-family:'Instrument Sans',system-ui,sans-serif;
+    background:var(--night);
+    color:#EDE9FE;
+    transition:background .45s ease,color .45s ease;
+    display:flex;flex-direction:column;align-items:center;
+    padding:max(20px,env(safe-area-inset-top)) 20px max(28px,env(safe-area-inset-bottom));
+    min-height:100%;
+  }
+  body.light{background:var(--lav);color:var(--ink)}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 
-/* aurora — same device as the site, dialled down */
-#aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-#aurora span{position:absolute;border-radius:50%;filter:blur(60px);will-change:transform}
-#aurora .a1{width:70vw;height:70vw;left:-20vw;top:-14vh;background:radial-gradient(circle,#8b47c0,transparent 68%);opacity:.24;animation:au1 40s ease-in-out infinite}
-#aurora .a2{width:60vw;height:60vw;right:-22vw;top:12vh;background:radial-gradient(circle,#E7B84B,transparent 68%);opacity:.14;animation:au2 50s ease-in-out infinite}
-#aurora .a3{width:66vw;height:66vw;left:6vw;bottom:-26vh;background:radial-gradient(circle,#a86fd0,transparent 68%);opacity:.2;animation:au3 46s ease-in-out infinite}
-@keyframes au1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(9vw,7vh) scale(1.16)}}
-@keyframes au2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-8vw,6vh) scale(1.13)}}
-@keyframes au3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(7vw,-7vh) scale(1.18)}}
-[data-theme="light"] #aurora .a1{opacity:.15}
-[data-theme="light"] #aurora .a2{opacity:.1}
-[data-theme="light"] #aurora .a3{opacity:.13}
-@media (prefers-reduced-motion: reduce){#aurora span{animation:none}*{transition:none!important}}
+  .wrap{width:100%;max-width:420px;display:flex;flex-direction:column;gap:18px}
 
-.shell{position:relative;z-index:1;max-width:460px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) 20px calc(28px + env(safe-area-inset-bottom))}
+  /* masthead */
+  .mast{display:flex;align-items:baseline;justify-content:space-between;padding:2px 4px}
+  .wordmark{font-family:'Fraunces',serif;font-weight:600;font-size:22px;letter-spacing:.14em}
+  .mast small{font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.55;font-weight:500}
 
-/* masthead */
-.mast{display:flex;align-items:center;gap:9px;padding:6px 2px 18px}
-.mast .brand{display:inline-flex;align-items:center;gap:9px;font-family:var(--serif);font-weight:700;font-size:20px;letter-spacing:.06em}
-.mast .sp{flex:1}
-.mast .tag{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-weight:600}
+  /* selector */
+  .tabs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:5px;border-radius:16px;
+    background:rgba(167,139,250,.10);border:1px solid var(--hairline-d);transition:background .45s,border-color .45s}
+  body.light .tabs{background:rgba(109,40,217,.07);border-color:var(--hairline-l)}
+  .tabs button{
+    appearance:none;border:0;background:transparent;border-radius:12px;padding:10px 0;
+    font-family:inherit;font-weight:600;font-size:14px;color:inherit;opacity:.6;cursor:pointer;
+    transition:background .25s,opacity .25s;
+  }
+  .tabs button.on{opacity:1;background:#fff;color:var(--ink);box-shadow:0 2px 10px rgba(15,10,30,.25)}
 
-/* picker */
-.picker{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:5px;border-radius:14px;
- background:var(--card);border:1px solid var(--line);margin-bottom:20px}
-.picker button{border:none;background:transparent;border-radius:10px;padding:11px 4px;cursor:pointer;
- font-family:var(--sans);font-size:14px;font-weight:600;color:var(--muted);transition:.16s;line-height:1.2}
-.picker button:hover{color:var(--ink)}
-.picker button.on{background:var(--plum-core);color:#fff}
-[data-theme="light"] .picker button.on{background:var(--plum-core);color:#fff}
+  /* card */
+  .card{
+    border-radius:22px;padding:26px 24px 22px;position:relative;overflow:hidden;
+    border:1px solid var(--hairline-d);
+    background:linear-gradient(155deg,var(--night-card-a),var(--night-card-b));
+    box-shadow:0 18px 44px rgba(10,5,25,.45);
+  }
+  body.light .card{
+    background:linear-gradient(160deg,#FFFFFF,#F3EEFC);
+    border-color:var(--hairline-l);
+    box-shadow:0 16px 40px rgba(60,30,120,.14);
+  }
+  .card::after{ /* quiet corner mark */
+    content:"NESO";position:absolute;top:22px;right:24px;
+    font-family:'Fraunces',serif;font-weight:600;font-size:13px;letter-spacing:.18em;
+    color:var(--violet-soft);opacity:.85;
+  }
+  body.light .card::after{color:var(--violet)}
+  .eyebrow{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;
+    color:var(--violet-soft);margin-bottom:14px}
+  body.light .eyebrow{color:var(--violet)}
+  .name{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(24px,7vw,30px);line-height:1.12;
+    letter-spacing:.005em;margin-bottom:5px}
+  .role{font-size:13.5px;font-weight:500;opacity:.72;margin-bottom:18px}
+  .rule{height:1px;background:var(--hairline-d);margin-bottom:16px}
+  body.light .rule{background:var(--hairline-l)}
+  .row{display:flex;gap:14px;align-items:baseline;padding:5px 0;font-size:14.5px}
+  .row .k{width:44px;flex:none;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+    font-weight:600;opacity:.5}
+  .row a{color:inherit;text-decoration:none;font-weight:500}
+  .row a:focus-visible{outline:2px solid var(--violet-soft);outline-offset:3px;border-radius:4px}
 
-/* the card */
-.vcard{position:relative;border-radius:18px;overflow:hidden;padding:22px 22px 20px;
- border:1px solid var(--line);background:var(--card);
- box-shadow:0 18px 40px -22px rgba(0,0,0,.7)}
-[data-theme="light"] .vcard{box-shadow:0 10px 30px rgba(91,42,134,.11)}
-.vcard:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;
- background:linear-gradient(90deg,var(--plum-core),var(--gold))}
-.vhead{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px}
-.vhead .mk{flex:none;margin-top:2px}
-.vkicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.17em;text-transform:uppercase;
- color:var(--gold-d);font-weight:600;margin-bottom:6px}
-[data-theme="dark"] .vkicker{color:var(--gold)}
-.vname{font-family:var(--serif);font-weight:700;font-size:clamp(21px,5.6vw,26px);line-height:1.14;letter-spacing:-.01em}
-.vrole{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.35}
-.vlines{border-top:1px solid var(--line);padding-top:6px}
-.vline{display:flex;align-items:center;gap:12px;padding:9px 2px;border-bottom:1px solid var(--line)}
-.vline:last-child{border-bottom:none}
-.vline .ic{width:30px;height:30px;border-radius:8px;flex:none;display:grid;place-items:center;
- background:rgba(190,147,222,.13);color:var(--plum)}
-[data-theme="light"] .vline .ic{background:rgba(109,58,158,.09)}
-.vline .ic svg{width:15px;height:15px}
-.vline .tx{min-width:0;flex:1}
-.vline .lb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:600}
-.vline .vl{font-size:14.5px;font-weight:500;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  /* QR panel */
+  .qrpanel{
+    background:#fff;border-radius:22px;padding:22px 20px 18px;text-align:center;
+    border:1px solid var(--hairline-d);
+    box-shadow:0 14px 36px rgba(10,5,25,.35);
+  }
+  body.light .qrpanel{border-color:var(--hairline-l);box-shadow:0 12px 32px rgba(60,30,120,.12)}
+  #qr{display:flex;justify-content:center}
+  #qr img,#qr canvas{border-radius:6px}
+  .qrpanel p{margin-top:14px;font-size:12.5px;font-weight:500;letter-spacing:.02em;color:#5B4A85}
 
-/* qr */
-.qrwrap{margin-top:16px;background:#fff;border-radius:16px;padding:18px 18px 14px;text-align:center;
- border:1px solid var(--line);cursor:pointer;position:relative}
-.qrwrap svg{width:min(230px,62vw);height:auto;display:block;margin:0 auto}
-.qrcap{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#7a6a92;margin-top:11px;font-weight:600}
+  /* save button */
+  .save{
+    appearance:none;border:0;cursor:pointer;font-family:inherit;
+    border-radius:16px;padding:15px 0;font-size:15px;font-weight:600;
+    background:var(--violet);color:#fff;letter-spacing:.01em;
+    transition:filter .2s;
+  }
+  .save:active{filter:brightness(1.15)}
+  .save:focus-visible{outline:2px solid var(--violet-soft);outline-offset:3px}
 
-/* actions */
-.acts{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:16px}
-.btn{border:none;border-radius:11px;padding:14px 10px;font-family:var(--sans);font-size:14px;font-weight:600;
- cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;line-height:1}
-.btn svg{width:16px;height:16px}
-.btn.gold{background:var(--gold);color:#1e1230}
-.btn.gold:hover{background:#f2c85e}
-.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
-.btn.ghost:hover{border-color:var(--plum)}
-
-.note{margin-top:18px;font-size:11.5px;color:var(--faint);line-height:1.6;text-align:center}
-.note b{color:var(--muted);font-weight:600}
-
-/* fullscreen scan mode */
-#scan{position:fixed;inset:0;z-index:99;background:#fff;display:none;place-items:center;padding:24px}
-#scan.show{display:grid}
-#scan svg.qr{width:min(86vw,86vh);height:auto}
-#scan .who{position:absolute;top:max(18px,env(safe-area-inset-top));left:0;right:0;text-align:center;
- font-family:var(--serif);font-weight:700;font-size:17px;color:#241633}
-#scan .close{position:absolute;bottom:max(24px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);
- border:1px solid #e5dcef;background:#fff;color:#241633;border-radius:999px;padding:11px 22px;font-family:var(--sans);
- font-size:14px;font-weight:600;cursor:pointer}
-.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);z-index:120;
- background:var(--plum-core);color:#fff;padding:11px 18px;border-radius:999px;font-size:13.5px;font-weight:600;
- opacity:0;pointer-events:none;transition:.22s}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .foot{text-align:center;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    opacity:.4;font-weight:500;margin-top:2px}
 </style>
 </head>
 <body>
-<div id="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="wrap">
 
-<div class="shell">
   <div class="mast">
-    <span class="brand"><svg width="24" height="24" viewBox="0 0 44 44" aria-hidden="true"><path d="M4 22 L22 19 L40 22 L22 25 Z" fill="#5B2A86"/><path d="M22 4 L25 22 L22 40 L19 22 Z" fill="#E7B84B"/><circle cx="22" cy="22" r="2.6" fill="#f2ecf7"/></svg> NESO</span>
-    <span class="sp"></span>
-    <span class="tag">Cards</span>
+    <span class="wordmark">NESO</span>
+    <small>Digital cards</small>
   </div>
 
-  <div class="picker" id="picker" role="tablist" aria-label="Choose a card"></div>
-
-  <div class="vcard" id="vcard"></div>
-
-  <div class="qrwrap" id="qrwrap" role="button" tabindex="0" aria-label="Enlarge QR code for scanning">
-    <div id="qr"></div>
-    <div class="qrcap" id="qrcap">Scan with a phone camera · tap to enlarge</div>
+  <div class="tabs" role="tablist" aria-label="Choose a card">
+    <button role="tab" data-id="hello">Hello</button>
+    <button role="tab" data-id="mallory">Mallory</button>
+    <button role="tab" data-id="charles">Charles</button>
   </div>
 
-  <div class="acts">
-    <button class="btn gold" id="saveBtn"><svg class="i" viewBox="0 0 24 24"><path d="M12 4 v11"/><path d="M8 11 l4 4 l4 -4"/><path d="M4 19 h16"/></svg> Save contact</button>
-    <button class="btn ghost" id="shareBtn"><svg class="i" viewBox="0 0 24 24"><circle cx="18" cy="6" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8.3 10.8 L15.7 7.2"/><path d="M8.3 13.2 L15.7 16.8"/></svg> Send link</button>
+  <div class="card" id="card">
+    <div class="eyebrow" id="c-eyebrow"></div>
+    <div class="name" id="c-name"></div>
+    <div class="role" id="c-role"></div>
+    <div class="rule"></div>
+    <div id="c-rows"></div>
   </div>
 
-  <div class="note">
-    Hand the phone over and let them scan — the contact saves straight to their phone.<br>
-    Bookmark this page or add it to your home screen so it's here next time.
+  <div class="qrpanel">
+    <div id="qr" aria-label="Contact QR code"></div>
+    <p>Point a phone camera here to save this contact</p>
   </div>
+
+  <button class="save" id="save">Save contact to this phone</button>
+
+  <div class="foot">nesohq.com · advisory &amp; tools for business and real estate</div>
 </div>
 
-<div id="scan" aria-hidden="true">
-  <div class="who" id="scanWho"></div>
-  <div id="scanQr"></div>
-  <button class="close" id="scanClose">Done</button>
-</div>
-<div class="toast" id="toast"></div>
-
 <script>
-/* ============================================================================
-   THE CARDS — edit or add here. Everything else is automatic.
-
-   Adding a card: copy one block, change the values, and it appears in the
-   picker. Keep `id` short and lowercase — it becomes the link (#id) and the
-   downloaded filename.
-
-   theme  : "light" or "dark"
-   lines  : what shows on the face of the card, in order.
-            kind is one of: cell | text | phone | email | web
-   vcf    : what the QR hands over. Escape commas inside a value as \\,
-   ========================================================================== */
-var CARDS = [
-  {
-    id: "hello",
-    tab: "Hello",
-    theme: "dark",
-    kicker: "NESO HQ LLC",
-    name: "NESO",
-    role: "Advisory and tools for business and real estate",
-    lines: [
-      { kind:"text",  label:"Text",  value:"(901) 295-0322", href:"sms:+19012950322" },
-      { kind:"email", label:"Email", value:"hello@nesohq.com", href:"mailto:hello@nesohq.com" },
-      { kind:"web",   label:"Web",   value:"nesohq.com", href:"https://nesohq.com" }
+const CARDS = {
+  hello: {
+    theme: 'dark',
+    eyebrow: 'The firm',
+    name: 'NESO HQ',
+    role: 'Advisory and tools for business and real estate',
+    rows: [
+      ['Text', '(901) 295-0322', 'sms:+19012950322'],
+      ['Email', 'hello@nesohq.com', 'mailto:hello@nesohq.com'],
+      ['Web', 'nesohq.com', 'https://nesohq.com']
     ],
     vcf: [
-      "BEGIN:VCARD","VERSION:3.0",
-      "FN:NESO HQ",
-      "ORG:NESO HQ LLC",
-      "TEL;TYPE=WORK,VOICE:+19012950322",
-      "EMAIL;TYPE=WORK:hello@nesohq.com",
-      "URL:https://nesohq.com",
-      "NOTE:Advisory and tools for business and real estate.",
-      "END:VCARD"
+      'BEGIN:VCARD','VERSION:3.0',
+      'FN:NESO HQ',
+      'ORG:NESO HQ LLC',
+      'TEL;TYPE=WORK,VOICE:+19012950322',
+      'EMAIL;TYPE=WORK:hello@nesohq.com',
+      'URL:https://nesohq.com',
+      'NOTE:Advisory and tools for business and real estate. Text line — (901) 295-0322.',
+      'END:VCARD'
     ]
   },
-  {
-    id: "mallory",
-    tab: "Mallory",
-    theme: "light",
-    kicker: "Business & growth",
-    name: "Mallory Bailey-Finkley, MBA",
-    role: "Sole Member & Managing Member · NESO HQ LLC",
-    lines: [
-      { kind:"text",  label:"Text",  value:"(901) 295-0322", href:"sms:+19012950322" },
-      { kind:"email", label:"Email", value:"hello@nesohq.com", href:"mailto:hello@nesohq.com" },
-      { kind:"web",   label:"Web",   value:"nesohq.com", href:"https://nesohq.com" }
+  mallory: {
+    theme: 'light',
+    eyebrow: 'Business & growth',
+    name: 'Mallory K. Bailey, MBA',
+    role: 'Managing Member · NESO HQ LLC',
+    rows: [
+      ['Text', '(901) 295-0322', 'sms:+19012950322'],
+      ['Email', 'hello@nesohq.com', 'mailto:hello@nesohq.com'],
+      ['Web', 'nesohq.com', 'https://nesohq.com']
     ],
     vcf: [
-      "BEGIN:VCARD","VERSION:3.0",
-      "N:Bailey-Finkley;Mallory;;;",
-      "FN:Mallory Bailey-Finkley\\, MBA",
-      "ORG:NESO HQ LLC",
-      "TITLE:Sole Member & Managing Member",
-      "TEL;TYPE=WORK,VOICE:+19012950322",
-      "EMAIL;TYPE=WORK:hello@nesohq.com",
-      "URL:https://nesohq.com",
-      "NOTE:Advisory and tools for business and real estate.",
-      "END:VCARD"
+      'BEGIN:VCARD','VERSION:3.0',
+      'N:Bailey;Mallory;K.;;',
+      'FN:Mallory K. Bailey\\, MBA',
+      'ORG:NESO HQ LLC',
+      'TITLE:Managing Member',
+      'TEL;TYPE=WORK,VOICE:+19012950322',
+      'EMAIL;TYPE=WORK:hello@nesohq.com',
+      'URL:https://nesohq.com',
+      'NOTE:Advisory and tools for business and real estate.',
+      'END:VCARD'
     ]
   },
-  {
-    id: "charles",
-    tab: "Charles",
-    theme: "dark",
-    kicker: "Real estate & land",
-    name: "Charles L. Finkley, Jr., MPA",
-    role: "Reviewing Principal — Real Estate & Land",
-    lines: [
-      { kind:"cell",  label:"Cell",  value:"(901) 428-6801", href:"tel:+19014286801" },
-      { kind:"text",  label:"Text",  value:"(901) 295-0322", href:"sms:+19012950322" },
-      { kind:"email", label:"Email", value:"hello@nesohq.com", href:"mailto:hello@nesohq.com" },
-      { kind:"web",   label:"Web",   value:"nesohq.com", href:"https://nesohq.com" }
+  charles: {
+    theme: 'dark',
+    eyebrow: 'Real estate & land',
+    name: 'Charles L. Finkley, Jr., MPA',
+    role: 'Reviewing Principal · Real Estate & Land',
+    rows: [
+      ['Cell', '(901) 428-6801', 'tel:+19014286801'],
+      ['Text', '(901) 295-0322', 'sms:+19012950322'],
+      ['Email', 'hello@nesohq.com', 'mailto:hello@nesohq.com'],
+      ['Web', 'nesohq.com', 'https://nesohq.com']
     ],
     vcf: [
-      "BEGIN:VCARD","VERSION:3.0",
-      "N:Finkley;Charles;L.;;Jr.",
-      "FN:Charles L. Finkley\\, Jr.\\, MPA",
-      "ORG:NESO HQ LLC",
-      "TITLE:Reviewing Principal - Real Estate & Land",
-      "TEL;TYPE=CELL,VOICE:+19014286801",
-      "TEL;TYPE=WORK,VOICE:+19012950322",
-      "EMAIL;TYPE=WORK:hello@nesohq.com",
-      "URL:https://nesohq.com",
-      "NOTE:Seventeen years in land use\\, entitlements and economic development.",
-      "END:VCARD"
+      'BEGIN:VCARD','VERSION:3.0',
+      'N:Finkley;Charles;L.;;Jr.',
+      'FN:Charles L. Finkley\\, Jr.\\, MPA',
+      'ORG:NESO HQ LLC',
+      'TITLE:Reviewing Principal — Real Estate & Land',
+      'TEL;TYPE=CELL,VOICE:+19014286801',
+      'TEL;TYPE=WORK,VOICE:+19012950322',
+      'EMAIL;TYPE=WORK:hello@nesohq.com',
+      'URL:https://nesohq.com',
+      'NOTE:Seventeen years in land use\\, entitlements and economic development.',
+      'END:VCARD'
     ]
   }
-];
-</script>
-<script>
-/* --- QR encoder (byte mode, EC level M). Self-contained: works with no
-       network, which matters in a basement conference room. --- */
-/* Minimal QR encoder — byte mode, EC levels L/M, versions 1..20. */
-var QR = (function(){
-  var EXP = new Uint8Array(512), LOG = new Uint8Array(256);
-  (function(){ var x=1; for(var i=0;i<255;i++){ EXP[i]=x; LOG[x]=i; x<<=1; if(x & 0x100) x^=0x11D; } for(var i=255;i<512;i++) EXP[i]=EXP[i-255]; })();
-  function mul(a,b){ return (a===0||b===0)?0:EXP[LOG[a]+LOG[b]]; }
-  function genPoly(n){ var p=[1]; for(var i=0;i<n;i++){ var q=new Array(p.length+1); for(var k=0;k<q.length;k++) q[k]=0; for(var j=0;j<p.length;j++){ q[j]^=p[j]; q[j+1]^=mul(p[j],EXP[i]); } p=q; } return p; }
-  function ecc(data,n){ var g=genPoly(n), r=new Array(data.length+n); var i,j; for(i=0;i<data.length;i++) r[i]=data[i]; for(i=data.length;i<r.length;i++) r[i]=0;
-    for(i=0;i<data.length;i++){ var f=r[i]; if(f!==0){ for(j=0;j<g.length;j++) r[i+j]^=mul(g[j],f); } }
-    return r.slice(data.length); }
-
-  // RS block table: per version, [L, M] each as flat [count,total,data, ...]
-  var RS = {
-    1:[[1,26,19],[1,26,16]],
-    2:[[1,44,34],[1,44,28]],
-    3:[[1,70,55],[1,70,44]],
-    4:[[1,100,80],[2,50,32]],
-    5:[[1,134,108],[2,67,43]],
-    6:[[2,86,68],[4,43,27]],
-    7:[[2,98,78],[4,49,31]],
-    8:[[2,121,97],[2,60,38,2,61,39]],
-    9:[[2,146,116],[3,58,36,2,59,37]],
-    10:[[2,86,68,2,87,69],[4,69,43,1,70,44]],
-    11:[[4,101,81],[1,80,50,4,81,51]],
-    12:[[2,116,92,2,117,93],[6,58,36,2,59,37]],
-    13:[[4,133,107],[8,59,37,1,60,38]],
-    14:[[3,145,115,1,146,116],[4,64,40,5,65,41]],
-    15:[[5,109,87,1,110,88],[5,65,41,5,66,42]],
-    16:[[5,122,98,1,123,99],[7,73,45,3,74,46]],
-    17:[[1,135,107,5,136,108],[10,74,46,1,75,47]],
-    18:[[5,150,120,1,151,121],[9,69,43,4,70,44]],
-    19:[[3,141,113,4,142,114],[3,70,44,11,71,45]],
-    20:[[3,135,107,5,136,108],[3,67,41,13,68,42]]
-  };
-  var ALIGN = [[],[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50],[6,30,54],[6,32,58],[6,34,62],[6,26,46,66],[6,26,48,70],[6,26,50,74],[6,30,54,78],[6,30,56,82],[6,30,58,86],[6,34,62,90]];
-  var ECBITS = { L:1, M:0 };
-
-  function blocks(ver, lvl){
-    var t = RS[ver][lvl==='L'?0:1], out=[];
-    for(var i=0;i<t.length;i+=3){ for(var c=0;c<t[i];c++) out.push({total:t[i+1], data:t[i+2]}); }
-    return out;
-  }
-  function dataCapacity(ver,lvl){ var b=blocks(ver,lvl), n=0; for(var i=0;i<b.length;i++) n+=b[i].data; return n; }
-
-  function utf8(str){ var out=[], enc=unescape(encodeURIComponent(str)); for(var i=0;i<enc.length;i++) out.push(enc.charCodeAt(i)&0xFF); return out; }
-
-  function bitDigit(x){ var n=0; while(x!==0){ n++; x>>>=1; } return n; }
-  var G15=0x537, G18=0x1F25, G15MASK=0x5412;
-  function bch(d,g){ var r=d; while(bitDigit(r)-bitDigit(g)>=0) r ^= (g << (bitDigit(r)-bitDigit(g))); return r; }
-
-  function build(text, lvl){
-    lvl = lvl || 'M';
-    var bytes = utf8(text), ver=0, i, j;
-    for(var v=1;v<=20;v++){
-      var cci = v<10 ? 8 : 16;
-      if(4 + cci + 8*bytes.length <= dataCapacity(v,lvl)*8){ ver=v; break; }
-    }
-    if(!ver) throw new Error('Contact is too long for a QR code — shorten it.');
-    var cci = ver<10 ? 8 : 16;
-
-    // bit stream
-    var bits=[];
-    function put(val,len){ for(var k=len-1;k>=0;k--) bits.push((val>>>k)&1); }
-    put(4,4); put(bytes.length,cci);
-    for(i=0;i<bytes.length;i++) put(bytes[i],8);
-    var cap = dataCapacity(ver,lvl)*8;
-    for(i=0;i<4 && bits.length<cap;i++) bits.push(0);
-    while(bits.length%8) bits.push(0);
-    var pad=[0xEC,0x11], p=0;
-    while(bits.length<cap){ put(pad[p++%2],8); }
-
-    var dcw=[]; for(i=0;i<bits.length;i+=8){ var b=0; for(j=0;j<8;j++) b=(b<<1)|bits[i+j]; dcw.push(b); }
-
-    // split into blocks, compute ecc, interleave
-    var bl=blocks(ver,lvl), dblocks=[], eblocks=[], off=0, maxD=0, maxE=0;
-    for(i=0;i<bl.length;i++){
-      var d=dcw.slice(off,off+bl[i].data); off+=bl[i].data;
-      var e=ecc(d, bl[i].total-bl[i].data);
-      dblocks.push(d); eblocks.push(e);
-      if(d.length>maxD) maxD=d.length; if(e.length>maxE) maxE=e.length;
-    }
-    var final=[];
-    for(i=0;i<maxD;i++) for(j=0;j<dblocks.length;j++) if(i<dblocks[j].length) final.push(dblocks[j][i]);
-    for(i=0;i<maxE;i++) for(j=0;j<eblocks.length;j++) if(i<eblocks[j].length) final.push(eblocks[j][i]);
-
-    var size = ver*4+17;
-    var best=null, bestScore=Infinity;
-    for(var mask=0; mask<8; mask++){
-      var m = place(ver,size,final,lvl,mask);
-      var s = penalty(m,size);
-      if(s<bestScore){ bestScore=s; best=m; }
-    }
-    return best;
-  }
-
-  function place(ver,size,cw,lvl,mask){
-    var m=[], res=[], i, j, r, c;
-    for(i=0;i<size;i++){ m.push(new Array(size).fill(null)); res.push(new Array(size).fill(false)); }
-    function set(r,c,v){ if(r<0||c<0||r>=size||c>=size) return; m[r][c]=v; }
-
-    // finders + separators
-    [[0,0],[size-7,0],[0,size-7]].forEach(function(p){
-      for(r=-1;r<=7;r++) for(c=-1;c<=7;c++){
-        var rr=p[0]+r, cc=p[1]+c;
-        if(rr<0||cc<0||rr>=size||cc>=size) continue;
-        var on = (0<=r&&r<=6&&(c===0||c===6)) || (0<=c&&c<=6&&(r===0||r===6)) || (2<=r&&r<=4&&2<=c&&c<=4);
-        set(rr,cc,on);
-      }
-    });
-    // alignment (before timing — several centres sit on the timing line)
-    var ap=ALIGN[ver];
-    for(i=0;i<ap.length;i++) for(j=0;j<ap.length;j++){
-      var ar=ap[i], ac=ap[j];
-      if(m[ar][ac]!==null) continue;
-      for(r=-2;r<=2;r++) for(c=-2;c<=2;c++)
-        set(ar+r, ac+c, Math.max(Math.abs(r),Math.abs(c))!==1);
-    }
-    // timing
-    for(i=8;i<size-8;i++){ var on=(i%2===0); if(m[6][i]===null) set(6,i,on); if(m[i][6]===null) set(i,6,on); }
-    // dark module
-    set(size-8, 8, true);
-    // format info reserve + write
-    var fmt = ((ECBITS[lvl]<<3)|mask);
-    var fbits = ((fmt<<10) | bch(fmt<<10, G15)) ^ G15MASK;
-    for(i=0;i<15;i++){
-      var bit = ((fbits>>>i)&1)===1;
-      if(i<6) set(i,8,bit);
-      else if(i<8) set(i+1,8,bit);
-      else set(size-15+i, 8, bit);
-      if(i<8) set(8, size-1-i, bit);
-      else if(i<9) set(8, 15-i, bit);
-      else set(8, 15-i-1, bit);
-    }
-    // version info
-    if(ver>=7){
-      var vb = (ver<<12) | bch(ver<<12, G18);
-      for(i=0;i<18;i++){
-        var b = ((vb>>>i)&1)===1;
-        set(Math.floor(i/3), size-11+(i%3), b);
-        set(size-11+(i%3), Math.floor(i/3), b);
-      }
-    }
-    // data
-    var dir=-1, row=size-1, idx=0, bit=7;
-    for(var col=size-1; col>0; col-=2){
-      if(col===6) col--;
-      while(true){
-        for(var k=0;k<2;k++){
-          var cc2=col-k;
-          if(m[row][cc2]===null){
-            var dark=false;
-            if(idx<cw.length) dark = ((cw[idx]>>>bit)&1)===1;
-            var mk;
-            switch(mask){
-              case 0: mk=(row+cc2)%2===0; break;
-              case 1: mk=row%2===0; break;
-              case 2: mk=cc2%3===0; break;
-              case 3: mk=(row+cc2)%3===0; break;
-              case 4: mk=(Math.floor(row/2)+Math.floor(cc2/3))%2===0; break;
-              case 5: mk=((row*cc2)%2)+((row*cc2)%3)===0; break;
-              case 6: mk=(((row*cc2)%2)+((row*cc2)%3))%2===0; break;
-              case 7: mk=(((row+cc2)%2)+((row*cc2)%3))%2===0; break;
-            }
-            if(mk) dark=!dark;
-            m[row][cc2]=dark;
-            bit--; if(bit<0){ bit=7; idx++; }
-          }
-        }
-        row += dir;
-        if(row<0||row>=size){ row-=dir; dir=-dir; break; }
-      }
-    }
-    for(i=0;i<size;i++) for(j=0;j<size;j++) res[i][j] = m[i][j]===true;
-    return res;
-  }
-
-  function penalty(m,size){
-    var s=0,i,j,k;
-    // rule 1
-    for(i=0;i<size;i++){
-      var run=1;
-      for(j=1;j<size;j++){ if(m[i][j]===m[i][j-1]) run++; else { if(run>=5) s+=3+(run-5); run=1; } }
-      if(run>=5) s+=3+(run-5);
-      run=1;
-      for(j=1;j<size;j++){ if(m[j][i]===m[j-1][i]) run++; else { if(run>=5) s+=3+(run-5); run=1; } }
-      if(run>=5) s+=3+(run-5);
-    }
-    // rule 2
-    for(i=0;i<size-1;i++) for(j=0;j<size-1;j++){
-      var v=m[i][j];
-      if(v===m[i][j+1] && v===m[i+1][j] && v===m[i+1][j+1]) s+=3;
-    }
-    // rule 3
-    var pat=[true,false,true,true,true,false,true,false,false,false,false];
-    var pat2=[false,false,false,false,true,false,true,true,true,false,true];
-    for(i=0;i<size;i++) for(j=0;j<size-10;j++){
-      var okA=true, okB=true;
-      for(k=0;k<11;k++){ if(m[i][j+k]!==pat[k]) okA=false; if(m[i][j+k]!==pat2[k]) okB=false; }
-      if(okA||okB) s+=40;
-      okA=true; okB=true;
-      for(k=0;k<11;k++){ if(m[j+k][i]!==pat[k]) okA=false; if(m[j+k][i]!==pat2[k]) okB=false; }
-      if(okA||okB) s+=40;
-    }
-    // rule 4
-    var dark=0;
-    for(i=0;i<size;i++) for(j=0;j<size;j++) if(m[i][j]) dark++;
-    var pct = dark*100/(size*size);
-    s += Math.floor(Math.abs(pct-50)/5)*10;
-    return s;
-  }
-
-  return { build: build };
-})();
-
-if (typeof module !== 'undefined') module.exports = QR;
-
-</script>
-<script>
-var ICONS = {
-  cell:'<svg class="i" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.4"/><path d="M10.8 18.6 h2.4"/></svg>',
-  text:'<svg class="i" viewBox="0 0 24 24"><path d="M4 5.5 h16 v11 H10.5 L6.5 20 v-3.5 H4 Z"/></svg>',
-  phone:'<svg class="i" viewBox="0 0 24 24"><path d="M5 4 h4 l1.6 4.2 -2.1 1.6 a12 12 0 0 0 5.7 5.7 l1.6 -2.1 L20 15 v4 a1.6 1.6 0 0 1 -1.8 1.6 C10.9 19.8 4.2 13.1 3.4 5.8 A1.6 1.6 0 0 1 5 4 Z"/></svg>',
-  email:'<svg class="i" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.2"/><path d="M3.8 7 L12 13 L20.2 7"/></svg>',
-  web:'<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12 h17"/><path d="M12 3.5 a13 13 0 0 1 0 17 a13 13 0 0 1 0 -17"/></svg>'
 };
-var MARK = '<svg class="mk" width="26" height="26" viewBox="0 0 44 44" aria-hidden="true"><path d="M4 22 L22 19 L40 22 L22 25 Z" fill="#5B2A86"/><path d="M22 4 L25 22 L22 40 L19 22 Z" fill="#E7B84B"/><circle cx="22" cy="22" r="2.6" fill="#f2ecf7"/></svg>';
 
-var $ = function(id){ return document.getElementById(id); };
-var current = CARDS[0];
+const tabs = [...document.querySelectorAll('.tabs button')];
+const qrBox = document.getElementById('qr');
+let current = 'hello';
 
-function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function vcfText(c){ return c.vcf.join('\r\n'); }
 
-function qrSvg(text, px){
-  var m = QR.build(text, 'M'), n = m.length, quiet = 4, dim = n + quiet*2, d = '';
-  for(var r=0;r<n;r++){
-    for(var c=0;c<n;c++){
-      if(m[r][c]) d += 'M'+(c+quiet)+' '+(r+quiet)+'h1v1h-1z';
-    }
-  }
-  return '<svg class="qr" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+dim+' '+dim+'" '+
-         'shape-rendering="crispEdges" role="img" aria-label="Contact QR code">'+
-         '<rect width="'+dim+'" height="'+dim+'" fill="#ffffff"/>'+
-         '<path d="'+d+'" fill="#241633"/></svg>';
-}
-
-function buildPicker(){
-  $('picker').innerHTML = CARDS.map(function(c){
-    return '<button role="tab" data-id="'+esc(c.id)+'">'+esc(c.tab)+'</button>';
-  }).join('');
-  Array.prototype.forEach.call($('picker').children, function(b){
-    b.addEventListener('click', function(){ show(b.dataset.id, true); });
+function render(id){
+  current = id;
+  const c = CARDS[id];
+  document.body.classList.toggle('light', c.theme === 'light');
+  tabs.forEach(b => b.classList.toggle('on', b.dataset.id === id));
+  tabs.forEach(b => b.setAttribute('aria-selected', b.dataset.id === id));
+  document.getElementById('c-eyebrow').textContent = c.eyebrow;
+  document.getElementById('c-name').textContent = c.name;
+  document.getElementById('c-role').textContent = c.role;
+  document.getElementById('c-rows').innerHTML = c.rows.map(r =>
+    `<div class="row"><span class="k">${r[0]}</span><a href="${r[2]}">${r[1]}</a></div>`
+  ).join('');
+  qrBox.innerHTML = '';
+  new QRCode(qrBox, {
+    text: vcfText(c),
+    width: 216, height: 216,
+    colorDark: '#1D1236', colorLight: '#FFFFFF',
+    correctLevel: QRCode.CorrectLevel.M
   });
 }
 
-function show(id, push){
-  var c = null;
-  for(var i=0;i<CARDS.length;i++) if(CARDS[i].id===id) c = CARDS[i];
-  if(!c) c = CARDS[0];
-  current = c;
+tabs.forEach(b => b.addEventListener('click', () => render(b.dataset.id)));
 
-  document.documentElement.setAttribute('data-theme', c.theme);
-  document.querySelector('meta[name="theme-color"]').setAttribute('content', c.theme==='light' ? '#f7f4fb' : '#160f1e');
-
-  Array.prototype.forEach.call($('picker').children, function(b){
-    var on = b.dataset.id === c.id;
-    b.classList.toggle('on', on);
-    b.setAttribute('aria-selected', on ? 'true' : 'false');
-  });
-
-  $('vcard').innerHTML =
-    '<div class="vhead">'+ MARK +
-      '<div><div class="vkicker">'+esc(c.kicker)+'</div>'+
-      '<div class="vname">'+esc(c.name)+'</div>'+
-      '<div class="vrole">'+esc(c.role)+'</div></div>'+
-    '</div>'+
-    '<div class="vlines">'+ c.lines.map(function(l){
-      return '<a class="vline" href="'+esc(l.href)+'">'+
-        '<span class="ic">'+(ICONS[l.kind]||ICONS.web)+'</span>'+
-        '<span class="tx"><span class="lb">'+esc(l.label)+'</span>'+
-        '<div class="vl">'+esc(l.value)+'</div></span></a>';
-    }).join('') + '</div>';
-
-  var svg = qrSvg(vcfText(c));
-  $('qr').innerHTML = svg;
-  $('scanQr').innerHTML = svg;
-  $('scanWho').textContent = c.name;
-
-  if(push && history.replaceState) history.replaceState(null, '', '#'+c.id);
-}
-
-function toast(msg){
-  var t = $('toast'); t.textContent = msg; t.classList.add('show');
-  clearTimeout(t._t); t._t = setTimeout(function(){ t.classList.remove('show'); }, 2200);
-}
-
-$('saveBtn').addEventListener('click', function(){
-  var blob = new Blob([vcfText(current)], {type:'text/vcard;charset=utf-8'});
-  var url = URL.createObjectURL(blob);
-  var a = document.createElement('a');
-  a.href = url; a.download = 'NESO-' + current.id + '.vcf';
+document.getElementById('save').addEventListener('click', () => {
+  const c = CARDS[current];
+  const blob = new Blob([vcfText(c)], {type:'text/vcard'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'NESO-' + current + '.vcf';
   document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(function(){ URL.revokeObjectURL(url); }, 5000);
-  toast('Contact file saved');
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
 });
 
-$('shareBtn').addEventListener('click', function(){
-  var url = location.href.split('#')[0] + '#' + current.id;
-  if(navigator.share){
-    navigator.share({ title:'NESO — ' + current.name, url:url }).catch(function(){});
-  } else if(navigator.clipboard){
-    navigator.clipboard.writeText(url).then(function(){ toast('Link copied'); });
-  } else {
-    prompt('Copy this link:', url);
-  }
-});
-
-function openScan(){ $('scan').classList.add('show'); $('scan').setAttribute('aria-hidden','false'); }
-function closeScan(){ $('scan').classList.remove('show'); $('scan').setAttribute('aria-hidden','true'); }
-$('qrwrap').addEventListener('click', openScan);
-$('qrwrap').addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openScan(); } });
-$('scanClose').addEventListener('click', closeScan);
-document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeScan(); });
-
-buildPicker();
-show((location.hash||'').replace('#','') || CARDS[0].id, false);
+// Deep-link a card: /cards.html#charles opens Charles directly
+const hash = location.hash.replace('#','');
+render(CARDS[hash] ? hash : 'hello');
 </script>
-</body></html>
+</body>
+</html>
