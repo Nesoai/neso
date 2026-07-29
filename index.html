@@ -1062,8 +1062,8 @@ const REFUND='<h1>Refund &amp; Cancellation Policy</h1><div class="upd">Last upd
 '<p>NESO wants you satisfied with the work. This policy explains how payments, cancellations, and refunds work for our advisory services and tools.</p>'+
 '<h3>Advisory services (credit engagements)</h3><p>Services are quoted and confirmed before any work begins. If you cancel before we start, you receive a full refund of any prepaid amount for that engagement. Once work is underway, refunds are prorated for the portion not yet performed. Prepaid credits that have not been applied to a started engagement are refundable on request within the window below. After that window, credits expire. Each block is valid 13 weeks from its own purchase date \u2014 39 weeks on a Credit Rollover membership, a Growth or Partner block, or a Traction &amp; Growth or Scale &amp; Develop plan, and your NESO dashboard shows the expiry date for every block you hold. Before a block expires we contact you and offer an extension. If you decline or we do not hear back, the value goes to our community fund, not to NESO. It is held on our books as a liability until it is disbursed, we name the recipient, and it is never taken into revenue.</p>'+
 '<h3>Fixed-fee reports</h3><p>If we are unable to produce a report you have paid for, you are not charged, or you are refunded in full. Each report includes one revision. Because reports are custom research delivered promptly, completed and delivered reports are generally non-refundable &mdash; but if a delivered report contains a factual error on our part, we correct it at no cost.</p>'+
-'<h3>Tool Pro unlocks</h3><p>One-time Pro unlocks for our free tools are digital goods delivered instantly. The unlock code is issued at purchase and is single-use; the unlock is non-refundable once that code has been issued. If a refund is granted, the code is deactivated and the unlock ends.</p>'+
-'<h3>How to request a refund</h3><p>Contact us through the form on this site or by text at (901) 295-0322 and we will respond within two business days. Request windows run from the charge: <b>7 days</b> for instantly delivered digital goods (tool Pro unlocks and The NESO Brief), and <b>14 days</b> for fixed-price reports, service credits and memberships. Reports carry the longer window because turnaround is counted in business days from the point your scope and inputs are complete \u2014 the shorter window could close before your report is delivered.</p>'+
+'<h3>Tool Pro unlocks</h3><p>A one-time Pro unlock is a single-use code, emailed to you by a NESO principal &mdash; usually the same business day, and always within one business day. It is not issued automatically at checkout. Once the code has been sent, the unlock is non-refundable; if a refund is granted before or after, the code is deactivated and the unlock ends. If you have not received your code within one business day, text (901) 295-0322 and we will send it immediately.</p>'+
+'<h3>How to request a refund</h3><p>Contact us through the form on this site or by text at (901) 295-0322 and we will respond within two business days. Request windows run from the charge: <b>7 days</b> for digital goods (tool Pro unlocks and The NESO Brief), and <b>14 days</b> for fixed-price reports, service credits and memberships. Reports carry the longer window because turnaround is counted in business days from the point your scope and inputs are complete \u2014 the shorter window could close before your report is delivered.</p>'+
 '<h3>Payments</h3><p>Payments are processed securely by our payment provider. NESO does not store your full card details.</p>';
 function viewLegal(kind){
   const c = kind==='privacy'?PRIVACY:(kind==='refund'?REFUND:TERMS);
@@ -1134,11 +1134,16 @@ async function runOpp(kind,q){
     const undated=hits.filter(h=>!closeOf(h));
     hits=dated.concat(undated);
     if(!hits.length){ box.innerHTML=oppFallback('grants',q,'No open opportunities match that keyword right now.'); return; }
-    box.innerHTML='<div class="opplist">'+hits.slice(0,12).map(h=>{
+    /* Reset the page size when the query changes, or a search after a Show more
+       would open already expanded. */
+    if (window.__grantQ !== q) { window.__grantQ = q; window.__grantShow = 12; }
+    const SHOW = window.__grantShow || 12;
+    const more = Math.max(0, hits.length - SHOW);
+    box.innerHTML='<div class="oppcount" style="font-size:12px;color:var(--faint);margin:0 0 8px">Showing '+Math.min(SHOW,hits.length)+' of '+hits.length+' open'+(q?(' for \u201c'+esc(q)+'\u201d'):'')+'</div>'+'<div class="opplist">'+hits.slice(0,SHOW).map(h=>{
       const id=h.id||h.number||''; const close=h.closeDate||h.closeDateStr||'';
       return `<div class="oppc"><div><div class="ot">${esc(h.title||'Untitled opportunity')}</div><div class="om">${esc(h.agencyName||h.agencyCode||h.agency||'')}${h.number?(' · '+esc(h.number)):''}</div></div>
-        <div><div class="od">${close?('Closes '+esc(close)):(String(h.oppStatus||'').toLowerCase()==='forecasted'?'Forecasted':esc(h.oppStatus||'Open'))}</div><a href="https://www.grants.gov/search-results-detail/${encodeURIComponent(id)}" target="_blank" rel="noopener">View &nearr;</a></div></div>`;
-    }).join('')+'</div>';
+        <div><div class="od">${close?('Closes '+esc(close)):(String(h.oppStatus||'').toLowerCase()==='forecasted'?'Forecasted':'Rolling \u00b7 no deadline')}</div><a href="https://www.grants.gov/search-results-detail/${encodeURIComponent(id)}" target="_blank" rel="noopener">View &nearr;</a></div></div>`;
+    }).join('')+'</div>'+(more?('<div style="text-align:center;margin-top:12px"><button onclick="window.__grantShow=(window.__grantShow||12)+12;runOpp(\'grants\','+JSON.stringify(q)+')" style="background:transparent;border:1px solid var(--line);border-radius:999px;padding:9px 18px;color:var(--plum);font-weight:700;font-size:13px;cursor:pointer">Show '+Math.min(12,more)+' more &darr;</button></div>'):'');
   }catch(e){ box.innerHTML=oppFallback('grants',q,''); }
 }
 function oppFallback(kind,q,msg){
