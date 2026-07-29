@@ -689,7 +689,13 @@ function show(id, push){
   $('scanQr').innerHTML = svg;
   $('scanWho').textContent = c.name;
 
-  if(push && history.replaceState) history.replaceState(null, '', '#'+c.id);
+  /* Guarded: replaceState throws a SecurityError inside a sandboxed or
+     cross-origin preview frame, and a dead deep-link must never take the
+     whole card page down with it. */
+  if(push){
+    try { if(history.replaceState) history.replaceState(null, '', '#'+c.id); }
+    catch(e){ /* preview frame — the card still works, the URL just won't update */ }
+  }
 }
 
 function toast(msg){
