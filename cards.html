@@ -256,7 +256,7 @@ var CARDS = [
       "BEGIN:VCARD","VERSION:3.0",
       "FN:NESO HQ",
       "ORG:NESO HQ LLC",
-      "TEL;TYPE=WORK,VOICE:+19012950322",
+      "TEL;TYPE=WORK:+19012950322",
       "EMAIL;TYPE=WORK:hello@nesohq.com",
       "URL:https://nesohq.com",
       "NOTE:Advisory and tools for business and real estate. Fixed-price reports\\, free tools\\, advisory in credits.",
@@ -271,7 +271,7 @@ var CARDS = [
     theme: "light",
     kicker: "Business & growth",
     name: "Mallory Bailey-Finkley, MBA",
-    role: "Sole Member & Managing Member · NESO HQ LLC",
+    role: "Managing Member · NESO HQ LLC",
     lines: [
       { kind:"text",  label:"Text",  value:"(901) 295-0322", href:"sms:+19012950322" },
       { kind:"email", label:"Email", value:"mallory@nesohq.com", href:"mailto:mallory@nesohq.com" },
@@ -284,11 +284,11 @@ var CARDS = [
       "N:Bailey-Finkley;Mallory;;;",
       "FN:Mallory Bailey-Finkley\\, MBA",
       "ORG:NESO HQ LLC",
-      "TITLE:Sole Member & Managing Member",
-      "TEL;TYPE=WORK,VOICE:+19012950322",
+      "TITLE:Managing Member",
+      "TEL;TYPE=WORK:+19012950322",
       "EMAIL;TYPE=WORK:mallory@nesohq.com",
       "URL:https://nesohq.com",
-      "NOTE:Grant writing\\, business plans\\, market research\\, pitch decks\\, capital stacks.",
+      "NOTE:Grants\\, business plans\\, market research\\, capital stacks.",
       "END:VCARD"
     ]
   },
@@ -315,8 +315,8 @@ var CARDS = [
       "FN:Charles L. Finkley\\, Jr.\\, MPA",
       "ORG:NESO HQ LLC",
       "TITLE:Reviewing Principal - Real Estate & Land",
-      "TEL;TYPE=CELL,VOICE:+19014286801",
-      "TEL;TYPE=WORK,VOICE:+19012950322",
+      "TEL;TYPE=CELL:+19014286801",
+      "TEL;TYPE=WORK:+19012950322",
       "EMAIL;TYPE=WORK:charles@nesohq.com",
       "URL:https://nesohq.com",
       "NOTE:Zoning and entitlements\\, site feasibility\\, power and energization. 17 years in land use and economic development.",
@@ -397,7 +397,7 @@ var QR = (function(){
   var G15=0x537, G18=0x1F25, G15MASK=0x5412;
   function bch(d,g){ var r=d; while(bitDigit(r)-bitDigit(g)>=0) r ^= (g << (bitDigit(r)-bitDigit(g))); return r; }
 
-  function build(text, lvl){
+  function build(text, lvl, forceMask){
     lvl = lvl || 'M';
     var bytes = utf8(text), ver=0, i, j;
     for(var v=1;v<=20;v++){
@@ -435,6 +435,7 @@ var QR = (function(){
     var size = ver*4+17;
     var best=null, bestScore=Infinity;
     for(var mask=0; mask<8; mask++){
+      if(forceMask!==undefined && forceMask!==null && mask!==forceMask) continue;
       var m = place(ver,size,final,lvl,mask);
       var s = penalty(m,size);
       if(s<bestScore){ bestScore=s; best=m; }
