@@ -1,0 +1,39 @@
+# NESO HQ LLC
+
+> Advisory and tools for business and real estate. Two principals: business
+> plans, grant writing, market research, development feasibility, capital
+> stacks, entitlements and site intelligence — for founders, small businesses,
+> developers and municipalities in the United States.
+
+NESO sells three distinct things, and they are priced differently:
+
+- **Free web tools** (eight) that run in the browser with no account. Each has a
+  one-time Pro unlock, $19–$199, bought once and owned forever.
+- **Bird's Eye reports**: four fixed-price research reports written by a
+  principal, $350–$1,500, delivered as a PDF in 2–5 business days.
+- **Advisory services** priced in credits. 1 credit = $50. Quoted and fixed in
+  writing before any work starts.
+
+## Tools
+
+- [GrantFit](https://grantfit.nesohq.com/): scores seven funding channels for an organization and says where grant odds are real.
+- [PlanForge](https://planforge.nesohq.com/): nine inputs to a monthly financial model — break-even, runway, business-plan skeleton.
+- [MarketFit](https://marketfit.nesohq.com/): bottom-up local market sizing for a startup or expansion.
+- [MarketScope](https://marketscope.nesohq.com/): a lender-ready market analysis written to underwriting standard.
+- [BuildBrief](https://buildbrief.nesohq.com/): turns an early housing idea into a Development Intent Brief with a massing snapshot.
+- [CapStack](https://capstack.nesohq.com/): builds a capital stack — debt, LIHTC/HTC, grants — and names the gap in dollars.
+- [ProForma](https://proforma.nesohq.com/): NOI, DSCR, yield and a 10-year cash flow for a building.
+- [SiteShaper](https://siteshaper.nesohq.com/): lot in, scheme book out — site plan and schematic floor plates.
+
+## Reports and services
+
+- [Bird's Eye Reports](https://birdseye.nesohq.com/): zoning and entitlement readiness ($495, 2 days), site readiness and feasibility ($750, 3 days), location data audit ($350, 2 days), power and energization screen ($1,500, 5 days).
+- [Services and pricing](https://nesohq.com/#/pricing): advisory work quoted in credits at $50 per credit.
+- [Live bid opportunities](https://nesohq.com/#/opportunities): open federal grants, public solicitations, and every state's procurement portal.
+
+## About
+
+- [About NESO](https://nesohq.com/#/about): Mallory Bailey-Finkley, MBA (business side) and Charles L. Finkley, Jr., MPA (real estate and land). 17+ years in land use and entitlements; 10,000+ permits; $100M+ incentives secured; 484 MW+ energy projects sited.
+- [The NESO Brief](https://brief.nesohq.com/): weekly industry newsletter — one deal, one lesson, one move.
+- [Partner program](https://partners.nesohq.com/): affiliate and associate partner tracks.
+- Contact: hello@nesohq.com · text (901) 295-0322
