@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Trojan K Services — Client Services Completion Form</title>
+<!--
+  TROJAN K SERVICES — public completion form v1.1 · 2 August 2026
+  Posts to neso-queue /submit, which is public by design (it is a contact form)
+  and stores the submission as q:<id> with status "new". No key lives in this
+  file, because this file is public.
+  The submission then appears in the NESO review queue and in the Trojan K
+  dashboard's Submissions tab, where Mallory turns it into an invoice.
+-->
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--plum:#4B1D6E;--gold:#B8860B;--ink:#1e2228;--dim:#5c6672;--faint:#98a1ab;
+--line:#e3ddd2;--bg:#f7f5f1;--card:#fff;--green:#0e8a6e}
+body{font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);
+color:var(--ink);line-height:1.55;font-size:15px}
+.wrap{max-width:680px;margin:0 auto;padding:0 20px 60px}
+header{background:var(--plum);color:#fff;padding:24px 0}
+header .wrap{padding-bottom:0}
+header h1{font-family:Georgia,serif;font-size:24px}
+header p{font-size:13px;color:#d5c4e6;margin-top:3px}
+h2{font-family:Georgia,serif;font-size:22px;margin:32px 0 6px}
+.lede{color:var(--dim);font-size:14.5px;margin-bottom:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.f{margin-bottom:17px}
+label{display:block;font-size:12.5px;font-weight:700;color:var(--dim);margin-bottom:5px}
+label .req{color:#b91c1c}
+input,select,textarea{width:100%;font-family:inherit;font-size:15px;color:var(--ink);
+background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:11px 12px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--plum);outline-offset:1px;border-color:transparent}
+textarea{min-height:88px;resize:vertical}
+.hint{font-size:12px;color:var(--faint);margin-top:5px;line-height:1.5}
+.btn{font-family:inherit;font-size:15px;font-weight:700;background:var(--plum);color:#fff;
+border:none;border-radius:999px;padding:13px 28px;cursor:pointer}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.msg{margin-top:14px;font-size:14px;font-weight:600}
+.msg.ok{color:var(--green)} .msg.err{color:#b91c1c}
+.done{display:none;background:#f0faf6;border:1px solid var(--green);border-radius:14px;padding:26px 24px;text-align:center}
+.done h3{font-family:Georgia,serif;font-size:21px;color:var(--green);margin-bottom:7px}
+.earn{display:none;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--plum);
+border-radius:16px;padding:24px 26px;margin-top:18px}
+.earn .ek{font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;
+color:var(--plum);font-weight:700}
+.earn h3{font-family:Georgia,serif;font-size:20px;margin:7px 0 8px}
+.earn p{font-size:14.5px;color:var(--dim);line-height:1.55}
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:16px 0 4px}
+.tk{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.tk b{display:block;font-size:15px;margin-bottom:2px}
+.tk .rate{display:block;font-family:ui-monospace,monospace;font-size:11.5px;font-weight:700;color:var(--plum);margin-bottom:7px}
+.tk.p .rate{color:var(--gold)}
+.tk .d{display:block;font-size:13px;color:var(--dim);line-height:1.5}
+.ebtn{display:inline-block;vertical-align:middle;line-height:1.2;text-decoration:none;font-weight:700;font-size:14.5px;
+background:var(--plum);color:#fff;border-radius:999px;padding:12px 24px;margin:14px 8px 0 0}
+.ebtn.g{background:transparent;color:var(--plum);border:1.5px solid var(--plum)}
+.efine{font-size:12.5px;color:var(--faint);margin-top:13px}
+.done p{font-size:14.5px;color:var(--dim)}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:18px 0 0;font-size:12.5px;color:var(--faint)}
+</style></head><body>
+
+<header><div class="wrap">
+  <h1>Trojan K Services</h1>
+  <p>Client Services Completion Form</p>
+</div></header>
+
+<div class="wrap">
+<h2>Log completed work</h2>
+<p class="lede">Fill this in when a job is finished. It goes straight to NESO, who raise the invoice and send it on.
+Six questions, about a minute.</p>
+
+<div class="card" id="formCard">
+  <div class="f"><label>What is your name? <span class="req">*</span></label>
+    <input id="name" autocomplete="name" placeholder="First name, then last name"></div>
+
+  <div class="f"><label>What is your company's name? <span class="req">*</span></label>
+    <input id="company" value="Trojan K Services"></div>
+
+  <div class="f"><label>Select the type of work completed. <span class="req">*</span></label>
+    <select id="type">
+      <option value="">Choose one…</option>
+      <option value="touchup">Routine bi-weekly touch-up cleaning</option>
+      <option value="deep">Routine bi-weekly deep cleaning</option>
+    </select></div>
+
+  <div class="f"><label>What is the fee for this job? <span class="req">*</span></label>
+    <input id="fee" type="number" step="0.01" min="0" placeholder="0.00">
+    <div class="hint">Fills in from the type of work. Change it only if this job was priced differently, and say why below.</div></div>
+
+  <div class="f"><label>When was the work completed? <span class="req">*</span></label>
+    <input id="done" type="date"></div>
+
+  <div class="f"><label>Additional information</label>
+    <textarea id="notes" placeholder="Optional — anything NESO should know before invoicing."></textarea></div>
+
+  <button class="btn" id="send">Submit</button>
+  <div class="msg" id="msg"></div>
+</div>
+
+<div class="done" id="done">
+  <h3>Received</h3>
+  <p>Thank you. NESO has this and will raise the invoice. Nothing else is needed from you.</p>
+  <p style="margin-top:14px"><a href="" onclick="location.reload();return false" style="color:var(--plum);font-weight:700">Log another job &rarr;</a></p>
+</div>
+
+<div class="earn" id="earn">
+  <div class="ek">While you are here</div>
+  <h3>Know people who need this kind of work done?</h3>
+  <p>NESO does business plans, grant writing, market research, development feasibility, capital stacks and site
+  intelligence &mdash; for founders, small businesses, developers and municipalities. If your network needs that work,
+  there are two ways to get paid for the introduction.</p>
+  <div class="tracks">
+    <div class="tk"><b>Affiliate</b><span class="rate">8% &rarr; 10% &rarr; 12% of collected revenue</span>
+      <span class="d">You make the introduction; NESO does everything else. Your own link and code, so attribution is
+      automatic. Paid within two weeks of NESO collecting.</span></div>
+    <div class="tk p"><b>Associate Partner</b><span class="rate">30% / 40% / 50% of net per engagement</span>
+      <span class="d">For people who qualify, sell and carry the deal through delivery. Band agreed in writing before
+      each engagement.</span></div>
+  </div>
+  <a class="ebtn" href="https://partners.nesohq.com/" target="_blank" rel="noopener">See how it works &rarr;</a>
+  <a class="ebtn g" href="sms:+19012950322?&body=Hi%20NESO%20%E2%80%94%20tell%20me%20about%20the%20affiliate%20program.%20My%20name%20is%20">Text us instead</a>
+  <p class="efine">No commitment, and it does not affect your work with Trojan K either way. A principal replies within
+  a business day.</p>
+</div>
+
+<footer>Trojan K Services &middot; trojankest20@gmail.com &middot; 662.606.0809<br>Earn with NESO: <a href="https://partners.nesohq.com/" style="color:inherit">partners.nesohq.com</a><br>
+Submissions are handled by NESO HQ LLC. Questions: hello@nesohq.com &middot; text (901) 295-0322.</footer>
+</div>
+
+<script>
+var QUEUE = "https://neso-queue.nesoai-us.workers.dev/submit";
+var FEES = { touchup: 500, deep: 1100 };
+var LABEL = { touchup: "Routine bi-weekly touch-up cleaning", deep: "Routine bi-weekly deep cleaning" };
+function $(i){ return document.getElementById(i); }
+
+$("done").value = new Date(Date.now() - 864e5).toISOString().slice(0,10);
+$("type").addEventListener("change", function(){
+  if(FEES[this.value]) $("fee").value = FEES[this.value].toFixed(2);
+});
+
+$("send").addEventListener("click", async function(){
+  var miss = [];
+  if(!$("name").value.trim()) miss.push("your name");
+  if(!$("company").value.trim()) miss.push("your company");
+  if(!$("type").value) miss.push("the type of work");
+  if(!(parseFloat($("fee").value) > 0)) miss.push("a fee above zero");
+  if(!$("done").value) miss.push("the date completed");
+  if(miss.length){
+    $("msg").className = "msg err";
+    $("msg").textContent = "Still needed: " + miss.join(", ") + ".";
+    return;
+  }
+  $("send").disabled = true;
+  $("msg").className = "msg";
+  $("msg").textContent = "Sending…";
+
+  /* Field names are upper-cased by the queue into the transcript, and the
+     dashboard parses them back out. Keep these keys stable. */
+  var fields = {
+    tks_name: $("name").value.trim(),
+    tks_company: $("company").value.trim(),
+    tks_service_key: $("type").value,
+    tks_service: LABEL[$("type").value],
+    tks_fee: parseFloat($("fee").value).toFixed(2),
+    tks_completed: $("done").value,
+    tks_notes: $("notes").value.trim()
+  };
+
+  try{
+    var r = await fetch(QUEUE, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ form: "tks", fields: fields })
+    });
+    var j = await r.json();
+    if(j && j.ok){
+      $("formCard").style.display = "none";
+      $("done").style.display = "block";
+      $("earn").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      throw new Error((j && j.error) || "rejected");
+    }
+  } catch(e){
+    $("send").disabled = false;
+    $("msg").className = "msg err";
+    $("msg").textContent = "That did not send (" + e.message + "). Try again, or text (901) 295-0322 with the details.";
+  }
+});
+</script>
+</body></html>
