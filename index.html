@@ -478,7 +478,7 @@ footer{border-top:1px solid var(--line);padding:20px 0 16px;margin-top:10px}
 .coach .cx{position:absolute;top:6px;right:8px;background:none;border:none;color:var(--faint);cursor:pointer;font-size:15px;line-height:1;padding:2px 4px}
 .coach .cx:hover{color:var(--ink)}
 .coach button.ok{margin-top:9px;background:var(--plum-core);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-family:var(--sans);font-weight:600;font-size:12px;cursor:pointer}
-.nfig{background:var(--card,#fff);border:1px solid var(--line,#e5ddd0);border-radius:16px;padding:20px 22px 16px;margin:0 0 18px}.nfig svg{width:100%;height:auto;display:block}.nfc{font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;fill:var(--faint,#98a1ab);font-weight:600}.nfw{font-size:13.5px;font-weight:700;fill:#fff}.nfl{font-size:13.5px;font-weight:700;fill:var(--ink,#23272e)}.nfp{font-family:ui-monospace,monospace;font-size:13px;font-weight:700;fill:var(--ink,#23272e)}.nfa{font-family:ui-monospace,monospace;font-size:9.5px;fill:var(--faint,#98a1ab)}.nfcap{font-size:13px;color:var(--dim,#5c6672);line-height:1.55;margin-top:12px}@media(max-width:600px){.nfig{padding:14px 12px 12px}.nfig svg{min-width:0}.nfw,.nfl{font-size:12px}.nfp{font-size:11.5px}.nfa{display:none}}</style>
+.nfig{background:var(--card,#fff);border:1px solid var(--line,#e5ddd0);border-radius:16px;padding:20px 22px 16px;margin:0 0 18px}.nfig svg{width:100%;height:auto;display:block}.nfc{font-family:ui-monospace,monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;fill:var(--faint,#98a1ab);font-weight:600}.nfw{font-size:13.5px;font-weight:700;fill:#fff}.nfl{font-size:13.5px;font-weight:700;fill:var(--ink,#23272e)}.nfp{font-family:ui-monospace,monospace;font-size:13px;font-weight:700;fill:var(--ink,#23272e)}.nfa{font-family:ui-monospace,monospace;font-size:9.5px;fill:var(--faint,#98a1ab)}.nfcap{font-size:13px;color:var(--dim,#5c6672);line-height:1.55;margin-top:12px}@media(max-width:600px){.nfig{padding:14px 12px 12px}.nfig svg{min-width:0}.nfw,.nfl{font-size:12px}.nfp{font-size:11.5px}.nfa{display:none}}.tthumb{display:block;position:relative;margin:-2px -2px 12px;border-radius:12px;overflow:hidden;border:1px solid var(--line);text-decoration:none;background:var(--bg2)}.tthumb img{display:block;width:100%;height:132px;object-fit:cover;object-position:top center}.tthumbl{position:absolute;left:0;right:0;bottom:0;padding:7px 10px;font-size:11.5px;font-weight:700;color:#fff;background:linear-gradient(transparent,rgba(10,6,16,.82))}.tthumb:hover img{opacity:.9}@media(max-width:600px){.tthumb img{height:112px}}.bebtn{display:inline-block;background:var(--plum);color:#fff;font-weight:700;font-size:14.5px;border-radius:999px;padding:12px 24px;text-decoration:none;cursor:pointer;line-height:1.2}.bebtn:hover{filter:brightness(1.12)}.bebtn.ghost{background:transparent;color:var(--plum);border:1.5px solid var(--plum)}</style>
 <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "d3f4aa7c462849b5a6407ef71e9a7540"}'></script><!-- End Cloudflare Web Analytics -->
 <link rel="canonical" href="https://nesohq.com/">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
@@ -1038,7 +1038,17 @@ function viewTools(){
         : `<span class="free">No sign-up</span>`;
       const openLbl = isReport ? `Read the scope &nearr;` : `Open ${t.name} &nearr;`;
       const buyLbl = isReport ? `Order &rarr;` : `Get Pro &rarr;`;
+      /* A thumbnail of the tool's real output, linking straight through. No overlay:
+         the tool is one click away and interactive, which beats a picture of it.
+         onerror hides the frame entirely, so a missing file degrades to the card
+         as it was rather than to a broken-image icon. */
+      const thumb = isReport ? '' :
+        `<a class="tthumb" href="${t.url}" target="_blank" rel="noopener" aria-label="Open ${t.name}">
+           <img src="/hero-${t.id}.png" alt="Example ${t.name} output" loading="lazy"
+                onerror="this.closest('.tthumb').style.display='none'">
+           <span class="tthumbl">See what it produces &nearr;</span></a>`;
       return `<article class="tool2" data-cat="${t.cat}" data-name="${(t.name+' '+t.desc).toLowerCase().replace(/"/g,'')}">
+      ${thumb}
       <div class="th"><div class="tic">${svg(t.ic)}</div><div><h4>${t.name}</h4><div class="tmeta">${meta}</div></div></div>
       <p class="td">${t.desc}</p>
       ${isReport?'':`<p class="td" style="font-size:12px;color:var(--faint);margin-top:-4px">Pro unlock code is emailed by a NESO principal, usually the same business day.</p>`}
@@ -1509,7 +1519,12 @@ function viewBirdsEye(){
   return `<div class="wrap view">
     <div class="vhead"><div class="k">Location intelligence</div>
       <h1>Bird&rsquo;s Eye</h1>
-      <p style="color:var(--muted);margin-top:8px;max-width:64ch">NESO&rsquo;s research practice for land. You name a parcel and the decision you are trying to make; a principal reads the code, the maps and the public record and writes back an answer you can act on &mdash; with every claim cited to where it came from.</p></div>
+      <p style="color:var(--muted);margin-top:8px;max-width:64ch">NESO&rsquo;s research practice for land. You name a parcel and the decision you are trying to make; a principal reads the code, the maps and the public record and writes back an answer you can act on &mdash; with every claim cited to where it came from.</p>
+      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://birdseye.nesohq.com/" target="_blank" rel="noopener" class="bebtn">Go to Bird&rsquo;s Eye &nearr;</a>
+        <a onclick="go('/form/order')" class="bebtn ghost">Which report fits?</a>
+      </div>
+      <p style="font-size:12.5px;color:var(--faint);margin-top:9px">Reports are ordered on birdseye.nesohq.com. The clock starts when scope is confirmed, not at checkout.</p></div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:20px">
       ${[['Four reports','zoning &amp; entitlement, site feasibility, location data, power &amp; energization'],
