@@ -107,7 +107,7 @@ h1 em{font-style:italic;color:var(--plum-pale)}
 .hero-curve{display:block;width:100%;height:34px}
 
 /* ---------- sections ---------- */
-section{padding:56px 0}
+section{padding:48px 0}
 .sec-head{max-width:56ch;margin-bottom:26px}
 .sec-head .eyebrow{color:var(--gold-d);margin-bottom:11px}
 h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.4vw,35px);line-height:1.14;letter-spacing:-.01em}
@@ -171,12 +171,16 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.4vw,35px);lin
 .sitem .ico{width:30px;height:30px;border-radius:8px}
 .sitem .ico svg{width:17px;height:17px}
 .sitem.land .ico{background:#F7EBD5;color:var(--gold-d)}
-.svcnote{margin-top:18px;font-size:14.5px;color:var(--dim)}
+.svcnote{margin-top:16px;font-size:14.5px;color:var(--dim)}
 @media(max-width:900px){.tools{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){
   .tools{grid-template-columns:1fr}
   .svccols{grid-template-columns:1fr;gap:22px}
 }
+
+/* the services grid already ends in a caption, so this section does not need
+   a full pad below it as well */
+#which{padding-bottom:12px}
 
 /* ---------- questions ---------- */
 .qa{border-top:1px solid var(--line);max-width:80ch}
@@ -222,7 +226,7 @@ footer a:hover{text-decoration:underline}
 @media(max-width:640px){
   body{font-size:16.5px}
   .wrap{padding:0 18px}
-  section{padding:42px 0}
+  section{padding:36px 0}
   .hero-top .meta{display:none}
   .hero-body{padding:26px 0 34px}
   .stat{min-width:44%}
