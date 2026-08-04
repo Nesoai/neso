@@ -6,17 +6,23 @@
 
 <!-- ==========================================================================
      hello.html — the forwardable introduction. nesohq.com/hello.html
-     The filename is the address; the date stamp stays on the working copy.
+     Deployed name is plain: a deployed file's name is its address. The dated
+     working copy is hello-2026-08-04-1739Z.html in 02 Working.
 
      Indexing: index,follow — deliberate, not inherited from the audience
-     pages. It is not a duplicate of anything, and the hub's hash routing
-     caps nesohq.com at one indexable URL.
+     pages, which are noindex because six near-duplicates are doorway pages.
+     This page is not a duplicate of anything.
 
-     No prices anywhere on this page. Prices live in the Product Book and on
-     the Gumroad listings; the audience pages and the hub carry them.
-     No email address in the visible text or the markup, per the tools rule.
-     No operating state named — "Remote · nationwide" only.
+     Titles: both principals. The Investor Briefing calls Mallory "Manager and
+     sole member" and Charles "reviewing principal"; this page says Principal
+     for both, which the same deck supports ("NESO is two principals"). If the
+     records should match, the Investor Briefing is the one to reissue.
 
+     Carries the shared furniture: back-to-top and the intake chat. The chat is
+     the one metered cost in the stack.
+
+     No prices. No operating state. No email address in text or markup.
+     Photos are root-absolute: /img/ resolves only when served.
      Add this URL to neso-linkcheck when it goes live.
      ========================================================================== -->
 
@@ -45,7 +51,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --ink:#160F1E; --ink2:#0F0916;
+  --ink:#160F1E;
   --ground:#F7F4FB; --ground2:#EFE9F6; --card:#FFFFFF;
   --line:#E5DCEF; --line-w:#3A2B4C;
   --text:#241633; --dim:#5F5470; --faint:#8A7F99;
@@ -61,88 +67,133 @@ body{background:var(--ground);color:var(--text);font-family:var(--sans);font-siz
 a{color:var(--plum)}
 :focus-visible{outline:2px solid var(--plum);outline-offset:3px;border-radius:4px}
 .wrap{max-width:1120px;margin:0 auto;padding:0 26px}
-.eyebrow{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.19em;text-transform:uppercase}
+img{max-width:100%;display:block}
 
-/* ---------- lockup ---------- */
+/* Eyebrows: shorter, less tracked and larger than the first draft, where
+   10.5px at .19em read as a texture rather than as words. */
+.eyebrow{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+
 .lockup{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
 .lockup .word{font-family:var(--serif);font-weight:700;font-size:21px;letter-spacing:.06em}
 .lockup svg{display:block;flex:none;border-radius:8px}
 
-/* ---------- dark hero ---------- */
+/* ---------- hero ---------- */
 .hero{background:var(--ink);color:#F2ECF7;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;
-  background:radial-gradient(760px 380px at 76% -8%,rgba(122,63,166,.42),transparent 62%),
-             radial-gradient(520px 300px at 6% 104%,rgba(231,184,75,.10),transparent 66%);}
+  background:radial-gradient(760px 380px at 78% -10%,rgba(122,63,166,.44),transparent 62%),
+             radial-gradient(520px 300px at 4% 106%,rgba(231,184,75,.10),transparent 66%)}
 .hero>*{position:relative}
 .hero-top{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 0}
 .hero-top .lockup{color:#F2ECF7}
-.hero-top .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:#B6AAC9;text-align:right}
+.hero-top .meta{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#B6AAC9;text-align:right}
 .hero-top .meta a{color:#D9C8EC;text-decoration:none}
-.hero-body{padding:34px 0 40px;max-width:940px}
-.hero-body>h1,.hero-body>p{max-width:62ch}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:28px;
+.hero-body{padding:30px 0 40px;max-width:960px}
+.hero .eyebrow{color:var(--gold);margin-bottom:14px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,5.4vw,56px);line-height:1.06;letter-spacing:-.015em;max-width:17ch}
+h1 em{font-style:italic;color:var(--plum-pale)}
+.hero .lede{margin-top:18px;font-size:18px;line-height:1.55;color:#CFC3E0;max-width:62ch}
+/* audience words carry an accent so a reader finds themselves in the sentence */
+.aud{color:var(--gold);font-weight:600}
+
+/* what is expected of you, said immediately */
+.doing{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.step{display:flex;align-items:flex-start;gap:10px;flex:1 1 240px;background:rgba(242,236,247,.05);
+  border:1px solid rgba(242,236,247,.13);border-radius:12px;padding:13px 15px}
+.step i{font-family:var(--mono);font-style:normal;font-size:11px;font-weight:600;color:var(--ink);
+  background:var(--gold);border-radius:50%;width:20px;height:20px;display:grid;place-items:center;flex:none;margin-top:1px}
+.step span{font-size:14.5px;line-height:1.45;color:#DCD2E8}
+.step b{color:#fff;font-weight:600}
+
+.split{display:grid;grid-template-columns:1fr 1fr;margin-top:22px;
   border:1px solid rgba(242,236,247,.14);border-radius:14px;background:rgba(242,236,247,.035);overflow:hidden}
 .half{padding:18px 22px}
 .half+.half{border-left:1px solid rgba(242,236,247,.14)}
-.half .eyebrow{color:var(--gold);margin-bottom:9px;display:flex;align-items:flex-start;gap:8px}
-.half .eyebrow::before{content:"";width:16px;height:2px;margin-top:6px;background:var(--gold);border-radius:2px;flex:none}
-.half p{margin-top:0;font-size:15px;line-height:1.55;color:#CFC3E0;max-width:none}
-.hero .eyebrow{color:var(--gold);margin-bottom:15px}
-h1{font-family:var(--serif);font-weight:600;font-size:clamp(33px,5.6vw,58px);line-height:1.06;letter-spacing:-.015em}
-h1 em{font-style:italic;color:var(--plum-pale)}
-.hero p{margin-top:17px;font-size:18px;line-height:1.55;color:#CFC3E0;max-width:60ch}
-.stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:30px;padding-top:20px;border-top:1px solid rgba(242,236,247,.14);position:relative}
+.half h3{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--gold);margin-bottom:8px}
+.half p{font-size:15px;line-height:1.55;color:#CFC3E0}
+
+.stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:26px;padding-top:20px;border-top:1px solid rgba(242,236,247,.14);position:relative}
 .stats::before{content:"";position:absolute;top:-1.5px;left:0;width:60px;height:2.5px;background:var(--gold);border-radius:2px}
 .stat{flex:1;min-width:118px}
 .stat b{display:block;font-family:var(--serif);font-weight:700;font-size:24px;color:var(--gold);line-height:1}
-.stat span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:#9C8FB4;margin-top:6px;line-height:1.45}
+.stat span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#9C8FB4;margin-top:6px;line-height:1.5}
 .hero-curve{display:block;width:100%;height:34px}
 
 /* ---------- sections ---------- */
 section{padding:52px 0}
-.sec-head{max-width:60ch;margin-bottom:26px}
+.sec-head{max-width:62ch;margin-bottom:26px}
 .sec-head .eyebrow{color:var(--gold-d);margin-bottom:11px}
 h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.3vw,33px);line-height:1.16;letter-spacing:-.01em}
-.sec-head p{margin-top:11px;color:var(--dim);font-size:16.5px}
+.sec-head p{margin-top:11px;color:var(--dim)}
+
+/* ---------- figure ---------- */
+.nfig{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px 17px}
+.nfig svg{width:100%;height:auto;display:block}
+.nfc{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;fill:var(--faint);font-weight:600}
+.nfl{font-size:13px;font-weight:700;fill:var(--text)}
+.nfw{font-size:13px;font-weight:700;fill:#fff}
+.nfa{font-family:var(--mono);font-size:10px;fill:var(--faint)}
+.nfcap{font-size:13.5px;color:var(--dim);line-height:1.55;margin-top:13px}
+.swipe{display:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-top:6px}
+
+/* ---------- the people ---------- */
+.people{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.person{display:flex;gap:17px;background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:20px 22px;box-shadow:0 4px 16px rgba(91,42,134,.07)}
+.person .ph{width:96px;height:96px;flex:none;border-radius:14px;object-fit:cover;object-position:center top;
+  border:1px solid var(--line);background:var(--ground2)}
+.person .role{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-d)}
+.person h3{font-family:var(--serif);font-weight:600;font-size:20px;margin:6px 0 7px}
+.person p{font-size:14.5px;line-height:1.5;color:var(--dim)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.chip{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--plum-d);background:var(--ground2);border-radius:999px;padding:4px 10px}
+.person .prof{margin-top:10px}
+.person .prof a{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--plum);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+.person .prof a:hover{border-color:var(--plum)}
+.ask{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 32px;box-shadow:0 4px 16px rgba(91,42,134,.07)}
+.ask h2{max-width:24ch}
+.ask>p{margin-top:12px;color:var(--dim);max-width:66ch}
+.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 4px}
+.outcome{background:var(--ground);border:1px solid var(--line);border-radius:13px;padding:16px 18px}
+.outcome b{display:block;font-family:var(--serif);font-weight:600;font-size:17px;margin-bottom:5px}
+.outcome span{font-size:14px;line-height:1.5;color:var(--dim)}
+.outcome .tag{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-d);display:block;margin-bottom:7px}
+@media(max-width:820px){.outcomes{grid-template-columns:1fr}.ask{padding:24px 20px}}
+.why{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:16px;padding:22px 26px}
+.why h3{font-family:var(--serif);font-weight:600;font-size:21px;margin-bottom:10px}
+.why p{color:var(--dim);max-width:74ch;font-size:15.5px}
+.why p+p{margin-top:11px}
+.why b{color:var(--text)}
 
 /* ---------- audience cards ---------- */
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.acard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px 20px;text-decoration:none;color:inherit;
-  box-shadow:0 4px 16px rgba(91,42,134,.07);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-.acard:hover{transform:translateY(-3px);box-shadow:0 16px 34px -14px rgba(91,42,134,.34);border-color:var(--plum-lt)}
-.acard .who{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-d)}
-.acard h3{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.22;margin:9px 0 0;letter-spacing:-.005em}
-.acard .fig{margin:15px 0 14px;background:var(--ground2);border-radius:11px;padding:11px 12px}
+.acard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:18px 20px 20px;text-decoration:none;color:inherit;box-shadow:0 4px 16px rgba(91,42,134,.07);
+  transition:transform .24s cubic-bezier(.2,.7,.3,1),box-shadow .24s ease,border-color .24s ease}
+.acard:hover,.acard:focus-visible{transform:translateY(-7px);box-shadow:0 24px 44px -18px rgba(91,42,134,.42);border-color:var(--plum-lt)}
+.acard .who{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-d)}
+.acard h3{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.22;margin:9px 0 0}
+.acard .fig{margin:15px 0 14px;background:var(--ground2);border-radius:11px;padding:11px 12px;transition:background .24s ease}
+.acard:hover .fig{background:#E7DEF3}
 .acard .fig svg{display:block;width:100%;height:auto}
 .acard .fig .nfa{font-size:11px}
 .acard .wrongmove{font-size:13.5px;line-height:1.5;color:var(--dim);display:flex;gap:8px;align-items:flex-start;margin-top:auto}
 .acard .wrongmove svg{flex:none;margin-top:3px}
 .acard .go{margin-top:13px;padding-top:12px;border-top:1px solid var(--line);font-size:13.5px;font-weight:600;color:var(--plum);display:flex;align-items:center;gap:6px}
-.acard .go .arw{transition:transform .2s ease}
-.acard:hover .go .arw{transform:translateX(4px)}
+.acard .arw{transition:transform .24s ease}
+.acard:hover .arw{transform:translateX(5px)}
 
-/* the hub card */
 .hubcard{grid-column:1/-1;display:grid;grid-template-columns:1fr 220px;gap:26px;align-items:center;
   background:var(--ink);border:1px solid var(--line-w);border-radius:16px;padding:24px 26px;text-decoration:none;color:#F2ECF7;
-  transition:transform .2s ease,box-shadow .2s ease}
-.hubcard:hover{transform:translateY(-3px);box-shadow:0 18px 40px -16px rgba(22,15,30,.55)}
+  transition:transform .24s cubic-bezier(.2,.7,.3,1),box-shadow .24s ease}
+.hubcard:hover,.hubcard:focus-visible{transform:translateY(-7px);box-shadow:0 26px 50px -20px rgba(22,15,30,.6)}
 .hubcard .who{color:var(--gold)}
 .hubcard h3{font-family:var(--serif);font-weight:600;font-size:23px;margin:9px 0 7px;color:#fff}
 .hubcard p{color:#B6AAC9;font-size:14.5px;line-height:1.5;max-width:62ch}
 .hubcard .go{margin-top:13px;font-size:13.5px;font-weight:600;color:var(--plum-pale);display:flex;align-items:center;gap:6px}
-.hubcard:hover .go .arw{transform:translateX(4px)}
+.hubcard .arw{transition:transform .24s ease}
+.hubcard:hover .arw{transform:translateX(5px)}
 .hubcard .art svg{display:block;width:100%;height:auto}
-
-/* ---------- big figure ---------- */
-.nfig{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px 17px}
-.nfig svg{width:100%;height:auto;display:block}
-.nfc{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;fill:var(--faint);font-weight:600}
-.nfl{font-size:13px;font-weight:700;fill:var(--text)}
-.nfw{font-size:13px;font-weight:700;fill:#fff}
-.nfp{font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--text)}
-.nfa{font-family:var(--mono);font-size:9.5px;fill:var(--faint)}
-.swipe{display:none;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:6px}
-.nfcap{font-size:13.5px;color:var(--dim);line-height:1.55;margin-top:13px}
 
 /* ---------- dropdowns ---------- */
 .qa{border-top:1px solid var(--line)}
@@ -156,77 +207,64 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.3vw,33px);lin
 .qa .ans{padding:0 30px 17px 0;color:var(--dim);font-size:15.5px;line-height:1.6;max-width:74ch}
 .qa .ans b{color:var(--text)}
 
-/* ---------- principals ---------- */
-.people{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.person{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--plum);border-radius:14px;padding:20px 22px;box-shadow:0 4px 16px rgba(91,42,134,.06)}
-.person .role{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
-.person h3{font-family:var(--serif);font-weight:600;font-size:20px;margin:7px 0 8px}
-.person p{font-size:15px;line-height:1.55;color:var(--dim)}
-.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
-.chip{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.02em;color:var(--plum-d);background:var(--ground2);border-radius:999px;padding:5px 11px}
-
 /* ---------- close ---------- */
-.close{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px 34px 32px;box-shadow:0 6px 22px rgba(91,42,134,.07)}
+.close{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px;box-shadow:0 6px 22px rgba(91,42,134,.07)}
 .close h2{max-width:30ch}
-.close p{margin-top:12px;color:var(--dim);max-width:60ch}
+.close p{margin-top:12px;color:var(--dim);max-width:62ch}
 .actions{display:flex;flex-wrap:wrap;gap:11px;align-items:center;margin-top:22px}
-.bebtn{display:inline-block;background:var(--plum);color:#fff;font-family:inherit;font-weight:700;font-size:14.5px;border:1.5px solid var(--plum);border-radius:999px;padding:12px 24px;text-decoration:none;cursor:pointer;line-height:1.2}
+.bebtn{display:inline-block;background:var(--plum);color:#fff;font-family:inherit;font-weight:700;font-size:14.5px;
+  border:1.5px solid var(--plum);border-radius:999px;padding:12px 24px;text-decoration:none;cursor:pointer;line-height:1.2}
 .bebtn:hover{background:var(--plum-d);border-color:var(--plum-d)}
 .bebtn.ghost{background:transparent;color:var(--plum)}
 .bebtn.ghost:hover{background:var(--ground2);color:var(--plum-d);border-color:var(--plum-d)}
-.copied{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--green);opacity:0;transition:opacity .18s ease}
+.copied{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green);opacity:0;transition:opacity .18s ease}
 .copied.on{opacity:1}
 .txt{margin-top:15px;font-family:var(--mono);font-size:12.5px;color:var(--faint)}
 .txt a{color:var(--plum);text-decoration:none}
 
-/* ---------- footer ---------- */
 footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0 44px}
-footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--faint)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--faint)}
 footer a{color:var(--plum);text-decoration:none}
 footer a:hover{text-decoration:underline}
 
-/* ---------- motion ----------
-   The reveal is opt-in and only arms itself once JS has run. Without it every
-   element is simply visible: nothing on this page is hidden behind a script. */
+/* Reveal is opt-in and arms only once JS has run. Without it everything is
+   simply visible — nothing on this page hides behind a script. */
 .js .rise{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
 .js .rise.in{opacity:1;transform:none}
 
-/* ---------- responsive ---------- */
 @media(max-width:960px){
   .grid{grid-template-columns:repeat(2,1fr)}
   .hubcard{grid-template-columns:1fr}
   .hubcard .art{max-width:190px}
+  .people{grid-template-columns:1fr}
 }
 @media(max-width:640px){
   body{font-size:16px}
   .wrap{padding:0 18px}
   section{padding:40px 0}
   .grid{grid-template-columns:1fr}
-  .people{grid-template-columns:1fr}
-  .hero-top .meta{display:none}
   .split{grid-template-columns:1fr}
   .half+.half{border-left:0;border-top:1px solid rgba(242,236,247,.14)}
-  .hero-body{padding:26px 0 34px}
+  .hero-top .meta{display:none}
+  .hero-body{padding:24px 0 32px}
   .stat{min-width:44%}
   .close{padding:26px 22px 24px}
   .nfig{padding:16px 14px 13px}
   .acard .fig .nfa{display:none}
-  /* The two-track figure stops being readable below about 560px, so it scrolls
-     rather than shrinking into illegibility. */
+  .person{gap:14px}
+  .person .ph{width:74px;height:74px}
   .figscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
   .figscroll svg{min-width:560px}
   .figscroll+.swipe{display:block}
 }
 @media(prefers-reduced-motion:reduce){
-  *{transition:none!important;animation:none!important}
+  *{transition:none!important}
   html{scroll-behavior:auto}
-  .rise{opacity:1;transform:none}
+  .js .rise{opacity:1;transform:none}
 }
 @media print{.hero{background:#fff;color:#000}.actions{display:none}}
 </style>
 <script>
-  // Arms the scroll reveal before first paint. If this never runs, the .rise
-  // rules never apply and the page renders in full.
   if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     document.documentElement.className+=' js';
   }
@@ -250,21 +288,31 @@ footer a:hover{text-decoration:underline}
   </div>
 
   <div class="wrap hero-body">
-    <p class="eyebrow">Somebody sent you this</p>
+    <p class="eyebrow">Someone thought this was worth your time</p>
     <h1>The cheap answer,<br><em>before</em> the expensive decision.</h1>
-    <p>A founder about to write a thirty-page plan. A developer about to sign for a parcel. Both
-      need the same cheap thing first — a straight answer from somebody who has done the work —
-      and both usually get it last.</p>
+
+    <p class="lede">A <span class="aud">founder</span> about to write a thirty-page plan. A
+      <span class="aud">developer</span> about to sign for a parcel. A
+      <span class="aud">nonprofit</span> four days into a grant nobody was going to award them. A
+      <span class="aud">contractor</span> who found the solicitation the week it was due. All of
+      them needed the same cheap thing first — a straight answer from somebody who has done the
+      work — and all of them got it last.</p>
+
+    <div class="doing">
+      <div class="step"><i>1</i><span><b>Find yourself below.</b> Six cards, one line each. Pick the one that sounds like your week.</span></div>
+      <div class="step"><i>2</i><span><b>Run the free version.</b> No account, no email wall, nothing expires.</span></div>
+      <div class="step"><i>3</i><span><b>Pay only if it earns it.</b> Or tell us the decision and we will say which fits — including none.</span></div>
+    </div>
 
     <div class="split">
       <div class="half">
-        <p class="eyebrow">If it is a business decision</p>
-        <p>Break-even and runway. Which funding channels you would actually win. Whether the
-          local market is big enough. A plan and a model somebody will read. The public jobs
-          worth bidding, and the bid itself.</p>
+        <h3>If the decision is about a business</h3>
+        <p>Break-even and runway. Which funding channels you would actually win. Whether the local
+          market is big enough. A plan and a model somebody will read. The public jobs worth
+          bidding, and the bid itself.</p>
       </div>
       <div class="half">
-        <p class="eyebrow">If it is a land decision</p>
+        <h3>If the decision is about land</h3>
         <p>What the parcel is entitled for. What fits on the lot. Whether the building pays back
           the loan. Whether the power exists, and when. What it would take to change any of it.</p>
       </div>
@@ -283,15 +331,113 @@ footer a:hover{text-decoration:underline}
   </svg>
 </header>
 
+<!-- ================= WHY NESO EXISTS ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Why NESO exists</p>
+      <h2>The order these things usually happen in is backwards.</h2>
+      <p>Money gets committed first and the constraint turns up afterwards. That is almost never
+        because the answer was hard to get. It is because getting to somebody who could give it
+        cost more than the question felt like it was worth.</p>
+    </div>
+    <div class="nfig rise">
+      <div class="figscroll">
+      <svg viewBox="0 0 760 156" role="img" aria-label="Two tracks compared. In the usual order money is committed and spent before the constraint is found, and the last stage is re-planning or walking away. In the cheaper order the question is asked first, a go or no-go is stated, and only then is money committed.">
+        <text x="0" y="12" class="nfc">The usual order</text>
+        <text x="758" y="12" class="nfc" text-anchor="end">The answer arrives last</text>
+        <rect x="0" y="24" width="180" height="38" rx="7" fill="#8A7F99"/>
+        <text x="16" y="48" class="nfw">Commit</text>
+        <rect x="186" y="24" width="180" height="38" rx="7" fill="#8A7F99" opacity=".76"/>
+        <text x="202" y="48" class="nfw">Design and spend</text>
+        <rect x="372" y="24" width="196" height="38" rx="7" fill="#8A7F99" opacity=".54"/>
+        <text x="388" y="48" class="nfw">Hit the constraint</text>
+        <rect x="574" y="24" width="184" height="38" rx="7" fill="none" stroke="#B91C1C" stroke-width="2" stroke-dasharray="6 5"/>
+        <text x="590" y="48" class="nfl" fill="#B91C1C">Re-plan, or walk</text>
+        <text x="0" y="98" class="nfc">The cheaper order</text>
+        <text x="758" y="98" class="nfc" text-anchor="end" fill="#0E8A6E">The answer arrives first</text>
+        <rect x="0" y="110" width="150" height="38" rx="7" fill="#5B2A86"/>
+        <text x="16" y="134" class="nfw">Ask the question</text>
+        <rect x="156" y="110" width="196" height="38" rx="7" fill="#7A3FA6"/>
+        <text x="172" y="134" class="nfw">A stated go / no-go</text>
+        <rect x="358" y="110" width="400" height="38" rx="7" fill="#0E8A6E" opacity=".14" stroke="#0E8A6E" stroke-width="1.4"/>
+        <text x="374" y="134" class="nfl" fill="#0E8A6E">Spend — on a deal that survived it</text>
+      </svg>
+      </div>
+      <p class="swipe">Swipe to see the whole figure</p>
+      <p class="nfcap">Judgement is priced by the hour, so the cheap early question costs a retainer
+        conversation — and people skip it. Between a spreadsheet template and a five-figure
+        engagement there was almost nothing. That gap is the whole business.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE PEOPLE ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Who is behind it</p>
+      <h2>Whoever sent you this almost certainly knows either Mallory or Charles.</h2>
+    </div>
+
+    <div class="people">
+      <div class="person rise">
+        <img class="ph" src="/img/charles-finkley.jpg" width="96" height="96" loading="lazy"
+             alt="Charles L. Finkley, Jr.">
+        <div>
+          <p class="role">Principal · real estate and land</p>
+          <h3>Charles L. Finkley, Jr., MPA</h3>
+          <p>Seventeen years in land use, entitlements and economic development. He reviews and
+            releases every real-estate deliverable NESO produces.</p>
+          <div class="chips">
+            <span class="chip">10,000+ permits</span>
+            <span class="chip">$100M+ incentives secured</span>
+            <span class="chip">484 MW+ sited</span>
+          </div>
+          <p class="prof"><a href="https://www.linkedin.com/in/charlesfinkleyjr" target="_blank" rel="noopener">LinkedIn &rarr;</a></p>
+        </div>
+      </div>
+      <div class="person rise">
+        <img class="ph" src="/img/mallory-bailey.jpg" width="96" height="96" loading="lazy"
+             alt="Mallory Bailey">
+        <div>
+          <p class="role">Principal · business and technology</p>
+          <h3>Mallory Bailey</h3>
+          <p>Runs delivery, the storefront, client operations and the back office. Built and
+            operates the platform underneath all of it.</p>
+          <div class="chips">
+            <span class="chip">35 bid sources, daily</span>
+            <span class="chip">31 links checked daily</span>
+            <span class="chip">6 federal layers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="why rise">
+      <h3>Why they started it</h3>
+      <p>Mallory and Charles started NESO in 2026 to help business owners and real-estate
+        developers, on the strength of a gap they had both watched from the inside for years:
+        <b>the cheap answer almost always arrives after the expensive decision.</b> A developer
+        signs, then learns what the parcel is entitled for. A founder writes the plan, then finds
+        out where break-even actually falls.</p>
+      <p>It is not that those answers are hard. It is that judgement is billed by the hour, so the
+        early question costs a retainer conversation and people skip it. NESO is the attempt to do
+        something about that — <b>at a rate a small business can afford, and with real tools rather
+        than a brochure</b>, most of which cost nothing to run.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ================= THE SIX + THE HUB ================= -->
 <section>
   <div class="wrap">
     <div class="sec-head rise">
-      <p class="eyebrow">Six ways in, and one door that opens on all of them</p>
+      <p class="eyebrow">Six ways in</p>
       <h2>Which of these is about to happen to you?</h2>
-      <p>Four of these six do not involve owning land at all. Each card names the expensive
-        wrong first move as well as the right one, because saying the wrong one out loud is what
-        makes the right one believable.</p>
+      <p>Four of these six do not involve owning land at all. Each card names the expensive wrong
+        first move as well as the right one, because saying the wrong one out loud is what makes
+        the right one believable.</p>
     </div>
 
     <div class="grid">
@@ -463,47 +609,6 @@ footer a:hover{text-decoration:underline}
   </div>
 </section>
 
-<!-- ================= THE FIGURE ================= -->
-<section>
-  <div class="wrap">
-    <div class="sec-head rise">
-      <p class="eyebrow">Why NESO exists at all</p>
-      <h2>The order these things usually happen in is backwards.</h2>
-    </div>
-    <div class="nfig rise">
-      <div class="figscroll">
-      <svg viewBox="0 0 760 156" role="img" aria-label="Two tracks compared. In the usual order money is committed and spent before the constraint is found, and the last stage is re-planning or walking away. In the cheaper order the question is asked first, a go or no-go is stated, and only then is money committed.">
-        <text x="0" y="12" class="nfc">The usual order</text>
-        <text x="758" y="12" class="nfc" text-anchor="end">The answer arrives last</text>
-
-        <rect x="0" y="24" width="180" height="38" rx="7" fill="#8A7F99"/>
-        <text x="16" y="48" class="nfw">Commit</text>
-        <rect x="186" y="24" width="180" height="38" rx="7" fill="#8A7F99" opacity=".76"/>
-        <text x="202" y="48" class="nfw">Design and spend</text>
-        <rect x="372" y="24" width="196" height="38" rx="7" fill="#8A7F99" opacity=".54"/>
-        <text x="388" y="48" class="nfw">Hit the constraint</text>
-        <rect x="574" y="24" width="184" height="38" rx="7" fill="none" stroke="#B91C1C" stroke-width="2" stroke-dasharray="6 5"/>
-        <text x="590" y="48" class="nfl" fill="#B91C1C">Re-plan, or walk</text>
-
-        <text x="0" y="98" class="nfc">The cheaper order</text>
-        <text x="758" y="98" class="nfc" text-anchor="end" fill="#0E8A6E">The answer arrives first</text>
-
-        <rect x="0" y="110" width="150" height="38" rx="7" fill="#5B2A86"/>
-        <text x="16" y="134" class="nfw">Ask the question</text>
-        <rect x="156" y="110" width="196" height="38" rx="7" fill="#7A3FA6"/>
-        <text x="172" y="134" class="nfw">A stated go / no-go</text>
-        <rect x="358" y="110" width="400" height="38" rx="7" fill="#0E8A6E" opacity=".14" stroke="#0E8A6E" stroke-width="1.4"/>
-        <text x="374" y="134" class="nfl" fill="#0E8A6E">Spend — on a deal that survived it</text>
-      </svg>
-      </div>
-      <p class="swipe">Swipe to see the whole figure</p>
-      <p class="nfcap">Judgement is priced by the hour, so the cheap early question costs a
-        retainer conversation — and people skip it. Between a spreadsheet template and a
-        five-figure engagement there was almost nothing. That gap is the whole business.</p>
-    </div>
-  </div>
-</section>
-
 <!-- ================= STRAIGHT ANSWERS ================= -->
 <section>
   <div class="wrap">
@@ -548,14 +653,6 @@ footer a:hover{text-decoration:underline}
           cap is what makes the promise real.</p>
       </details>
       <details>
-        <summary>How new is NESO?</summary>
-        <p class="ans">New. The entity, the bank account, the tools, the reports and the machinery
-          underneath them are built and live; what does not exist yet is years of closed
-          engagements to point at, and saying otherwise would be the fastest way to lose anyone
-          worth talking to. <b>What is behind the work is seventeen years of somebody else's</b> —
-          Charles has been doing this on projects and inside agencies since long before NESO.</p>
-      </details>
-      <details>
         <summary>What if none of the six sound like me?</summary>
         <p class="ans">Say what decision you are trying to make rather than which product you want.
           A principal reads every enquiry and replies within a business day. <b>If the honest answer
@@ -566,36 +663,26 @@ footer a:hover{text-decoration:underline}
   </div>
 </section>
 
-<!-- ================= WHO ================= -->
+<!-- ================= ASK NESO ================= -->
 <section>
   <div class="wrap">
-    <div class="sec-head rise">
-      <p class="eyebrow">Who you would be dealing with</p>
-      <h2>Two people. One of them looks at everything that ships.</h2>
-    </div>
-    <div class="people">
-      <div class="person rise">
-        <p class="role">Reviewing principal · real estate and land</p>
-        <h3>Charles L. Finkley, Jr., MPA</h3>
-        <p>Seventeen years in land use, entitlements and economic development. He reviews and
-          releases every real-estate deliverable NESO produces.</p>
-        <div class="chips">
-          <span class="chip">10,000+ permits</span>
-          <span class="chip">$100M+ incentives secured</span>
-          <span class="chip">484 MW+ sited</span>
-        </div>
+    <div class="ask rise">
+      <p class="eyebrow" style="color:var(--gold-d)">Ask NESO</p>
+      <h2>Tell us what you could not get done.</h2>
+      <p>NESO also builds things that are not on the list yet. If none of the six above answers what
+        you are actually trying to do, say so — and it does not have to be about property. A digital
+        card set for your crew, a tracker for something you keep losing, a report nobody sells.
+        <b>We would rather know.</b></p>
+      <div class="outcomes">
+        <div class="outcome"><span class="tag">If we already do it</span><b>You get told which</b>
+          <span>Which product, what it costs and how long it takes — usually the same business day.</span></div>
+        <div class="outcome"><span class="tag">If several people want it</span><b>We build it</b>
+          <span>You hear first, and you are not charged for having asked.</span></div>
+        <div class="outcome"><span class="tag">If it is not for us</span><b>We say so plainly</b>
+          <span>And point you at who does it, if we know. That answer is free too.</span></div>
       </div>
-      <div class="person rise">
-        <p class="role">Manager and sole member</p>
-        <h3>Mallory Bailey</h3>
-        <p>Runs delivery, the storefront, client operations and the back office. Built and operates
-          the platform underneath all of it — the counting, the fulfilment and the follow-ups
-          happen without a person.</p>
-        <div class="chips">
-          <span class="chip">35 bid sources, daily</span>
-          <span class="chip">31 links checked daily</span>
-          <span class="chip">6 federal layers</span>
-        </div>
+      <div class="actions">
+        <a class="bebtn" href="https://nesohq.com/ask.html?source=hello">Tell us what you could not get done</a>
       </div>
     </div>
   </div>
@@ -607,8 +694,11 @@ footer a:hover{text-decoration:underline}
     <div class="close rise">
       <p class="eyebrow" style="color:var(--gold-d)">Passing it on</p>
       <h2>Know somebody about to spend money proving something out?</h2>
-      <p>Send them this page. No referral form, nothing to fill in — just the link, to one person
-        about to buy a parcel, write a plan, chase a grant or bid a job.</p>
+      <p>This page gets forwarded for one reason: <b>it costs nothing to find out the answer is
+        no.</b> That is a cheap thing to hand somebody the week before they sign, and an expensive
+        one to hand them the week after.</p>
+      <p>No referral form and nothing to fill in — just the link, to one person about to buy a
+        parcel, write a plan, chase a grant or bid a job.</p>
       <div class="actions">
         <a class="bebtn" href="https://neso-queue.nesoai-us.workers.dev/form/intake?source=hello">Tell us what you are deciding</a>
         <button class="bebtn ghost" type="button" id="copy">Copy this link</button>
@@ -657,5 +747,113 @@ footer a:hover{text-decoration:underline}
   els.forEach(function(e){io.observe(e);});
 })();
 </script>
+<!-- ===== NESO shared furniture: back-to-top + intake chat =====================
+     Ported from the hub. One difference on purpose: the hub puts #toTop and
+     #nchatBtn both at right:20px/bottom:20px, so the back-to-top button sits
+     underneath the chat pill and cannot be clicked. Here it is stacked above it.
+     The chat is the one metered cost in the stack, so every page carrying this
+     snippet is a page that can spend money.
+     ========================================================================= -->
+<style>
+#toTop{position:fixed;right:20px;bottom:78px;width:44px;height:44px;border-radius:50%;
+  border:1px solid #e5dcef;background:#fff;color:#5B2A86;display:grid;place-items:center;cursor:pointer;
+  opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:112;
+  box-shadow:0 6px 18px -6px rgba(22,15,30,.28)}
+#toTop.show{opacity:1;pointer-events:auto}
+#toTop:hover{transform:translateY(-2px)}
+#toTop svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+#nchatBtn{position:fixed;right:20px;bottom:20px;z-index:110;transition:transform .22s,opacity .22s;display:flex;align-items:center;gap:9px;background:linear-gradient(90deg,#7c4dff,#a855f7);color:#fff;border:none;border-radius:999px;padding:13px 18px;font-family:Inter,system-ui,sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 10px 30px -8px rgba(124,77,255,.55)}
+#nchatBtn:hover{filter:brightness(1.07)}
+#nchatBtn svg{flex-shrink:0}
+#nchatPanel{position:fixed;right:20px;bottom:20px;z-index:121;width:min(380px,calc(100vw - 32px));height:min(560px,calc(100vh - 40px));background:#11161d;border:1px solid #232f3d;border-radius:16px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px -16px rgba(0,0,0,.6);font-family:Inter,system-ui,sans-serif}
+#nchatPanel.on{display:flex}
+#nchatHead{background:linear-gradient(120deg,rgba(124,77,255,.18),rgba(168,85,247,.1));padding:13px 16px;border-bottom:1px solid #232f3d;display:flex;align-items:center;gap:10px}
+#nchatHead .dot{width:9px;height:9px;border-radius:50%;background:#34d399;box-shadow:0 0 0 3px rgba(52,211,153,.2)}
+#nchatHead b{color:#e9eef4;font-size:14px}
+#nchatHead span{color:#96a6b6;font-size:11px;display:block;margin-top:1px}
+#nchatHead .x{margin-left:auto;background:none;border:none;color:#96a6b6;font-size:22px;cursor:pointer;line-height:1}
+#nchatBody{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.nmsg{max-width:82%;padding:9px 13px;border-radius:14px;font-size:13.5px;line-height:1.45}
+.nmsg.bot{background:#1b2330;color:#e9eef4;align-self:flex-start;border-bottom-left-radius:4px}
+.nmsg.me{background:linear-gradient(90deg,#7c4dff,#a855f7);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.ntyping{align-self:flex-start;color:#5e7080;font-size:12px;padding:4px 6px}
+#nchatFoot{border-top:1px solid #232f3d;padding:10px;display:flex;gap:8px;align-items:flex-end;background:#0d1117}
+#nchatIn{flex:1;background:#161d26;border:1px solid #232f3d;border-radius:10px;color:#e9eef4;padding:10px 12px;font-size:13.5px;font-family:inherit;resize:none;max-height:100px;line-height:1.4}
+#nchatIn:focus{outline:none;border-color:#7c4dff}
+#nchatSend{background:#7c4dff;border:none;border-radius:10px;color:#fff;width:40px;height:40px;font-size:17px;cursor:pointer;flex-shrink:0}
+#nchatSend:disabled{opacity:.5;cursor:default}
+#nchatMic{background:#161d26;border:1px solid #232f3d;border-radius:10px;color:#96a6b6;width:40px;height:40px;font-size:16px;cursor:pointer;flex-shrink:0}
+#nchatMic.rec{color:#f87171;border-color:#f87171}
+.nchatalt{font-size:11px;color:#5e7080;text-align:center;padding:0 14px 10px}
+.nchatalt a{color:#7c4dff;text-decoration:none}
+body.nchat-open #toTop{opacity:0;pointer-events:none}
+@media print{#nchatBtn,#nchatPanel,#toTop{display:none!important}}
+</style>
+
+<button id="toTop" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15 L12 9 L18 15"/></svg></button>
+
+<button id="nchatBtn" aria-label="Talk to us about your project">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 0 1-.9-3.8A8.38 8.38 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  Tell us what you need
+</button>
+<div id="nchatPanel" role="dialog" aria-label="NESO intake chat">
+  <div id="nchatHead"><span class="dot"></span><div><b>NESO intake</b><span>Automated assistant · a real person follows up</span></div><button class="x" id="nchatX" aria-label="Close">&times;</button></div>
+  <div id="nchatBody"></div>
+  <div class="nchatalt">Prefer a form? <a href="https://neso-queue.nesoai-us.workers.dev/form/intake" target="_blank" rel="noopener">Use the intake form</a> · or text <a href="sms:+19012950322">(901) 295-0322</a></div>
+  <div id="nchatFoot">
+    <button id="nchatMic" title="Speak instead of typing" aria-label="Voice input">&#127908;</button>
+    <textarea id="nchatIn" rows="1" placeholder="Type or tap the mic&hellip;"></textarea>
+    <button id="nchatSend" aria-label="Send">&#8593;</button>
+  </div>
+</div>
+<script>
+(function(){
+  var t=document.getElementById('toTop');
+  t.addEventListener('click',function(){
+    var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top:0,behavior:rm?'auto':'smooth'});
+  });
+  window.addEventListener('scroll',function(){ t.classList.toggle('show', window.scrollY>500); });
+})();
+(function(){
+  const CHAT_URL="https://neso-intake-worker.nesoai-us.workers.dev/chat";
+  const _ref=(function(){try{const r=new URLSearchParams(location.search).get('ref');if(r){localStorage.setItem('neso.ref',r.slice(0,24));}return localStorage.getItem('neso.ref')||'';}catch(e){return '';}})();
+  const SOURCE=((location.pathname.replace(/\W+/g,'')||'web')+(_ref?('-ref-'+_ref):'')).slice(0,40);
+  const $=id=>document.getElementById(id);
+  let msgs=[], busy=false, greeted=false;
+  const panel=$('nchatPanel'), body=$('nchatBody'), inp=$('nchatIn');
+  function esc(t){return String(t).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+  function add(role,text){const d=document.createElement('div');d.className='nmsg '+(role==='assistant'?'bot':'me');d.innerHTML=esc(text);body.appendChild(d);body.scrollTop=body.scrollHeight;}
+  function typing(on){let t=$('ntyping1');if(on&&!t){t=document.createElement('div');t.id='ntyping1';t.className='ntyping';t.textContent='typing…';body.appendChild(t);body.scrollTop=body.scrollHeight;}else if(!on&&t){t.remove();}}
+  async function send(text){
+    if(busy)return; busy=true; $('nchatSend').disabled=true;
+    if(text){add('user',text);msgs.push({role:'user',content:text});}
+    typing(true);
+    try{
+      const r=await fetch(CHAT_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:msgs,source:SOURCE})});
+      const j=await r.json(); typing(false);
+      if(j.reply){add('assistant',j.reply);msgs.push({role:'assistant',content:j.reply});}
+      if(j.complete){setTimeout(()=>add('assistant','Thanks — you\u2019re all set. A NESO principal will follow up personally. You can close this window.'),400);}
+    }catch(e){typing(false);add('assistant','Sorry \u2014 I had trouble connecting. Please use the intake form or text (901) 295-0322.');}
+    busy=false; $('nchatSend').disabled=false;
+  }
+  function open(){panel.classList.add('on');$('nchatBtn').style.display='none';document.body.classList.add('nchat-open');inp.focus();
+    if(!greeted){greeted=true;send(null);}}
+  function close(){panel.classList.remove('on');$('nchatBtn').style.display='flex';document.body.classList.remove('nchat-open');}
+  $('nchatBtn').onclick=open; $('nchatX').onclick=close;
+  $('nchatSend').onclick=()=>{const v=inp.value.trim();if(v){inp.value='';inp.style.height='auto';send(v);}};
+  inp.addEventListener('input',()=>{inp.style.height='auto';inp.style.height=Math.min(inp.scrollHeight,100)+'px';});
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('nchatSend').click();}});
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(SR){const rec=new SR();rec.continuous=false;rec.interimResults=false;
+    $('nchatMic').onclick=()=>{try{rec.start();$('nchatMic').classList.add('rec');}catch(e){}};
+    rec.onresult=e=>{inp.value=(inp.value+' '+e.results[0][0].transcript).trim();inp.dispatchEvent(new Event('input'));};
+    rec.onend=()=>$('nchatMic').classList.remove('rec');
+    rec.onerror=()=>$('nchatMic').classList.remove('rec');
+  } else { $('nchatMic').style.display='none'; }
+})();
+</script>
+<!-- ===== end shared furniture ===== -->
+
 </body>
 </html>
