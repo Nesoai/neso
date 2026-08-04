@@ -73,6 +73,17 @@ img{max-width:100%;display:block}
    10.5px at .19em read as a texture rather than as words. */
 .eyebrow{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
 
+
+/* animated mark — hero only */
+.markanim{overflow:visible}
+.markanim .sp{opacity:0;animation:spark 3s ease-out infinite}
+@keyframes spark{
+  0%{opacity:0;transform:translate(0,0) scale(1)}
+  18%{opacity:.95}
+  100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.55)}
+}
+.markanim .core{transform-origin:50px 50px;animation:markpulse 3s ease-in-out infinite}
+@keyframes markpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
 .lockup{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
 .lockup .word{font-family:var(--serif);font-weight:700;font-size:21px;letter-spacing:.06em}
 .lockup svg{display:block;flex:none;border-radius:8px}
@@ -118,6 +129,24 @@ h1 em{font-style:italic;color:var(--plum-pale)}
 .stat span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#9C8FB4;margin-top:6px;line-height:1.5}
 .hero-curve{display:block;width:100%;height:34px}
 
+
+/* ---------- sticky section nav ---------- */
+.snav{position:sticky;top:0;z-index:60;background:rgba(247,244,251,.93);
+  -webkit-backdrop-filter:saturate(1.6) blur(10px);backdrop-filter:saturate(1.6) blur(10px);
+  border-bottom:1px solid var(--line)}
+.snav-in{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-top:9px;padding-bottom:9px}
+.snav-in::-webkit-scrollbar{display:none}
+.snav a{flex:none;text-decoration:none;color:var(--dim);font-size:13.5px;font-weight:600;
+  padding:8px 15px;border-radius:999px;border:1px solid transparent;white-space:nowrap;
+  transition:background .2s ease,color .2s ease,border-color .2s ease}
+.snav a:hover{color:var(--plum);background:var(--ground2)}
+.snav a.on{color:#fff;background:var(--plum);border-color:var(--plum)}
+section[id]{scroll-margin-top:64px}
+@media(max-width:640px){
+  .snav-in{gap:5px;padding-left:14px;padding-right:14px}
+  .snav a{font-size:13px;padding:7px 13px}
+}
+
 /* ---------- sections ---------- */
 section{padding:52px 0}
 .sec-head{max-width:62ch;margin-bottom:26px}
@@ -133,6 +162,7 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.3vw,33px);lin
 .nfw{font-size:13px;font-weight:700;fill:#fff}
 .nfa{font-family:var(--mono);font-size:10px;fill:var(--faint)}
 .nfcap{font-size:13.5px;color:var(--dim);line-height:1.55;margin-top:13px}
+.nfcap b{color:var(--text)}
 .swipe{display:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-top:6px}
 
 /* ---------- the people ---------- */
@@ -260,6 +290,8 @@ footer a:hover{text-decoration:underline}
 @media(prefers-reduced-motion:reduce){
   *{transition:none!important}
   html{scroll-behavior:auto}
+  .markanim .sp{animation:none;opacity:0}
+  .markanim .core{animation:none}
   .js .rise{opacity:1;transform:none}
 }
 @media print{.hero{background:#fff;color:#000}.actions{display:none}}
@@ -276,11 +308,23 @@ footer a:hover{text-decoration:underline}
 <header class="hero">
   <div class="wrap hero-top">
     <a class="lockup" href="https://nesohq.com/">
-      <svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
-        <rect width="100" height="100" rx="24" fill="#160f1e"/>
-        <path d="M9.09 50 L50 43.18 L90.91 50 L50 56.82 Z" fill="#5B2A86"/>
-        <path d="M50 9.09 L56.82 50 L50 90.91 L43.18 50 Z" fill="#E7B84B"/>
-        <circle cx="50" cy="50" r="5.91" fill="#f2ecf7"/>
+      <!-- Animated mark, inline rather than a file — the mark is never an <img>.
+           Sparks only here, on the dark ground, and only in the hero: one moving
+           thing above the fold, none of it beside anything anyone has to read.
+           Under prefers-reduced-motion the sparks never render and the mark is
+           the static one. -->
+      <svg class="markanim" width="34" height="34" viewBox="0 0 100 100" aria-hidden="true">
+        <g class="core">
+          <polygon points="8,50 50,37.4 92,50 50,62.6" fill="#5B2A86"/>
+          <polygon points="50,5.9 62.6,50 50,94.1 37.4,50" fill="#E7B84B"/>
+          <circle cx="50" cy="50" r="6.7" fill="#F2ECF7"/>
+        </g>
+        <circle class="sp" cx="50" cy="50" r="1.6" fill="#E7B84B" style="--dx:22px;--dy:-26px;animation-delay:0s"/>
+        <circle class="sp" cx="50" cy="50" r="1.2" fill="#BE93DE" style="--dx:-25px;--dy:-18px;animation-delay:.5s"/>
+        <circle class="sp" cx="50" cy="50" r="1.4" fill="#E7B84B" style="--dx:28px;--dy:-8px;animation-delay:1s"/>
+        <circle class="sp" cx="50" cy="50" r="1.1" fill="#BE93DE" style="--dx:-20px;--dy:-30px;animation-delay:1.5s"/>
+        <circle class="sp" cx="50" cy="50" r="1.5" fill="#E7B84B" style="--dx:-30px;--dy:-6px;animation-delay:2s"/>
+        <circle class="sp" cx="50" cy="50" r="1.0" fill="#BE93DE" style="--dx:14px;--dy:-32px;animation-delay:2.5s"/>
       </svg>
       <span class="word">NESO</span>
     </a>
@@ -320,7 +364,7 @@ footer a:hover{text-decoration:underline}
 
     <div class="stats">
       <div class="stat"><b>8</b><span>Tools, free in a browser<br>with no account</span></div>
-      <div class="stat"><b>5</b><span>Things advisory<br>will write for you</span></div>
+      <div class="stat"><b>35</b><span>Public bid sources<br>crawled daily</span></div>
       <div class="stat"><b>4</b><span>Fixed-price reports<br>on a named parcel</span></div>
       <div class="stat"><b>17 yrs</b><span>Land use, entitlements<br>and economic development</span></div>
     </div>
@@ -331,49 +375,22 @@ footer a:hover{text-decoration:underline}
   </svg>
 </header>
 
-<!-- ================= WHY NESO EXISTS ================= -->
-<section>
-  <div class="wrap">
-    <div class="sec-head rise">
-      <p class="eyebrow">Why NESO exists</p>
-      <h2>The order these things usually happen in is backwards.</h2>
-      <p>Money gets committed first and the constraint turns up afterwards. That is almost never
-        because the answer was hard to get. It is because getting to somebody who could give it
-        cost more than the question felt like it was worth.</p>
-    </div>
-    <div class="nfig rise">
-      <div class="figscroll">
-      <svg viewBox="0 0 760 156" role="img" aria-label="Two tracks compared. In the usual order money is committed and spent before the constraint is found, and the last stage is re-planning or walking away. In the cheaper order the question is asked first, a go or no-go is stated, and only then is money committed.">
-        <text x="0" y="12" class="nfc">The usual order</text>
-        <text x="758" y="12" class="nfc" text-anchor="end">The answer arrives last</text>
-        <rect x="0" y="24" width="180" height="38" rx="7" fill="#8A7F99"/>
-        <text x="16" y="48" class="nfw">Commit</text>
-        <rect x="186" y="24" width="180" height="38" rx="7" fill="#8A7F99" opacity=".76"/>
-        <text x="202" y="48" class="nfw">Design and spend</text>
-        <rect x="372" y="24" width="196" height="38" rx="7" fill="#8A7F99" opacity=".54"/>
-        <text x="388" y="48" class="nfw">Hit the constraint</text>
-        <rect x="574" y="24" width="184" height="38" rx="7" fill="none" stroke="#B91C1C" stroke-width="2" stroke-dasharray="6 5"/>
-        <text x="590" y="48" class="nfl" fill="#B91C1C">Re-plan, or walk</text>
-        <text x="0" y="98" class="nfc">The cheaper order</text>
-        <text x="758" y="98" class="nfc" text-anchor="end" fill="#0E8A6E">The answer arrives first</text>
-        <rect x="0" y="110" width="150" height="38" rx="7" fill="#5B2A86"/>
-        <text x="16" y="134" class="nfw">Ask the question</text>
-        <rect x="156" y="110" width="196" height="38" rx="7" fill="#7A3FA6"/>
-        <text x="172" y="134" class="nfw">A stated go / no-go</text>
-        <rect x="358" y="110" width="400" height="38" rx="7" fill="#0E8A6E" opacity=".14" stroke="#0E8A6E" stroke-width="1.4"/>
-        <text x="374" y="134" class="nfl" fill="#0E8A6E">Spend — on a deal that survived it</text>
-      </svg>
-      </div>
-      <p class="swipe">Swipe to see the whole figure</p>
-      <p class="nfcap">Judgement is priced by the hour, so the cheap early question costs a retainer
-        conversation — and people skip it. Between a spreadsheet template and a five-figure
-        engagement there was almost nothing. That gap is the whole business.</p>
-    </div>
+<!-- Section nav. Anchor links, not tabs: every section stays in the DOM and
+     visible, so nothing depends on a script and a crawler still reads the
+     whole page. The nav sticks once the hero scrolls past. -->
+<nav class="snav" id="snav" aria-label="Sections of this page">
+  <div class="wrap snav-in">
+    <a href="#people" data-t="people">Who is behind it</a>
+    <a href="#why" data-t="why">Why NESO exists</a>
+    <a href="#which" data-t="which">Which one are you</a>
+    <a href="#answers" data-t="answers">Straight answers</a>
+    <a href="#ask" data-t="ask">Not on the list</a>
+    <a href="#share" data-t="share">Pass it on</a>
   </div>
-</section>
+</nav>
 
 <!-- ================= THE PEOPLE ================= -->
-<section>
+<section id="people">
   <div class="wrap">
     <div class="sec-head rise">
       <p class="eyebrow">Who is behind it</p>
@@ -398,7 +415,7 @@ footer a:hover{text-decoration:underline}
         </div>
       </div>
       <div class="person rise">
-        <img class="ph" src="/img/mallory-bailey.jpg" width="96" height="96" loading="lazy"
+        <img class="ph" src="/img/mallory-picture.jpg" width="96" height="96" loading="lazy"
              alt="Mallory Bailey">
         <div>
           <p class="role">Principal · business and technology</p>
@@ -429,8 +446,51 @@ footer a:hover{text-decoration:underline}
   </div>
 </section>
 
+<!-- ================= WHY NESO EXISTS ================= -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Why NESO exists</p>
+      <h2>The order these things usually happen in is backwards.</h2>
+      <p>Money gets committed first and the constraint turns up afterwards. That is almost never
+        because the answer was hard to get. It is because getting to somebody who could give it
+        cost more than the question felt like it was worth.</p>
+    </div>
+    <div class="nfig rise">
+      <div class="figscroll">
+      <svg viewBox="0 0 760 156" role="img" aria-label="Two tracks compared. In the usual order money is committed and spent before the constraint is found, and the last stage is re-planning or walking away. In the cheaper order the question is asked first, a go or no-go is stated, and only then is money committed.">
+        <text x="0" y="12" class="nfc">The usual order</text>
+        <text x="758" y="12" class="nfc" text-anchor="end">The answer arrives last</text>
+        <rect x="0" y="24" width="180" height="38" rx="7" fill="#8A7F99"/>
+        <text x="16" y="48" class="nfw">Commit</text>
+        <rect x="186" y="24" width="180" height="38" rx="7" fill="#8A7F99" opacity=".76"/>
+        <text x="202" y="48" class="nfw">Design and spend</text>
+        <rect x="372" y="24" width="196" height="38" rx="7" fill="#8A7F99" opacity=".54"/>
+        <text x="388" y="48" class="nfw">Hit the constraint</text>
+        <rect x="574" y="24" width="184" height="38" rx="7" fill="none" stroke="#B91C1C" stroke-width="2" stroke-dasharray="6 5"/>
+        <text x="590" y="48" class="nfl" fill="#B91C1C">Re-plan, or walk</text>
+        <text x="0" y="98" class="nfc" fill="#B8860B">The cheaper order &mdash; this is what NESO sells</text>
+        <text x="758" y="98" class="nfc" text-anchor="end" fill="#0E8A6E">The answer arrives first</text>
+        <rect x="0" y="110" width="150" height="38" rx="7" fill="#5B2A86"/>
+        <text x="16" y="134" class="nfw">Ask the question</text>
+        <rect x="156" y="110" width="196" height="38" rx="7" fill="#7A3FA6"/>
+        <text x="172" y="134" class="nfw">A stated go / no-go</text>
+        <rect x="358" y="110" width="400" height="38" rx="7" fill="#0E8A6E" opacity=".14" stroke="#0E8A6E" stroke-width="1.4"/>
+        <text x="374" y="134" class="nfl" fill="#0E8A6E">Spend — on a deal that survived it</text>
+      </svg>
+      </div>
+      <p class="swipe">Swipe to see the whole figure</p>
+      <p class="nfcap">Judgement is normally billed by the hour, so the cheap early question costs a
+        retainer conversation — and people skip it. <b>NESO does not bill by the hour.</b> The tools
+        are free, a report on a parcel is a fixed price, and advisory is quoted in credits at a
+        published rate before anything starts. Between a spreadsheet template and a five-figure
+        engagement there was almost nothing, and that gap is the whole business.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ================= THE SIX + THE HUB ================= -->
-<section>
+<section id="which">
   <div class="wrap">
     <div class="sec-head rise">
       <p class="eyebrow">Six ways in</p>
@@ -610,7 +670,7 @@ footer a:hover{text-decoration:underline}
 </section>
 
 <!-- ================= STRAIGHT ANSWERS ================= -->
-<section>
+<section id="answers">
   <div class="wrap">
     <div class="sec-head rise">
       <p class="eyebrow">Straight answers</p>
@@ -664,7 +724,7 @@ footer a:hover{text-decoration:underline}
 </section>
 
 <!-- ================= ASK NESO ================= -->
-<section>
+<section id="ask">
   <div class="wrap">
     <div class="ask rise">
       <p class="eyebrow" style="color:var(--gold-d)">Ask NESO</p>
@@ -689,7 +749,7 @@ footer a:hover{text-decoration:underline}
 </section>
 
 <!-- ================= CLOSE ================= -->
-<section>
+<section id="share">
   <div class="wrap">
     <div class="close rise">
       <p class="eyebrow" style="color:var(--gold-d)">Passing it on</p>
@@ -701,8 +761,8 @@ footer a:hover{text-decoration:underline}
         parcel, write a plan, chase a grant or bid a job.</p>
       <div class="actions">
         <a class="bebtn" href="https://neso-queue.nesoai-us.workers.dev/form/intake?source=hello">Tell us what you are deciding</a>
-        <button class="bebtn ghost" type="button" id="copy">Copy this link</button>
-        <span class="copied" id="copied" role="status" aria-live="polite">Copied</span>
+        <button class="bebtn ghost" type="button" id="copy">Share this page</button>
+        <span class="copied" id="copied" role="status" aria-live="polite">Link copied</span>
       </div>
       <p class="txt">nesohq.com/hello.html · or text <a href="sms:+19012950322">(901) 295-0322</a></p>
     </div>
@@ -723,6 +783,13 @@ footer a:hover{text-decoration:underline}
   if(b){
     b.addEventListener('click',function(){
       var url='https://nesohq.com/hello.html';
+      // Native share sheet where there is one — this page exists to be forwarded,
+      // and on a phone that is one tap into the app they would forward it from.
+      if(navigator.share){
+        navigator.share({title:'NESO — an introduction',
+          text:'The cheap answer, before the expensive decision.', url:url}).catch(function(){});
+        return;
+      }
       if(navigator.clipboard&&navigator.clipboard.writeText){
         navigator.clipboard.writeText(url).then(function(){
           f.classList.add('on');setTimeout(function(){f.classList.remove('on');},2200);
@@ -730,6 +797,21 @@ footer a:hover{text-decoration:underline}
       } else { b.textContent='nesohq.com/hello.html'; }
     });
   }
+  // Highlight whichever section is in view. Purely decorative — the links work
+  // as plain anchors whether or not this runs.
+  var links=[].slice.call(document.querySelectorAll('.snav a'));
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('data-t'));});
+  if('IntersectionObserver' in window){
+    var seen={};
+    var nav=new IntersectionObserver(function(rows){
+      rows.forEach(function(r){ seen[r.target.id]=r.isIntersecting?r.intersectionRatio:0; });
+      var best=null,bv=0;
+      Object.keys(seen).forEach(function(k){ if(seen[k]>bv){bv=seen[k];best=k;} });
+      links.forEach(function(a){ a.classList.toggle('on', bv>0 && a.getAttribute('data-t')===best); });
+    },{rootMargin:'-64px 0px -55% 0px',threshold:[0,.15,.4,.75]});
+    secs.forEach(function(x){ if(x) nav.observe(x); });
+  }
+
   var els=document.querySelectorAll('.rise');
   if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     els.forEach(function(e){e.classList.add('in');});
