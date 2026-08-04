@@ -103,7 +103,7 @@ h1 em{font-style:italic;color:var(--plum-pale)}
 .stats::before{content:"";position:absolute;top:-1.5px;left:0;width:60px;height:2.5px;background:var(--gold);border-radius:2px}
 .stat{flex:1;min-width:140px}
 .stat b{display:block;font-family:var(--serif);font-weight:700;font-size:26px;color:var(--gold);line-height:1}
-.stat span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:#9C8FB4;margin-top:6px;line-height:1.5}
+.stat span{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.01em;color:#A99BC0;margin-top:8px;line-height:1.55}
 .hero-curve{display:block;width:100%;height:34px}
 
 /* ---------- sections ---------- */
@@ -161,6 +161,14 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.4vw,35px);lin
 .ico{flex:none;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
   background:#EDE4F6;color:var(--plum)}
 .ico svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.bids{display:flex;align-items:flex-start;gap:13px;margin-top:12px;background:var(--card);
+  border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:0 13px 13px 0;
+  padding:15px 18px;text-decoration:none;color:inherit;transition:border-color .2s ease,box-shadow .2s ease}
+.bids:hover{border-color:var(--plum-lt);border-left-color:var(--gold);box-shadow:0 14px 26px -16px rgba(91,42,134,.4)}
+.bids .ico{background:#F7EBD5;color:var(--gold-d)}
+.bt{font-size:14.5px;line-height:1.5;color:var(--dim)}
+.bt b{display:block;font-size:15.5px;color:var(--text);margin-bottom:2px}
+.bt em{font-style:normal;color:var(--plum)}
 .svccols{display:grid;grid-template-columns:1fr 1fr;gap:14px 26px}
 .svcsub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.09em;
   text-transform:uppercase;color:var(--faint);margin-bottom:9px}
@@ -279,9 +287,9 @@ footer a:hover{text-decoration:underline}
       for it. NESO helps you find out first.</p>
     <p class="plain">It works the same way whether you run a business or own land.</p>
     <div class="stats">
-      <div class="stat"><b>8</b><span>Free tools you<br>run yourself</span></div>
-      <div class="stat"><b>4</b><span>Land reports,<br>one clear price each</span></div>
-      <div class="stat"><b>17 yrs</b><span>Of experience behind<br>every answer</span></div>
+      <div class="stat"><b>8</b><span>Free business owner and real estate developer tools you can run yourself.</span></div>
+      <div class="stat"><b>4</b><span>Zoning, site readiness, data audit and power reports &mdash; one clear price each.</span></div>
+      <div class="stat"><b>17 yrs</b><span>Of experience behind every answer.</span></div>
     </div>
   </div>
 
@@ -403,6 +411,15 @@ footer a:hover{text-decoration:underline}
           <span class="tn">SiteShaper<em>Lot in, drawings out</em></span>
         </a>
         </div>
+
+        <a class="bids" href="https://nesohq.com/#/opportunities">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2"/><path d="M12 2 V5"/><path d="M12 19 V22"/><path d="M2 12 H5"/><path d="M19 12 H22"/></svg></span>
+          <span class="bt">
+            <b>Live bid opportunities <em>&rarr;</em></b>
+            Open grants and public jobs, pulled live from official U.S. government sources.
+            Free to look, and worth a look before you decide what is worth chasing.
+          </span>
+        </a>
 
         <p class="svclab">Or work NESO does for you</p>
         <div class="svccols">
