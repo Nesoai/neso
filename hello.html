@@ -6,41 +6,40 @@
 
 <!-- ==========================================================================
      hello.html — the forwardable introduction. nesohq.com/hello.html
-     Deployed name is plain: a deployed file's name is its address. The dated
-     working copy is hello-2026-08-04-1739Z.html in 02 Working.
+     Deployed name is plain; the dated copy is the working copy.
 
-     Indexing: index,follow — deliberate, not inherited from the audience
-     pages, which are noindex because six near-duplicates are doorway pages.
-     This page is not a duplicate of anything.
+     SHORT VERSION. Written to be read in well under a minute, in plain words.
+     Cut from earlier drafts: the sticky section nav, the business/land split,
+     the three-step strip, three of the six questions, the "why NESO exists"
+     section and its figure, and the six audience cards.
 
-     Titles: both principals. The Investor Briefing calls Mallory "Manager and
-     sole member" and Charles "reviewing principal"; this page says Principal
-     for both, which the same deck supports ("NESO is two principals"). If the
-     records should match, the Investor Briefing is the one to reissue.
+     NOTE: with the six cards gone, this page no longer links to any of the
+     audience landing pages. They are noindex and shared by link, so nothing
+     else points at them either — they now reach a reader only when somebody
+     pastes one directly. Worth a decision rather than a discovery.
 
-     Carries the shared furniture: back-to-top and the intake chat. The chat is
-     the one metered cost in the stack.
-
+     Indexing: index,follow. Not a duplicate of anything, and the hub's hash
+     routing caps nesohq.com at one indexable URL.
      No prices. No operating state. No email address in text or markup.
      Photos are root-absolute: /img/ resolves only when served.
      Add this URL to neso-linkcheck when it goes live.
      ========================================================================== -->
 
 <title>NESO — an introduction</title>
-<meta name="description" content="A straight answer before the expensive decision — whether the decision is about a business or about land. Free tools, fixed-price research, and advisory quoted before it starts.">
+<meta name="description" content="Get the answer first, then spend the money. Free tools, fixed-price research on land, and senior help quoted before the work starts.">
 <meta name="robots" content="index,follow,max-snippet:-1">
 <link rel="canonical" href="https://nesohq.com/hello.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nesohq.com/hello.html">
 <meta property="og:site_name" content="NESO">
 <meta property="og:title" content="NESO — an introduction">
-<meta property="og:description" content="The cheap answer, before the expensive decision — whether the decision is about a business or about land.">
+<meta property="og:description" content="Get the answer first. Then spend the money.">
 <meta property="og:image" content="https://nesohq.com/og-nesohq.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="NESO — an introduction">
-<meta name="twitter:description" content="The cheap answer, before the expensive decision — whether the decision is about a business or about land.">
+<meta name="twitter:description" content="Get the answer first. Then spend the money.">
 <meta name="twitter:image" content="https://nesohq.com/og-nesohq.png">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23160f1e'/><path d='M9.09 50 L50 43.18 L90.91 50 L50 56.82 Z' fill='%235B2A86'/><path d='M50 9.09 L56.82 50 L50 90.91 L43.18 50 Z' fill='%23E7B84B'/><circle cx='50' cy='50' r='5.91' fill='%23f2ecf7'/></svg>">
@@ -62,19 +61,15 @@
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
 }
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{background:var(--ground);color:var(--text);font-family:var(--sans);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--ground);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:var(--plum)}
 :focus-visible{outline:2px solid var(--plum);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px}
 img{max-width:100%;display:block}
-
-/* Eyebrows: shorter, less tracked and larger than the first draft, where
-   10.5px at .19em read as a texture rather than as words. */
 .eyebrow{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
 
-
-/* animated mark — hero only */
+/* animated mark — hero only, nothing beside it to read */
 .markanim{overflow:visible}
 .markanim .sp{opacity:0;animation:spark 3s ease-out infinite}
 @keyframes spark{
@@ -86,7 +81,7 @@ img{max-width:100%;display:block}
 @keyframes markpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
 .lockup{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
 .lockup .word{font-family:var(--serif);font-weight:700;font-size:21px;letter-spacing:.06em}
-.lockup svg{display:block;flex:none;border-radius:8px}
+.lockup svg{display:block;flex:none}
 
 /* ---------- hero ---------- */
 .hero{background:var(--ink);color:#F2ECF7;position:relative;overflow:hidden}
@@ -98,198 +93,145 @@ img{max-width:100%;display:block}
 .hero-top .lockup{color:#F2ECF7}
 .hero-top .meta{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#B6AAC9;text-align:right}
 .hero-top .meta a{color:#D9C8EC;text-decoration:none}
-.hero-body{padding:30px 0 40px;max-width:960px}
+.hero-body{padding:36px 0 44px;max-width:820px}
 .hero .eyebrow{color:var(--gold);margin-bottom:14px}
-h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,5.4vw,56px);line-height:1.06;letter-spacing:-.015em;max-width:17ch}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(34px,5.6vw,58px);line-height:1.05;letter-spacing:-.015em;max-width:19ch}
 h1 em{font-style:italic;color:var(--plum-pale)}
-.hero .lede{margin-top:18px;font-size:18px;line-height:1.55;color:#CFC3E0;max-width:62ch}
-/* audience words carry an accent so a reader finds themselves in the sentence */
-.aud{color:var(--gold);font-weight:600}
-
-/* what is expected of you, said immediately */
-.doing{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.step{display:flex;align-items:flex-start;gap:10px;flex:1 1 240px;background:rgba(242,236,247,.05);
-  border:1px solid rgba(242,236,247,.13);border-radius:12px;padding:13px 15px}
-.step i{font-family:var(--mono);font-style:normal;font-size:11px;font-weight:600;color:var(--ink);
-  background:var(--gold);border-radius:50%;width:20px;height:20px;display:grid;place-items:center;flex:none;margin-top:1px}
-.step span{font-size:14.5px;line-height:1.45;color:#DCD2E8}
-.step b{color:#fff;font-weight:600}
-
-.split{display:grid;grid-template-columns:1fr 1fr;margin-top:22px;
-  border:1px solid rgba(242,236,247,.14);border-radius:14px;background:rgba(242,236,247,.035);overflow:hidden}
-.half{padding:18px 22px}
-.half+.half{border-left:1px solid rgba(242,236,247,.14)}
-.half h3{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--gold);margin-bottom:8px}
-.half p{font-size:15px;line-height:1.55;color:#CFC3E0}
-
-.stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:26px;padding-top:20px;border-top:1px solid rgba(242,236,247,.14);position:relative}
+.hero p{margin-top:20px;font-size:19px;line-height:1.55;color:#CFC3E0;max-width:52ch}
+.hero .plain{margin-top:14px;color:#B6AAC9;font-size:17px}
+.stats{display:flex;gap:18px;flex-wrap:wrap;margin-top:30px;padding-top:20px;border-top:1px solid rgba(242,236,247,.14);position:relative}
 .stats::before{content:"";position:absolute;top:-1.5px;left:0;width:60px;height:2.5px;background:var(--gold);border-radius:2px}
-.stat{flex:1;min-width:118px}
-.stat b{display:block;font-family:var(--serif);font-weight:700;font-size:24px;color:var(--gold);line-height:1}
-.stat span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#9C8FB4;margin-top:6px;line-height:1.5}
+.stat{flex:1;min-width:140px}
+.stat b{display:block;font-family:var(--serif);font-weight:700;font-size:26px;color:var(--gold);line-height:1}
+.stat span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:#9C8FB4;margin-top:6px;line-height:1.5}
 .hero-curve{display:block;width:100%;height:34px}
 
-
-/* ---------- sticky section nav ---------- */
-.snav{position:sticky;top:0;z-index:60;background:rgba(247,244,251,.93);
-  -webkit-backdrop-filter:saturate(1.6) blur(10px);backdrop-filter:saturate(1.6) blur(10px);
-  border-bottom:1px solid var(--line)}
-.snav-in{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-top:9px;padding-bottom:9px}
-.snav-in::-webkit-scrollbar{display:none}
-.snav a{flex:none;text-decoration:none;color:var(--dim);font-size:13.5px;font-weight:600;
-  padding:8px 15px;border-radius:999px;border:1px solid transparent;white-space:nowrap;
-  transition:background .2s ease,color .2s ease,border-color .2s ease}
-.snav a:hover{color:var(--plum);background:var(--ground2)}
-.snav a.on{color:#fff;background:var(--plum);border-color:var(--plum)}
-section[id]{scroll-margin-top:64px}
-@media(max-width:640px){
-  .snav-in{gap:5px;padding-left:14px;padding-right:14px}
-  .snav a{font-size:13px;padding:7px 13px}
-}
-
 /* ---------- sections ---------- */
-section{padding:52px 0}
-.sec-head{max-width:62ch;margin-bottom:26px}
+section{padding:56px 0}
+.sec-head{max-width:56ch;margin-bottom:26px}
 .sec-head .eyebrow{color:var(--gold-d);margin-bottom:11px}
-h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.3vw,33px);line-height:1.16;letter-spacing:-.01em}
-.sec-head p{margin-top:11px;color:var(--dim)}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.4vw,35px);line-height:1.14;letter-spacing:-.01em}
+.sec-head p{margin-top:12px;color:var(--dim)}
 
-/* ---------- figure ---------- */
-.nfig{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px 17px}
-.nfig svg{width:100%;height:auto;display:block}
-.nfc{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;fill:var(--faint);font-weight:600}
-.nfl{font-size:13px;font-weight:700;fill:var(--text)}
-.nfw{font-size:13px;font-weight:700;fill:#fff}
-.nfa{font-family:var(--mono);font-size:10px;fill:var(--faint)}
-.nfcap{font-size:13.5px;color:var(--dim);line-height:1.55;margin-top:13px}
-.nfcap b{color:var(--text)}
-.swipe{display:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-top:6px}
-
-/* ---------- the people ---------- */
-.people{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+/* ---------- people ---------- */
+.people{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .person{display:flex;gap:17px;background:var(--card);border:1px solid var(--line);border-radius:16px;
   padding:20px 22px;box-shadow:0 4px 16px rgba(91,42,134,.07)}
-.person .ph{width:96px;height:96px;flex:none;border-radius:14px;object-fit:cover;object-position:center top;
+.person .ph{width:92px;height:92px;flex:none;border-radius:14px;object-fit:cover;object-position:center top;
   border:1px solid var(--line);background:var(--ground2)}
 .person .role{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-d)}
 .person h3{font-family:var(--serif);font-weight:600;font-size:20px;margin:6px 0 7px}
-.person p{font-size:14.5px;line-height:1.5;color:var(--dim)}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
-.chip{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--plum-d);background:var(--ground2);border-radius:999px;padding:4px 10px}
+.person p{font-size:15.5px;line-height:1.5;color:var(--dim)}
 .person .prof{margin-top:10px}
 .person .prof a{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.04em;
   text-transform:uppercase;color:var(--plum);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
 .person .prof a:hover{border-color:var(--plum)}
-.ask{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 32px;box-shadow:0 4px 16px rgba(91,42,134,.07)}
-.ask h2{max-width:24ch}
-.ask>p{margin-top:12px;color:var(--dim);max-width:66ch}
-.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0 4px}
-.outcome{background:var(--ground);border:1px solid var(--line);border-radius:13px;padding:16px 18px}
-.outcome b{display:block;font-family:var(--serif);font-weight:600;font-size:17px;margin-bottom:5px}
-.outcome span{font-size:14px;line-height:1.5;color:var(--dim)}
-.outcome .tag{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-d);display:block;margin-bottom:7px}
-@media(max-width:820px){.outcomes{grid-template-columns:1fr}.ask{padding:24px 20px}}
-.why{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:16px;padding:22px 26px}
-.why h3{font-family:var(--serif);font-weight:600;font-size:21px;margin-bottom:10px}
-.why p{color:var(--dim);max-width:74ch;font-size:15.5px}
-.why p+p{margin-top:11px}
+.why{margin-top:16px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:0 16px 16px 0;padding:22px 26px}
+.why p{color:var(--dim);max-width:72ch;font-size:16px}
 .why b{color:var(--text)}
 
-/* ---------- audience cards ---------- */
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.acard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;
-  padding:18px 20px 20px;text-decoration:none;color:inherit;box-shadow:0 4px 16px rgba(91,42,134,.07);
-  transition:transform .24s cubic-bezier(.2,.7,.3,1),box-shadow .24s ease,border-color .24s ease}
-.acard:hover,.acard:focus-visible{transform:translateY(-7px);box-shadow:0 24px 44px -18px rgba(91,42,134,.42);border-color:var(--plum-lt)}
-.acard .who{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-d)}
-.acard h3{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.22;margin:9px 0 0}
-.acard .fig{margin:15px 0 14px;background:var(--ground2);border-radius:11px;padding:11px 12px;transition:background .24s ease}
-.acard:hover .fig{background:#E7DEF3}
-.acard .fig svg{display:block;width:100%;height:auto}
-.acard .fig .nfa{font-size:11px}
-.acard .wrongmove{font-size:13.5px;line-height:1.5;color:var(--dim);display:flex;gap:8px;align-items:flex-start;margin-top:auto}
-.acard .wrongmove svg{flex:none;margin-top:3px}
-.acard .go{margin-top:13px;padding-top:12px;border-top:1px solid var(--line);font-size:13.5px;font-weight:600;color:var(--plum);display:flex;align-items:center;gap:6px}
-.acard .arw{transition:transform .24s ease}
-.acard:hover .arw{transform:translateX(5px)}
-
-.hubcard{grid-column:1/-1;display:grid;grid-template-columns:1fr 220px;gap:26px;align-items:center;
+/* ---------- cards ---------- */
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+.hubcard{grid-column:1/-1;display:grid;grid-template-columns:1fr 200px;gap:26px;align-items:center;
   background:var(--ink);border:1px solid var(--line-w);border-radius:16px;padding:24px 26px;text-decoration:none;color:#F2ECF7;
   transition:transform .24s cubic-bezier(.2,.7,.3,1),box-shadow .24s ease}
 .hubcard:hover,.hubcard:focus-visible{transform:translateY(-7px);box-shadow:0 26px 50px -20px rgba(22,15,30,.6)}
-.hubcard .who{color:var(--gold)}
+.hubcard .who{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
 .hubcard h3{font-family:var(--serif);font-weight:600;font-size:23px;margin:9px 0 7px;color:#fff}
-.hubcard p{color:#B6AAC9;font-size:14.5px;line-height:1.5;max-width:62ch}
-.hubcard .go{margin-top:13px;font-size:13.5px;font-weight:600;color:var(--plum-pale);display:flex;align-items:center;gap:6px}
+.hubcard p{color:#B6AAC9;font-size:15px;line-height:1.5;max-width:56ch}
+.hubcard .go{margin-top:12px;font-size:14px;font-weight:600;color:var(--plum-pale);display:flex;align-items:center;gap:6px}
 .hubcard .arw{transition:transform .24s ease}
 .hubcard:hover .arw{transform:translateX(5px)}
 .hubcard .art svg{display:block;width:100%;height:auto}
 
-/* ---------- dropdowns ---------- */
-.qa{border-top:1px solid var(--line)}
+
+/* ---------- tools and services ---------- */
+.whatwe{margin-top:26px}
+.svclab{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--gold-d);margin:26px 0 12px}
+.whatwe .svclab:first-child{margin-top:0}
+.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.titem{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--line);
+  border-radius:13px;padding:12px 14px;text-decoration:none;color:inherit;
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.titem:hover{transform:translateY(-3px);border-color:var(--plum-lt);box-shadow:0 14px 26px -14px rgba(91,42,134,.4)}
+.tn{font-size:15px;font-weight:600;line-height:1.25}
+.tn em{display:block;font-style:normal;font-size:12.5px;font-weight:400;color:var(--dim);margin-top:2px}
+.ico{flex:none;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
+  background:#EDE4F6;color:var(--plum)}
+.ico svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.svccols{display:grid;grid-template-columns:1fr 1fr;gap:14px 26px}
+.svcsub{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--faint);margin-bottom:9px}
+.sitem{display:flex;align-items:center;gap:11px;padding:7px 9px;border-radius:11px;
+  text-decoration:none;color:inherit;font-size:15px;font-weight:600;
+  transition:background .18s ease}
+.sitem:hover{background:var(--card)}
+.sitem .ico{width:30px;height:30px;border-radius:8px}
+.sitem .ico svg{width:17px;height:17px}
+.sitem.land .ico{background:#F7EBD5;color:var(--gold-d)}
+.svcnote{margin-top:18px;font-size:14.5px;color:var(--dim)}
+@media(max-width:900px){.tools{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){
+  .tools{grid-template-columns:1fr}
+  .svccols{grid-template-columns:1fr;gap:22px}
+}
+
+/* ---------- questions ---------- */
+.qa{border-top:1px solid var(--line);max-width:80ch}
 .qa details{border-bottom:1px solid var(--line)}
-.qa summary{list-style:none;cursor:pointer;padding:15px 40px 15px 0;position:relative;font-weight:600;font-size:16.5px}
+.qa summary{list-style:none;cursor:pointer;padding:16px 40px 16px 0;position:relative;font-weight:600;font-size:17px}
 .qa summary::-webkit-details-marker{display:none}
 .qa summary::after{content:"";position:absolute;right:8px;top:50%;width:9px;height:9px;margin-top:-6px;
   border-right:2px solid var(--plum);border-bottom:2px solid var(--plum);transform:rotate(45deg);transition:transform .22s ease}
 .qa details[open] summary::after{transform:rotate(-135deg);margin-top:-2px}
 .qa summary:hover{color:var(--plum)}
-.qa .ans{padding:0 30px 17px 0;color:var(--dim);font-size:15.5px;line-height:1.6;max-width:74ch}
+.qa .ans{padding:0 30px 18px 0;color:var(--dim);font-size:16px;line-height:1.6}
 .qa .ans b{color:var(--text)}
 
 /* ---------- close ---------- */
 .close{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px;box-shadow:0 6px 22px rgba(91,42,134,.07)}
-.close h2{max-width:30ch}
-.close p{margin-top:12px;color:var(--dim);max-width:62ch}
-.actions{display:flex;flex-wrap:wrap;gap:11px;align-items:center;margin-top:22px}
-.bebtn{display:inline-block;background:var(--plum);color:#fff;font-family:inherit;font-weight:700;font-size:14.5px;
-  border:1.5px solid var(--plum);border-radius:999px;padding:12px 24px;text-decoration:none;cursor:pointer;line-height:1.2}
+.close h2{max-width:24ch}
+.close p{margin-top:14px;color:var(--dim);max-width:58ch}
+.actions{display:flex;flex-wrap:wrap;gap:11px;align-items:center;margin-top:24px}
+.bebtn{display:inline-block;background:var(--plum);color:#fff;font-family:inherit;font-weight:700;font-size:15px;
+  border:1.5px solid var(--plum);border-radius:999px;padding:13px 26px;text-decoration:none;cursor:pointer;line-height:1.2}
 .bebtn:hover{background:var(--plum-d);border-color:var(--plum-d)}
 .bebtn.ghost{background:transparent;color:var(--plum)}
 .bebtn.ghost:hover{background:var(--ground2);color:var(--plum-d);border-color:var(--plum-d)}
 .copied{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green);opacity:0;transition:opacity .18s ease}
 .copied.on{opacity:1}
-.txt{margin-top:15px;font-family:var(--mono);font-size:12.5px;color:var(--faint)}
+.txt{margin-top:16px;font-family:var(--mono);font-size:12.5px;color:var(--faint)}
 .txt a{color:var(--plum);text-decoration:none}
 
-footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0 44px}
+footer{border-top:1px solid var(--line);padding:24px 0 44px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--faint)}
 footer a{color:var(--plum);text-decoration:none}
 footer a:hover{text-decoration:underline}
 
-/* Reveal is opt-in and arms only once JS has run. Without it everything is
-   simply visible — nothing on this page hides behind a script. */
+/* Reveal arms only once JS has run; without it everything is simply visible. */
 .js .rise{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
 .js .rise.in{opacity:1;transform:none}
 
 @media(max-width:960px){
-  .grid{grid-template-columns:repeat(2,1fr)}
   .hubcard{grid-template-columns:1fr}
-  .hubcard .art{max-width:190px}
+  .hubcard .art{max-width:180px}
   .people{grid-template-columns:1fr}
 }
 @media(max-width:640px){
-  body{font-size:16px}
+  body{font-size:16.5px}
   .wrap{padding:0 18px}
-  section{padding:40px 0}
-  .grid{grid-template-columns:1fr}
-  .split{grid-template-columns:1fr}
-  .half+.half{border-left:0;border-top:1px solid rgba(242,236,247,.14)}
+  section{padding:42px 0}
   .hero-top .meta{display:none}
-  .hero-body{padding:24px 0 32px}
+  .hero-body{padding:26px 0 34px}
   .stat{min-width:44%}
   .close{padding:26px 22px 24px}
-  .nfig{padding:16px 14px 13px}
-  .acard .fig .nfa{display:none}
   .person{gap:14px}
   .person .ph{width:74px;height:74px}
-  .figscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
-  .figscroll svg{min-width:560px}
-  .figscroll+.swipe{display:block}
 }
 @media(prefers-reduced-motion:reduce){
   *{transition:none!important}
-  html{scroll-behavior:auto}
   .markanim .sp{animation:none;opacity:0}
   .markanim .core{animation:none}
   .js .rise{opacity:1;transform:none}
@@ -308,11 +250,6 @@ footer a:hover{text-decoration:underline}
 <header class="hero">
   <div class="wrap hero-top">
     <a class="lockup" href="https://nesohq.com/">
-      <!-- Animated mark, inline rather than a file — the mark is never an <img>.
-           Sparks only here, on the dark ground, and only in the hero: one moving
-           thing above the fold, none of it beside anything anyone has to read.
-           Under prefers-reduced-motion the sparks never render and the mark is
-           the static one. -->
       <svg class="markanim" width="34" height="34" viewBox="0 0 100 100" aria-hidden="true">
         <g class="core">
           <polygon points="8,50 50,37.4 92,50 50,62.6" fill="#5B2A86"/>
@@ -333,40 +270,14 @@ footer a:hover{text-decoration:underline}
 
   <div class="wrap hero-body">
     <p class="eyebrow">Someone thought this was worth your time</p>
-    <h1>The cheap answer,<br><em>before</em> the expensive decision.</h1>
-
-    <p class="lede">A <span class="aud">founder</span> about to write a thirty-page plan. A
-      <span class="aud">developer</span> about to sign for a parcel. A
-      <span class="aud">nonprofit</span> four days into a grant nobody was going to award them. A
-      <span class="aud">contractor</span> who found the solicitation the week it was due. All of
-      them needed the same cheap thing first — a straight answer from somebody who has done the
-      work — and all of them got it last.</p>
-
-    <div class="doing">
-      <div class="step"><i>1</i><span><b>Find yourself below.</b> Six cards, one line each. Pick the one that sounds like your week.</span></div>
-      <div class="step"><i>2</i><span><b>Run the free version.</b> No account, no email wall, nothing expires.</span></div>
-      <div class="step"><i>3</i><span><b>Pay only if it earns it.</b> Or tell us the decision and we will say which fits — including none.</span></div>
-    </div>
-
-    <div class="split">
-      <div class="half">
-        <h3>If the decision is about a business</h3>
-        <p>Break-even and runway. Which funding channels you would actually win. Whether the local
-          market is big enough. A plan and a model somebody will read. The public jobs worth
-          bidding, and the bid itself.</p>
-      </div>
-      <div class="half">
-        <h3>If the decision is about land</h3>
-        <p>What the parcel is entitled for. What fits on the lot. Whether the building pays back
-          the loan. Whether the power exists, and when. What it would take to change any of it.</p>
-      </div>
-    </div>
-
+    <h1>Get the answer first.<br><em>Then</em> spend the money.</h1>
+    <p>Most people find out what a plan or a piece of land will really cost after they have paid
+      for it. NESO helps you find out first.</p>
+    <p class="plain">It works the same way whether you run a business or own land.</p>
     <div class="stats">
-      <div class="stat"><b>8</b><span>Tools, free in a browser<br>with no account</span></div>
-      <div class="stat"><b>35</b><span>Public bid sources<br>crawled daily</span></div>
-      <div class="stat"><b>4</b><span>Fixed-price reports<br>on a named parcel</span></div>
-      <div class="stat"><b>17 yrs</b><span>Land use, entitlements<br>and economic development</span></div>
+      <div class="stat"><b>8</b><span>Free tools you<br>run yourself</span></div>
+      <div class="stat"><b>4</b><span>Land reports,<br>one clear price each</span></div>
+      <div class="stat"><b>17 yrs</b><span>Of experience behind<br>every answer</span></div>
     </div>
   </div>
 
@@ -375,272 +286,57 @@ footer a:hover{text-decoration:underline}
   </svg>
 </header>
 
-<!-- Section nav. Anchor links, not tabs: every section stays in the DOM and
-     visible, so nothing depends on a script and a crawler still reads the
-     whole page. The nav sticks once the hero scrolls past. -->
-<nav class="snav" id="snav" aria-label="Sections of this page">
-  <div class="wrap snav-in">
-    <a href="#people" data-t="people">Who is behind it</a>
-    <a href="#why" data-t="why">Why NESO exists</a>
-    <a href="#which" data-t="which">Which one are you</a>
-    <a href="#answers" data-t="answers">Straight answers</a>
-    <a href="#ask" data-t="ask">Not on the list</a>
-    <a href="#share" data-t="share">Pass it on</a>
-  </div>
-</nav>
-
 <!-- ================= THE PEOPLE ================= -->
 <section id="people">
   <div class="wrap">
     <div class="sec-head rise">
       <p class="eyebrow">Who is behind it</p>
-      <h2>Whoever sent you this almost certainly knows either Mallory or Charles.</h2>
+      <h2>Two people. You probably know one of them.</h2>
     </div>
 
     <div class="people">
       <div class="person rise">
-        <img class="ph" src="/img/charles-finkley.jpg" width="96" height="96" loading="lazy"
+        <img class="ph" src="/img/charles-finkley.jpg" width="92" height="92" loading="lazy"
              alt="Charles L. Finkley, Jr.">
         <div>
           <p class="role">Principal · real estate and land</p>
           <h3>Charles L. Finkley, Jr., MPA</h3>
-          <p>Seventeen years in land use, entitlements and economic development. He reviews and
-            releases every real-estate deliverable NESO produces.</p>
-          <div class="chips">
-            <span class="chip">10,000+ permits</span>
-            <span class="chip">$100M+ incentives secured</span>
-            <span class="chip">484 MW+ sited</span>
-          </div>
+          <p>Charles has worked on land and building projects for seventeen years. He reads and
+            approves every land report before it goes out.</p>
           <p class="prof"><a href="https://www.linkedin.com/in/charlesfinkleyjr" target="_blank" rel="noopener">LinkedIn &rarr;</a></p>
         </div>
       </div>
       <div class="person rise">
-        <img class="ph" src="/img/mallory-picture.jpg" width="96" height="96" loading="lazy"
+        <img class="ph" src="/img/mallory-picture.jpg" width="92" height="92" loading="lazy"
              alt="Mallory Bailey">
         <div>
           <p class="role">Principal · business and technology</p>
           <h3>Mallory Bailey</h3>
-          <p>Runs delivery, the storefront, client operations and the back office. Built and
-            operates the platform underneath all of it.</p>
-          <div class="chips">
-            <span class="chip">35 bid sources, daily</span>
-            <span class="chip">31 links checked daily</span>
-            <span class="chip">6 federal layers</span>
-          </div>
+          <p>Mallory runs the work, the store and the clients. She built the software that NESO
+            runs on, and she answers her own messages.</p>
         </div>
       </div>
     </div>
 
     <div class="why rise">
-      <h3>Why they started it</h3>
-      <p>Mallory and Charles started NESO in 2026 to help business owners and real-estate
-        developers, on the strength of a gap they had both watched from the inside for years:
-        <b>the cheap answer almost always arrives after the expensive decision.</b> A developer
-        signs, then learns what the parcel is entitled for. A founder writes the plan, then finds
-        out where break-even actually falls.</p>
-      <p>It is not that those answers are hard. It is that judgement is billed by the hour, so the
-        early question costs a retainer conversation and people skip it. NESO is the attempt to do
-        something about that — <b>at a rate a small business can afford, and with real tools rather
-        than a brochure</b>, most of which cost nothing to run.</p>
+      <p>They started NESO in 2026. Both had watched the same thing happen for years: people spend
+        a great deal of money before they ask one small question. <b>NESO answers that question
+        early, at an economical rate, with real tools you can use yourself.</b></p>
     </div>
   </div>
 </section>
 
-<!-- ================= WHY NESO EXISTS ================= -->
-<section id="why">
-  <div class="wrap">
-    <div class="sec-head rise">
-      <p class="eyebrow">Why NESO exists</p>
-      <h2>The order these things usually happen in is backwards.</h2>
-      <p>Money gets committed first and the constraint turns up afterwards. That is almost never
-        because the answer was hard to get. It is because getting to somebody who could give it
-        cost more than the question felt like it was worth.</p>
-    </div>
-    <div class="nfig rise">
-      <div class="figscroll">
-      <svg viewBox="0 0 760 156" role="img" aria-label="Two tracks compared. In the usual order money is committed and spent before the constraint is found, and the last stage is re-planning or walking away. In the cheaper order the question is asked first, a go or no-go is stated, and only then is money committed.">
-        <text x="0" y="12" class="nfc">The usual order</text>
-        <text x="758" y="12" class="nfc" text-anchor="end">The answer arrives last</text>
-        <rect x="0" y="24" width="180" height="38" rx="7" fill="#8A7F99"/>
-        <text x="16" y="48" class="nfw">Commit</text>
-        <rect x="186" y="24" width="180" height="38" rx="7" fill="#8A7F99" opacity=".76"/>
-        <text x="202" y="48" class="nfw">Design and spend</text>
-        <rect x="372" y="24" width="196" height="38" rx="7" fill="#8A7F99" opacity=".54"/>
-        <text x="388" y="48" class="nfw">Hit the constraint</text>
-        <rect x="574" y="24" width="184" height="38" rx="7" fill="none" stroke="#B91C1C" stroke-width="2" stroke-dasharray="6 5"/>
-        <text x="590" y="48" class="nfl" fill="#B91C1C">Re-plan, or walk</text>
-        <text x="0" y="98" class="nfc" fill="#B8860B">The cheaper order &mdash; this is what NESO sells</text>
-        <text x="758" y="98" class="nfc" text-anchor="end" fill="#0E8A6E">The answer arrives first</text>
-        <rect x="0" y="110" width="150" height="38" rx="7" fill="#5B2A86"/>
-        <text x="16" y="134" class="nfw">Ask the question</text>
-        <rect x="156" y="110" width="196" height="38" rx="7" fill="#7A3FA6"/>
-        <text x="172" y="134" class="nfw">A stated go / no-go</text>
-        <rect x="358" y="110" width="400" height="38" rx="7" fill="#0E8A6E" opacity=".14" stroke="#0E8A6E" stroke-width="1.4"/>
-        <text x="374" y="134" class="nfl" fill="#0E8A6E">Spend — on a deal that survived it</text>
-      </svg>
-      </div>
-      <p class="swipe">Swipe to see the whole figure</p>
-      <p class="nfcap">Judgement is normally billed by the hour, so the cheap early question costs a
-        retainer conversation — and people skip it. <b>NESO does not bill by the hour.</b> The tools
-        are free, a report on a parcel is a fixed price, and advisory is quoted in credits at a
-        published rate before anything starts. Between a spreadsheet template and a five-figure
-        engagement there was almost nothing, and that gap is the whole business.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= THE SIX + THE HUB ================= -->
+<!-- ================= SEE ALL OF IT ================= -->
 <section id="which">
   <div class="wrap">
-    <div class="sec-head rise">
-      <p class="eyebrow">Six ways in</p>
-      <h2>Which of these is about to happen to you?</h2>
-      <p>Four of these six do not involve owning land at all. Each card names the expensive wrong
-        first move as well as the right one, because saying the wrong one out loud is what makes
-        the right one believable.</p>
-    </div>
-
     <div class="grid">
 
-      <!-- FOUNDER -->
-      <a class="acard rise" href="https://nesohq.com/landing-founder.html">
-        <span class="who">Founder / small business</span>
-        <h3>Start with the free version. Buy the thing you actually need.</h3>
-        <div class="fig">
-          <svg viewBox="0 0 200 84" role="img" aria-label="A cost line and a revenue line crossing at a break-even point partway along the timeline.">
-            <line x1="10" y1="70" x2="192" y2="70" stroke="#D9D0E6" stroke-width="1"/>
-            <path d="M10 34 L192 30" fill="none" stroke="#8A7F99" stroke-width="2"/>
-            <path d="M10 68 L192 12" fill="none" stroke="#5B2A86" stroke-width="2.4"/>
-            <circle cx="122" cy="33" r="4.6" fill="#0E8A6E"/>
-            <circle cx="122" cy="33" r="9" fill="none" stroke="#0E8A6E" stroke-width="1.2" opacity=".45"/>
-            <text x="10" y="20" class="nfa">Fixed costs</text>
-            <text x="192" y="82" class="nfa" text-anchor="end">Break-even</text>
-          </svg>
-        </div>
-        <p class="wrongmove">
-          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3 L11 11 M11 3 L3 11" stroke="#B91C1C" stroke-width="2" stroke-linecap="round"/></svg>
-          <span>Not a thirty-page plan written before the model clears break-even.</span>
-        </p>
-        <span class="go">See the founder page <span class="arw">&rarr;</span></span>
-      </a>
-
-      <!-- DEVELOPER -->
-      <a class="acard rise" href="https://nesohq.com/landing-developer.html">
-        <span class="who">Real-estate developer</span>
-        <h3>Test the deal before you spend money proving it out.</h3>
-        <div class="fig">
-          <svg viewBox="0 0 200 84" role="img" aria-label="A parcel outline with a buildable envelope set in from the boundary and a footprint inside it.">
-            <rect x="8" y="9" width="184" height="66" rx="3" fill="none" stroke="#8A7F99" stroke-width="1.2"/>
-            <rect x="26" y="20" width="148" height="44" rx="2" fill="none" stroke="#B8860B" stroke-width="1.3" stroke-dasharray="5 4"/>
-            <rect x="44" y="30" width="76" height="24" rx="2" fill="#5B2A86"/>
-            <rect x="120" y="30" width="34" height="24" rx="2" fill="#BE93DE" opacity=".55"/>
-            <text x="192" y="82" class="nfa" text-anchor="end">Buildable envelope</text>
-          </svg>
-        </div>
-        <p class="wrongmove">
-          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3 L11 11 M11 3 L3 11" stroke="#B91C1C" stroke-width="2" stroke-linecap="round"/></svg>
-          <span>Not a full feasibility study before the parcel is even under contract.</span>
-        </p>
-        <span class="go">See the developer page <span class="arw">&rarr;</span></span>
-      </a>
-
-      <!-- NONPROFIT -->
-      <a class="acard rise" href="https://nesohq.com/landing-nonprofit.html">
-        <span class="who">Nonprofit</span>
-        <h3>Find the funding where your odds are actually real.</h3>
-        <div class="fig">
-          <svg viewBox="0 0 200 84" role="img" aria-label="Seven funding channels scored, with three scoring high and four scoring low.">
-            <rect x="10" y="26" width="20" height="44" rx="3" fill="#5B2A86"/>
-            <rect x="36" y="14" width="20" height="56" rx="3" fill="#5B2A86"/>
-            <rect x="62" y="38" width="20" height="32" rx="3" fill="#7A3FA6"/>
-            <rect x="88" y="54" width="20" height="16" rx="3" fill="#D9D0E6"/>
-            <rect x="114" y="58" width="20" height="12" rx="3" fill="#D9D0E6"/>
-            <rect x="140" y="61" width="20" height="9" rx="3" fill="#D9D0E6"/>
-            <rect x="166" y="63" width="20" height="7" rx="3" fill="#D9D0E6"/>
-            <line x1="10" y1="70" x2="190" y2="70" stroke="#8A7F99" stroke-width="1"/>
-            <text x="10" y="82" class="nfa">Real odds</text>
-            <text x="190" y="82" class="nfa" text-anchor="end">Not worth a week</text>
-          </svg>
-        </div>
-        <p class="wrongmove">
-          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3 L11 11 M11 3 L3 11" stroke="#B91C1C" stroke-width="2" stroke-linecap="round"/></svg>
-          <span>Not four days spent on the application you were never going to win.</span>
-        </p>
-        <span class="go">See the nonprofit page <span class="arw">&rarr;</span></span>
-      </a>
-
-      <!-- CONTRACTOR -->
-      <a class="acard rise" href="https://nesohq.com/landing-contractor.html">
-        <span class="who">Contractor / bidder</span>
-        <h3>See the solicitations, then get help writing the one worth winning.</h3>
-        <div class="fig">
-          <svg viewBox="0 0 200 84" role="img" aria-label="A list of open solicitations with one singled out and marked as the one worth bidding.">
-            <rect x="10" y="8" width="128" height="11" rx="3" fill="#D9D0E6"/>
-            <rect x="10" y="24" width="152" height="11" rx="3" fill="#D9D0E6"/>
-            <rect x="10" y="40" width="180" height="15" rx="4" fill="#5B2A86"/>
-            <path d="M168 47.5 L173 52 L182 42" fill="none" stroke="#E7B84B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="10" y="60" width="112" height="11" rx="3" fill="#D9D0E6"/>
-            <text x="10" y="82" class="nfa">35 boards, crawled daily</text>
-          </svg>
-        </div>
-        <p class="wrongmove">
-          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3 L11 11 M11 3 L3 11" stroke="#B91C1C" stroke-width="2" stroke-linecap="round"/></svg>
-          <span>Not assuming the board writes the bid. They are different products.</span>
-        </p>
-        <span class="go">See the contractor page <span class="arw">&rarr;</span></span>
-      </a>
-
-      <!-- MUNICIPALITY -->
-      <a class="acard rise" href="https://nesohq.com/landing-municipality.html">
-        <span class="who">Municipality / agency</span>
-        <h3>The grant work your staff does not have time to do.</h3>
-        <div class="fig">
-          <svg viewBox="0 0 200 84" role="img" aria-label="A deadline running out while staff hours stay flat, with the deadline marker near the end.">
-            <rect x="10" y="18" width="180" height="13" rx="6.5" fill="#EFE9F6"/>
-            <rect x="10" y="18" width="146" height="13" rx="6.5" fill="#B8860B"/>
-            <line x1="156" y1="10" x2="156" y2="39" stroke="#B91C1C" stroke-width="2"/>
-            <text x="150" y="8" class="nfa" text-anchor="end" fill="#B91C1C">Deadline</text>
-            <rect x="10" y="46" width="180" height="13" rx="6.5" fill="#EFE9F6"/>
-            <rect x="10" y="46" width="42" height="13" rx="6.5" fill="#5B2A86"/>
-            <text x="10" y="76" class="nfa">Hours staff actually have</text>
-          </svg>
-        </div>
-        <p class="wrongmove">
-          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3 L11 11 M11 3 L3 11" stroke="#B91C1C" stroke-width="2" stroke-linecap="round"/></svg>
-          <span>Not a self-serve tool nobody on staff has hours to run.</span>
-        </p>
-        <span class="go">See the municipality page <span class="arw">&rarr;</span></span>
-      </a>
-
-      <!-- ENERGY -->
-      <a class="acard rise" href="https://nesohq.com/landing-energy.html">
-        <span class="who">Energy / large load</span>
-        <h3>A stated power go / no-go, in five business days.</h3>
-        <div class="fig">
-          <svg viewBox="0 0 200 84" role="img" aria-label="Five stages of a large-load project, with the interconnection queue far longer than every stage the developer controls.">
-            <rect x="10" y="8" width="26" height="9" rx="4.5" fill="#5B2A86"/>
-            <rect x="10" y="22" width="34" height="9" rx="4.5" fill="#5B2A86"/>
-            <rect x="10" y="36" width="164" height="9" rx="4.5" fill="#E7B84B"/>
-            <rect x="10" y="50" width="46" height="9" rx="4.5" fill="#5B2A86"/>
-            <rect x="10" y="64" width="82" height="9" rx="4.5" fill="#5B2A86"/>
-            <text x="180" y="44" class="nfa" text-anchor="end" fill="#B8860B">The queue</text>
-            <text x="10" y="82" class="nfa">Everything you control</text>
-          </svg>
-        </div>
-        <p class="wrongmove">
-          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3 L11 11 M11 3 L3 11" stroke="#B91C1C" stroke-width="2" stroke-linecap="round"/></svg>
-          <span>Not a free tool. This one is not a self-serve question.</span>
-        </p>
-        <span class="go">See the energy page <span class="arw">&rarr;</span></span>
-      </a>
-
-      <!-- HUB -->
       <a class="hubcard rise" href="https://nesohq.com/">
         <div>
-          <span class="who eyebrow">Or skip the sorting</span>
-          <h3>Everything NESO sells, on one page, with what it costs.</h3>
-          <p>The tools, the four research reports, advisory in credits, the memberships and the
-            terms — priced in the open, in the order most people move through them.</p>
+          <span class="who">See all of it</span>
+          <h3>Everything NESO sells, with the price next to it.</h3>
+          <p>The tools, the land reports, the written work and the memberships — all on one page,
+            in the order most people go through them.</p>
           <span class="go">Go to nesohq.com <span class="arw">&rarr;</span></span>
         </div>
         <div class="art" aria-hidden="true">
@@ -666,105 +362,138 @@ footer a:hover{text-decoration:underline}
       </a>
 
     </div>
+
+      <div class="whatwe">
+        <p class="svclab">The eight tools · free to run, yours to keep</p>
+        <div class="tools">
+        <a class="titem" href="https://grantfit.nesohq.com/" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.5 13 L7 21 L12 18.2 L17 21 L15.5 13"/></svg></span>
+          <span class="tn">GrantFit<em>Score your funding channels</em></span>
+        </a>
+        <a class="titem" href="https://planforge.nesohq.com/" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4 V20 H20"/><path d="M7 15 L11 10.5 L14 12.5 L19 6.5"/></svg></span>
+          <span class="tn">PlanForge<em>Nine numbers to a model</em></span>
+        </a>
+        <a class="titem" href="https://marketfit.nesohq.com/" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20 L16.2 16.2"/><path d="M9 12.5 V10.5"/><path d="M11.5 12.5 V8.5"/><path d="M14 12.5 V10"/></svg></span>
+          <span class="tn">MarketFit<em>Is there room for you</em></span>
+        </a>
+        <a class="titem" href="https://marketscope.nesohq.com/" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 17 V13"/><path d="M12 17 V9"/><path d="M16 17 V11"/></svg></span>
+          <span class="tn">MarketScope<em>A lender-ready market study</em></span>
+        </a>
+        <a class="titem" href="https://buildbrief.nesohq.com/" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4.5" width="14" height="16.5" rx="2"/><path d="M9 4.5 A1 1 0 0 1 10 3.3 H14 A1 1 0 0 1 15 4.5 V5.8 H9 Z"/><path d="M8.5 13 L11 15.5 L15.5 10.5"/></svg></span>
+          <span class="tn">BuildBrief<em>Turn an idea into a brief</em></span>
+        </a>
+        <a class="titem" href="https://capstack.nesohq.com/" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 L21 8 L12 13 L3 8 Z"/><path d="M3 12 L12 17 L21 12"/><path d="M3 16 L12 21 L21 16"/></svg></span>
+          <span class="tn">CapStack<em>Build the money stack</em></span>
+        </a>
+        <a class="titem" href="https://proforma.nesohq.com/" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16 A8 8 0 0 1 20 16"/><path d="M12 16 L16 11"/><circle cx="12" cy="16" r="1.2"/></svg></span>
+          <span class="tn">ProForma<em>Does the building pay back</em></span>
+        </a>
+        <a class="titem" href="https://siteshaper.nesohq.com/" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20 H20 L5 5 Z"/><path d="M9 20 V16.5"/><path d="M13 20 V13"/><path d="M8 9 L11 12"/></svg></span>
+          <span class="tn">SiteShaper<em>Lot in, drawings out</em></span>
+        </a>
+        </div>
+
+        <p class="svclab">Or work NESO does for you</p>
+        <div class="svccols">
+          <div>
+            <p class="svcsub">Business &amp; growth</p>
+        <a class="sitem biz" href="https://nesohq.com/#/service/grant">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.5 13 L7 21 L12 18.2 L17 21 L15.5 13"/></svg></span><span>Grant Writing & Funding</span>
+        </a>
+        <a class="sitem biz" href="https://nesohq.com/#/service/plan">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4 V20 H20"/><path d="M7 15 L11 10.5 L14 12.5 L19 6.5"/></svg></span><span>Business Plan & Model</span>
+        </a>
+        <a class="sitem biz" href="https://nesohq.com/#/service/research">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20 L16.2 16.2"/><path d="M9 12.5 V10.5"/><path d="M11.5 12.5 V8.5"/><path d="M14 12.5 V10"/></svg></span><span>Market Research</span>
+        </a>
+        <a class="sitem biz" href="https://nesohq.com/#/service/deck">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.6"/><path d="M8 21 L12 17 L16 21"/><path d="M7.5 12 L10.5 9 L13 11 L16.5 7"/></svg></span><span>Investor Pitch Deck</span>
+        </a>
+        <a class="sitem biz" href="https://nesohq.com/#/service/web">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9 H21"/><circle cx="6.4" cy="6.5" r="0.7"/><circle cx="8.7" cy="6.5" r="0.7"/></svg></span><span>Website / Landing Page</span>
+        </a>
+        <a class="sitem biz" href="https://nesohq.com/#/service/dash">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16 A8 8 0 0 1 20 16"/><path d="M12 16 L16 11"/><circle cx="12" cy="16" r="1.2"/></svg></span><span>Data Dashboard</span>
+        </a>
+        <a class="sitem biz" href="https://nesohq.com/#/service/procure">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2"/><path d="M12 2 V5"/><path d="M12 19 V22"/><path d="M2 12 H5"/><path d="M19 12 H22"/></svg></span><span>Procurement & Bid Sourcing</span>
+        </a>
+        <a class="sitem biz" href="https://nesohq.com/#/service/proposal">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3 H14 L19 8 V21 H6 Z"/><path d="M14 3 V8 H19"/><path d="M9 13.5 L11 15.5 L15 11"/></svg></span><span>Bid Proposal / Quote</span>
+        </a>
+        <a class="sitem biz" href="https://nesohq.com/#/service/ops">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.6 8.4 L10.8 10.8 L8.4 15.6 L13.2 13.2 Z"/></svg></span><span>Strategy & Fractional-COO</span>
+        </a>
+          </div>
+          <div>
+            <p class="svcsub land">Real estate &amp; land</p>
+        <a class="sitem land" href="https://nesohq.com/#/service/capstack">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 L21 8 L12 13 L3 8 Z"/><path d="M3 12 L12 17 L21 12"/><path d="M3 16 L12 21 L21 16"/></svg></span><span>Capital Stack Model</span>
+        </a>
+        <a class="sitem land" href="https://nesohq.com/#/service/site">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21 C12 21 18.5 14.5 18.5 9.5 A6.5 6.5 0 0 0 5.5 9.5 C5.5 14.5 12 21 12 21 Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span><span>Site Selection & Sourcing</span>
+        </a>
+        <a class="sitem land" href="https://nesohq.com/#/service/gis">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 L3 6 V21 L9 18 L15 21 L21 18 V3 L15 6 L9 3 Z"/><path d="M9 3 V18"/><path d="M15 6 V21"/></svg></span><span>GIS & Spatial Analysis</span>
+        </a>
+        <a class="sitem land" href="https://nesohq.com/#/service/mktstudy">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 17 V13"/><path d="M12 17 V9"/><path d="M16 17 V11"/></svg></span><span>Lender-Ready Market Study</span>
+        </a>
+        <a class="sitem land" href="https://nesohq.com/#/service/feas">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20 H20 L5 5 Z"/><path d="M9 20 V16.5"/><path d="M13 20 V13"/><path d="M8 9 L11 12"/></svg></span><span>Development Feasibility</span>
+        </a>
+        <a class="sitem land" href="https://nesohq.com/#/service/entitle">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4.5" width="14" height="16.5" rx="2"/><path d="M9 4.5 A1 1 0 0 1 10 3.3 H14 A1 1 0 0 1 15 4.5 V5.8 H9 Z"/><path d="M8.5 13 L11 15.5 L15.5 10.5"/></svg></span><span>Entitlement & Permitting Read</span>
+        </a>
+        <a class="sitem land" href="https://nesohq.com/#/service/tod">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 11 H18"/><circle cx="9.5" cy="14" r="1"/><circle cx="14.5" cy="14" r="1"/><path d="M9 17 L7 21"/><path d="M15 17 L17 21"/></svg></span><span>TOD / Development Report</span>
+        </a>
+        <a class="sitem land" href="https://nesohq.com/#/service/incentive">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10 L12 4 L20 10"/><path d="M5.5 10 V18"/><path d="M10 10 V18"/><path d="M14 10 V18"/><path d="M18.5 10 V18"/><path d="M3.5 18 H20.5"/></svg></span><span>Incentives & Grant Positioning</span>
+        </a>
+        <a class="sitem land" href="https://nesohq.com/#/service/zoning">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 V20"/><path d="M7 20 H17"/><path d="M5 7.5 H19"/><path d="M5 7.5 L3 12.5 A2 2 0 0 0 7 12.5 Z"/><path d="M19 7.5 L17 12.5 A2 2 0 0 0 21 12.5 Z"/></svg></span><span>Rezoning / Variance Support</span>
+        </a>
+          </div>
+        </div>
+        <p class="svcnote">Every price sits next to its own item on the website. Tap any of these to
+          go straight to it.</p>
+      </div>
   </div>
 </section>
 
-<!-- ================= STRAIGHT ANSWERS ================= -->
+<!-- ================= THREE QUESTIONS ================= -->
 <section id="answers">
   <div class="wrap">
     <div class="sec-head rise">
-      <p class="eyebrow">Straight answers</p>
-      <h2>The things people ask before they trust any of it.</h2>
+      <p class="eyebrow">Three questions</p>
+      <h2>The ones people ask first.</h2>
     </div>
     <div class="qa rise">
       <details>
-        <summary>What does "free" actually include?</summary>
-        <p class="ans">The complete analysis, on your own numbers — every section, the real figures,
-          the full visual. No account, no email wall, no trial that expires. Paying adds the
-          printable exhibit, the editing and the depth. <b>It never adds the insight.</b> If a
-          stranger would not call the free result finished, the paid version does not deserve to
-          sell.</p>
+        <summary>What does free really mean?</summary>
+        <p class="ans">You get the whole answer, using your own numbers. No account, no email, and
+          nothing runs out. <b>Paying adds the printed copy and more detail. It never adds the
+          answer.</b></p>
       </details>
       <details>
-        <summary>How does NESO charge?</summary>
-        <p class="ans">Three ways, and they are not interchangeable. Tools are free with a one-time
-          unlock that is owned forever. Research on a named parcel is a fixed price. Advisory work
-          is quoted in credits at a published rate before anything starts. <b>What each one costs
-          is on the site, next to the thing it prices</b> — deliberately not restated here, because
-          a price with two homes eventually disagrees with itself.</p>
+        <summary>What does it cost?</summary>
+        <p class="ans">The tools are free. A land report has one price. Other work is quoted in
+          writing before it starts. <b>Every price is on the website, next to the thing it belongs
+          to.</b></p>
       </details>
       <details>
-        <summary>When does the clock start?</summary>
-        <p class="ans">At scope confirmation, never at checkout. You pay, we ask for three things —
-          the parcel or address, the jurisdiction, and the decision you are trying to make — and
-          the promised date is set when the last one lands. If we are waiting on you, the clock
-          pauses day for day, and a pause is never counted as a penalty day.</p>
+        <summary>Who checks the work?</summary>
+        <p class="ans">Charles reads and approves every land report before it leaves. That is a
+          rule NESO wrote down, not just a habit.</p>
       </details>
-      <details>
-        <summary>Who actually looks at the work?</summary>
-        <p class="ans">Charles reviews and releases every real-estate deliverable NESO produces.
-          That is in the operating agreement, not just in practice. It caps how much NESO can take
-          on, and the cap is the point — a buyer is paying for somebody senior having looked.</p>
-      </details>
-      <details>
-        <summary>Can you turn it around faster?</summary>
-        <p class="ans">Rush halves the turnaround with a one-day floor, capped at <b>two slots per
-          week firm-wide</b>. When the week is full the option is refused rather than queued. That
-          cap is what makes the promise real.</p>
-      </details>
-      <details>
-        <summary>What if none of the six sound like me?</summary>
-        <p class="ans">Say what decision you are trying to make rather than which product you want.
-          A principal reads every enquiry and replies within a business day. <b>If the honest answer
-          is a free tool, that is the answer you will get</b> — which is why the tools are free in
-          the first place.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ================= ASK NESO ================= -->
-<section id="ask">
-  <div class="wrap">
-    <div class="ask rise">
-      <p class="eyebrow" style="color:var(--gold-d)">Ask NESO</p>
-      <h2>Tell us what you could not get done.</h2>
-      <p>NESO also builds things that are not on the list yet. If none of the six above answers what
-        you are actually trying to do, say so — and it does not have to be about property. A digital
-        card set for your crew, a tracker for something you keep losing, a report nobody sells.
-        <b>We would rather know.</b></p>
-      <div class="outcomes">
-        <div class="outcome"><span class="tag">If we already do it</span><b>You get told which</b>
-          <span>Which product, what it costs and how long it takes — usually the same business day.</span></div>
-        <div class="outcome"><span class="tag">If several people want it</span><b>We build it</b>
-          <span>You hear first, and you are not charged for having asked.</span></div>
-        <div class="outcome"><span class="tag">If it is not for us</span><b>We say so plainly</b>
-          <span>And point you at who does it, if we know. That answer is free too.</span></div>
-      </div>
-      <div class="actions">
-        <a class="bebtn" href="https://nesohq.com/ask.html?source=hello">Tell us what you could not get done</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= CLOSE ================= -->
-<section id="share">
-  <div class="wrap">
-    <div class="close rise">
-      <p class="eyebrow" style="color:var(--gold-d)">Passing it on</p>
-      <h2>Know somebody about to spend money proving something out?</h2>
-      <p>This page gets forwarded for one reason: <b>it costs nothing to find out the answer is
-        no.</b> That is a cheap thing to hand somebody the week before they sign, and an expensive
-        one to hand them the week after.</p>
-      <p>No referral form and nothing to fill in — just the link, to one person about to buy a
-        parcel, write a plan, chase a grant or bid a job.</p>
-      <div class="actions">
-        <a class="bebtn" href="https://neso-queue.nesoai-us.workers.dev/form/intake?source=hello">Tell us what you are deciding</a>
-        <button class="bebtn ghost" type="button" id="copy">Share this page</button>
-        <span class="copied" id="copied" role="status" aria-live="polite">Link copied</span>
-      </div>
-      <p class="txt">nesohq.com/hello.html · or text <a href="sms:+19012950322">(901) 295-0322</a></p>
     </div>
   </div>
 </section>
@@ -773,7 +502,8 @@ footer a:hover{text-decoration:underline}
   <div class="wrap">
     <span>NESO · advisory and tools for business and land</span>
     <span>Remote · nationwide</span>
-    <span><a href="https://nesohq.com/">nesohq.com</a> · <a href="https://partners.nesohq.com/">partners.nesohq.com</a></span>
+    <span><a href="https://nesohq.com/">nesohq.com</a> · <a href="#" id="copy">Share this page</a>
+      <span class="copied" id="copied" role="status" aria-live="polite">Link copied</span></span>
   </div>
 </footer>
 
@@ -781,13 +511,12 @@ footer a:hover{text-decoration:underline}
 (function(){
   var b=document.getElementById('copy'), f=document.getElementById('copied');
   if(b){
-    b.addEventListener('click',function(){
+    b.addEventListener('click',function(e){
+      e.preventDefault();
       var url='https://nesohq.com/hello.html';
-      // Native share sheet where there is one — this page exists to be forwarded,
-      // and on a phone that is one tap into the app they would forward it from.
       if(navigator.share){
         navigator.share({title:'NESO — an introduction',
-          text:'The cheap answer, before the expensive decision.', url:url}).catch(function(){});
+          text:'Get the answer first. Then spend the money.', url:url}).catch(function(){});
         return;
       }
       if(navigator.clipboard&&navigator.clipboard.writeText){
@@ -797,21 +526,6 @@ footer a:hover{text-decoration:underline}
       } else { b.textContent='nesohq.com/hello.html'; }
     });
   }
-  // Highlight whichever section is in view. Purely decorative — the links work
-  // as plain anchors whether or not this runs.
-  var links=[].slice.call(document.querySelectorAll('.snav a'));
-  var secs=links.map(function(a){return document.getElementById(a.getAttribute('data-t'));});
-  if('IntersectionObserver' in window){
-    var seen={};
-    var nav=new IntersectionObserver(function(rows){
-      rows.forEach(function(r){ seen[r.target.id]=r.isIntersecting?r.intersectionRatio:0; });
-      var best=null,bv=0;
-      Object.keys(seen).forEach(function(k){ if(seen[k]>bv){bv=seen[k];best=k;} });
-      links.forEach(function(a){ a.classList.toggle('on', bv>0 && a.getAttribute('data-t')===best); });
-    },{rootMargin:'-64px 0px -55% 0px',threshold:[0,.15,.4,.75]});
-    secs.forEach(function(x){ if(x) nav.observe(x); });
-  }
-
   var els=document.querySelectorAll('.rise');
   if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     els.forEach(function(e){e.classList.add('in');});
