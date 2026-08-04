@@ -2,542 +2,633 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <!-- ==========================================================================
-     hello.html — the forwardable introduction.
-     Deployed at nesohq.com/hello.html. The filename is the address; the date
-     stamp stays on the working copy only.
+     hello.html — the forwardable introduction. nesohq.com/hello.html
+     The filename is the address; the date stamp stays on the working copy.
 
-     BEFORE DEPLOY, two substitutions:
-     1. CTA href. Both buttons point at ?source=hello. The six audience pages
-        send ?source=<audience> into neso-queue's intake form; substitute that
-        same form URL here so this page is counted the same way. The hub URL
-        below is a safe fallback, not the intended target.
-     2. Add this URL to neso-linkcheck. An unlisted page is exactly the kind
-        nobody clicks by hand.
+     Indexing: index,follow — deliberate, not inherited from the audience
+     pages. It is not a duplicate of anything, and the hub's hash routing
+     caps nesohq.com at one indexable URL.
 
-     Indexing: index, follow — reasoning in the note filed with this page.
-     No Organization schema here on purpose. Entity markup has one home and it
-     is the hub.
+     No prices anywhere on this page. Prices live in the Product Book and on
+     the Gumroad listings; the audience pages and the hub carry them.
      No email address in the visible text or the markup, per the tools rule.
+     No operating state named — "Remote · nationwide" only.
+
+     Add this URL to neso-linkcheck when it goes live.
      ========================================================================== -->
 
 <title>NESO — an introduction</title>
-<meta name="description" content="NESO is two people who sell senior judgement about land and business, and give away the software that finds the people who need it. Who we are, why we started it, and how the work goes.">
-<meta name="robots" content="index, follow, max-snippet:-1">
+<meta name="description" content="Free tools that give a real answer, written research on a named parcel, and senior advisory work quoted before it starts. Pick the one line that sounds like you.">
+<meta name="robots" content="index,follow,max-snippet:-1">
 <link rel="canonical" href="https://nesohq.com/hello.html">
-
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nesohq.com/hello.html">
+<meta property="og:site_name" content="NESO">
 <meta property="og:title" content="NESO — an introduction">
-<meta property="og:description" content="Two people who sell senior judgement about land and business, and give away the software that finds the people who need it.">
+<meta property="og:description" content="The cheap answer, before the expensive decision. Pick the line that sounds like you.">
 <meta property="og:image" content="https://nesohq.com/og-nesohq.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="NESO — an introduction">
-<meta name="twitter:description" content="Two people who sell senior judgement about land and business, and give away the software that finds the people who need it.">
+<meta name="twitter:description" content="The cheap answer, before the expensive decision. Pick the line that sounds like you.">
 <meta name="twitter:image" content="https://nesohq.com/og-nesohq.png">
 
-<link rel="icon" href="/favicon-512.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23160f1e'/><path d='M9.09 50 L50 43.18 L90.91 50 L50 56.82 Z' fill='%235B2A86'/><path d='M50 9.09 L56.82 50 L50 90.91 L43.18 50 Z' fill='%23E7B84B'/><circle cx='50' cy='50' r='5.91' fill='%23f2ecf7'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
-  :root{
-    --plum:#5B2A86;
-    --plum-deep:#3D1A5C;
-    --gold:#B8860B;
-    --green:#0E8A6E;
-    --ground:#F7F4FB;
-    --card:#FFFFFF;
-    --ink:#23272E;
-    --dim:#5C6672;
-    --line:#E5DDD0;
-    --rail:#DCD2E8;
-  }
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#160F1E; --ink2:#0F0916;
+  --ground:#F7F4FB; --ground2:#EFE9F6; --card:#FFFFFF;
+  --line:#E5DCEF; --line-w:#3A2B4C;
+  --text:#241633; --dim:#5F5470; --faint:#8A7F99;
+  --plum:#5B2A86; --plum-d:#3D1A5C; --plum-lt:#7A3FA6; --plum-pale:#BE93DE;
+  --gold:#E7B84B; --gold-d:#B8860B;
+  --green:#0E8A6E;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--ground);color:var(--text);font-family:var(--sans);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--plum)}
+:focus-visible{outline:2px solid var(--plum);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+.eyebrow{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.19em;text-transform:uppercase}
 
-  *,*::before,*::after{box-sizing:border-box}
+/* ---------- lockup ---------- */
+.lockup{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
+.lockup .word{font-family:var(--serif);font-weight:700;font-size:21px;letter-spacing:.06em}
+.lockup svg{display:block;flex:none;border-radius:8px}
 
-  html{-webkit-text-size-adjust:100%}
+/* ---------- dark hero ---------- */
+.hero{background:var(--ink);color:#F2ECF7;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(760px 380px at 76% -8%,rgba(122,63,166,.42),transparent 62%),
+             radial-gradient(520px 300px at 6% 104%,rgba(231,184,75,.10),transparent 66%);}
+.hero>*{position:relative}
+.hero-top{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 0}
+.hero-top .lockup{color:#F2ECF7}
+.hero-top .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:#B6AAC9;text-align:right}
+.hero-top .meta a{color:#D9C8EC;text-decoration:none}
+.hero-body{padding:34px 0 40px;max-width:760px}
+.hero .eyebrow{color:var(--gold);margin-bottom:15px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(33px,5.6vw,58px);line-height:1.06;letter-spacing:-.015em}
+h1 em{font-style:italic;color:var(--plum-pale)}
+.hero p{margin-top:17px;font-size:18px;line-height:1.55;color:#CFC3E0;max-width:60ch}
+.stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:30px;padding-top:20px;border-top:1px solid rgba(242,236,247,.14);position:relative}
+.stats::before{content:"";position:absolute;top:-1.5px;left:0;width:60px;height:2.5px;background:var(--gold);border-radius:2px}
+.stat{flex:1;min-width:118px}
+.stat b{display:block;font-family:var(--serif);font-weight:700;font-size:24px;color:var(--gold);line-height:1}
+.stat span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:#9C8FB4;margin-top:6px;line-height:1.45}
+.hero-curve{display:block;width:100%;height:34px}
 
-  body{
-    margin:0;
-    background:var(--ground);
-    color:var(--ink);
-    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-    font-size:17px;
-    line-height:1.62;
-    -webkit-font-smoothing:antialiased;
-  }
+/* ---------- sections ---------- */
+section{padding:52px 0}
+.sec-head{max-width:60ch;margin-bottom:26px}
+.sec-head .eyebrow{color:var(--gold-d);margin-bottom:11px}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.3vw,33px);line-height:1.16;letter-spacing:-.01em}
+.sec-head p{margin-top:11px;color:var(--dim);font-size:16.5px}
 
-  a{color:var(--plum)}
-  a:focus-visible,button:focus-visible{
-    outline:2px solid var(--plum);
-    outline-offset:3px;
-    border-radius:2px;
-  }
+/* ---------- audience cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.acard{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px 20px;text-decoration:none;color:inherit;
+  box-shadow:0 4px 16px rgba(91,42,134,.07);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.acard:hover{transform:translateY(-3px);box-shadow:0 16px 34px -14px rgba(91,42,134,.34);border-color:var(--plum-lt)}
+.acard .who{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-d)}
+.acard h3{font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.22;margin:9px 0 0;letter-spacing:-.005em}
+.acard .fig{margin:15px 0 14px;background:var(--ground2);border-radius:11px;padding:11px 12px}
+.acard .fig svg{display:block;width:100%;height:auto}
+.acard .fig .nfa{font-size:11px}
+.acard .wrongmove{font-size:13.5px;line-height:1.5;color:var(--dim);display:flex;gap:8px;align-items:flex-start;margin-top:auto}
+.acard .wrongmove svg{flex:none;margin-top:3px}
+.acard .go{margin-top:13px;padding-top:12px;border-top:1px solid var(--line);font-size:13.5px;font-weight:600;color:var(--plum);display:flex;align-items:center;gap:6px}
+.acard .go .arw{transition:transform .2s ease}
+.acard:hover .go .arw{transform:translateX(4px)}
 
-  .wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+/* the hub card */
+.hubcard{grid-column:1/-1;display:grid;grid-template-columns:1fr 220px;gap:26px;align-items:center;
+  background:var(--ink);border:1px solid var(--line-w);border-radius:16px;padding:24px 26px;text-decoration:none;color:#F2ECF7;
+  transition:transform .2s ease,box-shadow .2s ease}
+.hubcard:hover{transform:translateY(-3px);box-shadow:0 18px 40px -16px rgba(22,15,30,.55)}
+.hubcard .who{color:var(--gold)}
+.hubcard h3{font-family:var(--serif);font-weight:600;font-size:23px;margin:9px 0 7px;color:#fff}
+.hubcard p{color:#B6AAC9;font-size:14.5px;line-height:1.5;max-width:62ch}
+.hubcard .go{margin-top:13px;font-size:13.5px;font-weight:600;color:var(--plum-pale);display:flex;align-items:center;gap:6px}
+.hubcard:hover .go .arw{transform:translateX(4px)}
+.hubcard .art svg{display:block;width:100%;height:auto}
 
-  /* ---------- header ---------- */
+/* ---------- big figure ---------- */
+.nfig{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px 17px}
+.nfig svg{width:100%;height:auto;display:block}
+.nfc{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;fill:var(--faint);font-weight:600}
+.nfl{font-size:13px;font-weight:700;fill:var(--text)}
+.nfw{font-size:13px;font-weight:700;fill:#fff}
+.nfp{font-family:var(--mono);font-size:12px;font-weight:700;fill:var(--text)}
+.nfa{font-family:var(--mono);font-size:9.5px;fill:var(--faint)}
+.swipe{display:none;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:6px}
+.nfcap{font-size:13.5px;color:var(--dim);line-height:1.55;margin-top:13px}
 
-  .site-head{padding:30px 0 8px}
-  .site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+/* ---------- dropdowns ---------- */
+.qa{border-top:1px solid var(--line)}
+.qa details{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;cursor:pointer;padding:15px 40px 15px 0;position:relative;font-weight:600;font-size:16.5px}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"";position:absolute;right:8px;top:50%;width:9px;height:9px;margin-top:-6px;
+  border-right:2px solid var(--plum);border-bottom:2px solid var(--plum);transform:rotate(45deg);transition:transform .22s ease}
+.qa details[open] summary::after{transform:rotate(-135deg);margin-top:-2px}
+.qa summary:hover{color:var(--plum)}
+.qa .ans{padding:0 30px 17px 0;color:var(--dim);font-size:15.5px;line-height:1.6;max-width:74ch}
+.qa .ans b{color:var(--text)}
 
-  .lockup{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
-  .lockup svg{display:block;flex:none}
-  .lockup .word{
-    font-family:Fraunces,Georgia,"Times New Roman",serif;
-    font-weight:700;font-size:23px;letter-spacing:.055em;
-  }
-  .lockup .by{
-    font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
-    display:block;margin-top:1px;
-  }
-  .head-note{
-    font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);
-    text-align:right;
-  }
+/* ---------- principals ---------- */
+.people{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.person{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--plum);border-radius:14px;padding:20px 22px;box-shadow:0 4px 16px rgba(91,42,134,.06)}
+.person .role{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.person h3{font-family:var(--serif);font-weight:600;font-size:20px;margin:7px 0 8px}
+.person p{font-size:15px;line-height:1.55;color:var(--dim)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+.chip{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.02em;color:var(--plum-d);background:var(--ground2);border-radius:999px;padding:5px 11px}
 
-  /* ---------- the rail: a dimension string down the page ---------- */
+/* ---------- close ---------- */
+.close{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px 34px 32px;box-shadow:0 6px 22px rgba(91,42,134,.07)}
+.close h2{max-width:30ch}
+.close p{margin-top:12px;color:var(--dim);max-width:60ch}
+.actions{display:flex;flex-wrap:wrap;gap:11px;align-items:center;margin-top:22px}
+.bebtn{display:inline-block;background:var(--plum);color:#fff;font-family:inherit;font-weight:700;font-size:14.5px;border:1.5px solid var(--plum);border-radius:999px;padding:12px 24px;text-decoration:none;cursor:pointer;line-height:1.2}
+.bebtn:hover{background:var(--plum-d);border-color:var(--plum-d)}
+.bebtn.ghost{background:transparent;color:var(--plum)}
+.bebtn.ghost:hover{background:var(--ground2);color:var(--plum-d);border-color:var(--plum-d)}
+.copied{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--green);opacity:0;transition:opacity .18s ease}
+.copied.on{opacity:1}
+.txt{margin-top:15px;font-family:var(--mono);font-size:12.5px;color:var(--faint)}
+.txt a{color:var(--plum);text-decoration:none}
 
-  .body-grid{display:grid;grid-template-columns:168px minmax(0,1fr);gap:0}
-  .rail{position:relative}
-  .rail::after{
-    content:"";position:absolute;top:0;bottom:0;right:0;width:1px;background:var(--rail);
-  }
-  .col{padding-left:36px;min-width:0}
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);margin-top:30px;padding:24px 0 44px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--faint)}
+footer a{color:var(--plum);text-decoration:none}
+footer a:hover{text-decoration:underline}
 
-  section{position:relative;padding:44px 0}
-  section + section{border-top:1px solid var(--line)}
+/* ---------- motion ----------
+   The reveal is opt-in and only arms itself once JS has run. Without it every
+   element is simply visible: nothing on this page is hidden behind a script. */
+.js .rise{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.js .rise.in{opacity:1;transform:none}
 
-  .tick{
-    position:absolute;left:-36px;top:52px;width:37px;height:1px;background:var(--gold);
-  }
-  .tick::before{
-    content:"";position:absolute;left:0;top:-4px;width:1px;height:9px;background:var(--gold);
-  }
-  .rail-label{
-    position:absolute;right:calc(100% + 50px);top:41px;width:138px;text-align:right;
-    font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:11px;line-height:1.45;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);
-  }
-
-  /* ---------- type ---------- */
-
-  h1,h2,h3{font-family:Fraunces,Georgia,"Times New Roman",serif;font-weight:600;margin:0}
-  h1{font-size:clamp(34px,5.4vw,52px);line-height:1.11;letter-spacing:-.012em}
-  h1 em{font-style:italic;color:var(--plum);font-weight:600}
-  h2{font-size:clamp(25px,3.2vw,31px);line-height:1.2;letter-spacing:-.008em;margin-bottom:14px}
-  h3{font-size:19px;line-height:1.3;margin-bottom:6px}
-  p{margin:0 0 15px}
-  p:last-child{margin-bottom:0}
-  .lede{font-size:19px;color:var(--ink);max-width:63ch}
-  .dim{color:var(--dim)}
-  .prose{max-width:66ch}
-
-  .eyebrow{
-    font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:11.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--plum);
-    margin:0 0 16px;
-  }
-
-  /* ---------- hero ---------- */
-
-  .hero{padding-top:34px;padding-bottom:50px}
-  .hero .tick{top:42px}
-  .hero .rail-label{top:31px}
-  .hero p{margin-top:20px}
-  .strap{
-    margin-top:26px;padding-top:16px;border-top:1px solid var(--line);
-    font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);
-  }
-
-  /* ---------- cards ---------- */
-
-  .cards{display:grid;gap:14px;margin-top:22px}
-  .cards.three{grid-template-columns:repeat(3,1fr)}
-  .cards.two{grid-template-columns:repeat(2,1fr)}
-  .card{
-    background:var(--card);border:1px solid var(--line);border-radius:5px;padding:20px 22px;
-  }
-  .card p{font-size:15.5px;line-height:1.55;color:var(--dim)}
-  .card .kicker{
-    font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);
-    margin:0 0 7px;
-  }
-
-  .principal{border-left:3px solid var(--plum)}
-  .principal .role{
-    font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin:0 0 7px;
-  }
-  .principal .facts{
-    margin-top:12px;padding-top:11px;border-top:1px solid var(--line);
-    font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:12.5px;letter-spacing:.01em;color:var(--ink);line-height:1.85;
-  }
-
-  /* ---------- the six rules ---------- */
-
-  .rules{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:0}
-  .rules li{
-    display:grid;grid-template-columns:22px minmax(0,1fr);gap:14px;
-    padding:13px 0;border-top:1px solid var(--line);align-items:start;
-  }
-  .rules li:last-child{border-bottom:1px solid var(--line)}
-  .rules svg{margin-top:5px}
-  .rules b{font-weight:600}
-  .rules span{color:var(--dim);font-size:16px}
-
-  /* ---------- what it sells ---------- */
-
-  .lines{margin-top:22px;border-top:1px solid var(--line)}
-  .lines .row{
-    display:grid;grid-template-columns:190px minmax(0,1fr);gap:22px;
-    padding:15px 0;border-bottom:1px solid var(--line);
-  }
-  .lines .row .what{
-    font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:600;line-height:1.3;
-  }
-  .lines .row .desc{color:var(--dim);font-size:16px}
-
-  /* ---------- honest note ---------- */
-
-  .honest{
-    background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);
-    border-radius:5px;padding:22px 24px;margin-top:6px;
-  }
-
-  /* ---------- pass it on ---------- */
-
-  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;align-items:center}
-  .btn{
-    display:inline-block;background:var(--plum);color:#fff;text-decoration:none;
-    font-size:15px;font-weight:600;padding:12px 22px;border-radius:4px;border:1px solid var(--plum);
-    cursor:pointer;font-family:inherit;line-height:1.3;
-  }
-  .btn:hover{background:var(--plum-deep);border-color:var(--plum-deep)}
-  .btn.ghost{background:transparent;color:var(--plum);border-color:var(--plum)}
-  .btn.ghost:hover{background:#EFE8F6;color:var(--plum-deep)}
-  .copied{
-    font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);
-    opacity:0;transition:opacity .18s ease;
-  }
-  .copied.on{opacity:1}
-  .url{
-    font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:13.5px;color:var(--dim);margin-top:16px;word-break:break-all;
-  }
-
-  /* ---------- footer ---------- */
-
-  footer{border-top:1px solid var(--line);margin-top:8px;padding:26px 0 46px}
-  footer .wrap{
-    display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:space-between;align-items:baseline;
-    font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-    font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--dim);
-  }
-  footer a{color:var(--plum);text-decoration:none}
-  footer a:hover{text-decoration:underline}
-
-  /* ---------- responsive ---------- */
-
-  @media (max-width:860px){
-    .cards.three{grid-template-columns:1fr}
-    .cards.two{grid-template-columns:1fr}
-    .lines .row{grid-template-columns:1fr;gap:4px}
-  }
-
-  @media (max-width:760px){
-    body{font-size:16px}
-    .wrap{padding:0 20px}
-    .body-grid{grid-template-columns:1fr}
-    .rail{display:none}
-    .col{padding-left:0}
-    section{padding:34px 0}
-    .tick{display:none}
-    .rail-label{
-      position:static;width:auto;text-align:left;margin:0 0 12px;
-      padding-left:16px;border-left:2px solid var(--gold);
-    }
-    .head-note{display:none}
-    .hero{padding-top:22px}
-  }
-
-  @media (prefers-reduced-motion:reduce){
-    *{transition:none !important;animation:none !important}
-  }
-
-  @media print{
-    body{background:#fff}
-    .actions,.head-note{display:none}
-  }
+/* ---------- responsive ---------- */
+@media(max-width:960px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .hubcard{grid-template-columns:1fr}
+  .hubcard .art{max-width:190px}
+}
+@media(max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  section{padding:40px 0}
+  .grid{grid-template-columns:1fr}
+  .people{grid-template-columns:1fr}
+  .hero-top .meta{display:none}
+  .hero-body{padding:26px 0 34px}
+  .stat{min-width:44%}
+  .close{padding:26px 22px 24px}
+  .nfig{padding:16px 14px 13px}
+  .acard .fig .nfa{display:none}
+  /* The two-track figure stops being readable below about 560px, so it scrolls
+     rather than shrinking into illegibility. */
+  .figscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
+  .figscroll svg{min-width:560px}
+  .figscroll+.swipe{display:block}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+  .rise{opacity:1;transform:none}
+}
+@media print{.hero{background:#fff;color:#000}.actions{display:none}}
 </style>
+<script>
+  // Arms the scroll reveal before first paint. If this never runs, the .rise
+  // rules never apply and the page renders in full.
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.documentElement.className+=' js';
+  }
+</script>
 </head>
-
 <body>
 
-<header class="site-head">
-  <div class="wrap">
-    <a class="lockup" href="https://nesohq.com">
-      <!-- The mark is drawn inline, never referenced as a file. Wide plum lens
-           horizontal, narrow gold lens vertical, centre dot ink on light ground. -->
-      <svg width="34" height="34" viewBox="0 0 48 48" role="img" aria-label="NESO">
-        <path d="M2 24 Q24 15.2 46 24 Q24 32.8 2 24 Z" fill="#5B2A86"/>
-        <path d="M24 3 Q28.4 24 24 45 Q19.6 24 24 3 Z" fill="#B8860B"/>
-        <circle cx="24" cy="24" r="2.5" fill="#23272E"/>
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap hero-top">
+    <a class="lockup" href="https://nesohq.com/">
+      <svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true">
+        <rect width="100" height="100" rx="24" fill="#160f1e"/>
+        <path d="M9.09 50 L50 43.18 L90.91 50 L50 56.82 Z" fill="#5B2A86"/>
+        <path d="M50 9.09 L56.82 50 L50 90.91 L43.18 50 Z" fill="#E7B84B"/>
+        <circle cx="50" cy="50" r="5.91" fill="#f2ecf7"/>
       </svg>
-      <span>
-        <span class="word">NESO</span>
-        <span class="by">Advisory and tools</span>
-      </span>
+      <span class="word">NESO</span>
     </a>
-    <div class="head-note">Remote · nationwide<br>Text (901) 295-0322</div>
+    <div class="meta">Remote · nationwide<br><a href="sms:+19012950322">Text (901) 295-0322</a></div>
   </div>
+
+  <div class="wrap hero-body">
+    <p class="eyebrow">Somebody sent you this</p>
+    <h1>The cheap answer,<br><em>before</em> the expensive decision.</h1>
+    <p>Free tools that give a real answer. Written research on a named parcel. Senior judgement,
+      quoted before it starts. Pick the line below that sounds like you.</p>
+    <div class="stats">
+      <div class="stat"><b>8</b><span>Tools, free<br>in a browser</span></div>
+      <div class="stat"><b>35</b><span>Public bid sources<br>crawled daily</span></div>
+      <div class="stat"><b>6</b><span>Federal data layers<br>screened by address</span></div>
+      <div class="stat"><b>17 yrs</b><span>Of land-use judgement<br>behind every release</span></div>
+    </div>
+  </div>
+
+  <svg class="hero-curve" viewBox="0 0 1440 34" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 34 L0 20 Q 360 0 720 14 T 1440 12 L1440 34 Z" fill="#F7F4FB"/>
+  </svg>
 </header>
 
-<div class="wrap">
-<div class="body-grid">
-  <div class="rail" aria-hidden="true"></div>
-  <div class="col">
+<!-- ================= THE SIX + THE HUB ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Six ways in, and one door that opens on all of them</p>
+      <h2>Which of these is about to happen to you?</h2>
+      <p>Each card names the expensive wrong first move as well as the right one, because saying
+        the wrong one out loud is what makes the right one believable.</p>
+    </div>
 
-    <!-- ================= HERO ================= -->
-    <section class="hero">
-      <span class="tick"></span>
-      <div class="rail-label">An introduction</div>
-      <p class="eyebrow">Somebody sent you this</p>
-      <h1>The cheap answer,<br><em>before</em> the expensive decision.</h1>
-      <p class="lede">NESO is two people who sell senior judgement about land and business —
-        and give away the software that finds the people who need it. Eight tools that run free
-        in a browser, written research on a named parcel, and advisory work quoted before it
-        starts.</p>
-      <p class="lede dim">This page is the short version: what NESO is, why we started it, and
-        what to do with it if it is useful to somebody you know. It is not a sales page, and
-        there are no prices on it — those live on the site, next to the thing they price.</p>
-      <div class="strap">Groundwork for what you build</div>
-    </section>
+    <div class="grid">
 
-    <!-- ================= WHY ================= -->
-    <section>
-      <span class="tick"></span>
-      <div class="rail-label">Why it exists</div>
+      <!-- DEVELOPER -->
+      <a class="acard rise" href="https://nesohq.com/landing-developer.html">
+        <span class="who">Real-estate developer</span>
+        <h3>Test the deal before you spend money proving it out.</h3>
+        <div class="fig">
+          <svg viewBox="0 0 200 84" role="img" aria-label="A parcel outline with a buildable envelope set in from the boundary and a footprint inside it.">
+            <rect x="8" y="9" width="184" height="66" rx="3" fill="none" stroke="#8A7F99" stroke-width="1.2"/>
+            <rect x="26" y="20" width="148" height="44" rx="2" fill="none" stroke="#B8860B" stroke-width="1.3" stroke-dasharray="5 4"/>
+            <rect x="44" y="30" width="76" height="24" rx="2" fill="#5B2A86"/>
+            <rect x="120" y="30" width="34" height="24" rx="2" fill="#BE93DE" opacity=".55"/>
+            <text x="192" y="82" class="nfa" text-anchor="end">Buildable envelope</text>
+          </svg>
+        </div>
+        <p class="wrongmove">
+          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3 L11 11 M11 3 L3 11" stroke="#B91C1C" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Not a full feasibility study before the parcel is even under contract.</span>
+        </p>
+        <span class="go">See the developer page <span class="arw">&rarr;</span></span>
+      </a>
+
+      <!-- FOUNDER -->
+      <a class="acard rise" href="https://nesohq.com/landing-founder.html">
+        <span class="who">Founder / small business</span>
+        <h3>Start with the free version. Buy the thing you actually need.</h3>
+        <div class="fig">
+          <svg viewBox="0 0 200 84" role="img" aria-label="A cost line and a revenue line crossing at a break-even point partway along the timeline.">
+            <line x1="10" y1="70" x2="192" y2="70" stroke="#D9D0E6" stroke-width="1"/>
+            <path d="M10 34 L192 30" fill="none" stroke="#8A7F99" stroke-width="2"/>
+            <path d="M10 68 L192 12" fill="none" stroke="#5B2A86" stroke-width="2.4"/>
+            <circle cx="122" cy="33" r="4.6" fill="#0E8A6E"/>
+            <circle cx="122" cy="33" r="9" fill="none" stroke="#0E8A6E" stroke-width="1.2" opacity=".45"/>
+            <text x="10" y="20" class="nfa">Fixed costs</text>
+            <text x="192" y="82" class="nfa" text-anchor="end">Break-even</text>
+          </svg>
+        </div>
+        <p class="wrongmove">
+          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3 L11 11 M11 3 L3 11" stroke="#B91C1C" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Not a thirty-page plan written before the model clears break-even.</span>
+        </p>
+        <span class="go">See the founder page <span class="arw">&rarr;</span></span>
+      </a>
+
+      <!-- NONPROFIT -->
+      <a class="acard rise" href="https://nesohq.com/landing-nonprofit.html">
+        <span class="who">Nonprofit</span>
+        <h3>Find the funding where your odds are actually real.</h3>
+        <div class="fig">
+          <svg viewBox="0 0 200 84" role="img" aria-label="Seven funding channels scored, with three scoring high and four scoring low.">
+            <rect x="10" y="26" width="20" height="44" rx="3" fill="#5B2A86"/>
+            <rect x="36" y="14" width="20" height="56" rx="3" fill="#5B2A86"/>
+            <rect x="62" y="38" width="20" height="32" rx="3" fill="#7A3FA6"/>
+            <rect x="88" y="54" width="20" height="16" rx="3" fill="#D9D0E6"/>
+            <rect x="114" y="58" width="20" height="12" rx="3" fill="#D9D0E6"/>
+            <rect x="140" y="61" width="20" height="9" rx="3" fill="#D9D0E6"/>
+            <rect x="166" y="63" width="20" height="7" rx="3" fill="#D9D0E6"/>
+            <line x1="10" y1="70" x2="190" y2="70" stroke="#8A7F99" stroke-width="1"/>
+            <text x="10" y="82" class="nfa">Real odds</text>
+            <text x="190" y="82" class="nfa" text-anchor="end">Not worth a week</text>
+          </svg>
+        </div>
+        <p class="wrongmove">
+          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3 L11 11 M11 3 L3 11" stroke="#B91C1C" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Not four days spent on the application you were never going to win.</span>
+        </p>
+        <span class="go">See the nonprofit page <span class="arw">&rarr;</span></span>
+      </a>
+
+      <!-- MUNICIPALITY -->
+      <a class="acard rise" href="https://nesohq.com/landing-municipality.html">
+        <span class="who">Municipality / agency</span>
+        <h3>The grant work your staff does not have time to do.</h3>
+        <div class="fig">
+          <svg viewBox="0 0 200 84" role="img" aria-label="A deadline running out while staff hours stay flat, with the deadline marker near the end.">
+            <rect x="10" y="18" width="180" height="13" rx="6.5" fill="#EFE9F6"/>
+            <rect x="10" y="18" width="146" height="13" rx="6.5" fill="#B8860B"/>
+            <line x1="156" y1="10" x2="156" y2="39" stroke="#B91C1C" stroke-width="2"/>
+            <text x="150" y="8" class="nfa" text-anchor="end" fill="#B91C1C">Deadline</text>
+            <rect x="10" y="46" width="180" height="13" rx="6.5" fill="#EFE9F6"/>
+            <rect x="10" y="46" width="42" height="13" rx="6.5" fill="#5B2A86"/>
+            <text x="10" y="76" class="nfa">Hours staff actually have</text>
+          </svg>
+        </div>
+        <p class="wrongmove">
+          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3 L11 11 M11 3 L3 11" stroke="#B91C1C" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Not a self-serve tool nobody on staff has hours to run.</span>
+        </p>
+        <span class="go">See the municipality page <span class="arw">&rarr;</span></span>
+      </a>
+
+      <!-- CONTRACTOR -->
+      <a class="acard rise" href="https://nesohq.com/landing-contractor.html">
+        <span class="who">Contractor / bidder</span>
+        <h3>See the solicitations, then get help writing the one worth winning.</h3>
+        <div class="fig">
+          <svg viewBox="0 0 200 84" role="img" aria-label="A list of open solicitations with one singled out and marked as the one worth bidding.">
+            <rect x="10" y="8" width="128" height="11" rx="3" fill="#D9D0E6"/>
+            <rect x="10" y="24" width="152" height="11" rx="3" fill="#D9D0E6"/>
+            <rect x="10" y="40" width="180" height="15" rx="4" fill="#5B2A86"/>
+            <path d="M168 47.5 L173 52 L182 42" fill="none" stroke="#E7B84B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="10" y="60" width="112" height="11" rx="3" fill="#D9D0E6"/>
+            <text x="10" y="82" class="nfa">35 boards, crawled daily</text>
+          </svg>
+        </div>
+        <p class="wrongmove">
+          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3 L11 11 M11 3 L3 11" stroke="#B91C1C" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Not assuming the board writes the bid. They are different products.</span>
+        </p>
+        <span class="go">See the contractor page <span class="arw">&rarr;</span></span>
+      </a>
+
+      <!-- ENERGY -->
+      <a class="acard rise" href="https://nesohq.com/landing-energy.html">
+        <span class="who">Energy / large load</span>
+        <h3>A stated power go / no-go, in five business days.</h3>
+        <div class="fig">
+          <svg viewBox="0 0 200 84" role="img" aria-label="Five stages of a large-load project, with the interconnection queue far longer than every stage the developer controls.">
+            <rect x="10" y="8" width="26" height="9" rx="4.5" fill="#5B2A86"/>
+            <rect x="10" y="22" width="34" height="9" rx="4.5" fill="#5B2A86"/>
+            <rect x="10" y="36" width="164" height="9" rx="4.5" fill="#E7B84B"/>
+            <rect x="10" y="50" width="46" height="9" rx="4.5" fill="#5B2A86"/>
+            <rect x="10" y="64" width="82" height="9" rx="4.5" fill="#5B2A86"/>
+            <text x="180" y="44" class="nfa" text-anchor="end" fill="#B8860B">The queue</text>
+            <text x="10" y="82" class="nfa">Everything you control</text>
+          </svg>
+        </div>
+        <p class="wrongmove">
+          <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3 L11 11 M11 3 L3 11" stroke="#B91C1C" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Not a free tool. This one is not a self-serve question.</span>
+        </p>
+        <span class="go">See the energy page <span class="arw">&rarr;</span></span>
+      </a>
+
+      <!-- HUB -->
+      <a class="hubcard rise" href="https://nesohq.com/">
+        <div>
+          <span class="who eyebrow">Or skip the sorting</span>
+          <h3>Everything NESO sells, on one page, with what it costs.</h3>
+          <p>The tools, the four research reports, advisory in credits, the memberships and the
+            terms — priced in the open, in the order most people move through them.</p>
+          <span class="go">Go to nesohq.com <span class="arw">&rarr;</span></span>
+        </div>
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 200 120">
+            <g opacity=".85">
+              <rect x="6" y="10" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
+              <rect x="52" y="10" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
+              <rect x="6" y="84" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
+              <rect x="52" y="84" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
+              <rect x="152" y="10" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
+              <rect x="152" y="84" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
+              <rect x="152" y="47" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
+              <rect x="6" y="47" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
+            </g>
+            <g stroke="#5B2A86" stroke-width="1" opacity=".55">
+              <path d="M46 23 L100 60 M92 23 L100 60 M46 97 L100 60 M92 97 L100 60 M152 23 L100 60 M152 97 L100 60 M152 60 L100 60 M46 60 L100 60"/>
+            </g>
+            <path d="M64 60 L100 53 L136 60 L100 67 Z" fill="#5B2A86"/>
+            <path d="M100 24 L106 60 L100 96 L94 60 Z" fill="#E7B84B"/>
+            <circle cx="100" cy="60" r="5.2" fill="#f2ecf7"/>
+          </svg>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE FIGURE ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Why NESO exists at all</p>
       <h2>The order these things usually happen in is backwards.</h2>
-      <div class="prose">
-        <p>A developer signs a purchase agreement and then finds out the parcel is not entitled
-          for what they intended. A founder writes a thirty-page business plan before checking
-          whether the model clears break-even. A municipality lets a funding deadline pass
-          because nobody on staff had two weeks to write the application.</p>
-        <p>None of those are hard questions. They are questions that arrive late, because the
-          people who can answer them bill by the hour — so the cheap early question costs a
-          retainer conversation, and people skip it and pay for it later.</p>
-      </div>
-      <div class="cards three">
-        <div class="card">
-          <p class="kicker">The gap</p>
-          <p>Between a spreadsheet template and a ten-thousand-dollar consulting engagement
-            there is almost nothing. That gap is the whole business.</p>
-        </div>
-        <div class="card">
-          <p class="kicker">What software misses</p>
-          <p>A calculator returns a number. What somebody actually needs is a person with
-            standing saying whether that number means go or stop.</p>
-        </div>
-        <div class="card">
-          <p class="kicker">So the tools are free</p>
-          <p>Every tool shows the complete analysis on your own numbers. Paying adds the
-            printable exhibit, the editing and the depth — never the insight.</p>
-        </div>
-      </div>
-    </section>
+    </div>
+    <div class="nfig rise">
+      <div class="figscroll">
+      <svg viewBox="0 0 760 156" role="img" aria-label="Two tracks compared. In the usual order money is committed and spent before the constraint is found, and the last stage is re-planning or walking away. In the cheaper order the question is asked first, a go or no-go is stated, and only then is money committed.">
+        <text x="0" y="12" class="nfc">The usual order</text>
+        <text x="758" y="12" class="nfc" text-anchor="end">The answer arrives last</text>
 
-    <!-- ================= WHAT ================= -->
-    <section>
-      <span class="tick"></span>
-      <div class="rail-label">What it is</div>
-      <h2>Four things, and they are not interchangeable.</h2>
-      <p class="prose dim">Somebody who cannot tell which of these they are buying will buy none
-        of them, so here they are separated. What each one costs is on the site.</p>
-      <div class="lines">
-        <div class="row">
-          <div class="what">Eight tools</div>
-          <div class="desc">Free in a browser, no account and no email wall. GrantFit, PlanForge,
-            MarketFit, MarketScope, BuildBrief, CapStack, ProForma and SiteShaper. A one-time
-            unlock adds the artifact and the depth, and is owned forever. Each one installs to a
-            phone or a desktop.</div>
-        </div>
-        <div class="row">
-          <div class="what">Bird's Eye research</div>
-          <div class="desc">Written research on a named parcel at a fixed price, cited to zoning
-            codes, GIS layers, overlays and public records, delivered as a PDF in business days
-            rather than weeks.</div>
-        </div>
-        <div class="row">
-          <div class="what">Advisory in credits</div>
-          <div class="desc">Work NESO does for you — grant writing, business plans, market
-            research, bid proposals, development feasibility — scoped and quoted in writing
-            before anything starts.</div>
-        </div>
-        <div class="row">
-          <div class="what">Twenty minutes with Charles</div>
-          <div class="desc">A live conversation on Google Meet when the question is narrow and
-            the answer decides something. Nothing is written up; the transcript is the
-            deliverable.</div>
-        </div>
-      </div>
-      <p class="url">Everything, with what it costs: <a href="https://nesohq.com">nesohq.com</a></p>
-    </section>
+        <rect x="0" y="24" width="180" height="38" rx="7" fill="#8A7F99"/>
+        <text x="16" y="48" class="nfw">Commit</text>
+        <rect x="186" y="24" width="180" height="38" rx="7" fill="#8A7F99" opacity=".76"/>
+        <text x="202" y="48" class="nfw">Design and spend</text>
+        <rect x="372" y="24" width="196" height="38" rx="7" fill="#8A7F99" opacity=".54"/>
+        <text x="388" y="48" class="nfw">Hit the constraint</text>
+        <rect x="574" y="24" width="184" height="38" rx="7" fill="none" stroke="#B91C1C" stroke-width="2" stroke-dasharray="6 5"/>
+        <text x="590" y="48" class="nfl" fill="#B91C1C">Re-plan, or walk</text>
 
-    <!-- ================= WHO ================= -->
-    <section>
-      <span class="tick"></span>
-      <div class="rail-label">Who you would<br>be dealing with</div>
+        <text x="0" y="98" class="nfc">The cheaper order</text>
+        <text x="758" y="98" class="nfc" text-anchor="end" fill="#0E8A6E">The answer arrives first</text>
+
+        <rect x="0" y="110" width="150" height="38" rx="7" fill="#5B2A86"/>
+        <text x="16" y="134" class="nfw">Ask the question</text>
+        <rect x="156" y="110" width="196" height="38" rx="7" fill="#7A3FA6"/>
+        <text x="172" y="134" class="nfw">A stated go / no-go</text>
+        <rect x="358" y="110" width="400" height="38" rx="7" fill="#0E8A6E" opacity=".14" stroke="#0E8A6E" stroke-width="1.4"/>
+        <text x="374" y="134" class="nfl" fill="#0E8A6E">Spend — on a deal that survived it</text>
+      </svg>
+      </div>
+      <p class="swipe">Swipe to see the whole figure</p>
+      <p class="nfcap">A land-use consultant bills by the hour, so the cheap early question costs a
+        retainer conversation — and people skip it. Between a spreadsheet template and a
+        five-figure engagement there was almost nothing. That gap is the whole business.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STRAIGHT ANSWERS ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Straight answers</p>
+      <h2>The things people ask before they trust any of it.</h2>
+    </div>
+    <div class="qa rise">
+      <details>
+        <summary>What does "free" actually include?</summary>
+        <p class="ans">The complete analysis, on your own numbers — every section, the real figures,
+          the full visual. No account, no email wall, no trial that expires. Paying adds the
+          printable exhibit, the editing and the depth. <b>It never adds the insight.</b> If a
+          stranger would not call the free result finished, the paid version does not deserve to
+          sell.</p>
+      </details>
+      <details>
+        <summary>How does NESO charge?</summary>
+        <p class="ans">Three ways, and they are not interchangeable. Tools are free with a one-time
+          unlock that is owned forever. Research on a named parcel is a fixed price. Advisory work
+          is quoted in credits at a published rate before anything starts. <b>What each one costs
+          is on the site, next to the thing it prices</b> — deliberately not restated here, because
+          a price with two homes eventually disagrees with itself.</p>
+      </details>
+      <details>
+        <summary>When does the clock start?</summary>
+        <p class="ans">At scope confirmation, never at checkout. You pay, we ask for three things —
+          the parcel or address, the jurisdiction, and the decision you are trying to make — and
+          the promised date is set when the last one lands. If we are waiting on you, the clock
+          pauses day for day, and a pause is never counted as a penalty day.</p>
+      </details>
+      <details>
+        <summary>Who actually looks at the work?</summary>
+        <p class="ans">Charles reviews and releases every real-estate deliverable NESO produces.
+          That is in the operating agreement, not just in practice. It caps how much NESO can take
+          on, and the cap is the point — a buyer is paying for somebody senior having looked.</p>
+      </details>
+      <details>
+        <summary>Can you turn it around faster?</summary>
+        <p class="ans">Rush halves the turnaround with a one-day floor, capped at <b>two slots per
+          week firm-wide</b>. When the week is full the option is refused rather than queued. That
+          cap is what makes the promise real.</p>
+      </details>
+      <details>
+        <summary>How new is NESO?</summary>
+        <p class="ans">New. The entity, the bank account, the tools, the reports and the machinery
+          underneath them are built and live; what does not exist yet is years of closed
+          engagements to point at, and saying otherwise would be the fastest way to lose anyone
+          worth talking to. <b>What is behind the work is seventeen years of somebody else's</b> —
+          Charles has been doing this on projects and inside agencies since long before NESO.</p>
+      </details>
+      <details>
+        <summary>What if none of the six sound like me?</summary>
+        <p class="ans">Say what decision you are trying to make rather than which product you want.
+          A principal reads every enquiry and replies within a business day. <b>If the honest answer
+          is a free tool, that is the answer you will get</b> — which is why the tools are free in
+          the first place.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHO ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rise">
+      <p class="eyebrow">Who you would be dealing with</p>
       <h2>Two people. One of them looks at everything that ships.</h2>
-      <div class="cards two">
-        <div class="card principal">
-          <p class="role">Reviewing principal · real estate and land</p>
-          <h3>Charles L. Finkley, Jr., MPA</h3>
-          <p>Seventeen years in land use, entitlements and economic development. He reviews and
-            releases every real-estate deliverable NESO produces — that is in the operating
-            agreement, not just in practice.</p>
-          <div class="facts">
-            10,000+ permits<br>
-            $100M+ in incentives secured<br>
-            484 MW+ of energy projects sited
-          </div>
-        </div>
-        <div class="card principal">
-          <p class="role">Manager and sole member</p>
-          <h3>Mallory Bailey</h3>
-          <p>Runs delivery, the storefront, client operations and the back office. Built and
-            operates the platform the firm runs on — the counting, the fulfilment and the
-            follow-ups happen without a person, which is why two people can carry this much
-            catalogue.</p>
-          <div class="facts">
-            35 public bid sources, crawled daily<br>
-            6 federal data layers, screened by address<br>
-            31 purchase and public links, checked daily
-          </div>
+    </div>
+    <div class="people">
+      <div class="person rise">
+        <p class="role">Reviewing principal · real estate and land</p>
+        <h3>Charles L. Finkley, Jr., MPA</h3>
+        <p>Seventeen years in land use, entitlements and economic development. He reviews and
+          releases every real-estate deliverable NESO produces.</p>
+        <div class="chips">
+          <span class="chip">10,000+ permits</span>
+          <span class="chip">$100M+ incentives secured</span>
+          <span class="chip">484 MW+ sited</span>
         </div>
       </div>
-    </section>
-
-    <!-- ================= HOW ================= -->
-    <section>
-      <span class="tick"></span>
-      <div class="rail-label">How the work goes</div>
-      <h2>Six things that are true of every engagement.</h2>
-      <ul class="rules">
-        <li>
-          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9.4 L7 13.2 L15 4.8" fill="none" stroke="#0E8A6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span><b>A quote comes first.</b> Anything scoped is quoted in writing before it
-            starts. A payment link is not a quote.</span>
-        </li>
-        <li>
-          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9.4 L7 13.2 L15 4.8" fill="none" stroke="#0E8A6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span><b>The clock starts at scope, not at checkout.</b> We ask for three things — the
-            parcel or address, the jurisdiction, and the decision you are trying to make — and
-            the promised date is set when the last one arrives.</span>
-        </li>
-        <li>
-          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9.4 L7 13.2 L15 4.8" fill="none" stroke="#0E8A6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span><b>Pauses are day for day.</b> If we are waiting on you the clock stops, and a
-            pause is never counted as a penalty day.</span>
-        </li>
-        <li>
-          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9.4 L7 13.2 L15 4.8" fill="none" stroke="#0E8A6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span><b>A principal releases it.</b> Nothing ships without senior review. That caps
-            how much NESO can take on, and the cap is the point.</span>
-        </li>
-        <li>
-          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9.4 L7 13.2 L15 4.8" fill="none" stroke="#0E8A6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span><b>Rush is capped firm-wide.</b> Two slots a week across the whole firm. When the
-            week is full the option is refused rather than queued — that cap is what makes the
-            promise real.</span>
-        </li>
-        <li>
-          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9.4 L7 13.2 L15 4.8" fill="none" stroke="#0E8A6E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span><b>Sources are named.</b> Research comes from zoning codes, GIS layers, overlays
-            and public records, cited so you can check them yourself.</span>
-        </li>
-      </ul>
-      <p class="prose dim" style="margin-top:18px">Prices are published rather than negotiated
-        privately, because a private discount becomes the price everyone hears about. Refund
-        terms are stated on each listing.</p>
-    </section>
-
-    <!-- ================= HONEST ================= -->
-    <section>
-      <span class="tick"></span>
-      <div class="rail-label">The part most<br>pages leave out</div>
-      <h2>NESO is new, and the catalogue is older than the customer list.</h2>
-      <div class="honest prose">
-        <p>The entity, the bank account, the tools, the reports and the machinery underneath them
-          are all built and live. What NESO does not have yet is years of closed engagements to
-          point at, and saying otherwise would be the fastest way to lose anyone worth talking
-          to.</p>
-        <p class="dim">What is behind the work is seventeen years of somebody else's — Charles
-          has been doing this inside agencies and on projects since long before NESO existed, and
-          every real-estate deliverable goes past him before it goes anywhere.</p>
+      <div class="person rise">
+        <p class="role">Manager and sole member</p>
+        <h3>Mallory Bailey</h3>
+        <p>Runs delivery, the storefront, client operations and the back office. Built and operates
+          the platform underneath all of it — the counting, the fulfilment and the follow-ups
+          happen without a person.</p>
+        <div class="chips">
+          <span class="chip">35 bid sources, daily</span>
+          <span class="chip">31 links checked daily</span>
+          <span class="chip">6 federal layers</span>
+        </div>
       </div>
-      <p class="prose dim" style="margin-top:18px">The other true thing worth saying out loud:
-        the free tools are the demo, so they are finished work rather than a teaser. If the
-        honest answer to your question is a free tool, that is the answer you will get.</p>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- ================= PASS IT ON ================= -->
-    <section>
-      <span class="tick"></span>
-      <div class="rail-label">Passing it on</div>
-      <h2>If somebody you know is about to spend money proving something out, send them this.</h2>
-      <div class="prose">
-        <p>That is the whole ask. No referral form, no sign-up, nothing to fill in. Forward the
-          link to one person who is about to buy a parcel, write a plan, chase a grant or bid a
-          job, and let them decide whether any of it is for them.</p>
-        <p>If it is you rather than somebody you know: say what decision you are trying to make
-          rather than which product you want, and a principal replies within a business day.</p>
-      </div>
+<!-- ================= CLOSE ================= -->
+<section>
+  <div class="wrap">
+    <div class="close rise">
+      <p class="eyebrow" style="color:var(--gold-d)">Passing it on</p>
+      <h2>Know somebody about to spend money proving something out?</h2>
+      <p>Send them this page. No referral form, nothing to fill in — just the link, to one person
+        about to buy a parcel, write a plan, chase a grant or bid a job.</p>
       <div class="actions">
-        <a class="btn" href="https://nesohq.com?source=hello">Tell us what you are deciding</a>
-        <button class="btn ghost" type="button" id="copy">Copy this link</button>
+        <a class="bebtn" href="https://neso-queue.nesoai-us.workers.dev/form/intake?source=hello">Tell us what you are deciding</a>
+        <button class="bebtn ghost" type="button" id="copy">Copy this link</button>
         <span class="copied" id="copied" role="status" aria-live="polite">Copied</span>
       </div>
-      <p class="url">nesohq.com/hello.html</p>
-    </section>
-
+      <p class="txt">nesohq.com/hello.html · or text <a href="sms:+19012950322">(901) 295-0322</a></p>
+    </div>
   </div>
-</div>
-</div>
+</section>
 
 <footer>
   <div class="wrap">
     <span>NESO · advisory and tools for business and land</span>
     <span>Remote · nationwide</span>
-    <span><a href="https://nesohq.com">nesohq.com</a> · Text (901) 295-0322</span>
+    <span><a href="https://nesohq.com/">nesohq.com</a> · <a href="https://partners.nesohq.com/">partners.nesohq.com</a></span>
   </div>
 </footer>
 
 <script>
-  (function(){
-    var b=document.getElementById('copy'), f=document.getElementById('copied');
-    if(!b) return;
-    b.addEventListener('click', function(){
+(function(){
+  var b=document.getElementById('copy'), f=document.getElementById('copied');
+  if(b){
+    b.addEventListener('click',function(){
       var url='https://nesohq.com/hello.html';
-      var done=function(){ f.classList.add('on'); setTimeout(function(){f.classList.remove('on');},2200); };
-      if(navigator.clipboard && navigator.clipboard.writeText){
-        navigator.clipboard.writeText(url).then(done, function(){ b.textContent='nesohq.com/hello.html'; });
-      } else {
-        b.textContent='nesohq.com/hello.html';
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(url).then(function(){
+          f.classList.add('on');setTimeout(function(){f.classList.remove('on');},2200);
+        },function(){b.textContent='nesohq.com/hello.html';});
+      } else { b.textContent='nesohq.com/hello.html'; }
+    });
+  }
+  var els=document.querySelectorAll('.rise');
+  if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('in');});
+    return;
+  }
+  var io=new IntersectionObserver(function(rows){
+    rows.forEach(function(r,i){
+      if(r.isIntersecting){
+        var el=r.target;
+        setTimeout(function(){el.classList.add('in');}, Math.min(i,5)*55);
+        io.unobserve(el);
       }
     });
-  })();
+  },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(function(e){io.observe(e);});
+})();
 </script>
-
 </body>
 </html>
