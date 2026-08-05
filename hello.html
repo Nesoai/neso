@@ -93,6 +93,15 @@ img{max-width:100%;display:block}
 }
 .hmark{perspective:700px;position:relative;display:inline-block;margin-bottom:14px}
 .hmark svg{transform-origin:50% 50%;transform-style:preserve-3d;animation:nesospin 11s ease-in-out infinite;display:block}
+/* Wide viewports move the mark out of the text column and into the empty space
+   to the right of the paragraphs, so it does not sit directly under the header
+   lockup and read as a second logo. Below 900px there is no such space, so it
+   returns to the normal flow above the eyebrow exactly as before. */
+@media(min-width:900px){
+  .hero-body{position:relative}
+  .hero-body .hmark{position:absolute;right:26px;top:48%;transform:translateY(-50%);margin-bottom:0}
+  .hero-body .hmark svg{width:96px;height:96px}
+}
 .spk{position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;background:#E7B84B;
   color:#E7B84B;opacity:0;pointer-events:none;animation:spkfly 3.2s ease-out infinite;
   box-shadow:0 0 6px 1px currentColor}
