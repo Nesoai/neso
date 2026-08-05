@@ -122,6 +122,9 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.4vw,35px);lin
 .person .role{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-d)}
 .person h3{font-family:var(--serif);font-weight:600;font-size:20px;margin:6px 0 7px}
 .person p{font-size:15.5px;line-height:1.5;color:var(--dim)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.chip{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--plum-d);
+  background:var(--ground2);border-radius:999px;padding:4px 10px}
 .person .prof{margin-top:10px}
 .person .prof a{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.04em;
   text-transform:uppercase;color:var(--plum);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
@@ -191,6 +194,43 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.4vw,35px);lin
 #which{padding-bottom:12px}
 #seeall{padding-top:12px}
 
+.sharebar{display:flex;flex-wrap:wrap;gap:20px 28px;align-items:center;justify-content:space-between;
+  background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 30px;
+  box-shadow:0 4px 16px rgba(91,42,134,.07)}
+.sharebar h2{font-size:clamp(23px,2.6vw,28px);margin-top:8px}
+.sharebar p{margin-top:9px;color:var(--dim);max-width:52ch;font-size:15.5px}
+.shareact{display:flex;align-items:center;gap:12px;flex:none}
+.bebtn{display:inline-block;background:var(--plum);color:#fff;font-family:inherit;font-weight:700;
+  font-size:15px;border:1.5px solid var(--plum);border-radius:999px;padding:13px 26px;
+  text-decoration:none;cursor:pointer;line-height:1.2}
+.bebtn:hover{background:var(--plum-d);border-color:var(--plum-d)}
+@media(max-width:640px){.sharebar{padding:22px 20px}.shareact{width:100%}}
+
+
+/* the mark in the closing card: tiles blink on in turn, the wires pull toward
+   the centre, and the two lenses breathe against each other. Everything stops
+   under prefers-reduced-motion. */
+.hubart .tiles rect{fill:#2B1E40;stroke:#3A2B4C;opacity:.55;animation:tileon 6s ease-in-out infinite}
+.hubart .tiles rect:nth-child(1){animation-delay:0s}
+.hubart .tiles rect:nth-child(2){animation-delay:.4s}
+.hubart .tiles rect:nth-child(3){animation-delay:.8s}
+.hubart .tiles rect:nth-child(4){animation-delay:1.2s}
+.hubart .tiles rect:nth-child(5){animation-delay:1.6s}
+.hubart .tiles rect:nth-child(6){animation-delay:2s}
+.hubart .tiles rect:nth-child(7){animation-delay:2.4s}
+.hubart .tiles rect:nth-child(8){animation-delay:2.8s}
+@keyframes tileon{0%,70%,100%{opacity:.4}12%{opacity:1;stroke:#5B2A86}}
+.hubart .wires path{stroke:#5B2A86;stroke-width:1;fill:none;opacity:.5;
+  stroke-dasharray:4 6;animation:pull 3.4s linear infinite}
+@keyframes pull{to{stroke-dashoffset:-20}}
+.hubart .lens-h{transform-origin:100px 60px;animation:breathH 4s ease-in-out infinite}
+.hubart .lens-v{transform-origin:100px 60px;animation:breathV 4s ease-in-out infinite}
+@keyframes breathH{0%,100%{transform:scaleX(1)}50%{transform:scaleX(1.1)}}
+@keyframes breathV{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.12)}}
+.hubart .dot{animation:glow 4s ease-in-out infinite}
+@keyframes glow{0%,100%{r:5.2;opacity:1}50%{r:6.4;opacity:.85}}
+.hubcard:hover .hubart .wires path{animation-duration:1.4s;opacity:.85}
+
 /* ---------- questions ---------- */
 .qa{border-top:1px solid var(--line);max-width:80ch}
 .qa details{border-bottom:1px solid var(--line)}
@@ -247,6 +287,8 @@ footer a:hover{text-decoration:underline}
   *{transition:none!important}
   .markanim .sp{animation:none;opacity:0}
   .markanim .core{animation:none}
+  .hubart *{animation:none!important}
+  .hubart .tiles rect{opacity:.75}
   .js .rise{opacity:1;transform:none}
 }
 @media print{.hero{background:#fff;color:#000}.actions{display:none}}
@@ -316,24 +358,40 @@ footer a:hover{text-decoration:underline}
           <h3>Charles L. Finkley, Jr., MPA</h3>
           <p>Charles has worked on land and building projects for seventeen years. He reads and
             approves every land report before it goes out.</p>
+          <div class="chips">
+            <span class="chip">10,000+ permits</span>
+            <span class="chip">$100M+ incentives secured</span>
+            <span class="chip">484 MW+ sited</span>
+          </div>
           <p class="prof"><a href="https://www.linkedin.com/in/charlesfinkleyjr" target="_blank" rel="noopener">LinkedIn &rarr;</a></p>
         </div>
       </div>
       <div class="person rise">
         <img class="ph" src="/img/mallory-picture.jpg" width="92" height="92" loading="lazy"
-             alt="Mallory Bailey">
+             alt="Mallory Bailey-Finkley">
         <div>
           <p class="role">Principal · business and technology</p>
-          <h3>Mallory Bailey</h3>
-          <p>Mallory runs the work, the store and the clients. She built the software that NESO
-            runs on, and she answers her own messages.</p>
+          <h3>Mallory Bailey-Finkley</h3>
+          <p>Mallory has worked in real estate development since 2005, on the private side, with
+            contractors, engineers and architects on jobs large and small. At NESO she runs the
+            work, the store and the clients, and she built the software NESO runs on.</p>
+          <div class="chips">
+            <span class="chip">Project engineer</span>
+            <span class="chip">Project manager</span>
+            <span class="chip">Principal planner</span>
+            <span class="chip">Environmental scientist</span>
+            <span class="chip">LEED Green Associate</span>
+            <span class="chip">Construction document technologist</span>
+            <span class="chip">Business strategist</span>
+            <span class="chip">Real estate agent</span>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="why rise">
-      <p>They started NESO in 2026. Both had watched the same thing happen for years: people spend
-        a great deal of money before they ask one small question. <b>NESO answers that question
+      <p>Mallory and Charles are married. They started NESO in 2026, after watching the same thing
+        happen for years: people spend a great deal of money before they ask one small question. <b>NESO answers that question
         early, at an economical rate, with real tools you can use yourself.</b></p>
     </div>
   </div>
@@ -491,6 +549,24 @@ footer a:hover{text-decoration:underline}
   </div>
 </section>
 
+<!-- ================= SHARE ================= -->
+<section id="share">
+  <div class="wrap">
+    <div class="sharebar rise">
+      <div>
+        <p class="eyebrow" style="color:var(--gold-d)">Pass it on</p>
+        <h2>Know somebody this would help?</h2>
+        <p>Send them this page. Finding out early costs them nothing, and it is a lot cheaper
+          than finding out late.</p>
+      </div>
+      <div class="shareact">
+        <button class="bebtn" type="button" id="copy2">Share this page</button>
+        <span class="copied" id="copied2" role="status" aria-live="polite">Link copied</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= SEE ALL OF IT ================= -->
 <section id="seeall">
   <div class="wrap">
@@ -504,23 +580,28 @@ footer a:hover{text-decoration:underline}
           <span class="go">Go to nesohq.com <span class="arw">&rarr;</span></span>
         </div>
         <div class="art" aria-hidden="true">
-          <svg viewBox="0 0 200 120">
-            <g opacity=".85">
-              <rect x="6" y="10" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
-              <rect x="52" y="10" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
-              <rect x="6" y="84" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
-              <rect x="52" y="84" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
-              <rect x="152" y="10" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
-              <rect x="152" y="84" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
-              <rect x="152" y="47" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
-              <rect x="6" y="47" width="40" height="26" rx="5" fill="#2B1E40" stroke="#3A2B4C"/>
+          <svg viewBox="0 0 200 120" class="hubart">
+            <g class="tiles">
+              <rect x="6" y="10" width="40" height="26" rx="5"/>
+              <rect x="52" y="10" width="40" height="26" rx="5"/>
+              <rect x="152" y="10" width="40" height="26" rx="5"/>
+              <rect x="6" y="47" width="40" height="26" rx="5"/>
+              <rect x="152" y="47" width="40" height="26" rx="5"/>
+              <rect x="6" y="84" width="40" height="26" rx="5"/>
+              <rect x="52" y="84" width="40" height="26" rx="5"/>
+              <rect x="152" y="84" width="40" height="26" rx="5"/>
             </g>
-            <g stroke="#5B2A86" stroke-width="1" opacity=".55">
-              <path d="M46 23 L100 60 M92 23 L100 60 M46 97 L100 60 M92 97 L100 60 M152 23 L100 60 M152 97 L100 60 M152 60 L100 60 M46 60 L100 60"/>
+            <g class="wires">
+              <path d="M46 23 L100 60"/><path d="M92 23 L100 60"/>
+              <path d="M46 97 L100 60"/><path d="M92 97 L100 60"/>
+              <path d="M152 23 L100 60"/><path d="M152 97 L100 60"/>
+              <path d="M152 60 L100 60"/><path d="M46 60 L100 60"/>
             </g>
-            <path d="M64 60 L100 53 L136 60 L100 67 Z" fill="#5B2A86"/>
-            <path d="M100 24 L106 60 L100 96 L94 60 Z" fill="#E7B84B"/>
-            <circle cx="100" cy="60" r="5.2" fill="#f2ecf7"/>
+            <g class="mk">
+              <path class="lens-h" d="M64 60 L100 53 L136 60 L100 67 Z" fill="#5B2A86"/>
+              <path class="lens-v" d="M100 24 L106 60 L100 96 L94 60 Z" fill="#E7B84B"/>
+              <circle class="dot" cx="100" cy="60" r="5.2" fill="#f2ecf7"/>
+            </g>
           </svg>
         </div>
       </a>
@@ -540,7 +621,8 @@ footer a:hover{text-decoration:underline}
 
 <script>
 (function(){
-  var b=document.getElementById('copy'), f=document.getElementById('copied');
+  [['copy','copied'],['copy2','copied2']].forEach(function(pair){
+  var b=document.getElementById(pair[0]), f=document.getElementById(pair[1]);
   if(b){
     b.addEventListener('click',function(e){
       e.preventDefault();
@@ -557,6 +639,7 @@ footer a:hover{text-decoration:underline}
       } else { b.textContent='nesohq.com/hello.html'; }
     });
   }
+  });
   var els=document.querySelectorAll('.rise');
   if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     els.forEach(function(e){e.classList.add('in');});
@@ -624,7 +707,7 @@ body.nchat-open #toTop{opacity:0;pointer-events:none}
   Tell us what you need
 </button>
 <div id="nchatPanel" role="dialog" aria-label="NESO intake chat">
-  <div id="nchatHead"><span class="dot"></span><div><b>NESO intake</b><span>Automated assistant · a real person follows up</span></div><button class="x" id="nchatX" aria-label="Close">&times;</button></div>
+  <div id="nchatHead"><span class="dot"></span><div><b>NESO intake</b><span>Automated assistant</span></div><button class="x" id="nchatX" aria-label="Close">&times;</button></div>
   <div id="nchatBody"></div>
   <div class="nchatalt">Prefer a form? <a href="https://neso-queue.nesoai-us.workers.dev/form/intake" target="_blank" rel="noopener">Use the intake form</a> · or text <a href="sms:+19012950322">(901) 295-0322</a></div>
   <div id="nchatFoot">
