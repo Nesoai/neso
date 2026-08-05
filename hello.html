@@ -69,16 +69,33 @@ a{color:var(--plum)}
 img{max-width:100%;display:block}
 .eyebrow{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
 
-/* animated mark — hero only, nothing beside it to read */
-.markanim{overflow:visible}
-.markanim .sp{opacity:0;animation:spark 3s ease-out infinite}
-@keyframes spark{
-  0%{opacity:0;transform:translate(0,0) scale(1)}
-  18%{opacity:.95}
-  100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.55)}
+/* The spinning mark and its sparks, ported from the hub's home hero so the two
+   surfaces move the same way. Sparks vanish and the spin stops under
+   prefers-reduced-motion. */
+/* The hub spins the mark with a linear rotateY, which means it is edge-on and
+   effectively invisible for a chunk of every turn. Same rotation here, but the
+   keyframes dwell on each flat face and hurry through the edge. */
+@keyframes nesospin{
+  0%{transform:rotateY(0)}
+  10%{transform:rotateY(0)}
+  40%{transform:rotateY(180deg)}
+  60%{transform:rotateY(180deg)}
+  90%{transform:rotateY(360deg)}
+  100%{transform:rotateY(360deg)}
 }
-.markanim .core{transform-origin:50px 50px;animation:markpulse 3s ease-in-out infinite}
-@keyframes markpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+.hmark{perspective:700px;position:relative;display:inline-block;margin-bottom:14px}
+.hmark svg{transform-origin:50% 50%;transform-style:preserve-3d;animation:nesospin 11s ease-in-out infinite;display:block}
+.spk{position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;background:#E7B84B;
+  color:#E7B84B;opacity:0;pointer-events:none;animation:spkfly 3.2s ease-out infinite;
+  box-shadow:0 0 6px 1px currentColor}
+.spk.p{background:#BE93DE;color:#BE93DE}
+.spk.lg{width:9px;height:9px;box-shadow:0 0 12px 2px currentColor;animation-duration:4s}
+.spk.xl{width:12px;height:12px;box-shadow:0 0 16px 3px currentColor;animation-duration:4.6s}
+@keyframes spkfly{
+  0%{transform:translate(-50%,-50%) scale(.3);opacity:0}
+  10%{opacity:.95}
+  100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(0);opacity:0}
+}
 .lockup{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
 .lockup .word{font-family:var(--serif);font-weight:700;font-size:21px;letter-spacing:.06em}
 .lockup svg{display:block;flex:none}
@@ -122,9 +139,6 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.4vw,35px);lin
 .person .role{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-d)}
 .person h3{font-family:var(--serif);font-weight:600;font-size:20px;margin:6px 0 7px}
 .person p{font-size:15.5px;line-height:1.5;color:var(--dim)}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
-.chip{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--plum-d);
-  background:var(--ground2);border-radius:999px;padding:4px 10px}
 .person .prof{margin-top:10px}
 .person .prof a{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.04em;
   text-transform:uppercase;color:var(--plum);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
@@ -192,7 +206,8 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.4vw,35px);lin
 /* the services grid already ends in a caption, so this section does not need
    a full pad below it as well */
 #which{padding-bottom:12px}
-#seeall{padding-top:12px}
+#seeall{padding-top:12px;padding-bottom:20px}
+#share{padding-top:20px}
 
 .sharebar{display:flex;flex-wrap:wrap;gap:20px 28px;align-items:center;justify-content:space-between;
   background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 30px;
@@ -285,8 +300,8 @@ footer a:hover{text-decoration:underline}
 }
 @media(prefers-reduced-motion:reduce){
   *{transition:none!important}
-  .markanim .sp{animation:none;opacity:0}
-  .markanim .core{animation:none}
+  .hmark svg{animation:none;transform:none}
+  .spk{display:none}
   .hubart *{animation:none!important}
   .hubart .tiles rect{opacity:.75}
   .js .rise{opacity:1;transform:none}
@@ -305,18 +320,10 @@ footer a:hover{text-decoration:underline}
 <header class="hero">
   <div class="wrap hero-top">
     <a class="lockup" href="https://nesohq.com/">
-      <svg class="markanim" width="34" height="34" viewBox="0 0 100 100" aria-hidden="true">
-        <g class="core">
-          <polygon points="8,50 50,37.4 92,50 50,62.6" fill="#5B2A86"/>
-          <polygon points="50,5.9 62.6,50 50,94.1 37.4,50" fill="#E7B84B"/>
-          <circle cx="50" cy="50" r="6.7" fill="#F2ECF7"/>
-        </g>
-        <circle class="sp" cx="50" cy="50" r="1.6" fill="#E7B84B" style="--dx:22px;--dy:-26px;animation-delay:0s"/>
-        <circle class="sp" cx="50" cy="50" r="1.2" fill="#BE93DE" style="--dx:-25px;--dy:-18px;animation-delay:.5s"/>
-        <circle class="sp" cx="50" cy="50" r="1.4" fill="#E7B84B" style="--dx:28px;--dy:-8px;animation-delay:1s"/>
-        <circle class="sp" cx="50" cy="50" r="1.1" fill="#BE93DE" style="--dx:-20px;--dy:-30px;animation-delay:1.5s"/>
-        <circle class="sp" cx="50" cy="50" r="1.5" fill="#E7B84B" style="--dx:-30px;--dy:-6px;animation-delay:2s"/>
-        <circle class="sp" cx="50" cy="50" r="1.0" fill="#BE93DE" style="--dx:14px;--dy:-32px;animation-delay:2.5s"/>
+      <svg width="30" height="30" viewBox="0 0 44 44" aria-hidden="true">
+        <path d="M4 22 L22 19 L40 22 L22 25 Z" fill="#5B2A86"/>
+        <path d="M22 4 L25 22 L22 40 L19 22 Z" fill="#E7B84B"/>
+        <circle cx="22" cy="22" r="2.6" fill="#f2ecf7"/>
       </svg>
       <span class="word">NESO</span>
     </a>
@@ -324,6 +331,25 @@ footer a:hover{text-decoration:underline}
   </div>
 
   <div class="wrap hero-body">
+    <div class="hmark" aria-hidden="true">
+      <svg width="72" height="72" viewBox="0 0 44 44">
+        <path d="M4 22 L22 19 L40 22 L22 25 Z" fill="#5B2A86"/>
+        <path d="M22 4 L25 22 L22 40 L19 22 Z" fill="#E7B84B"/>
+        <circle cx="22" cy="22" r="2.6" fill="#f2ecf7"/>
+      </svg>
+      <span class="spk" style="--dx:44px;--dy:-30px"></span>
+      <span class="spk p" style="--dx:-40px;--dy:-36px;animation-delay:.6s"></span>
+      <span class="spk" style="--dx:52px;--dy:14px;animation-delay:1.2s"></span>
+      <span class="spk p" style="--dx:-48px;--dy:20px;animation-delay:1.8s"></span>
+      <span class="spk" style="--dx:16px;--dy:-52px;animation-delay:2.3s"></span>
+      <span class="spk p" style="--dx:-12px;--dy:48px;animation-delay:2.7s"></span>
+      <span class="spk lg" style="--dx:92px;--dy:-58px;animation-delay:.3s"></span>
+      <span class="spk lg p" style="--dx:-86px;--dy:44px;animation-delay:1.5s"></span>
+      <span class="spk lg" style="--dx:34px;--dy:96px;animation-delay:2.1s"></span>
+      <span class="spk xl p" style="--dx:-96px;--dy:-70px;animation-delay:.9s"></span>
+      <span class="spk xl" style="--dx:108px;--dy:40px;animation-delay:2.5s"></span>
+      <span class="spk lg p" style="--dx:8px;--dy:-104px;animation-delay:3.1s"></span>
+    </div>
     <p class="eyebrow">Someone thought this was worth your time</p>
     <h1>Get the answer first.<br><em>Then</em> spend the money.</h1>
     <p>Most people find out what a plan or a piece of land will really cost after they have paid
@@ -358,11 +384,6 @@ footer a:hover{text-decoration:underline}
           <h3>Charles L. Finkley, Jr., MPA</h3>
           <p>Charles has worked on land and building projects for seventeen years. He reads and
             approves every land report before it goes out.</p>
-          <div class="chips">
-            <span class="chip">10,000+ permits</span>
-            <span class="chip">$100M+ incentives secured</span>
-            <span class="chip">484 MW+ sited</span>
-          </div>
           <p class="prof"><a href="https://www.linkedin.com/in/charlesfinkleyjr" target="_blank" rel="noopener">LinkedIn &rarr;</a></p>
         </div>
       </div>
@@ -375,23 +396,13 @@ footer a:hover{text-decoration:underline}
           <p>Mallory has worked in real estate development since 2005, on the private side, with
             contractors, engineers and architects on jobs large and small. At NESO she runs the
             work, the store and the clients, and she built the software NESO runs on.</p>
-          <div class="chips">
-            <span class="chip">Project engineer</span>
-            <span class="chip">Project manager</span>
-            <span class="chip">Principal planner</span>
-            <span class="chip">Environmental scientist</span>
-            <span class="chip">LEED Green Associate</span>
-            <span class="chip">Construction document technologist</span>
-            <span class="chip">Business strategist</span>
-            <span class="chip">Real estate agent</span>
-          </div>
         </div>
       </div>
     </div>
 
     <div class="why rise">
-      <p>Mallory and Charles are married. They started NESO in 2026, after watching the same thing
-        happen for years: people spend a great deal of money before they ask one small question. <b>NESO answers that question
+      <p>Mallory and Charles are married, and NESO is the two of them — write in and one of them
+        writes back. They started it in 2026, after watching the same thing happen for years: people spend a great deal of money before they ask one small question. <b>NESO answers that question
         early, at an economical rate, with real tools you can use yourself.</b></p>
     </div>
   </div>
@@ -549,24 +560,6 @@ footer a:hover{text-decoration:underline}
   </div>
 </section>
 
-<!-- ================= SHARE ================= -->
-<section id="share">
-  <div class="wrap">
-    <div class="sharebar rise">
-      <div>
-        <p class="eyebrow" style="color:var(--gold-d)">Pass it on</p>
-        <h2>Know somebody this would help?</h2>
-        <p>Send them this page. Finding out early costs them nothing, and it is a lot cheaper
-          than finding out late.</p>
-      </div>
-      <div class="shareact">
-        <button class="bebtn" type="button" id="copy2">Share this page</button>
-        <span class="copied" id="copied2" role="status" aria-live="polite">Link copied</span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ================= SEE ALL OF IT ================= -->
 <section id="seeall">
   <div class="wrap">
@@ -609,6 +602,25 @@ footer a:hover{text-decoration:underline}
     </div>
   </div>
 </section>
+
+<!-- ================= SHARE ================= -->
+<section id="share">
+  <div class="wrap">
+    <div class="sharebar rise">
+      <div>
+        <p class="eyebrow" style="color:var(--gold-d)">Pass it on</p>
+        <h2>Know somebody this would help?</h2>
+        <p>Send them this page. Finding out early costs them nothing, and it costs far less
+          than finding out late.</p>
+      </div>
+      <div class="shareact">
+        <button class="bebtn" type="button" id="copy2">Share this page</button>
+        <span class="copied" id="copied2" role="status" aria-live="polite">Link copied</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <footer>
   <div class="wrap">
