@@ -199,6 +199,24 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.4vw,35px);lin
    fact about the two of them, not a claim about where NESO is or who it will
    take work from. Kept visually quieter than the sentence above it. */
 .why p.origin{margin-top:11px;font-size:15px;color:var(--faint)}
+/* THE TOOL LOOP.
+   Product proof, not decoration: a real capture of a real tool with its own
+   numbers, cut above the price so this page still restates none. Silent, no
+   controls, loops, and pauses itself when it scrolls out of view. Anyone who
+   prefers reduced motion gets the still frame and never the video.
+   Re-capture when the tool changes — a stale loop is a screenshot that lies
+   slowly. Paths are root-absolute: /video/ resolves only when served. */
+.toolloop{margin:26px 0 0;padding:0;max-width:900px}
+.toolloop .frame{position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  background:#fff;box-shadow:0 18px 44px -26px rgba(22,15,30,.4)}
+.toolloop video,.toolloop img.still{display:block;width:100%;height:auto}
+.toolloop img.still{display:none}
+.toolloop figcaption{margin-top:9px;font-size:13.5px;line-height:1.5;color:var(--faint);max-width:66ch}
+.toolloop figcaption b{color:var(--muted);font-weight:600}
+@media (prefers-reduced-motion: reduce){
+  .toolloop video{display:none}
+  .toolloop img.still{display:block}
+}
 
 /* ---------- cards ---------- */
 .grid{display:grid;grid-template-columns:1fr;gap:16px}
@@ -374,7 +392,7 @@ footer a:hover{text-decoration:underline}
     <a class="lockup" href="https://nesohq.com/">
       <span class="word">NESO</span>
     </a>
-    <div class="meta">Nationwide · Northeast &amp; Southern states<br><a href="sms:+19012950322">Text (901) 295-0322</a></div>
+    <div class="meta">Northeast &amp; the South · projects US-wide<br><a href="sms:+19012950322">Text (901) 295-0322</a></div>
   </div>
 
   <div class="wrap hero-body">
@@ -472,6 +490,21 @@ footer a:hover{text-decoration:underline}
       <p class="eyebrow">What NESO does</p>
       <h2>Tools you run, and work we do for you.</h2>
     </div>
+
+    <figure class="toolloop rise">
+      <div class="frame">
+        <video id="tloop" muted loop autoplay playsinline preload="metadata"
+               poster="/video/tool-instantread-poster.jpg"
+               aria-label="A NESO tool estimating an entitlement timeline as the inputs change">
+          <source src="/video/tool-instantread.webm" type="video/webm">
+          <source src="/video/tool-instantread.mp4" type="video/mp4">
+        </video>
+        <img class="still" src="/video/tool-instantread-poster.jpg" alt="A NESO tool showing an estimated entitlement timeline for a suburban multifamily project in Connecticut.">
+      </div>
+      <figcaption><b>This is a tool running, not a picture of one.</b> Change the state, the
+        scale or the kind of place, and the estimate changes with it — free, in a browser, with
+        no account. Every tool works this way.</figcaption>
+    </figure>
 
       <div class="whatwe">
         <p class="svclab">The eight tools · free to run, yours to keep</p>
@@ -692,7 +725,7 @@ footer a:hover{text-decoration:underline}
 <footer>
   <div class="wrap">
     <span>NESO · advisory and tools for business and land</span>
-    <span>Nationwide · Northeast &amp; Southern states</span>
+    <span>Northeast &amp; the South · projects US-wide</span>
     <span><a href="https://nesohq.com/">nesohq.com</a> · <a href="#" id="copy">Share this page</a>
       <span class="copied" id="copied" role="status" aria-live="polite">Link copied</span></span>
   </div>
@@ -844,5 +877,16 @@ body.nchat-open #toTop{opacity:0;pointer-events:none}
 </script>
 <!-- ===== end shared furniture ===== -->
 
+<script>
+/* Pause the tool loop when it is off screen. A looping video that plays behind
+   four screens of copy costs a phone battery for nothing. */
+(function(){
+  var v=document.getElementById('tloop'); if(!v||!('IntersectionObserver' in window))return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){ v.pause(); return; }
+  new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){ var p=v.play(); if(p&&p.catch)p.catch(function(){}); } else { v.pause(); }
+  });},{threshold:.25}).observe(v);
+})();
+</script>
 </body>
 </html>
