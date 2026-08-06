@@ -29,12 +29,43 @@
      Indexing: index,follow. Not a duplicate of anything, and the hub's hash
      routing caps nesohq.com at one indexable URL.
      No prices. No operating state. No email address in text or markup.
+
+     REV 2026-08-06. Region added; Ask Charles unaffected here. Decisions
+     recorded 6 Aug: NJ and PA are OUT of the footprint (no relationships there
+     yet, add when there are); the South includes Texas and Florida; attribution
+     stays "by NESO"; the audience pages are not being reworded yet and may be
+     replaced by this page entirely — recorded, not done.
+
+     REGION, added this revision. Three separate claims, kept separate:
+       1 where NESO is        — open with counsel, said nowhere on this page
+       2 where NESO will work — anywhere in the US, unchanged
+       3 where NESO markets   — the Northeast (New England and New York) and
+                                the Southern states, and the origin of the name
+     Nothing here says based in, operates from, headquartered, or names an
+     office. The name is expanded as an origin, not as a coverage list, which
+     is what lets the footprint include New York without the sentence becoming
+     false, and what lets New Jersey and Pennsylvania be added later without a
+     rewrite.
+     PENDING: "New England Southern" as a compound has not had a knockout
+     search and is NOT used anywhere on this page. New England Southern
+     Railroad (NEGS, central New Hampshire, Vermont Rail System) holds the
+     string, and to a New England reader the compound reads as "southern
+     New England", which is the wrong meaning. Prose only until cleared.
+     MOVES TOGETHER, still to do: hub title / meta description / og / footer /
+     hero stat, the six audience page headers, partners, the Gumroad profile bio
+     (edit call, never replace), email signatures, the Overview Deck and the
+     Investor Briefing, then a surface-record recapture. Birdseye's fifty-state
+     claims were changed the same day, in its v3.2.
+     Until the hub footer changes, the two footers disagree.
      Photos are root-absolute: /img/ resolves only when served.
      Add this URL to neso-linkcheck when it goes live.
+     NAMING: the deployed file is hello.html, plain. This working copy carries
+     the UTC stamp — NESO-hello-YYYY-MM-DD-HHMMZ.html — and the stamp is dropped
+     on deploy. A deployed file's name is its address.
      ========================================================================== -->
 
 <title>NESO — an introduction</title>
-<meta name="description" content="Get the answer first, then spend the money. Free tools, fixed-price research on land, and senior help quoted before the work starts.">
+<meta name="description" content="Get the answer first, then spend the money. Free tools, fixed-price research on land, and senior help quoted before the work starts. NESO works across the US, with the Northeast and the Southern states as home ground.">
 <meta name="robots" content="index,follow,max-snippet:-1">
 <link rel="canonical" href="https://nesohq.com/hello.html">
 <meta property="og:type" content="website">
@@ -164,6 +195,10 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.4vw,35px);lin
   border-radius:0 16px 16px 0;padding:22px 26px}
 .why p{color:var(--dim);max-width:72ch;font-size:16px}
 .why b{color:var(--text)}
+/* The name's origin sits under the founding paragraph, not in the hero: it is a
+   fact about the two of them, not a claim about where NESO is or who it will
+   take work from. Kept visually quieter than the sentence above it. */
+.why p.origin{margin-top:11px;font-size:15px;color:var(--faint)}
 
 /* ---------- cards ---------- */
 .grid{display:grid;grid-template-columns:1fr;gap:16px}
@@ -339,7 +374,7 @@ footer a:hover{text-decoration:underline}
     <a class="lockup" href="https://nesohq.com/">
       <span class="word">NESO</span>
     </a>
-    <div class="meta">Remote · nationwide<br><a href="sms:+19012950322">Text (901) 295-0322</a></div>
+    <div class="meta">Nationwide · Northeast &amp; Southern states<br><a href="sms:+19012950322">Text (901) 295-0322</a></div>
   </div>
 
   <div class="wrap hero-body">
@@ -403,8 +438,14 @@ footer a:hover{text-decoration:underline}
         <img class="ph" src="/img/mallory-picture.jpg" width="92" height="92" loading="lazy"
              alt="Mallory Bailey-Finkley">
         <div>
+          <!-- NAMES. Bailey-Finkley is the public display name and is correct here: this
+               page is an introduction, not an instrument. Bailey is the legal surname and is
+               the one that goes on the KY articles, contracts, invoices, the Gumroad
+               representative record and the Stripe account (corrections row 20). Do not
+               "correct" this line to match the filings — they are two different jobs.
+               Title confirmed 6 Aug: Principal · business and technology, MBA. -->
           <p class="role">Principal · business and technology</p>
-          <h3>Mallory Bailey-Finkley</h3>
+          <h3>Mallory Bailey-Finkley, MBA</h3>
           <p>Mallory has worked in real estate development since 2005, on the private side, with
             contractors, engineers and architects on jobs large and small. At NESO she runs the
             work, the store and the clients, and she built the software NESO runs on.</p>
@@ -413,9 +454,13 @@ footer a:hover{text-decoration:underline}
     </div>
 
     <div class="why rise">
-      <p>Mallory and Charles are married, and NESO is the two of them — write in and one of them
-        writes back. They started it in 2026, after watching the same thing happen for years: people spend a great deal of money before they ask one small question. <b>NESO answers that question
+      <p>Mallory and Charles are husband and wife, and NESO is the two of them — a family
+        business. Write in and one of them writes back, within a business day. They started it in 2026, after watching the same thing happen for years: people spend a great deal of money before they ask one small question. <b>NESO answers that question
         early, at an economical rate, with real tools you can use yourself.</b></p>
+      <p class="origin">The name is for the two parts of the country they know well: New
+        England and the South. In practice that is the Northeast — New England and New York —
+        and the Southern states, Texas and Florida included. The work itself goes anywhere in
+        the country.</p>
     </div>
   </div>
 </section>
@@ -547,7 +592,7 @@ footer a:hover{text-decoration:underline}
 <section id="answers">
   <div class="wrap">
     <div class="sec-head rise">
-      <p class="eyebrow">Three questions</p>
+      <p class="eyebrow">Four questions</p>
       <h2>The ones people ask first.</h2>
     </div>
     <div class="qa rise">
@@ -567,6 +612,16 @@ footer a:hover{text-decoration:underline}
         <summary>Who checks the work?</summary>
         <p class="ans">Charles reads and approves every land report before it leaves. That is a
           rule NESO wrote down, not just a habit.</p>
+      </details>
+      <details>
+        <summary>Where does NESO work?</summary>
+        <p class="ans">Anywhere in the United States. The tools have no geography in them at
+          all — they run on your numbers wherever you are. The name points at where the two of
+          us know the ground well: the Northeast — New England and New York — and the
+          Southern states.
+          <b>On a land report, where the parcel is changes how much of the answer comes from
+          the record and how much comes from knowing the place. We say which is which in the
+          report, and we say it before you pay.</b></p>
       </details>
     </div>
   </div>
@@ -637,7 +692,7 @@ footer a:hover{text-decoration:underline}
 <footer>
   <div class="wrap">
     <span>NESO · advisory and tools for business and land</span>
-    <span>Remote · nationwide</span>
+    <span>Nationwide · Northeast &amp; Southern states</span>
     <span><a href="https://nesohq.com/">nesohq.com</a> · <a href="#" id="copy">Share this page</a>
       <span class="copied" id="copied" role="status" aria-live="polite">Link copied</span></span>
   </div>
