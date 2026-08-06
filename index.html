@@ -1122,6 +1122,83 @@ function viewPricing(){
       <div class="wc"><h3>Pay as you go</h3><div style="font-family:var(--serif);font-size:30px;font-weight:700;margin:6px 0;color:var(--ink)">$50<span style="font-size:13px;color:var(--faint);font-weight:400"> / credit</span></div><p>Buy credits, spend them on anything. <b>Use within 13 weeks.</b> No commitment.</p><a href="${CONFIG.STRIPE_CREDITS||'https://nesohq.gumroad.com/l/gwfnx'}" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;font-weight:700;font-size:14px;text-decoration:none;color:var(--ink);border:1.5px solid var(--ink);border-radius:10px;padding:9px 16px">Buy credits &rarr;</a></div>
       <div class="wc" style="border-color:rgba(190,147,222,.55)"><h3>Rollover membership</h3><div style="font-family:var(--serif);font-size:30px;font-weight:700;margin:6px 0;color:var(--ink)">$10<span style="font-size:13px;color:var(--faint);font-weight:400"> / month</span></div><p>Everything in pay-as-you-go, plus <b>credit validity extended from 13 to 39 weeks.</b> Cancel anytime.</p><a href="https://nesohq.gumroad.com/l/mcgkxh" target="_blank" rel="noopener" style="display:inline-block;margin-top:10px;font-weight:700;font-size:14px;text-decoration:none;color:var(--ink);border:1.5px solid var(--ink);border-radius:10px;padding:9px 16px">Add Rollover &rarr;</a></div>
     </div>
+
+    <!-- ==========================================================
+         CREDIT BLOCK LADDER — inline SVG, drawn in the page.
+         Nothing to host, nothing to break, and it reads the page's
+         own colour tokens, so the light/dark toggle moves it too.
+
+         CONFIRM BEFORE THIS SHIPS. The Services Book and the
+         Overview Deck both publish five block sizes (1, 10, 20, 40,
+         80) and four discount steps (0, 4, 8, 12 percent) — which
+         leaves the mapping unstated. This figure reads it as: a
+         single credit is the list rate, and the four BLOCK sizes
+         carry the four steps. Check it against the Product Book. If
+         the intended reading is different, this drawing becomes a
+         fifth home for the discount ladder and the one nobody
+         remembers to correct.
+
+         ALSO OPEN: this page sells pay-as-you-go and the rollover
+         membership. It does not sell a block. A figure advertising
+         block discounts with no block to buy is a claim with no
+         purchase path — either the blocks get a buy route here or
+         this figure needs a line saying how to ask for one.
+
+         The steps are the ladder, not a scale: 1 to 80 drawn
+         proportionally would make the single credit invisible, and
+         the caption says so rather than letting the picture imply
+         otherwise.
+         ========================================================== -->
+    <div style="max-width:760px;margin:0 auto 40px">
+      <div style="font-family:var(--serif);font-size:20px;color:var(--ink);margin-bottom:4px">The block ladder</div>
+      <p style="font-size:14px;color:var(--muted);margin:0 0 14px;line-height:1.55;max-width:62ch">Buy credits one at a time or in a block. The bigger the block, the lower the published rate &mdash; and at the top two sizes the credits stay valid three times as long. Never negotiated privately, because a private discount becomes the price everyone hears about.</p>
+      <figure style="margin:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 18px 14px">
+        <svg viewBox="0 0 880 330" role="img" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto"
+             aria-label="Credit block ladder: a single credit at the list rate, then blocks of ten, twenty, forty and eighty credits at zero, four, eight and twelve percent off. Blocks of forty and eighty stay valid thirty-nine weeks instead of thirteen.">
+          <defs>
+            <linearGradient id="ladBar" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0" stop-color="var(--plum-core)" stop-opacity=".70"/>
+              <stop offset="1" stop-color="var(--plum-core)"/>
+            </linearGradient>
+          </defs>
+          <line x1="24" y1="236" x2="856" y2="236" stroke="var(--line)" stroke-width="1"/>
+          <text x="24" y="22" font-family="var(--mono)" font-size="10.5" letter-spacing="2.2" fill="var(--faint)">BLOCK SIZE</text>
+          <text x="856" y="22" text-anchor="end" font-family="var(--mono)" font-size="10.5" letter-spacing="2.2" fill="var(--faint)">PUBLISHED RATE</text>
+
+          <rect x="24" y="196" width="150" height="40" rx="5" fill="var(--plum-core)" fill-opacity=".18"/>
+          <text x="99" y="222" text-anchor="middle" font-family="var(--serif)" font-size="26" font-weight="700" fill="var(--plum)">1</text>
+          <text x="99" y="178" text-anchor="middle" font-family="var(--mono)" font-size="11" letter-spacing="1.6" fill="var(--faint)">SINGLE CREDIT</text>
+          <text x="99" y="258" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--muted)">list rate</text>
+
+          <rect x="190" y="166" width="150" height="70" rx="5" fill="url(#ladBar)"/>
+          <text x="265" y="212" text-anchor="middle" font-family="var(--serif)" font-size="30" font-weight="700" fill="#fff">10</text>
+          <text x="265" y="148" text-anchor="middle" font-family="var(--mono)" font-size="11" letter-spacing="1.6" fill="var(--faint)">BLOCK</text>
+          <text x="265" y="258" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--muted)">0% off</text>
+
+          <rect x="356" y="136" width="150" height="100" rx="5" fill="url(#ladBar)"/>
+          <text x="431" y="197" text-anchor="middle" font-family="var(--serif)" font-size="30" font-weight="700" fill="#fff">20</text>
+          <text x="431" y="118" text-anchor="middle" font-family="var(--mono)" font-size="11" letter-spacing="1.6" fill="var(--faint)">BLOCK</text>
+          <text x="431" y="258" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--gold)">4% off</text>
+
+          <rect x="522" y="106" width="150" height="130" rx="5" fill="url(#ladBar)"/>
+          <text x="597" y="182" text-anchor="middle" font-family="var(--serif)" font-size="30" font-weight="700" fill="#fff">40</text>
+          <text x="597" y="88" text-anchor="middle" font-family="var(--mono)" font-size="11" letter-spacing="1.6" fill="var(--faint)">GROWTH BLOCK</text>
+          <text x="597" y="258" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--gold)">8% off</text>
+
+          <rect x="688" y="76" width="150" height="160" rx="5" fill="url(#ladBar)"/>
+          <text x="763" y="167" text-anchor="middle" font-family="var(--serif)" font-size="30" font-weight="700" fill="#fff">80</text>
+          <text x="763" y="58" text-anchor="middle" font-family="var(--mono)" font-size="11" letter-spacing="1.6" fill="var(--faint)">PARTNER BLOCK</text>
+          <text x="763" y="258" text-anchor="middle" font-family="var(--sans)" font-size="13" font-weight="700" fill="var(--gold)">12% off</text>
+
+          <rect x="24" y="278" width="482" height="34" rx="6" fill="var(--muted)" fill-opacity=".10"/>
+          <text x="265" y="300" text-anchor="middle" font-family="var(--sans)" font-size="13" fill="var(--muted)"><tspan font-weight="700" fill="var(--ink)">13 weeks</tspan> to spend &mdash; or add rollover</text>
+          <rect x="522" y="278" width="316" height="34" rx="6" fill="#0E8A6E" fill-opacity=".14"/>
+          <text x="680" y="300" text-anchor="middle" font-family="var(--sans)" font-size="13" fill="#12A583"><tspan font-weight="700">39 weeks</tspan> &mdash; included at these two sizes</text>
+        </svg>
+        <figcaption style="margin-top:11px;font-size:12.5px;line-height:1.55;color:var(--faint)">The steps are the ladder, not a scale. Validity runs from each block&rsquo;s own purchase date. Rollover extends any block to thirty-nine weeks; the top two sizes include that stretch without it.</figcaption>
+      </figure>
+    </div>
+
     <div style="max-width:760px;margin:6px auto 4px;overflow-x:auto">
       <div style="font-family:var(--serif);font-size:20px;color:var(--ink);margin-bottom:10px">Credits vs. billing by the hour</div>
       <table style="width:100%;border-collapse:collapse;font-size:13.5px;border:1px solid var(--line);border-radius:12px;overflow:hidden">
