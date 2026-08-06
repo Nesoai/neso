@@ -3,7 +3,15 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Trojan K Services — Client Services Completion Form</title>
 <!--
-  TROJAN K SERVICES — public completion form v1.1 · 2 August 2026
+  TROJAN K SERVICES — public completion form v1.5 · 5 August 2026
+  v1.5: non-routine work. The two routine options priced themselves and there
+  was no way to log anything else, so a maintenance call or a one-off job had
+  to be forced into "touch-up" with the fee overridden — which reads on the
+  dashboard as an unexplained override and earns a phone call. "Other" now
+  takes a description in Korrey's own words and a fee he types, and the
+  description is what lands on the invoice line.
+  Field keys are unchanged: the description travels as tks_service, which is
+  the key the dashboard already reads.
   Posts to neso-queue /submit, which is public by design (it is a contact form)
   and stores the submission as q:<id> with status "new". No key lives in this
   file, because this file is public.
@@ -83,11 +91,19 @@ Six questions, about a minute.</p>
       <option value="">Choose one…</option>
       <option value="touchup">Routine bi-weekly touch-up cleaning</option>
       <option value="deep">Routine bi-weekly deep cleaning</option>
+      <option value="other">Something else — maintenance, a repair, a one-off job</option>
     </select></div>
+
+  <div class="f" id="otherBox" style="display:none">
+    <label>Describe the work you did <span class="req">*</span></label>
+    <textarea id="otherdesc" placeholder="e.g. Replaced four ceiling tiles and cleared the roof drain in the east bay"></textarea>
+    <div class="hint">Write it the way you would say it. This goes on the invoice Russell reads, so name what you did
+      and where. NESO tidies the wording, never the facts.</div>
+  </div>
 
   <div class="f"><label>What is the fee for this job? <span class="req">*</span></label>
     <input id="fee" type="number" step="0.01" min="0" placeholder="0.00">
-    <div class="hint">Fills in from the type of work. Change it only if this job was priced differently, and say why below.</div></div>
+    <div class="hint" id="feeHint">Fills in from the type of work. Change it only if this job was priced differently, and say why below.</div></div>
 
   <div class="f"><label>When was the work completed? <span class="req">*</span></label>
     <input id="done" type="date"></div>
@@ -139,11 +155,18 @@ Submissions are handled by NESO HQ LLC. Questions: text (901) 295-0322.</footer>
 var QUEUE = "https://neso-queue.nesoai-us.workers.dev/submit";
 var FEES = { touchup: 500, deep: 1100 };
 var LABEL = { touchup: "Routine bi-weekly touch-up cleaning", deep: "Routine bi-weekly deep cleaning" };
+/* "other" has no entry in FEES or LABEL on purpose — both are supplied by hand. */
 function $(i){ return document.getElementById(i); }
 
 $("done").value = new Date(Date.now() - 864e5).toISOString().slice(0,10);
 $("type").addEventListener("change", function(){
-  if(FEES[this.value]) $("fee").value = FEES[this.value].toFixed(2);
+  var other = this.value === "other";
+  $("otherBox").style.display = other ? "block" : "none";
+  $("feeHint").textContent = other
+    ? "There is no standard price for this one, so type what the job is worth. NESO will not change it without asking you."
+    : "Fills in from the type of work. Change it only if this job was priced differently, and say why below.";
+  if(other){ $("fee").value = ""; $("otherdesc").focus(); }
+  else if(FEES[this.value]) $("fee").value = FEES[this.value].toFixed(2);
 });
 
 $("send").addEventListener("click", async function(){
@@ -151,6 +174,7 @@ $("send").addEventListener("click", async function(){
   if(!$("name").value.trim()) miss.push("your name");
   if(!$("company").value.trim()) miss.push("your company");
   if(!$("type").value) miss.push("the type of work");
+  if($("type").value === "other" && !$("otherdesc").value.trim()) miss.push("a description of the work");
   if(!(parseFloat($("fee").value) > 0)) miss.push("a fee above zero");
   if(!$("done").value) miss.push("the date completed");
   if(miss.length){
@@ -168,7 +192,11 @@ $("send").addEventListener("click", async function(){
     tks_name: $("name").value.trim(),
     tks_company: $("company").value.trim(),
     tks_service_key: $("type").value,
-    tks_service: LABEL[$("type").value],
+    /* For "other" the description IS the service name. Same key, so nothing
+       downstream has to learn a new one. */
+    tks_service: $("type").value === "other"
+      ? $("otherdesc").value.trim()
+      : LABEL[$("type").value],
     tks_fee: parseFloat($("fee").value).toFixed(2),
     tks_completed: $("done").value,
     tks_notes: $("notes").value.trim()
