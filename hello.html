@@ -30,13 +30,29 @@
      routing caps nesohq.com at one indexable URL.
      No prices. No operating state. No email address in text or markup.
 
+     REV 2026-08-07b. THE TOOL LOOP NOW HAS A REAL FALLBACK. The poster image
+     was display:none except under prefers-reduced-motion, so anywhere the video
+     did not play the frame was empty and collapsed — which is what was
+     happening on mobile. The still is now the base layer and the video sits
+     over it, mp4 source first, with JS dropping to the still on an error or a
+     zero video size. See the comment on .toolloop.
+     STILL TO CHECK ON THE HOST: that /video/loop-instantread.mp4 and its poster
+     actually exist and are served with the right Content-Type, and that the mp4
+     is H.264 rather than HEVC — Safari declines HEVC-in-mp4 without a sound.
+
+     REV 2026-08-07. The mark is in the hero, right side, at its original sizes
+     — 72px, and 130px from 900px up. It was briefly moved out and is back.
+     The tool loop is the thing that came down: 900px to 640px. At full column
+     width it was the largest object on the page and read as the subject rather
+     than as the evidence for the sentence above it.
+
      REV 2026-08-06. Region added; Ask Charles unaffected here. Decisions
      recorded 6 Aug: NJ and PA are OUT of the footprint (no relationships there
      yet, add when there are); the South includes Texas and Florida; attribution
      stays "by NESO"; the audience pages are not being reworded yet and may be
      replaced by this page entirely — recorded, not done.
 
-     REGION, added this revision. Three separate claims, kept separate:
+     REGION, added that revision. Three separate claims, kept separate:
        1 where NESO is        — open with counsel, said nowhere on this page
        2 where NESO will work — anywhere in the US, unchanged
        3 where NESO markets   — the Northeast (New England and New York) and
@@ -127,7 +143,7 @@ img{max-width:100%;display:block}
 /* Wide viewports move the mark out of the text column and into the empty space
    to the right of the paragraphs, so it does not sit directly under the header
    lockup and read as a second logo. Below 900px there is no such space, so it
-   returns to the normal flow above the eyebrow exactly as before. */
+   returns to the normal flow above the eyebrow. */
 @media(min-width:900px){
   .hero-body{position:relative}
   .hero-body .hmark{position:absolute;right:26px;top:38%;transform:translateY(-50%);margin-bottom:0}
@@ -205,17 +221,31 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.4vw,35px);lin
    controls, loops, and pauses itself when it scrolls out of view. Anyone who
    prefers reduced motion gets the still frame and never the video.
    Re-capture when the tool changes — a stale loop is a screenshot that lies
-   slowly. Paths are root-absolute: /video/ resolves only when served. */
-.toolloop{margin:26px 0 0;padding:0;max-width:900px}
+   slowly. Paths are root-absolute: /video/ resolves only when served.
+   Sized down from 900px on 7 Aug: at full column width the loop was the
+   largest thing on the page and read as the subject rather than the evidence.
+   640px is the floor — the captured UI has real type in it, and below about
+   this it stops being legible and becomes decoration. */
+.toolloop{margin:26px 0 0;padding:0;max-width:640px}
 .toolloop .frame{position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;
   background:#fff;box-shadow:0 18px 44px -26px rgba(22,15,30,.4)}
-.toolloop video,.toolloop img.still{display:block;width:100%;height:auto}
-.toolloop img.still{display:none}
+/* THE STILL IS THE BASE LAYER, NOT AN ALTERNATIVE.
+   It was display:none except under prefers-reduced-motion, which meant that
+   anywhere the video could not play — a missing or unplayable file, iOS Low
+   Power Mode, a codec Safari will not take — the frame had nothing in it and
+   collapsed to an empty box. A <video> with no intrinsic size and no loaded
+   metadata has no height, and overflow:hidden made the failure silent.
+   Now the poster sits in the flow and sets the height, and the video is laid
+   over it. Something is always visible, at the right size, on every device. */
+.toolloop img.still{display:block;width:100%;height:auto}
+.toolloop video{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* If the video errors or never reports a size, JS adds .novideo and the still
+   is simply what you see. */
+.toolloop.novideo video{display:none}
 .toolloop figcaption{margin-top:9px;font-size:13.5px;line-height:1.5;color:var(--faint);max-width:66ch}
-.toolloop figcaption b{color:var(--muted);font-weight:600}
+.toolloop figcaption b{color:var(--text);font-weight:600}
 @media (prefers-reduced-motion: reduce){
   .toolloop video{display:none}
-  .toolloop img.still{display:block}
 }
 
 /* ---------- cards ---------- */
@@ -396,7 +426,7 @@ footer a:hover{text-decoration:underline}
   </div>
 
   <div class="wrap hero-body">
-    <div class="hmark" aria-hidden="true">
+  <div class="hmark">
       <svg width="72" height="72" viewBox="0 0 44 44">
         <path d="M4 22 L22 19 L40 22 L22 25 Z" fill="#5B2A86"/>
         <path d="M22 4 L25 22 L22 40 L19 22 Z" fill="#E7B84B"/>
@@ -493,13 +523,18 @@ footer a:hover{text-decoration:underline}
 
     <figure class="toolloop rise">
       <div class="frame">
+        <!-- The still is first and in the flow: it sets the height of the frame,
+             so the box is never empty while the video loads or if it cannot. -->
+        <img class="still" src="/video/loop-instantread-poster.jpg"
+             alt="A NESO tool showing an estimated entitlement-to-permit window for a large multifamily project in a Texas major metro.">
+        <!-- mp4 first. Safari's WebM support is recent and partial, and a source
+             it cannot decode is a source it may not fall past cleanly. -->
         <video id="tloop" muted loop autoplay playsinline preload="metadata"
                poster="/video/loop-instantread-poster.jpg"
                aria-label="A NESO tool estimating an entitlement timeline as the inputs change">
-          <source src="/video/loop-instantread.webm" type="video/webm">
           <source src="/video/loop-instantread.mp4" type="video/mp4">
+          <source src="/video/loop-instantread.webm" type="video/webm">
         </video>
-        <img class="still" src="/video/loop-instantread-poster.jpg" alt="A NESO tool showing an estimated entitlement timeline for a suburban multifamily project in Connecticut.">
       </div>
       <figcaption><b>This is a tool running, not a picture of one.</b> Change the state, the
         scale or the kind of place, and the estimate changes with it — free, in a browser, with
@@ -557,10 +592,10 @@ footer a:hover{text-decoration:underline}
           <div>
             <p class="svcsub">Business &amp; growth</p>
         <a class="sitem biz" href="https://nesohq.com/#/service/grant">
-          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.5 13 L7 21 L12 18.2 L17 21 L15.5 13"/></svg></span><span>Grant Writing & Funding</span>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.5 13 L7 21 L12 18.2 L17 21 L15.5 13"/></svg></span><span>Grant Writing &amp; Funding</span>
         </a>
         <a class="sitem biz" href="https://nesohq.com/#/service/plan">
-          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4 V20 H20"/><path d="M7 15 L11 10.5 L14 12.5 L19 6.5"/></svg></span><span>Business Plan & Model</span>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4 V20 H20"/><path d="M7 15 L11 10.5 L14 12.5 L19 6.5"/></svg></span><span>Business Plan &amp; Model</span>
         </a>
         <a class="sitem biz" href="https://nesohq.com/#/service/research">
           <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20 L16.2 16.2"/><path d="M9 12.5 V10.5"/><path d="M11.5 12.5 V8.5"/><path d="M14 12.5 V10"/></svg></span><span>Market Research</span>
@@ -575,13 +610,13 @@ footer a:hover{text-decoration:underline}
           <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16 A8 8 0 0 1 20 16"/><path d="M12 16 L16 11"/><circle cx="12" cy="16" r="1.2"/></svg></span><span>Data Dashboard</span>
         </a>
         <a class="sitem biz" href="https://nesohq.com/#/service/procure">
-          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2"/><path d="M12 2 V5"/><path d="M12 19 V22"/><path d="M2 12 H5"/><path d="M19 12 H22"/></svg></span><span>Procurement & Bid Sourcing</span>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.2"/><path d="M12 2 V5"/><path d="M12 19 V22"/><path d="M2 12 H5"/><path d="M19 12 H22"/></svg></span><span>Procurement &amp; Bid Sourcing</span>
         </a>
         <a class="sitem biz" href="https://nesohq.com/#/service/proposal">
           <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3 H14 L19 8 V21 H6 Z"/><path d="M14 3 V8 H19"/><path d="M9 13.5 L11 15.5 L15 11"/></svg></span><span>Bid Proposal / Quote</span>
         </a>
         <a class="sitem biz" href="https://nesohq.com/#/service/ops">
-          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.6 8.4 L10.8 10.8 L8.4 15.6 L13.2 13.2 Z"/></svg></span><span>Strategy & Fractional-COO</span>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.6 8.4 L10.8 10.8 L8.4 15.6 L13.2 13.2 Z"/></svg></span><span>Strategy &amp; Fractional-COO</span>
         </a>
           </div>
           <div>
@@ -590,10 +625,10 @@ footer a:hover{text-decoration:underline}
           <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 L21 8 L12 13 L3 8 Z"/><path d="M3 12 L12 17 L21 12"/><path d="M3 16 L12 21 L21 16"/></svg></span><span>Capital Stack Model</span>
         </a>
         <a class="sitem land" href="https://nesohq.com/#/service/site">
-          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21 C12 21 18.5 14.5 18.5 9.5 A6.5 6.5 0 0 0 5.5 9.5 C5.5 14.5 12 21 12 21 Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span><span>Site Selection & Sourcing</span>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21 C12 21 18.5 14.5 18.5 9.5 A6.5 6.5 0 0 0 5.5 9.5 C5.5 14.5 12 21 12 21 Z"/><circle cx="12" cy="9.5" r="2.4"/></svg></span><span>Site Selection &amp; Sourcing</span>
         </a>
         <a class="sitem land" href="https://nesohq.com/#/service/gis">
-          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 L3 6 V21 L9 18 L15 21 L21 18 V3 L15 6 L9 3 Z"/><path d="M9 3 V18"/><path d="M15 6 V21"/></svg></span><span>GIS & Spatial Analysis</span>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 L3 6 V21 L9 18 L15 21 L21 18 V3 L15 6 L9 3 Z"/><path d="M9 3 V18"/><path d="M15 6 V21"/></svg></span><span>GIS &amp; Spatial Analysis</span>
         </a>
         <a class="sitem land" href="https://nesohq.com/#/service/mktstudy">
           <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 17 V13"/><path d="M12 17 V9"/><path d="M16 17 V11"/></svg></span><span>Lender-Ready Market Study</span>
@@ -602,13 +637,13 @@ footer a:hover{text-decoration:underline}
           <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20 H20 L5 5 Z"/><path d="M9 20 V16.5"/><path d="M13 20 V13"/><path d="M8 9 L11 12"/></svg></span><span>Development Feasibility</span>
         </a>
         <a class="sitem land" href="https://nesohq.com/#/service/entitle">
-          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4.5" width="14" height="16.5" rx="2"/><path d="M9 4.5 A1 1 0 0 1 10 3.3 H14 A1 1 0 0 1 15 4.5 V5.8 H9 Z"/><path d="M8.5 13 L11 15.5 L15.5 10.5"/></svg></span><span>Entitlement & Permitting Read</span>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4.5" width="14" height="16.5" rx="2"/><path d="M9 4.5 A1 1 0 0 1 10 3.3 H14 A1 1 0 0 1 15 4.5 V5.8 H9 Z"/><path d="M8.5 13 L11 15.5 L15.5 10.5"/></svg></span><span>Entitlement &amp; Permitting Read</span>
         </a>
         <a class="sitem land" href="https://nesohq.com/#/service/tod">
           <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 11 H18"/><circle cx="9.5" cy="14" r="1"/><circle cx="14.5" cy="14" r="1"/><path d="M9 17 L7 21"/><path d="M15 17 L17 21"/></svg></span><span>TOD / Development Report</span>
         </a>
         <a class="sitem land" href="https://nesohq.com/#/service/incentive">
-          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10 L12 4 L20 10"/><path d="M5.5 10 V18"/><path d="M10 10 V18"/><path d="M14 10 V18"/><path d="M18.5 10 V18"/><path d="M3.5 18 H20.5"/></svg></span><span>Incentives & Grant Positioning</span>
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10 L12 4 L20 10"/><path d="M5.5 10 V18"/><path d="M10 10 V18"/><path d="M14 10 V18"/><path d="M18.5 10 V18"/><path d="M3.5 18 H20.5"/></svg></span><span>Incentives &amp; Grant Positioning</span>
         </a>
         <a class="sitem land" href="https://nesohq.com/#/service/zoning">
           <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 V20"/><path d="M7 20 H17"/><path d="M5 7.5 H19"/><path d="M5 7.5 L3 12.5 A2 2 0 0 0 7 12.5 Z"/><path d="M19 7.5 L17 12.5 A2 2 0 0 0 21 12.5 Z"/></svg></span><span>Rezoning / Variance Support</span>
@@ -881,8 +916,26 @@ body.nchat-open #toTop{opacity:0;pointer-events:none}
 /* Pause the tool loop when it is off screen. A looping video that plays behind
    four screens of copy costs a phone battery for nothing. */
 (function(){
-  var v=document.getElementById('tloop'); if(!v||!('IntersectionObserver' in window))return;
-  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){ v.pause(); return; }
+  var v=document.getElementById('tloop'); if(!v) return;
+  var fig=v.closest('.toolloop');
+  function fallback(){ if(fig) fig.classList.add('novideo'); }
+
+  /* Any of these means the file is not going to play here. Show the still
+     instead of an empty frame — silence was the whole bug on mobile. */
+  v.addEventListener('error', fallback);
+  [].forEach.call(v.querySelectorAll('source'), function(sc){
+    sc.addEventListener('error', function(){
+      if(v.networkState === v.NETWORK_NO_SOURCE) fallback();
+    });
+  });
+  /* Belt and braces: if nothing has reported a size by now, nothing will.
+     Covers a 404, a wrong Content-Type, and a codec Safari declines quietly. */
+  setTimeout(function(){ if(!v.videoWidth) fallback(); }, 4000);
+
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    v.pause(); return;
+  }
+  if(!('IntersectionObserver' in window)) return;
   new IntersectionObserver(function(es){es.forEach(function(e){
     if(e.isIntersecting){ var p=v.play(); if(p&&p.catch)p.catch(function(){}); } else { v.pause(); }
   });},{threshold:.25}).observe(v);
