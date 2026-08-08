@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8F80E2D56H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8F80E2D56H');
+</script><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Refund Policy — NESO</title>
+<meta name="description" content="NESO's refund windows, per product, and the event that closes each one. Fair to the buyer; closed once the thing you paid for is irreversible.">
+<link rel="canonical" href="https://nesohq.com/legal/refund.html">
+<meta name="robots" content="index,follow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#faf8f4;--card:#fff;--line:#e5ddd0;--ink:#23272e;--dim:#5c6672;--faint:#98a1ab;--plum:#5B2A86;--gold:#B8860B}
+body{font-family:Inter,system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:15.5px}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);padding:16px 0;background:var(--card)}
+header .wrap{display:flex;align-items:center;gap:10px}
+header b{font-family:Georgia,serif;font-size:19px;letter-spacing:.02em}
+header span{color:var(--faint);font-size:12.5px}
+header a{color:inherit;text-decoration:none;display:flex;align-items:center;gap:10px}
+main{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:30px 32px;margin:26px 0}
+h1{font-family:Georgia,serif;font-size:29px;line-height:1.15;margin-bottom:6px;color:var(--plum)}
+.upd{color:var(--faint);font-size:12.5px;font-family:ui-monospace,monospace;margin-bottom:20px}
+h3{font-family:Georgia,serif;font-size:17px;margin:24px 0 7px;color:var(--ink)}
+p{margin-bottom:11px;color:var(--dim)}
+ul{margin:0 0 12px 20px}
+li{margin-bottom:7px;color:var(--dim)}
+b{color:var(--ink)}
+a{color:var(--plum)}
+table{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:14px}
+th{text-align:left;font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);border-bottom:2px solid var(--plum);padding:0 10px 6px 0}
+td{border-bottom:1px solid var(--line);padding:9px 10px 9px 0;vertical-align:top;color:var(--dim)}
+td b{color:var(--ink)}
+footer{border-top:1px solid var(--line);padding:18px 0 40px;font-size:12.5px;color:var(--faint)}
+footer a{color:inherit}
+.mark{width:26px;height:26px}
+</style></head><body>
+<header><div class="wrap"><a href="https://nesohq.com/">
+<svg class="mark" viewBox="0 0 44 44" aria-hidden="true"><path d="M4 22 L22 19 L40 22 L22 25 Z" fill="#5B2A86"/><path d="M22 4 L25 22 L22 40 L19 22 Z" fill="#E7B84B"/><circle cx="22" cy="22" r="2.6" fill="#f2ecf7"/></svg>
+<b>NESO</b></a><span>· advisory &amp; tools for business and real estate</span></div></header>
+<div class="wrap"><main>
+<h1>Refund Policy</h1><div class="upd">Last updated: August 8, 2026</div>
+<p>One principle governs every window below: <b>a refund is available until the thing you paid for becomes irreversible.</b> For a software unlock that moment is redemption. For research it is the moment we confirm your engagement and senior work begins. For a call it is the call. Each window has a day count and an event; whichever comes first closes it.</p>
+
+<h3>The schedule</h3>
+<table>
+<tr><th>Product</th><th>Window</th><th>Closes early when</th></tr>
+<tr><td><b>Tool Pro unlocks</b></td><td>7 days</td><td>Your unlock code is redeemed. An unredeemed code is refundable in full within the window; a redeemed code has delivered the product.</td></tr>
+<tr><td><b>Bird's Eye reports</b></td><td>14 days</td><td>We send your Engagement Confirmation. Up to that moment — including after payment, while we are waiting on your three inputs — you may cancel for a full refund. After it, senior research hours are committed to your parcel.</td></tr>
+<tr><td><b>Service credits</b></td><td>14 days per block</td><td>Credits are applied to a quote you have approved. Unspent credits inside the window refund in full; approved work is governed by its quote.</td></tr>
+<tr><td><b>Memberships</b></td><td>14 days, first period</td><td>— Applies to the first charge only. After that, cancel anytime and the current period runs out; renewals are not refunded.</td></tr>
+<tr><td><b>Ask Charles</b></td><td>14 days</td><td>The session is held, or less than 24 hours remain before it. Reschedule freely up to 24 hours out.</td></tr>
+</table>
+
+<h3>What this is not</h3>
+<p>It is not a satisfaction guarantee on delivered work. A released report or deliverable has been researched, reviewed by a principal, and sent; one revision is included with every report, and that revision — not a refund — is the remedy for something we got wrong. If we miss a promised date through our own fault, that is a different conversation, and we will have it openly.</p>
+
+<h3>Mechanics</h3>
+<ul>
+<li>Purchases are made through Gumroad, which processes refunds to the original payment method. The window shown on each listing matches this schedule; if a listing ever disagrees with this page, this page governs and we will honour the longer of the two for your purchase.</li>
+<li>A refunded unlock has its code deactivated. A refunded purchase reverses any referral commission attached to it.</li>
+<li>To request a refund, reply to your Gumroad receipt or email <a href="mailto:hello@nesohq.com">hello@nesohq.com</a> with the receipt reference. We respond the same business day.</li>
+</ul>
+
+<h3>The clock on reports, plainly</h3>
+<p>Paying does not start your turnaround. We ask for three things — the parcel or address, the jurisdiction, and the decision you are trying to make — and the promised date is set when the last one arrives. That is also the moment your refund window can close early: it is when our work genuinely starts.</p>
+</main></div>
+<footer><div class="wrap">
+&copy; 2026 NESO · <a href="https://nesohq.com/">nesohq.com</a> ·
+<a href="https://nesohq.com/legal/privacy.html">Privacy</a> ·
+<a href="https://nesohq.com/legal/terms.html">Terms</a> ·
+<a href="https://nesohq.com/legal/refund.html">Refunds</a> ·
+hello@nesohq.com · text (901) 295-0322
+</div></footer>
+</body></html>
