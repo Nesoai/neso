@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8F80E2D56H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8F80E2D56H');
+</script><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vendor pricing — NESO Occupier Services</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#F7F4FB;--card:#fff;--line:#e5ddd0;--ink:#23272e;--dim:#5c6672;--faint:#98a1ab;--plum:#5B2A86;--plumB:#6d28d9;--gold:#B8860B}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:15px}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{padding:16px 0;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:10px}
+header b{font-family:Fraunces,Georgia,serif;font-size:18px}
+main{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 28px;margin:24px 0}
+h1{font-family:Fraunces,Georgia,serif;font-size:26px;line-height:1.15;margin-bottom:6px}
+.lead{color:var(--dim);font-size:14.5px;margin-bottom:18px}
+fieldset{border:0;border-top:1px solid var(--line);padding-top:18px;margin-top:22px}
+legend{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--plumB);font-weight:600;padding-right:10px}
+label{display:block;font-size:13.5px;font-weight:600;margin:14px 0 4px}
+.hint{font-size:12.5px;color:var(--faint);font-weight:400;margin-bottom:5px}
+input[type=text],input[type=email],textarea,select{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 12px;font:inherit;font-size:14px;background:#fff}
+textarea{min-height:80px;resize:vertical}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0 16px}
+.checks{display:grid;gap:6px;margin-top:6px}
+.checks label{display:flex;align-items:flex-start;gap:8px;font-weight:400;font-size:13.5px;margin:0}
+.checks input{margin-top:3px}
+.note{background:#F7F4FB;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:9px;padding:11px 13px;font-size:13px;color:var(--dim);margin:16px 0}
+button{background:var(--plum);color:#fff;border:0;border-radius:999px;padding:13px 26px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;margin-top:22px}
+footer{border-top:1px solid var(--line);padding:16px 0 40px;font-size:12.5px;color:var(--faint)}
+</style></head><body>
+<header><div class="wrap">
+<svg width="26" height="26" viewBox="0 0 44 44" aria-hidden="true"><path d="M4 22 L22 19 L40 22 L22 25 Z" fill="#5B2A86"/><path d="M22 4 L25 22 L22 40 L19 22 Z" fill="#E7B84B"/><circle cx="22" cy="22" r="2.6" fill="#f2ecf7"/></svg>
+<b>NESO</b><span style="color:#98a1ab;font-size:12.5px">· Occupier Services pricing</span>
+</div></header>
+
+<div class="wrap"><main>
+<h1>What we may quote on your behalf</h1>
+<p class="lead">When an owner asks "roughly what would that cost", the useful answer is a range from you rather than a guess from us. About four minutes. Nothing here is published on a public page — it goes to the person asking, and only when they ask.</p>
+
+<div class="note"><b>How this gets used, exactly.</b> We repeat your numbers as <em>indicative and subject to your site visit</em>. We never negotiate for you, never commit you to a number, and never take a percentage of the job. If you would rather we said "ask the vendor" for a given service, leave it blank — a blank is a real answer here.</div>
+
+<div class="note" style="background:#F7F4FB;border:1px solid #e5ddd0;border-left:3px solid #B8860B;border-radius:9px;padding:11px 13px;font-size:13px;color:#5c6672;margin:16px 0"><b>Submitting again replaces your pricing on file.</b> Send the whole picture each time rather than one changed line.</div>
+
+<form id="f" onsubmit="return submitForm(event)">
+
+<fieldset><legend>Who this is</legend>
+<div class="grid">
+<label>Business name <input type="text" name="business_name" required></label>
+<label>Email on the profile <input type="email" name="email" required></label>
+</div>
+</fieldset>
+
+<fieldset><legend>How you price</legend>
+<label>Your usual basis <span class="hint">Tick all that apply.</span></label>
+<div class="checks">
+<label><input type="checkbox" name="basis" value="Per visit"> Per visit</label>
+<label><input type="checkbox" name="basis" value="Per hour"> Per hour</label>
+<label><input type="checkbox" name="basis" value="Per square foot"> Per square foot</label>
+<label><input type="checkbox" name="basis" value="Monthly contract"> Monthly contract</label>
+<label><input type="checkbox" name="basis" value="Per job, quoted after a site visit"> Per job, quoted after a site visit</label>
+</div>
+<div class="grid">
+<label>Minimum job <span class="hint">Below this you would not travel.</span><input type="text" name="minimum" placeholder="e.g. $150"></label>
+<label>Typical hourly or day rate <input type="text" name="rate"></label>
+</div>
+</fieldset>
+
+<fieldset><legend>Ranges by service</legend>
+<div class="hint">Only for what you ticked on your profile. A range is better than a number, and "depends — needs a look" is better than a range you would not honour.</div>
+<label>Landscaping / grounds / mowing <input type="text" name="p_landscaping" placeholder="e.g. $65–$110 per visit, quarter-acre commercial"></label>
+<label>Pressure washing <input type="text" name="p_pressure" placeholder="e.g. $0.18–$0.30 per sq ft"></label>
+<label>Janitorial / custodial <input type="text" name="p_janitorial" placeholder="e.g. $28–$38 per hour, or monthly by sq ft"></label>
+<label>Junk removal / hauling <input type="text" name="p_junk" placeholder="e.g. $180 half load, $350 full load"></label>
+<label>Exterior maintenance / handyman <input type="text" name="p_exterior"></label>
+<label>Snow &amp; ice <input type="text" name="p_snow"></label>
+<label>Anything else <span class="hint">Name the service and the range.</span><textarea name="p_other"></textarea></label>
+</fieldset>
+
+<fieldset><legend>Terms you work on</legend>
+<div class="grid">
+<label>Payment terms <span class="hint">e.g. due on completion, net 15, 50% deposit.</span><input type="text" name="payment_terms"></label>
+<label>Deposit required <select name="deposit"><option value="">Choose…</option><option>No</option><option>Yes, on larger jobs</option><option>Yes, always</option></select></label>
+<label>How you accept payment <input type="text" name="payment_methods" placeholder="Check, ACH, card, Zelle…"></label>
+<label>Lead time when booked <input type="text" name="lead_time" placeholder="e.g. 3–5 days"></label>
+</div>
+<label>Emergency or same-day work <span class="hint">Do you take it, and does it carry a premium?</span><input type="text" name="emergency"></label>
+<label>Seasonal limits <span class="hint">Months you are full, or work you stop in winter.</span><input type="text" name="seasonality"></label>
+</fieldset>
+
+<fieldset><legend>Permission</legend>
+<div class="checks">
+<label><input type="checkbox" name="consent_quote" value="yes" required> <span>NESO may share these ranges with a prospective client as indicative pricing, subject to my own site visit and final quote.</span></label>
+<label><input type="checkbox" name="consent_update" value="yes" required> <span>I will tell NESO when my pricing changes, and I understand NESO repeats what I last supplied.</span></label>
+</div>
+<label>Last reviewed by you <span class="hint">Today's date. We ask you to refresh this every six months.</span><input type="text" name="reviewed_on" placeholder="YYYY-MM-DD"></label>
+</fieldset>
+
+<button type="submit">Submit my pricing</button>
+</form>
+
+<div id="ok" style="display:none"><h1>Received.</h1><p class="lead">Your ranges are on file. We will ask you to confirm them in six months, and any time a client asks for something outside what you have given us we come to you rather than guessing.</p></div>
+</main></div>
+
+<footer><div class="wrap">© 2026 NESO · <a href="https://nesohq.com/" style="color:inherit">nesohq.com</a> · <a href="https://nesohq.com/legal/privacy.html" style="color:inherit">Privacy</a> · Text (901) 295-0322</div></footer>
+
+<script>
+const ENDPOINT = "https://neso-queue.nesoai-us.workers.dev/form/vendor-pricing";
+async function submitForm(e){
+  e.preventDefault();
+  const f = document.getElementById('f');
+  const fd = new FormData(f);
+  const data = {form:"vendor-pricing"};
+  const basis = fd.getAll('basis');
+  for (const [k,v] of fd.entries()){ if(k!=='basis') data[k]=v; }
+  data.basis = basis;
+  const btn = f.querySelector('button'); btn.disabled=true; btn.textContent='Sending…';
+  try{
+    const r = await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    if(!r.ok) throw new Error('bad status');
+    f.style.display='none'; document.getElementById('ok').style.display='block'; window.scrollTo({top:0,behavior:'smooth'});
+    if(window.gtag) gtag('event','vendor_pricing_submitted');
+  }catch(err){
+    btn.disabled=false; btn.textContent='Submit my pricing';
+    alert("That did not send. Please text (901) 295-0322 rather than filling this in twice.");
+  }
+  return false;
+}
+</script>
+</body></html>
