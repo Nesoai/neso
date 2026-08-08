@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8F80E2D56H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8F80E2D56H');
+</script><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vendor profile — NESO Occupier Services</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#F7F4FB;--card:#fff;--line:#e5ddd0;--ink:#23272e;--dim:#5c6672;--faint:#98a1ab;--plum:#5B2A86;--plumB:#6d28d9;--gold:#B8860B}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:15px}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{padding:16px 0;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:10px}
+header b{font-family:Fraunces,Georgia,serif;font-size:18px}
+main{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 28px;margin:24px 0}
+h1{font-family:Fraunces,Georgia,serif;font-size:26px;line-height:1.15;margin-bottom:6px}
+.lead{color:var(--dim);font-size:14.5px;margin-bottom:20px}
+fieldset{border:0;border-top:1px solid var(--line);padding-top:18px;margin-top:22px}
+legend{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--plumB);font-weight:600;padding-right:10px}
+label{display:block;font-size:13.5px;font-weight:600;margin:14px 0 4px}
+.hint{font-size:12.5px;color:var(--faint);font-weight:400;margin-bottom:5px}
+input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 12px;font:inherit;font-size:14px;background:#fff}
+textarea{min-height:88px;resize:vertical}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0 16px}
+.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px 16px;margin-top:6px}
+.checks label{display:flex;align-items:flex-start;gap:8px;font-weight:400;font-size:13.5px;margin:0}
+.checks input{margin-top:3px}
+.note{background:#F7F4FB;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:9px;padding:11px 13px;font-size:13px;color:var(--dim);margin:16px 0}
+button{background:var(--plum);color:#fff;border:0;border-radius:999px;padding:13px 26px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;margin-top:22px}
+button:hover{filter:brightness(1.1)}
+footer{border-top:1px solid var(--line);padding:16px 0 40px;font-size:12.5px;color:var(--faint)}
+</style></head><body>
+<header><div class="wrap">
+<svg width="26" height="26" viewBox="0 0 44 44" aria-hidden="true"><path d="M4 22 L22 19 L40 22 L22 25 Z" fill="#5B2A86"/><path d="M22 4 L25 22 L22 40 L19 22 Z" fill="#E7B84B"/><circle cx="22" cy="22" r="2.6" fill="#f2ecf7"/></svg>
+<b>NESO</b><span style="color:#98a1ab;font-size:12.5px">· Occupier Services vendor profile</span>
+</div></header>
+
+<div class="wrap"><main>
+<h1>Your vendor profile</h1>
+<p class="lead">This is what NESO shows an agent or a building owner when they ask who can do the work. Fill it in once; tell us any time it changes. About eight minutes. Pricing is a separate, shorter form — this one is who you are and what you do.</p>
+
+<div class="note" style="background:#F7F4FB;border:1px solid #e5ddd0;border-left:3px solid #B8860B;border-radius:9px;padding:11px 13px;font-size:13px;color:#5c6672;margin:16px 0"><b>Submitting again replaces what is on file.</b> This form is your whole profile, not an update to it &mdash; if you resubmit with one area filled in, the other four are removed. Fill in everything you want us to hold, every time. If it is easier to tell us a single change, text (901) 295-0322 instead.</div>
+
+<form id="f" onsubmit="return submitForm(event)">
+
+<fieldset><legend>The business</legend>
+<label>Business name <span class="hint">As you want it shown to a client.</span>
+<input type="text" name="business_name" required></label>
+<div class="grid">
+<label>Contact name <input type="text" name="contact_name" required></label>
+<label>Role / title <input type="text" name="contact_role"></label>
+<label>Email <input type="email" name="email" required></label>
+<label>Mobile <span class="hint">A principal may text you about a match.</span><input type="tel" name="phone" required></label>
+</div>
+<label>Website or social page <span class="hint">Optional. A Facebook page is fine — many good crews have no website.</span>
+<input type="url" name="website" placeholder="https://"></label>
+<div class="grid">
+<label>Years in business <input type="text" name="years"></label>
+<label>Crew size <span class="hint">Including you.</span><input type="text" name="crew_size"></label>
+</div>
+</fieldset>
+
+<fieldset><legend>Work you offer</legend>
+<div class="hint">Tick everything you actually do yourself. Do not tick something you would subcontract — a client who books it will expect you.</div>
+<div class="checks">
+<label><input type="checkbox" name="services" value="Landscaping &amp; grounds"> Landscaping &amp; grounds</label>
+<label><input type="checkbox" name="services" value="Mowing &amp; lawn maintenance"> Mowing &amp; lawn maintenance</label>
+<label><input type="checkbox" name="services" value="Pressure washing"> Pressure washing</label>
+<label><input type="checkbox" name="services" value="Exterior building maintenance"> Exterior building maintenance</label>
+<label><input type="checkbox" name="services" value="Janitorial &amp; custodial"> Janitorial &amp; custodial</label>
+<label><input type="checkbox" name="services" value="Junk removal &amp; hauling"> Junk removal &amp; hauling</label>
+<label><input type="checkbox" name="services" value="Snow &amp; ice management"> Snow &amp; ice management</label>
+<label><input type="checkbox" name="services" value="Parking lot &amp; striping"> Parking lot &amp; striping</label>
+<label><input type="checkbox" name="services" value="Window cleaning"> Window cleaning</label>
+<label><input type="checkbox" name="services" value="Waste &amp; recycling"> Waste &amp; recycling</label>
+<label><input type="checkbox" name="services" value="Pest control"> Pest control</label>
+<label><input type="checkbox" name="services" value="Handyman &amp; small repairs"> Handyman &amp; small repairs</label>
+</div>
+<label>Anything else you do <span class="hint">Free text. If it is most of your revenue, say so.</span>
+<textarea name="services_other"></textarea></label>
+</fieldset>
+
+<fieldset><legend>Where you want work — up to five areas</legend>
+<div class="hint">Cities, counties, or "within 30 miles of X". We match against these and nothing else, so name the places you would genuinely drive to.</div>
+<div class="grid">
+<label>Area 1 <input type="text" name="area_1" required></label>
+<label>Area 2 <input type="text" name="area_2"></label>
+<label>Area 3 <input type="text" name="area_3"></label>
+<label>Area 4 <input type="text" name="area_4"></label>
+<label>Area 5 <input type="text" name="area_5"></label>
+</div>
+<label>Property types you are set up for <span class="hint">Optional. Commercial, multifamily, retail, industrial, municipal, residential.</span>
+<input type="text" name="property_types"></label>
+</fieldset>
+
+<fieldset><legend>Past work</legend>
+<label>Three jobs you would want a client to hear about <span class="hint">What, where, roughly when, and roughly how big. Plain sentences are fine — this is not a resume.</span>
+<textarea name="past_work" style="min-height:120px" required></textarea></label>
+<label>References <span class="hint">Two if you have them: name, company, and how to reach them. We ask before we call anyone.</span>
+<textarea name="references"></textarea></label>
+</fieldset>
+
+<fieldset><legend>Insurance and licensing</legend>
+<div class="hint">We record what you tell us and show it as you stated it. NESO does not verify insurance or licences and does not vouch for them — building owners ask, and an honest answer here is worth more than a generous one.</div>
+<div class="grid">
+<label>General liability insurance <select name="insurance"><option value="">Choose…</option><option>Yes, current</option><option>Yes, but lapsed or renewing</option><option>No</option></select></label>
+<label>Coverage amount <span class="hint">If you have it.</span><input type="text" name="insurance_amount"></label>
+<label>Workers' compensation <select name="workers_comp"><option value="">Choose…</option><option>Yes</option><option>No — owner-operator</option><option>No</option></select></label>
+<label>Licences held <span class="hint">Trade, state or municipal.</span><input type="text" name="licences"></label>
+</div>
+<label>Business structure and state <span class="hint">e.g. LLC in Tennessee, sole proprietor in Connecticut.</span>
+<input type="text" name="entity"></label>
+</fieldset>
+
+<fieldset><legend>How we may use this</legend>
+<div class="note"><b>Read this before you submit.</b> The point of the profile is to be shared. By submitting, you are asking NESO to send your business name, contact details, services, areas, past work, references and stated insurance to real-estate agents, building owners, property managers and similar contacts who are looking for the work you do. We share it for that purpose only. We do not sell it, we do not publish it on the open web, and we stop sharing it within two business days of you telling us to.</div>
+<div class="checks" style="grid-template-columns:1fr">
+<label><input type="checkbox" name="consent_share" value="yes" required> <span>Yes — share my profile with NESO's contacts for the areas and services above.</span></label>
+<label><input type="checkbox" name="consent_contact" value="yes" required> <span>Yes — a NESO principal may email or text me about opportunities and about my membership. Reply STOP to end texts.</span></label>
+<label><input type="checkbox" name="consent_accurate" value="yes" required> <span>Everything above is accurate to the best of my knowledge, and I will tell NESO when it changes.</span></label>
+</div>
+<label>Anything we should know <span class="hint">Optional. Seasonality, minimum job size, work you would rather not be sent.</span>
+<textarea name="notes"></textarea></label>
+</fieldset>
+
+<button type="submit">Submit my profile</button>
+<div class="hint" style="margin-top:10px">Submitting this does not start a membership. We reply within one business day with the pricing form and the membership link.</div>
+</form>
+
+<div id="ok" style="display:none"><h1>Got it.</h1><p class="lead">Your profile is with a principal. You will hear from a person within one business day — with the pricing form and your membership link, or with a question if something needs clarifying.</p></div>
+</main></div>
+
+<footer><div class="wrap">© 2026 NESO · <a href="https://nesohq.com/" style="color:inherit">nesohq.com</a> · <a href="https://nesohq.com/legal/privacy.html" style="color:inherit">Privacy</a> · Text (901) 295-0322</div></footer>
+
+<script>
+const ENDPOINT = "https://neso-queue.nesoai-us.workers.dev/form/vendor-profile";
+async function submitForm(e){
+  e.preventDefault();
+  const f = document.getElementById('f');
+  const fd = new FormData(f);
+  const data = {form:"vendor-profile", source:new URLSearchParams(location.search).get('ref')||"direct"};
+  const services = fd.getAll('services');
+  for (const [k,v] of fd.entries()){ if(k!=='services') data[k]=v; }
+  data.services = services;
+  const btn = f.querySelector('button'); btn.disabled = true; btn.textContent = 'Sending…';
+  try{
+    const r = await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    if(!r.ok) throw new Error('bad status');
+    f.style.display='none'; document.getElementById('ok').style.display='block'; window.scrollTo({top:0,behavior:'smooth'});
+    if(window.gtag) gtag('event','vendor_profile_submitted');
+  }catch(err){
+    btn.disabled=false; btn.textContent='Submit my profile';
+    alert("That did not send. Please text (901) 295-0322 and we will take it from there — do not fill this in twice.");
+  }
+  return false;
+}
+</script>
+</body></html>
