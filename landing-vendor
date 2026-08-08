@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8F80E2D56H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8F80E2D56H');
+</script><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Occupier Services vendors — NESO finds the work; you do the work.</title>
+<meta name="description" content="For landscaping, pressure washing, janitorial, junk removal and property-service contractors: NESO searches its bid database and its network of agents and building owners for work in up to five areas you choose, and puts your profile in front of the people who hire.">
+<link rel="canonical" href="https://nesohq.com/landing-vendor.html">
+<meta name="robots" content="noindex,follow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#F7F4FB;--card:#fff;--line:#e5ddd0;--ink:#23272e;--dim:#5c6672;--faint:#98a1ab;--plum:#5B2A86;--plumB:#6d28d9;--gold:#B8860B;--green:#0E8A6E}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+header{padding:16px 0;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.lockup{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.lockup b{font-family:Fraunces,Georgia,serif;font-size:18px}
+.meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint);text-align:right}
+.hero{padding:48px 0 30px}
+.eye{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--plumB);font-weight:600}
+h1{font-family:Fraunces,Georgia,serif;font-size:clamp(28px,5vw,40px);line-height:1.1;margin:10px 0 12px;max-width:24ch}
+.lead{color:var(--dim);font-size:16px;max-width:62ch}
+.cardrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:30px 0}
+.c{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.c h2{font-family:Fraunces,Georgia,serif;font-size:18px;margin-bottom:6px}
+.c p{font-size:13.5px;color:var(--dim)}
+.price{background:linear-gradient(120deg,#3d1a5c,#5B2A86);border-radius:16px;padding:26px 26px;color:#fff;margin:8px 0 30px}
+.price h2{font-family:Fraunces,Georgia,serif;font-size:22px;margin-bottom:4px}
+.price .n{font-family:'IBM Plex Mono',monospace;font-size:26px;color:#E7B84B;font-weight:600}
+.price p{color:#d9c7ec;font-size:14px;max-width:64ch;margin:8px 0 14px}
+.btn{display:inline-block;background:#E7B84B;color:#221a03;font-weight:700;border-radius:999px;padding:12px 22px;text-decoration:none;font-size:14.5px;margin-right:10px}
+.btn.g{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.plain{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:30px}
+.plain h2{font-family:Fraunces,Georgia,serif;font-size:18px;margin-bottom:8px}
+.plain p,.plain li{font-size:14px;color:var(--dim)}
+.plain ul{margin:6px 0 4px 18px}
+.plain li{margin-bottom:6px}
+footer{border-top:1px solid var(--line);padding:16px 0 34px;font-size:12.5px;color:var(--faint)}
+</style></head><body>
+<header><div class="wrap">
+<a class="lockup" href="https://nesohq.com/"><svg width="26" height="26" viewBox="0 0 44 44" aria-hidden="true"><path d="M4 22 L22 19 L40 22 L22 25 Z" fill="#5B2A86"/><path d="M22 4 L25 22 L22 40 L19 22 Z" fill="#E7B84B"/><circle cx="22" cy="22" r="2.6" fill="#f2ecf7"/></svg><b>NESO</b></a>
+<div class="meta">For property-service contractors<br>nesohq.com · hello@nesohq.com</div>
+</div></header>
+
+<div class="wrap">
+<div class="hero">
+<div class="eye">Occupier Services · founding vendors</div>
+<h1>You do the work. NESO looks for it.</h1>
+<p class="lead">Landscaping, pressure washing, janitorial, junk removal, mowing, exterior maintenance — the work buildings need on a schedule. NESO already crawls thirty-five public bid sources daily and already talks to real-estate agents and building owners. A vendor membership puts that machinery and that network to work finding <em>you</em> the next job, in the areas you choose.</p>
+</div>
+
+<div class="cardrow">
+  <div class="c"><h2>We search for you</h2><p>NESO actively looks for work matching your services and areas — across our live bid database and through our own contacts. When something fits, we send it to you. You decide whether to bid; the work and the client are yours.</p></div>
+  <div class="c"><h2>Your profile, in the right hands</h2><p>Agents and building owners ask us who can do the work. Members are who we answer with. Your business, services, pricing and references go in front of the people who hire, for up to five areas you select.</p></div>
+  <div class="c"><h2>You stay the business</h2><p>NESO is not a middleman on the job. Clients pay you directly, at your prices. We make the introduction and find the opportunity; the relationship is yours to win and keep.</p></div>
+</div>
+
+<div class="price">
+<h2>Founding vendor price — first 40 vendors only</h2>
+<div class="n">$11/month · or $59/year</div>
+<p>Held for as long as your membership stays active. After the first forty, the price goes up — founding vendors keep this rate. Joining takes two forms: one that builds your profile (services, areas, references, past work), one that records your pricing so we can quote you accurately to the people who ask. Cancel anytime; refunds follow the 14-day first-period window in our <a href="https://nesohq.com/legal/refund.html" style="color:#E7B84B">Refund Policy</a>.</p>
+<a class="btn" href="https://neso-queue.nesoai-us.workers.dev/form/intake?source=vendor">Become a founding vendor</a>
+<a class="btn g" href="sms:+19012950322?&body=Hi%20NESO%20%E2%80%94%20I%27m%20interested%20in%20the%20vendor%20membership.%20My%20business%20is%20">Text us a question first</a>
+</div>
+
+<div class="plain">
+<h2>What membership is, plainly</h2>
+<ul>
+<li><b>Up to five areas.</b> You name where you want work — cities, counties, or a radius. We match against those and nothing else.</li>
+<li><b>Opportunities when they exist, not on a schedule.</b> We forward what genuinely matches. Some weeks that is several; some weeks it is none. We do not pad the list to look busy, and we do not guarantee volume.</li>
+<li><b>Introductions, not exclusivity.</b> More than one member may cover an area and a trade. When a contact asks, we send the members who fit; the work goes to whoever wins it.</li>
+<li><b>Your pricing stays yours.</b> The pricing form exists so we represent you accurately — we never quote for you, negotiate for you, or take a cut of the job.</li>
+</ul>
+</div>
+
+<div class="plain">
+<h2>The honest limits</h2>
+<p>This is a new line and you would be among its first members — which is exactly why the founding price exists. The bid database is real and running today; the agent-and-owner network is real and growing. What does not exist yet is a track record of placed work, and we will not invent one. What you are buying at $11 is a working search and a seat at the front of the list as this builds.</p>
+</div>
+</div>
+
+<footer><div class="wrap">© 2026 NESO · advisory &amp; tools for business and real estate · <a href="https://nesohq.com/" style="color:inherit">nesohq.com</a> · Building owners and agents: <a href="https://nesohq.com/landing-occupier.html" style="color:inherit">request vendors here</a> · Text (901) 295-0322</div></footer>
+</body></html>
