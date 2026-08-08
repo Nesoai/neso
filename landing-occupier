@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8F80E2D56H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8F80E2D56H');
+</script><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Find a vetted property-service vendor — NESO Occupier Services</title>
+<meta name="description" content="For real-estate agents, building owners and property managers: tell NESO the property and the work — landscaping, pressure washing, janitorial, junk removal, exterior maintenance — and we send you member vendors who cover that area, with their services, references and pricing.">
+<link rel="canonical" href="https://nesohq.com/landing-occupier.html">
+<meta name="robots" content="noindex,follow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#F7F4FB;--card:#fff;--line:#e5ddd0;--ink:#23272e;--dim:#5c6672;--faint:#98a1ab;--plum:#5B2A86;--plumB:#6d28d9;--gold:#B8860B;--green:#0E8A6E}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+header{padding:16px 0;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.lockup{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit}
+.lockup b{font-family:Fraunces,Georgia,serif;font-size:18px}
+.meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint);text-align:right}
+.hero{padding:48px 0 30px}
+.eye{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--plumB);font-weight:600}
+h1{font-family:Fraunces,Georgia,serif;font-size:clamp(28px,5vw,40px);line-height:1.1;margin:10px 0 12px;max-width:24ch}
+.lead{color:var(--dim);font-size:16px;max-width:62ch}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:30px 0}
+.st{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.st .n{width:26px;height:26px;border-radius:50%;background:var(--plumB);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center;margin-bottom:8px}
+.st b{display:block;font-size:15px;margin-bottom:4px}
+.st span{font-size:13.5px;color:var(--dim)}
+.cta{background:linear-gradient(120deg,#3d1a5c,#5B2A86);border-radius:16px;padding:26px 26px;color:#fff;margin:8px 0 30px}
+.cta h2{font-family:Fraunces,Georgia,serif;font-size:22px;margin-bottom:6px}
+.cta p{color:#d9c7ec;font-size:14px;max-width:64ch;margin-bottom:14px}
+.btn{display:inline-block;background:#E7B84B;color:#221a03;font-weight:700;border-radius:999px;padding:12px 22px;text-decoration:none;font-size:14.5px;margin-right:10px}
+.btn.g{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.plain{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:30px}
+.plain h2{font-family:Fraunces,Georgia,serif;font-size:18px;margin-bottom:8px}
+.plain p,.plain li{font-size:14px;color:var(--dim)}
+.plain ul{margin:6px 0 4px 18px}
+.plain li{margin-bottom:6px}
+footer{border-top:1px solid var(--line);padding:16px 0 34px;font-size:12.5px;color:var(--faint)}
+</style></head><body>
+<header><div class="wrap">
+<a class="lockup" href="https://nesohq.com/"><svg width="26" height="26" viewBox="0 0 44 44" aria-hidden="true"><path d="M4 22 L22 19 L40 22 L22 25 Z" fill="#5B2A86"/><path d="M22 4 L25 22 L22 40 L19 22 Z" fill="#E7B84B"/><circle cx="22" cy="22" r="2.6" fill="#f2ecf7"/></svg><b>NESO</b></a>
+<div class="meta">For agents, owners &amp; property managers<br>nesohq.com · hello@nesohq.com</div>
+</div></header>
+
+<div class="wrap">
+<div class="hero">
+<div class="eye">Occupier Services · find a vendor</div>
+<h1>The property needs work. We know who does it.</h1>
+<p class="lead">Landscaping, pressure washing, mowing, janitorial, junk removal, exterior maintenance. Tell us the property and the work, and we send you the member vendors who cover that area — with their services, their references, their past work and their pricing, so you are comparing real options rather than searching from scratch.</p>
+</div>
+
+<div class="steps">
+  <div class="st"><div class="n">1</div><b>Tell us what and where</b><span>The property, the work needed, and any timing. Two minutes on the form, or a text.</span></div>
+  <div class="st"><div class="n">2</div><b>We match from members</b><span>Every vendor in the database chose their areas and listed their services, references and pricing when they joined.</span></div>
+  <div class="st"><div class="n">3</div><b>You hire directly</b><span>We send the fits; you pick. The vendor works for you, at their published pricing. NESO is not a party to the job.</span></div>
+</div>
+
+<div class="cta">
+<h2>Request vendors</h2>
+<p>No fee to ask, no obligation to hire, and no markup on the work — vendors pay a membership to be in the database, which is how the lights stay on without a cut of your job. If nobody in the database fits, we say so rather than sending a stretch.</p>
+<a class="btn" href="https://neso-queue.nesoai-us.workers.dev/form/intake?source=occupier">Tell us what you need</a>
+<a class="btn g" href="sms:+19012950322?&body=Hi%20NESO%20%E2%80%94%20I%20need%20a%20vendor%20for%20">Text (901) 295-0322</a>
+</div>
+
+<div class="plain">
+<h2>What you get, plainly</h2>
+<ul>
+<li><b>Matched vendors, not a directory dump.</b> We send the members whose areas and services actually fit — with references and pricing attached, so the first call is already an informed one.</li>
+<li><b>Straight answers.</b> If the database has nobody for the work or the area yet, we tell you that, and we tell you when that changes. The vendor list is growing week by week.</li>
+<li><b>No stake in who you pick.</b> Vendors pay the same membership whether they win your job or not, so we have no reason to steer you.</li>
+</ul>
+</div>
+
+<div class="plain">
+<h2>If you also own or develop</h2>
+<p>Occupier services keep a building running; the rest of NESO decides what to build and whether it pencils — research on a named parcel, free analysis tools, and senior advisory quoted in credits. Everything is at <a href="https://nesohq.com/">nesohq.com</a>, and the same text number reaches a principal for any of it.</p>
+</div>
+</div>
+
+<footer><div class="wrap">© 2026 NESO · advisory &amp; tools for business and real estate · <a href="https://nesohq.com/" style="color:inherit">nesohq.com</a> · Contractors: <a href="https://nesohq.com/landing-vendor.html" style="color:inherit">become a founding vendor</a> · Text (901) 295-0322</div></footer>
+</body></html>
