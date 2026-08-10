@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>NESO Bid Desk — Your search profile</title>
+<meta name="description" content="Tell NESO what to look for, and your weekly Bid Desk list is built from it.">
+<!--
+  NESO BID DESK — member search profile v1.0 · 2026-08-11-0230Z
+  ============================================================
+  WHAT THIS IS. The two-minute profile a Bid Desk member fills in after
+  subscribing. It is the ONLY input to the weekly match, which is why the
+  fields are the ones a match actually needs and nothing else.
+
+  WHERE IT POSTS. neso-queue /submit as form "bid-desk", exactly like the TKS
+  completion form posts as "tks". /submit is public by design (it is a contact
+  form) and stores the submission as q:<id> with status "new", so a profile
+  raises a queue item a principal must answer within a business day. NO KEY
+  LIVES IN THIS FILE, because this file is public.
+
+  WHY NOT POST TO neso-members. Because neso-members does not exist yet. When
+  it does, change QUEUE below to its /profile endpoint and keep the same field
+  keys — they are already named for the record they will become. Until then the
+  queue is the record, and a principal builds the dashboard by hand. That is
+  the honest version of shipping: the promise on the listing is a list within a
+  business day, and a person reading a queue item can keep that promise today.
+
+  NOISE FLOOR. Deliberately marked noindex: this page means nothing to a
+  stranger and it is not a marketing surface. It is reached from the Gumroad
+  receipt and the Content tab, both of which name it by URL.
+
+  THE FIELD KEYS ARE THE CONTRACT. The queue upper-cases them into the
+  transcript and anything downstream parses them back out. Keep bd_* stable.
+-->
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--plum:#4B1D6E;--plum-l:#7C3FB0;--gold:#B8860B;--ink:#1e2228;--dim:#5c6672;--faint:#98a1ab;
+--line:#e3ddd2;--bg:#f7f5f1;--card:#fff;--green:#0e8a6e}
+body{font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);
+color:var(--ink);line-height:1.55;font-size:15px}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px 60px}
+header{background:var(--plum);color:#fff;padding:26px 0}
+header .wrap{padding-bottom:0}
+header .mk{display:flex;align-items:center;gap:10px}
+header h1{font-family:Georgia,serif;font-size:25px}
+header p{font-size:13px;color:#d5c4e6;margin-top:3px}
+h2{font-family:Georgia,serif;font-size:22px;margin:30px 0 6px}
+.lede{color:var(--dim);font-size:14.5px;margin-bottom:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.card > .sec{font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+color:var(--plum);font-weight:700;margin-bottom:14px}
+.f{margin-bottom:17px}
+.f:last-child{margin-bottom:0}
+label{display:block;font-size:12.5px;font-weight:700;color:var(--dim);margin-bottom:5px}
+label .req{color:#b91c1c}
+input,select,textarea{width:100%;font-family:inherit;font-size:15px;color:var(--ink);
+background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:11px 12px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--plum);outline-offset:1px;border-color:transparent}
+textarea{min-height:78px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.two{grid-template-columns:1fr}}
+.hint{font-size:12px;color:var(--faint);margin-top:5px;line-height:1.5}
+.checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:7px}
+.ck{display:flex;align-items:flex-start;gap:8px;background:var(--bg);border:1px solid var(--line);
+border-radius:9px;padding:9px 11px;font-size:14px;cursor:pointer}
+.ck input{width:auto;margin-top:3px;flex:0 0 auto}
+.ck span small{display:block;font-size:11.5px;color:var(--faint);line-height:1.35}
+.ck.on{border-color:var(--plum);background:#faf6fe}
+.btn{font-family:inherit;font-size:15px;font-weight:700;background:var(--plum);color:#fff;
+border:none;border-radius:999px;padding:13px 30px;cursor:pointer}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.msg{margin-top:14px;font-size:14px;font-weight:600}
+.msg.err{color:#b91c1c}
+.limits{background:#fbf8f2;border:1px solid var(--line);border-left:4px solid var(--gold);
+border-radius:0 12px 12px 0;padding:16px 18px;margin:22px 0 6px}
+.limits b{display:block;font-size:14px;margin-bottom:6px}
+.limits ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--dim);line-height:1.65}
+.done{display:none;background:#f0faf6;border:1px solid var(--green);border-radius:14px;padding:26px 24px;text-align:center}
+.done h3{font-family:Georgia,serif;font-size:21px;color:var(--green);margin-bottom:7px}
+.done p{font-size:14.5px;color:var(--dim)}
+.done ol{text-align:left;max-width:54ch;margin:12px auto 0;padding-left:20px;font-size:14.5px;color:var(--dim);line-height:1.7}
+footer{border-top:1px solid var(--line);margin-top:34px;padding:18px 0 0;font-size:12.5px;color:var(--faint);line-height:1.7}
+footer a{color:inherit}
+</style></head><body>
+
+<header><div class="wrap">
+  <div class="mk">
+    <svg width="26" height="26" viewBox="0 0 44 44" aria-hidden="true">
+      <path d="M4 22 L22 19 L40 22 L22 25 Z" fill="#C9A9E8"/>
+      <path d="M22 4 L25 22 L22 40 L19 22 Z" fill="#E7B84B"/>
+      <circle cx="22" cy="22" r="2.6" fill="#fff"/></svg>
+    <h1>NESO Bid Desk</h1>
+  </div>
+  <p>Your search profile &mdash; about two minutes</p>
+</div></header>
+
+<div class="wrap">
+
+<div id="formIntro">
+<h2>Tell us what to look for</h2>
+<p class="lede">This is the whole input to your weekly list, so it is worth two careful minutes. A principal reads it,
+builds your dashboard, and your first list follows within a business day. You can change any of it later &mdash;
+the next list follows the change.</p>
+</div>
+
+<div id="formCard">
+
+  <div class="card">
+    <div class="sec">Who you are</div>
+    <div class="two">
+      <div class="f"><label>Your name <span class="req">*</span></label>
+        <input id="name" autocomplete="name" placeholder="First name, then last name"></div>
+      <div class="f"><label>Business name <span class="req">*</span></label>
+        <input id="biz" autocomplete="organization" placeholder="As it appears on a bid"></div>
+    </div>
+    <div class="two">
+      <div class="f"><label>Email <span class="req">*</span></label>
+        <input id="email" type="email" autocomplete="email" inputmode="email" placeholder="you@company.com">
+        <div class="hint">Use the same address as your Gumroad receipt if you can &mdash; it is how we match you to your membership.</div></div>
+      <div class="f"><label>Mobile</label>
+        <input id="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(901) 555-0100">
+        <div class="hint">Optional. Only used if something about your profile needs a quick answer.</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sec">What you do</div>
+    <div class="f"><label>Trades, services or keywords <span class="req">*</span></label>
+      <textarea id="trades" placeholder="e.g. commercial roofing, sheet metal, gutter and downspout, roof coatings"></textarea>
+      <div class="hint">Write it the way a solicitation would &mdash; the words that appear in a bid title, not your marketing
+        line. Six to ten is better than two. &ldquo;Janitorial&rdquo; and &ldquo;custodial&rdquo; are different words on different boards, so
+        give us both if both apply.</div></div>
+    <div class="f"><label>Words that mean &ldquo;not for me&rdquo;</label>
+      <input id="exclude" placeholder="e.g. residential, snow removal, asbestos">
+      <div class="hint">The fastest way to make a short list shorter. Anything here is filtered out before you see it.</div></div>
+  </div>
+
+  <div class="card">
+    <div class="sec">Where you work</div>
+    <div class="f"><label>States we cover today <span class="req">*</span></label>
+      <div class="checks" id="stateBox"></div>
+      <div class="hint">Tick every state you would actually travel to and bid in. Ticking all seven when you only work one
+        does not get you more work &mdash; it gets you a longer list you stop reading.</div></div>
+    <div class="f"><label>Somewhere we do not cover yet?</label>
+      <input id="statesOther" placeholder="e.g. North Carolina, Virginia">
+      <div class="hint">Tell us anyway. We will say plainly whether it is covered rather than sending you a list from
+        somewhere else, and where several members name the same state, that is what decides which one we crawl next.</div></div>
+    <div class="f"><label>Counties, cities or a radius</label>
+      <input id="areas" placeholder="e.g. Shelby, DeSoto and Tipton counties — or 'within 90 minutes of Memphis'">
+      <div class="hint">Optional, and it sharpens the list more than anything else here.</div></div>
+  </div>
+
+  <div class="card">
+    <div class="sec">What is worth your time</div>
+    <div class="f"><label>Who you will work for</label>
+      <div class="checks" id="buyerBox"></div>
+      <div class="hint">Leave them all unticked if you will look at anything.</div></div>
+    <div class="two">
+      <div class="f"><label>Smallest job worth bidding</label>
+        <input id="floor" type="number" min="0" step="500" placeholder="$ e.g. 5000"></div>
+      <div class="f"><label>Largest you can take on</label>
+        <input id="ceiling" type="number" min="0" step="1000" placeholder="$ e.g. 250000"></div>
+    </div>
+    <div class="hint" style="margin-top:-8px">Both optional. Many postings do not publish a value, and those are never
+      filtered out on size &mdash; a blank is treated as unknown, not as zero.</div>
+    <div class="f" style="margin-top:17px"><label>Certifications you hold</label>
+      <input id="certs" placeholder="e.g. MBE, WBE, DBE, 8(a), HUBZone, SDVOB — or 'none yet'">
+      <div class="hint">Used to flag set-asides and preference points you qualify for. We record what you tell us and
+        never verify or vouch for it.</div></div>
+    <div class="f"><label>Bonding capacity</label>
+      <input id="bonding" placeholder="e.g. $500k single / $1.5M aggregate — or 'not bonded'">
+      <div class="hint">Bonding requirements sit in the solicitation documents, so this mostly saves you opening the ones
+        you cannot bid.</div></div>
+  </div>
+
+  <div class="card">
+    <div class="sec">How you want it</div>
+    <div class="f"><label>Where your list goes</label>
+      <div class="checks" id="deliverBox"></div></div>
+    <div class="f"><label>Anything else we should know</label>
+      <textarea id="notes" placeholder="Optional — a job you wish you had seen in time, a agency you already work with, anything that would change what we send."></textarea></div>
+    <div class="f">
+      <label class="ck on" style="align-items:center" id="consentRow">
+        <input type="checkbox" id="consent" checked>
+        <span>NESO may contact me about my Bid Desk membership and the opportunities it finds.
+          <small>Your details are used to build your list and for nothing else. They are never sold, and never shared with an agency or another member.</small></span>
+      </label>
+    </div>
+  </div>
+
+  <button class="btn" id="send">Build my Bid Desk</button>
+  <div class="msg" id="msg"></div>
+
+  <div class="limits">
+    <b>What this list is, and is not</b>
+    <ul>
+      <li>Coverage today is 35 verified-public sources across seven states. It grows before it is advertised, and every
+        list names the states it covered that week.</li>
+      <li>The shortlist is a filter, not a bid/no-bid judgement. Whether you should chase one is your call &mdash; or
+        Procurement &amp; Bid Sourcing, which is a different service.</li>
+      <li>It does not write the bid. That is Bid Proposal, from 1 credit ($50).</li>
+      <li>Agencies amend and cancel. The issuing portal governs, and every item links straight to it.</li>
+      <li>A quiet week is reported as a quiet week. We do not pad a list to make it look busy.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="done" id="doneMsg">
+  <h3>Got it &mdash; your desk is being built</h3>
+  <p><b>A principal is reading your profile now.</b> Here is what happens next, in order:</p>
+  <ol>
+    <li>We read what you sent and build your dashboard &mdash; same or next business day.</li>
+    <li>Your private link arrives by email from hello@nesohq.com. Bookmark it; it does not expire while your membership is active.</li>
+    <li>Your first list follows within a business day, then weekly after that.</li>
+  </ol>
+  <p style="margin-top:14px">Nothing else is needed from you. If anything in your profile needs a question answered,
+    we ask before we guess.</p>
+  <p style="margin-top:14px"><a href="https://nesohq.com/#/opportunities" style="color:var(--plum);font-weight:700">Browse the free board while you wait &rarr;</a></p>
+</div>
+
+<footer>
+  NESO HQ LLC &middot; <a href="https://nesohq.com">nesohq.com</a> &middot; hello@nesohq.com &middot; text (901) 295-0322<br>
+  Every live opportunity is free to read at <a href="https://nesohq.com/#/opportunities">nesohq.com/#/opportunities</a> &mdash;
+  membership buys the weekly shortlist, not the listings.<br>
+  Refunds: <a href="https://nesohq.com/legal/refund.html">nesohq.com/legal/refund.html</a> &middot;
+  Privacy: <a href="https://nesohq.com/legal/privacy.html">nesohq.com/legal/privacy.html</a>
+</footer>
+</div>
+
+<script>
+/* Posts to the review queue, exactly as the TKS form does. When neso-members
+   exists, point this at its /profile endpoint and keep every bd_* key. */
+var QUEUE = "https://neso-queue.nesoai-us.workers.dev/submit";
+
+/* The seven states the crawl actually covers, read from neso-primes /health on
+   2026-08-11: TN 20 sources, MS 4, AL 2, KY 2, GA 3, CT 3, AR 1. This list is a
+   COPY of a fact another system owns, so it will drift — when a state is added
+   to neso-primes, add it here in the same sitting. The counts are deliberately
+   shown: a member ticking AR should know it is one source today. */
+var STATES = [
+  ["TN","Tennessee","20 sources"], ["MS","Mississippi","4 sources"],
+  ["GA","Georgia","3 sources"],    ["CT","Connecticut","3 sources"],
+  ["AL","Alabama","2 sources"],    ["KY","Kentucky","2 sources"],
+  ["AR","Arkansas","1 source"]
+];
+var BUYERS = [
+  ["state","State agencies"], ["county","Counties"], ["city","Cities and towns"],
+  ["school","Schools and districts"], ["university","Colleges and universities"],
+  ["transit","Transit and airports"], ["utility","Utilities and authorities"],
+  ["prime","Prime contractors"]
+];
+var DELIVERY = [
+  ["dashboard","My dashboard","Always on — it is your link"],
+  ["email","Email it to me too","The same list, in your inbox"]
+];
+
+function $(i){ return document.getElementById(i); }
+
+function boxes(hostId, rows, name, preset){
+  $(hostId).innerHTML = rows.map(function(r){
+    var on = preset && preset.indexOf(r[0]) > -1;
+    return '<label class="ck' + (on ? ' on' : '') + '">'
+      + '<input type="checkbox" name="' + name + '" value="' + r[0] + '"' + (on ? ' checked' : '')
+      + (r[0] === 'dashboard' ? ' disabled' : '') + '>'
+      + '<span>' + r[1] + (r[2] ? '<small>' + r[2] + '</small>' : '') + '</span></label>';
+  }).join('');
+}
+boxes("stateBox", STATES, "st");
+boxes("buyerBox", BUYERS, "buyer");
+boxes("deliverBox", DELIVERY, "deliver", ["dashboard","email"]);
+
+/* Tick state follows the checkbox, including the ones rendered checked. */
+document.addEventListener("change", function(e){
+  if (e.target.type === "checkbox" && e.target.closest(".ck")) {
+    e.target.closest(".ck").classList.toggle("on", e.target.checked);
+  }
+});
+
+function picked(name){
+  return Array.prototype.slice.call(document.querySelectorAll('input[name="' + name + '"]'))
+    .filter(function(b){ return b.checked; }).map(function(b){ return b.value; });
+}
+
+$("send").addEventListener("click", async function(){
+  var miss = [];
+  if (!$("name").value.trim()) miss.push("your name");
+  if (!$("biz").value.trim()) miss.push("your business name");
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($("email").value.trim())) miss.push("a working email address");
+  if (!$("trades").value.trim()) miss.push("what you do");
+  /* A state named in the free-text box counts: somebody working only in a state
+     we do not cover yet still has a profile worth holding, and refusing the form
+     would just lose them. */
+  if (!picked("st").length && !$("statesOther").value.trim()) miss.push("at least one state");
+  if (!$("consent").checked) miss.push("permission to contact you about your membership");
+  if (miss.length){
+    $("msg").className = "msg err";
+    $("msg").textContent = "Still needed: " + miss.join(", ") + ".";
+    return;
+  }
+  $("send").disabled = true;
+  $("msg").className = "msg";
+  $("msg").textContent = "Sending…";
+
+  var fields = {
+    bd_name:        $("name").value.trim(),
+    bd_business:    $("biz").value.trim(),
+    bd_email:       $("email").value.trim(),
+    bd_phone:       $("phone").value.replace(/[^\d+]/g, ""),
+    bd_trades:      $("trades").value.trim(),
+    bd_exclude:     $("exclude").value.trim(),
+    bd_states:      picked("st").join(", "),
+    bd_states_wanted: $("statesOther").value.trim(),
+    bd_areas:       $("areas").value.trim(),
+    bd_buyers:      picked("buyer").join(", "),
+    bd_floor:       $("floor").value.trim(),
+    bd_ceiling:     $("ceiling").value.trim(),
+    bd_certs:       $("certs").value.trim(),
+    bd_bonding:     $("bonding").value.trim(),
+    bd_delivery:    picked("deliver").concat(["dashboard"]).filter(function(v,i,a){ return a.indexOf(v) === i; }).join(", "),
+    bd_notes:       $("notes").value.trim(),
+    bd_consent:     "yes",
+    bd_source:      (new URLSearchParams(location.search).get("source") || "receipt").slice(0, 40)
+  };
+
+  try{
+    var r = await fetch(QUEUE, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ form: "bid-desk", fields: fields })
+    });
+    var j = await r.json();
+    if (j && j.ok){
+      $("formCard").style.display = "none";
+      $("formIntro").style.display = "none";
+      $("doneMsg").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      throw new Error((j && j.error) || "rejected");
+    }
+  } catch(e){
+    $("send").disabled = false;
+    $("msg").className = "msg err";
+    $("msg").textContent = "That did not send (" + e.message + "). Try again, or text (901) 295-0322 and we will take it that way.";
+  }
+});
+</script>
+</body></html>
