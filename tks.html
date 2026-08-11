@@ -3,6 +3,25 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Trojan K Services — Client Services Completion Form</title>
 <!--
+  TROJAN K SERVICES — public completion form v1.6 · 11 August 2026
+  v1.6: the page Korrey sees after he submits now carries THREE ways to earn
+  rather than one. Two of them are new lines that did not exist when v1.5 was
+  written, and both are closer to his actual trade than the partner tracks are:
+    · OCCUPIER SERVICES — the vendor membership, for the people who do the work
+      buildings need on a schedule. He already does this work; the membership
+      puts his profile in front of the owners and agents who ask NESO who can
+      do it. Founding rate, first forty vendors.
+    · THE BID DESK — janitorial and building-services contracts are posted
+      publicly every week. Reading the board is free here; the membership is
+      the weekly shortlist matched to his trade and his counties.
+  BOTH ARE PAID MEMBERSHIPS AND THE PAGE SAYS SO. He is a subcontractor on a
+  NESO-run client system, which is precisely why the offer has to be plain
+  rather than nudged: the fine print states that none of it affects his work
+  with Trojan K, that the board is free to read without paying anything, and
+  that a principal answers either way.
+  Every link carries ?source=tks, so an enquiry says which page produced it.
+  Field keys, the endpoint and the submit flow are UNCHANGED.
+
   TROJAN K SERVICES — public completion form v1.5 · 5 August 2026
   v1.5: non-routine work. The two routine options priced themselves and there
   was no way to log anything else, so a maintenance call or a one-off job had
@@ -59,6 +78,16 @@ color:var(--plum);font-weight:700}
 .tk .rate{display:block;font-family:ui-monospace,monospace;font-size:11.5px;font-weight:700;color:var(--plum);margin-bottom:7px}
 .tk.p .rate{color:var(--gold)}
 .tk .d{display:block;font-size:13px;color:var(--dim);line-height:1.5}
+.tk.v{border-color:#c9b5e2;background:#faf7fe}
+.tk.v .rate{color:var(--plum)}
+.tk.b{border-color:#e6d4a6;background:#fdfaf2}
+.tk.b .rate{color:var(--gold)}
+.tk .go{display:inline-block;margin-top:9px;font-size:13px;font-weight:700;color:var(--plum);text-decoration:none}
+.tk .go:hover{text-decoration:underline}
+.earn h4{font-family:Georgia,serif;font-size:16px;margin:20px 0 2px}
+.earn .free{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 15px;
+margin-top:14px;font-size:13.5px;color:var(--dim);line-height:1.55}
+.earn .free b{color:var(--ink)}
 .ebtn{display:inline-block;vertical-align:middle;line-height:1.2;text-decoration:none;font-weight:700;font-size:14.5px;
 background:var(--plum);color:#fff;border-radius:999px;padding:12px 24px;margin:14px 8px 0 0}
 .ebtn.g{background:transparent;color:var(--plum);border:1.5px solid var(--plum)}
@@ -124,12 +153,41 @@ Six questions, about a minute.</p>
     <li>Russell pays you directly, as always. Nothing about that changes.</li>
   </ol>
   <p style="margin-top:14px">Nothing else is needed from you. Thanks for working with NESO.</p>
-  <p style="margin-top:14px"><a href="" onclick="location.reload();return false" style="color:var(--plum);font-weight:700">Log another job &rarr;</a></p>
+  <p style="margin-top:14px"><a href="#" onclick="location.reload();return false" style="color:var(--plum);font-weight:700">Log another job &rarr;</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://nesohq.com/#/opportunities?source=tks" target="_blank" rel="noopener" style="color:var(--plum);font-weight:700">See open contracts &rarr;</a></p>
 </div>
 
 <div class="earn" id="earn">
-  <div class="ek">Want to earn more?</div>
-  <h3>Know people who need this kind of work done?</h3>
+  <div class="ek">Three ways to earn more</div>
+  <h3>More work, and two ways to get paid for who you know.</h3>
+  <p>Everything below is optional and separate from Trojan K. The first two are about winning more of the work you
+  already do; the third is about getting paid when you point someone at NESO.</p>
+
+  <h4>More of the work you already do</h4>
+  <div class="tracks">
+    <div class="tk v"><b>Occupier Services &mdash; become a vendor</b>
+      <span class="rate">$11 a month &middot; or $59 a year &middot; founding rate, first forty</span>
+      <span class="d">For the people who do what buildings need on a schedule &mdash; cleaning, janitorial, pressure
+      washing, landscaping, junk removal, exterior maintenance. NESO searches for work matching your services in up to
+      five areas you choose, and your profile is what NESO answers with when an owner, agent or property manager asks
+      who can do the work. You are paid by the client directly, at your own prices. NESO takes no cut and is not a
+      party to the job.
+      <br><br>Two short forms: a profile, then your pricing.</span>
+      <a class="go" href="https://nesohq.com/landing-vendor.html?source=tks" target="_blank" rel="noopener">Become a vendor &rarr;</a></div>
+
+    <div class="tk b"><b>The Bid Desk &mdash; public contracts</b>
+      <span class="rate">Reading the board is free &middot; the weekly shortlist is $20 a month</span>
+      <span class="d">Cities, counties, schools and agencies put janitorial and building-services contracts out to bid
+      every week, in public. <b>Every posting NESO crawls is free to read &mdash; no account, no payment.</b> The
+      membership is the part that saves the morning: a weekly shortlist matched to your trade, your counties and the
+      size of job worth your time, in your own dashboard.
+      <br><br>Look first. Pay only if the free board is worth a shortlist.</span>
+      <a class="go" href="https://nesohq.com/#/opportunities?source=tks" target="_blank" rel="noopener">Browse the free board &rarr;</a>
+      <a class="go" href="https://nesohq.com/bid-desk.html?source=tks" target="_blank" rel="noopener" style="margin-left:14px">What the Bid Desk is &rarr;</a></div>
+  </div>
+
+  <h4>Getting paid for an introduction</h4>
   <p>NESO does business plans, grant writing, market research, development feasibility, capital stacks and site
   intelligence &mdash; for founders, small businesses, developers and municipalities. If your network needs that work,
   there are two ways to get paid for the introduction.</p>
@@ -141,10 +199,13 @@ Six questions, about a minute.</p>
       <span class="d">For people who qualify, sell and carry the deal through delivery. Band agreed in writing before
       each engagement.</span></div>
   </div>
-  <a class="ebtn" href="https://partners.nesohq.com/" target="_blank" rel="noopener">See how it works &rarr;</a>
-  <a class="ebtn g" href="sms:+19012950322?&body=Hi%20NESO%20%E2%80%94%20tell%20me%20about%20the%20affiliate%20program.%20My%20name%20is%20">Text us instead</a>
-  <p class="efine">No commitment, and it does not affect your work with Trojan K either way. A principal replies within
-  a business day.</p>
+  <a class="ebtn" href="https://partners.nesohq.com/?source=tks" target="_blank" rel="noopener">See how it works &rarr;</a>
+  <a class="ebtn g" href="sms:+19012950322?&body=Hi%20NESO%20%E2%80%94%20tell%20me%20about%20the%20ways%20to%20earn%20more.%20My%20name%20is%20">Text us instead</a>
+
+  <div class="free"><b>Said plainly.</b> Two of the three are paid memberships &mdash; $11 a month for the vendor
+  membership, $20 a month for the Bid Desk shortlist. The bid board itself costs nothing and always will, so you can
+  use it without joining anything. None of this changes your work with Trojan K, your pay, or how your invoices are
+  handled, in either direction. A principal replies within a business day.</div>
 </div>
 
 <footer>Trojan K Services &middot; trojankest20@gmail.com &middot; 662.606.0809<br>Earn with NESO: <a href="https://partners.nesohq.com/" style="color:inherit">partners.nesohq.com</a><br>
