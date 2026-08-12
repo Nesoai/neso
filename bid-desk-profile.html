@@ -142,7 +142,7 @@ the next list follows the change.</p>
     <div class="f"><label>Somewhere we do not cover yet?</label>
       <input id="statesOther" placeholder="e.g. North Carolina, Virginia">
       <div class="hint">Tell us anyway. We will say plainly whether it is covered rather than sending you a list from
-        somewhere else, and where several members name the same state, that is what decides which one we crawl next.</div></div>
+        somewhere else, and where several members name the same state, that is what decides which one we add next.</div></div>
     <div class="f"><label>Counties, cities or a radius</label>
       <input id="areas" placeholder="e.g. Shelby, DeSoto and Tipton counties — or 'within 90 minutes of Memphis'">
       <div class="hint">Optional, and it sharpens the list more than anything else here.</div></div>
@@ -192,7 +192,7 @@ the next list follows the change.</p>
   <div class="limits">
     <b>What this list is, and is not</b>
     <ul>
-      <li>Coverage today is 35 verified-public sources across seven states. It grows before it is advertised, and every
+      <li>Coverage today is 35 verified-public bid boards across seven states. It grows before it is advertised, and every
         list names the states it covered that week.</li>
       <li>The shortlist is a filter, not a bid/no-bid judgement. Whether you should chase one is your call &mdash; or
         Procurement &amp; Bid Sourcing, which is a different service.</li>
@@ -231,7 +231,7 @@ the next list follows the change.</p>
    exists, point this at its /profile endpoint and keep every bd_* key. */
 var QUEUE = "https://neso-queue.nesoai-us.workers.dev/submit";
 
-/* The seven states the crawl actually covers, read from neso-primes /health on
+/* The seven states actually covered today, read from neso-primes /health on
    2026-08-11: TN 20 sources, MS 4, AL 2, KY 2, GA 3, CT 3, AR 1. This list is a
    COPY of a fact another system owns, so it will drift — when a state is added
    to neso-primes, add it here in the same sitting. The counts are deliberately
