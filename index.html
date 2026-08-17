@@ -6,7 +6,10 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-8F80E2D56H');
+  // Preview hostnames (*.pages.dev) must not enter the traffic baseline.
+  if (location.hostname === 'nesohq.com' || location.hostname.endsWith('.nesohq.com')) {
+    gtag('config', 'G-8F80E2D56H');
+  }
 </script><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NESO — business &amp; land advisory, Northeast and the South</title>
 <meta name="description" content="Free tools that answer real questions in minutes, plus senior advisory for business and land — quoted in credits, approved before any work starts. Home ground is the Northeast and the Southern states; work is taken across the US.">
