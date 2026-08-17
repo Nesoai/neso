@@ -6,7 +6,10 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-8F80E2D56H');
+  // Preview hostnames (*.pages.dev) must not enter the traffic baseline.
+  if (location.hostname === 'nesohq.com' || location.hostname.endsWith('.nesohq.com')) {
+    gtag('config', 'G-8F80E2D56H');
+  }
 </script><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Find a vetted property-service vendor — NESO Occupier Services</title>
 <meta name="description" content="For real-estate agents, building owners and property managers: tell NESO the property and the work — landscaping, pressure washing, janitorial, junk removal, exterior maintenance — and we send you member vendors who cover that area, with their services, references and pricing.">
