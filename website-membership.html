@@ -1,5 +1,17 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en"><head><meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8F80E2D56H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  /* Preview hostnames (*.pages.dev) must not enter the traffic baseline. */
+  if (location.hostname === 'nesohq.com' || location.hostname.endsWith('.nesohq.com')) {
+    gtag('config', 'G-8F80E2D56H');
+  }
+</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>A website for your business in 3 days — $20 a month | NESO</title>
 <meta name="description" content="We build your website from one form. Ready in three business days. Hosted and kept up to date. $20 a month for the first 200 businesses.">
 <link rel="canonical" href="https://nesohq.com/website-membership.html">
@@ -152,6 +164,17 @@ footer{background:#16141A;color:#9A93A5;font-size:15px;padding:44px 0;line-heigh
 footer a{color:#D9C7E8}
 footer .fine{font-size:13px;color:#6E687A;margin-top:14px;line-height:1.7}
 
+
+/* the example gallery — proof, not decoration. Eight real pages a prospect
+   can open on the phone they are holding. */
+.exgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:12px;margin-top:26px}
+.ex{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);
+  border-radius:14px;padding:14px 16px;text-decoration:none;color:var(--ink);
+  transition:border-color .12s,transform .12s}
+.ex:hover{border-color:var(--plum);transform:translateY(-1px)}
+.ex .sw{flex:0 0 auto;width:38px;height:38px;border-radius:10px}
+.ex .t b{display:block;font-size:16px;line-height:1.25}
+.ex .t em{font-style:normal;font-size:13.5px;color:var(--soft)}
 @media (max-width:860px){
   .hero .grid,.two{grid-template-columns:1fr;gap:40px}
   section{padding:56px 0}
@@ -256,6 +279,17 @@ footer .fine{font-size:13px;color:#6E687A;margin-top:14px;line-height:1.7}
   </details>
 </div></section>
 
+<section class="band"><div class="wrap narrow">
+  <h2>See one before you decide</h2>
+  <p>Eight example sites, one for each kind of business we build for. Open the closest one on your
+  phone &mdash; that is where your customers will.</p>
+  <div class="exgrid"><a class="ex" href="/examples/diner.html"><span class="sw" style="background:#8C2F39"></span><span class="t"><b>Ruby&#8217;s Kitchen</b><em>A café or diner</em></span></a><a class="ex" href="/examples/auto.html"><span class="sw" style="background:#1F4E79"></span><span class="t"><b>Turner &amp; Sons Auto</b><em>An auto repair shop</em></span></a><a class="ex" href="/examples/lawn.html"><span class="sw" style="background:#2F6B4F"></span><span class="t"><b>Delta Lawn &amp; Property</b><em>Landscaping and lawn care</em></span></a><a class="ex" href="/examples/boutique.html"><span class="sw" style="background:#9A4A6E"></span><span class="t"><b>Marigold &amp; Co.</b><em>A shop or boutique</em></span></a><a class="ex" href="/examples/barber.html"><span class="sw" style="background:#1A1A1D"></span><span class="t"><b>Chair Four Barbers</b><em>A barber shop or salon</em></span></a><a class="ex" href="/examples/contractor.html"><span class="sw" style="background:#8A5A16"></span><span class="t"><b>Halloway Construction</b><em>A general contractor</em></span></a><a class="ex" href="/examples/nonprofit.html"><span class="sw" style="background:#4C3A8C"></span><span class="t"><b>Riverbend Youth Alliance</b><em>A nonprofit</em></span></a><a class="ex" href="/examples/bookkeeper.html"><span class="sw" style="background:#0F5E63"></span><span class="t"><b>Ledgerline Bookkeeping</b><em>A professional practice</em></span></a></div>
+  <p style="font-size:14.5px;color:var(--soft);margin-top:20px">None of these businesses are real, and
+  every one of them says so at the top. Everything else about them is: the sections, the pricing lines,
+  the hours, the tap-to-call. Yours is built from your form, in your words.
+  <a href="/examples.html">See all eight together &rarr;</a></p>
+</div></section>
+
 <section><div class="wrap narrow">
   <h2>What other people charge</h2>
   <p>Almost everything cheaper than this makes you build it yourself.</p>
@@ -285,6 +319,11 @@ footer .fine{font-size:13px;color:#6E687A;margin-top:14px;line-height:1.7}
   <details><summary>Why three months to start?</summary>
     <p>We build the whole site before your second payment. One month would mean building a website for
     twenty dollars. After three months you can stop any time you like.</p></details>
+
+  <details><summary>What will mine actually look like?</summary>
+    <p>Like one of the <a href="/examples.html">eight examples</a> — same five sections, your words,
+    your colours, your photos. We do not hand you a template and a login; a person builds it and a
+    principal looks at it before it goes live.</p></details>
 
   <details><summary>What if I already have a website?</summary>
     <p>Then you already know what is wrong with it, which makes this easy. We build the new one and point
