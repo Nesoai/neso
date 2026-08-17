@@ -8,7 +8,10 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-8F80E2D56H');
+  // Preview hostnames (*.pages.dev) must not enter the traffic baseline.
+  if (location.hostname === 'nesohq.com' || location.hostname.endsWith('.nesohq.com')) {
+    gtag('config', 'G-8F80E2D56H');
+  }
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
