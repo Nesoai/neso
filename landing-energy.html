@@ -6,7 +6,10 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-8F80E2D56H');
+  // Preview hostnames (*.pages.dev) must not enter the traffic baseline.
+  if (location.hostname === 'nesohq.com' || location.hostname.endsWith('.nesohq.com')) {
+    gtag('config', 'G-8F80E2D56H');
+  }
 </script><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>NESO for energy developers and large-load projects — A stated power go / no-go, in five busines</title>
 <meta name="description" content="Load against published capacity, the interconnection queue, gas availability, and a conclusion that says yes or no rather than describing the landscape. One slot per week, firm — the cap is…">
