@@ -1,45 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  NESO sitemap - corrected 28 July 2026.
-  The previous version pointed every URL at https://nesoai.github.io/, the GitHub
-  Pages default under the retired "nesoai" handle. That told search engines the
-  canonical pages lived there rather than on nesohq.com.
+  NESO HQ LLC — sitemap entries for the website membership, 17 August 2026.
 
-  NOTE ON HOSTS: this file lists several subdomains. Cross-host sitemaps are only
-  honoured when every host is verified in the same Google Search Console account.
-  Verify each subdomain, or split this into one sitemap per host and reference each
-  from that host's robots.txt.
+  THIS IS A FRAGMENT, NOT A REPLACEMENT. The live sitemap.xml is not held in this
+  workspace, so this file cannot be pasted over it — doing so would delete every
+  existing URL. Open the deployed sitemap.xml in the hub repo and paste the two
+  <url> blocks below inside the existing <urlset>, then commit.
 
-  NOTE ON HASH ROUTES: nesohq.com is a single-page app using #/ routing, so /services,
-  /tools, /pricing and /about are fragments, not separate URLs. Search engines will
-  not index them separately and they are deliberately not listed here.
+  Both pages are indexable by decision: they are a promotion meant to spread, unlike
+  the six audience pages, which are noindex and shared by link. Neither carries a
+  noindex tag, and both are in the sitemap for that reason.
+
+  lastmod is the deploy date. Update it whenever either page changes materially —
+  a stale lastmod is a small lie a crawler notices.
+
+  After deploying: add both URLs to neso-linkcheck WITH BODY ASSERTIONS. A missing
+  page on Cloudflare Pages serves the hub and returns 200, so a status-code check
+  passes on a page that does not exist.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Hub -->
-  <url><loc>https://nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url>
+    <loc>https://nesohq.com/website-membership.html</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
-  <!-- Publication - highest-frequency surface, free issue every 28 days -->
-  <url><loc>https://brief.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-
-  <!-- Reports -->
-  <url><loc>https://birdseye.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-
-  <!-- Flagship tool -->
-  <url><loc>https://siteshaper.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-
-  <!-- Real estate tools -->
-  <url><loc>https://proforma.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://capstack.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://marketscope.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://buildbrief.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-
-  <!-- Business tools -->
-  <url><loc>https://planforge.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://marketfit.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://grantfit.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-
-  <!-- Partner and affiliate program -->
-  <url><loc>https://partners.nesohq.com/</loc><lastmod>2026-07-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url>
+    <loc>https://nesohq.com/site-brief.html</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
 </urlset>
