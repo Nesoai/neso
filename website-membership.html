@@ -1,503 +1,345 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>A real website for your business in 3 business days — $20 a month | NESO</title>
-<meta name="description" content="Founding rate for the first 200 businesses: a real website built from one form, live in three business days, hosted and maintained, $20 a month. Three-month minimum. NESO HQ LLC.">
+<title>A website for your business in 3 days — $20 a month | NESO</title>
+<meta name="description" content="We build your website from one form. Ready in three business days. Hosted and kept up to date. $20 a month for the first 200 businesses.">
 <link rel="canonical" href="https://nesohq.com/website-membership.html">
-<meta property="og:title" content="A real website for your business — $20 a month">
-<meta property="og:description" content="You fill in one form. We build the site in three business days. It stays up, and we keep it current. Founding rate for the first 200 businesses.">
+<meta property="og:title" content="A website for your business — $20 a month">
+<meta property="og:description" content="You fill in one form. We build it. Ready in three business days.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nesohq.com/website-membership.html">
-<meta property="og:image" content="https://nesohq.com/og-website-membership.png">
+<meta property="og:image" content="https://nesohq.com/og-website-service.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%235B2A86'/%3E%3Cpath d='M16 5L18.6 13.4L27 16L18.6 18.6L16 27L13.4 18.6L5 16L13.4 13.4Z' fill='%23E7B84B'/%3E%3C/svg%3E">
 <!--
-  NESO HQ LLC — website-membership.html · prepared 17 August 2026
-  Deploys under the plain name website-membership.html (Filing Guide rev 5: a
-  site file's name is its address).
+  NESO HQ LLC — website-membership.html · rebuilt 18 August 2026
+  Deploys under the plain name website-membership.html.
 
-  WHO THIS PAGE IS FOR, precisely. The warm list is 336 people. 117 of them are
-  Main Street — retail, food, hospitality — and 190 of the 336 have no website
-  recorded at all. Twenty-three have a Facebook page. So the reader this page
-  assumes is a small-business owner in Tennessee, Mississippi or Alabama who is
-  running a real business on a phone number and a Facebook page, has been told
-  for years they need a website, and has been quoted four figures for one.
-  The page's single job is one form submission. Everything else was cut.
+  WHY THIS IS A REBUILD, NOT AN EDIT. The previous version was dressed as a shop
+  window — striped awning, gold sign-painter type, a serif body face. It read as
+  a period piece rather than as the thing being sold, and it asked the reader to
+  get through eight sections before the offer was clear. Both were wrong for a
+  page whose only job is one form submission from a busy person on a phone.
 
-  WHAT IT DOES NOT DO. It does not say how many businesses we know without a
-  website. That number is ours, it came from a private list, and putting list
-  analytics on a public page is how a warm introduction starts feeling like a
-  campaign.
+  WHAT REPLACED IT.
+  · THE SIGNATURE IS NOW A PHONE, not a storefront. It shows the product instead
+    of a metaphor for it, and the product IS a phone-shaped website — which is
+    also the single strongest argument, because that is where their customers
+    actually look. Type a business name and it appears on the phone.
+  · Five sections, down from eight. The add-ons moved into a closed <details>
+    because nobody buys a menu page before they have a site.
+  · Sentences got short. Common words, active voice, one idea per line. The
+    reader is a plumber at 9pm, not a marketer.
+  · The serif went. System sans throughout, big sizes, generous line-height.
+  · Gold is now a hairline accent only. Plum carries everything.
 
-  PRICES ON THIS PAGE ARE RESTATED FROM THE PRODUCT BOOK AND THE GUMROAD
-  LISTING. When one changes, the Product Book first, then here, then the
-  listing. Add-on prices are PROPOSALS until a principal sets them.
+  ADDRESS: the full postal address appears ONCE, in the footer. It was in the top
+  bar too, which put a Kentucky mailbox in front of a Tennessee reader before the
+  offer. The phone number leads instead — a 901 number reads local across the
+  region this page is for. CAN-SPAM governs commercial email, not web pages, so
+  once on the page is both sufficient and better.
 
-  DESIGN. The subject's own world is hand-painted storefront signage, so the page
-  is built as a shop window: a plum-and-paper awning, a window frame, and the
-  reader's own business name painted inside it in gold as they type. That input
-  is the signature element and the thesis in one — the page's argument is "your
-  name belongs in a window," and it demonstrates it rather than claiming it.
-  System font stacks only, deliberately: a client-facing page on a rural
-  connection should not wait on a font CDN to say what it costs.
+  PRICES restate the Product Book and the Gumroad listing. Change the Product
+  Book first, then here, then the listing.
 -->
 <style>
 :root{
-  --paper:#F5F2F7;        /* plum-tinted white, the page ground */
-  --ink:#241830;          /* deep plum-black, all body text */
-  --plum:#5B2A86;         /* NESO brand */
-  --plum-deep:#3D1B5C;
-  --gold:#E7B84B;         /* NESO brand, used as sign paint */
-  --open:#2F6B4F;         /* the OPEN sign, and only that */
-  --rule:#DCD3E2;
-  --dim:#5C4C6B;
-  --display:"Arial Black","Helvetica Neue",Impact,system-ui,sans-serif;
-  --body:Georgia,"Iowan Old Style","Times New Roman",serif;
-  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --ink:#16141A; --body:#4C4753; --soft:#6E6878;
+  --plum:#5B2A86; --plum-d:#421D64; --plum-w:#F6F2FA;
+  --gold:#E7B84B;
+  --line:#E9E6EC; --bg:#FFFFFF; --bg-2:#FAF9FB;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,system-ui,sans-serif;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
-  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
-h1,h2,h3,.dsp{font-family:var(--display);text-transform:uppercase;letter-spacing:-.015em;line-height:.98;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.65;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.narrow{max-width:680px}
+h1,h2,h3{line-height:1.12;letter-spacing:-.022em;font-weight:700}
+h1{font-size:clamp(34px,5.4vw,58px)}
+h2{font-size:clamp(26px,3.4vw,36px);margin-bottom:14px}
+h3{font-size:19px;letter-spacing:-.01em}
+p{color:var(--body)}
 a{color:var(--plum)}
-.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
-.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--plum)}
+section{padding:72px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:none}
 
-/* ---------- the counter bar ---------- */
-.bar{background:var(--plum-deep);color:#fff;font-family:var(--mono);font-size:12.5px;
-  letter-spacing:.04em;padding:9px 0}
-.bar .wrap{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.bar b{color:var(--gold)}
-.bar .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-right:7px;vertical-align:1px}
+/* top bar — phone first, no address */
+.top{background:var(--plum-d);color:#fff;font-size:14px;padding:11px 0}
+.top .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.top a{color:#fff;text-decoration:none;font-weight:600}
+.top .tag{color:#CDBBE0}
 
-/* ---------- hero ---------- */
-.hero{padding:52px 0 44px}
-.hero .grid{display:grid;grid-template-columns:1.06fr .94fr;gap:52px;align-items:center}
-h1{font-size:clamp(38px,6.2vw,70px)}
-h1 .thin{display:block;font-family:var(--body);text-transform:none;font-weight:400;
-  font-size:clamp(19px,2.3vw,25px);letter-spacing:0;line-height:1.4;color:var(--dim);margin-top:18px}
-.price{display:flex;align-items:baseline;gap:12px;margin:26px 0 6px;flex-wrap:wrap}
-.price .n{font-family:var(--display);font-size:52px;color:var(--plum)}
-.price .per{font-family:var(--mono);font-size:13px;color:var(--dim);letter-spacing:.06em}
-.strike{font-family:var(--mono);font-size:13px;color:var(--dim)}
-.cta{display:inline-block;background:var(--plum);color:#fff;text-decoration:none;
-  font-family:var(--display);text-transform:uppercase;font-size:17px;letter-spacing:.02em;
-  padding:17px 30px;border:2px solid var(--plum);border-radius:2px;margin-top:16px;
-  box-shadow:5px 5px 0 var(--gold);transition:transform .12s ease,box-shadow .12s ease}
-.cta:hover,.cta:focus-visible{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--gold)}
-.cta.ghost{background:transparent;color:var(--plum);box-shadow:none;border-color:var(--rule);font-size:15px;padding:14px 22px}
-.cta.ghost:hover{border-color:var(--plum);transform:none}
-.under{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:14px;letter-spacing:.02em}
+/* hero */
+.hero{padding:64px 0 76px}
+.hero .grid{display:grid;grid-template-columns:1.08fr .92fr;gap:60px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:8px;background:var(--plum-w);color:var(--plum);
+  font-size:14px;font-weight:600;padding:7px 14px;border-radius:999px;margin-bottom:22px}
+.kicker i{width:7px;height:7px;border-radius:50%;background:var(--gold);display:block}
+.hero p.lead{font-size:20px;margin-top:20px;max-width:30ch}
+.pricerow{display:flex;align-items:baseline;gap:10px;margin:30px 0 4px;flex-wrap:wrap}
+.pricerow b{font-size:46px;letter-spacing:-.03em;color:var(--plum);font-weight:700;line-height:1}
+.pricerow span{font-size:17px;color:var(--soft)}
+.note{font-size:15px;color:var(--soft)}
+.btn{display:inline-block;background:var(--plum);color:#fff;text-decoration:none;font-size:18px;
+  font-weight:600;padding:17px 32px;border-radius:999px;margin-top:24px;transition:background .15s}
+.btn:hover,.btn:focus-visible{background:var(--plum-d)}
+.btn.ghost{background:transparent;color:var(--plum);border:1.5px solid var(--line);padding:15px 26px;font-size:16px}
+.btn.ghost:hover{border-color:var(--plum);background:transparent}
+.after{font-size:15px;color:var(--soft);margin-top:16px}
 
-/* ---------- THE SIGNATURE: the shop window ---------- */
-.shop{filter:drop-shadow(0 18px 34px rgba(36,24,48,.16))}
-.awning{height:34px;border-radius:5px 5px 0 0;
-  background:repeating-linear-gradient(90deg,var(--plum) 0 26px,#EDE6F2 26px 52px)}
-.awning-lip{height:11px;background:repeating-linear-gradient(90deg,var(--plum) 0 26px,#EDE6F2 26px 52px);
-  clip-path:polygon(0 0,100% 0,100% 40%,96% 100%,92% 40%,88% 100%,84% 40%,80% 100%,76% 40%,72% 100%,68% 40%,64% 100%,60% 40%,56% 100%,52% 40%,48% 100%,44% 40%,40% 100%,36% 40%,32% 100%,28% 40%,24% 100%,20% 40%,16% 100%,12% 40%,8% 100%,4% 40%,0 100%)}
-.window{background:linear-gradient(168deg,#FBF9FC 0%,#EFE9F3 100%);
-  border:3px solid var(--ink);border-top:none;padding:30px 26px 26px;position:relative}
-.window::after{content:"";position:absolute;inset:9px;border:1px solid var(--rule);pointer-events:none}
-.signname{font-family:var(--display);font-size:clamp(26px,4vw,40px);color:var(--gold);
-  text-align:center;letter-spacing:-.01em;word-break:break-word;
-  text-shadow:1px 1px 0 var(--plum-deep),2px 2px 0 rgba(61,27,92,.28);min-height:1.05em}
-.signrule{width:64px;height:3px;background:var(--plum);margin:15px auto 12px}
-.signsub{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--plum);text-align:center}
-.urlchip{margin:20px auto 0;display:block;width:fit-content;max-width:100%;background:var(--ink);color:#EFE6F5;
-  font-family:var(--mono);font-size:13px;padding:8px 14px;border-radius:3px;
-  overflow-wrap:anywhere;text-align:center}
-.urlchip i{color:var(--gold);font-style:normal}
-.sill{height:15px;background:var(--ink);border-radius:0 0 4px 4px}
-.tryit{margin-top:18px}
-.tryit label{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--dim);margin-bottom:7px}
-.tryit input{width:100%;font-family:var(--body);font-size:17px;padding:13px 15px;
-  border:2px solid var(--ink);border-radius:2px;background:#fff;color:var(--ink)}
-.tryit input:focus{outline:3px solid var(--gold);outline-offset:1px}
+/* the phone — the signature */
+.stage{display:flex;flex-direction:column;align-items:center;gap:18px}
+.phone{width:272px;border:9px solid #16141A;border-radius:40px;background:#fff;overflow:hidden;
+  box-shadow:0 22px 50px rgba(22,20,26,.16)}
+.phone .notch{height:24px;background:#16141A;display:flex;justify-content:center;align-items:flex-start}
+.phone .notch i{width:78px;height:5px;border-radius:99px;background:#3A3540;margin-top:8px;display:block}
+.ph-bar{background:var(--plum);color:#fff;padding:14px 16px}
+.ph-name{font-size:17px;font-weight:700;line-height:1.2;word-break:break-word}
+.ph-sub{font-size:11.5px;color:#D6C4E8;margin-top:3px}
+.ph-body{padding:14px 16px 18px}
+.ph-cta{display:block;background:var(--gold);color:#3B2A06;text-align:center;font-weight:700;
+  font-size:14px;padding:11px;border-radius:10px}
+.ph-open{font-size:12.5px;color:#2F6B4F;font-weight:600;margin:12px 0 10px}
+.ph-line{height:9px;background:#F0EDF3;border-radius:99px;margin-bottom:8px}
+.ph-line.s{width:62%}
+.ph-item{font-size:13px;color:var(--body);padding:8px 0;border-top:1px solid var(--line)}
+.tryit{width:272px}
+.tryit label{display:block;font-size:14px;color:var(--soft);margin-bottom:7px}
+.tryit input{width:100%;font:inherit;font-size:16px;padding:13px 15px;border:1.5px solid var(--line);
+  border-radius:12px;background:#fff;color:var(--ink)}
+.tryit input:focus{outline:none;border-color:var(--plum);box-shadow:0 0 0 3px var(--plum-w)}
 
-/* ---------- generic sections ---------- */
-section{padding:46px 0}
-.band{background:var(--ink);color:#F1EAF6}
-.band h2{color:#fff}
-.band .eyebrow{color:var(--gold)}
-h2{font-size:clamp(25px,3.5vw,36px);margin-bottom:8px}
-.lede{color:var(--dim);max-width:62ch}
-.band .lede{color:#C9BAD6}
-.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:20px;margin-top:26px}
-.tile{background:#fff;border:1px solid var(--rule);border-left:4px solid var(--plum);
-  border-radius:2px;padding:20px 21px}
-.band .tile{background:#31213F;border-color:#443252;border-left-color:var(--gold)}
-.tile h3{font-size:16px;margin-bottom:8px}
-.tile p{margin:0;font-size:15px;color:var(--dim)}
-.band .tile p{color:#C4B4D2}
-.band .tile h3{color:#fff}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;margin-top:34px}
+.step .n{width:38px;height:38px;border-radius:50%;background:var(--plum-w);color:var(--plum);
+  font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.step h3{margin-bottom:6px}
+.step p{font-size:16px}
 
-/* ---------- included / not included ---------- */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:26px}
-.list{list-style:none;padding:0;margin:0}
-.list li{padding:9px 0 9px 30px;border-bottom:1px solid var(--rule);position:relative;font-size:15.5px}
-.list li:last-child{border-bottom:none}
-.list li::before{position:absolute;left:0;top:9px;font-family:var(--mono);font-size:14px}
-.yes li::before{content:"✓";color:var(--open);font-weight:700}
-.no li::before{content:"—";color:var(--dim)}
-.card{background:#fff;border:1px solid var(--rule);border-radius:3px;padding:22px 24px}
+/* lists */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:30px}
+ul.plain{list-style:none}
+ul.plain li{padding:11px 0 11px 30px;position:relative;font-size:17px;border-bottom:1px solid var(--line)}
+ul.plain li:last-child{border-bottom:none}
+ul.plain li::before{position:absolute;left:0;top:11px;font-weight:700}
+ul.yes li::before{content:"✓";color:var(--plum)}
+ul.no li::before{content:"–";color:var(--soft)}
+ul.no li{color:var(--soft)}
 
-/* ---------- add-ons ---------- */
-table.addons{width:100%;border-collapse:collapse;margin-top:22px;background:#fff;
-  border:1px solid var(--rule)}
-table.addons th{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-  text-align:left;color:var(--plum);padding:13px 16px;border-bottom:2px solid var(--ink);background:#FAF7FB}
-table.addons td{padding:14px 16px;border-bottom:1px solid var(--rule);font-size:15.5px;vertical-align:top}
-table.addons tr:last-child td{border-bottom:none}
-table.addons td.p{font-family:var(--mono);font-size:14px;white-space:nowrap;color:var(--plum);font-weight:700}
-table.addons td small{display:block;color:var(--dim);font-size:13.5px;margin-top:3px;font-family:var(--body)}
+/* comparison */
+table.cmp{width:100%;border-collapse:collapse;margin-top:28px;font-size:17px}
+table.cmp th{text-align:left;font-size:13px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--soft);font-weight:600;padding:0 12px 12px 0}
+table.cmp td{padding:15px 12px 15px 0;border-top:1px solid var(--line);vertical-align:top}
+table.cmp tr.us td{background:var(--plum-w);font-weight:600}
+table.cmp tr.us td:first-child{border-radius:12px 0 0 12px;padding-left:16px}
+table.cmp tr.us td:last-child{border-radius:0 12px 12px 0}
+table.cmp td.p{white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
 
-/* ---------- steps: a real sequence, so it is numbered ---------- */
-.steps{counter-reset:s;margin-top:26px;display:grid;gap:2px}
-.step{counter-increment:s;background:#fff;border:1px solid var(--rule);padding:19px 22px 19px 74px;position:relative}
-.step::before{content:counter(s);position:absolute;left:0;top:0;bottom:0;width:56px;
-  background:var(--plum);color:var(--gold);font-family:var(--display);font-size:24px;
-  display:flex;align-items:center;justify-content:center}
-.step h3{font-size:16px;margin-bottom:5px}
-.step p{margin:0;color:var(--dim);font-size:15px}
+/* details */
+details{border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:14px}
+details[open]{background:var(--bg-2)}
+summary{cursor:pointer;font-weight:600;font-size:17px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--plum);font-weight:700}
+details[open] summary::after{content:"–"}
+details p,details ul{margin-top:12px;font-size:16px}
+details ul{margin-left:20px}
+details li{margin-bottom:6px;color:var(--body)}
 
-/* ---------- faq ---------- */
-details.q{background:#fff;border:1px solid var(--rule);padding:15px 18px;margin-top:9px}
-details.q summary{font-family:var(--display);text-transform:uppercase;font-size:14.5px;
-  cursor:pointer;letter-spacing:-.005em}
-details.q p{margin:11px 0 2px;font-size:15.5px;color:var(--dim)}
-details.q[open]{border-left:4px solid var(--gold)}
-
-footer{background:var(--ink);color:#A392B4;font-family:var(--mono);font-size:12px;
-  padding:34px 0;line-height:1.9}
+.band{background:var(--bg-2)}
+footer{background:#16141A;color:#9A93A5;font-size:15px;padding:44px 0;line-height:1.8}
 footer a{color:#D9C7E8}
+footer .fine{font-size:13px;color:#6E687A;margin-top:14px;line-height:1.7}
 
-@media (max-width:840px){
-  .hero .grid,.two{grid-template-columns:1fr;gap:34px}
-  .hero{padding:34px 0 30px}
-  body{font-size:16.5px}
+@media (max-width:860px){
+  .hero .grid,.two{grid-template-columns:1fr;gap:40px}
+  section{padding:56px 0}
+  body{font-size:17px}
 }
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *{transition:none!important;animation:none!important}
-}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style></head><body>
 
-<div class="bar"><div class="wrap">
-  <span><span class="dot"></span>Founding rate &mdash; the first <b>200</b> businesses</span>
-  <span>NESO HQ LLC &middot; Bowling Green, KY &middot; <a href="tel:+19012950322" style="color:#fff">(901) 295-0322</a></span>
+<div class="top"><div class="wrap">
+  <span><span class="tag">Questions?</span> <a href="tel:+19012950322">Text (901) 295-0322</a></span>
+  <span class="tag">NESO HQ LLC</span>
 </div></div>
 
 <div class="hero"><div class="wrap"><div class="grid">
   <div>
-    <div class="eyebrow">For small businesses in the South and the Northeast</div>
-    <h1>Your business deserves an address of its own.
-      <span class="thin">Not a Facebook page. Not a listing somebody else owns. A website with your
-      name on it, that you can put on a card, a truck door, or an invoice.</span></h1>
+    <span class="kicker"><i></i> First 200 businesses</span>
+    <h1>We build your website. You fill in one form.</h1>
+    <p class="lead">It is ready in three business days. We keep it up to date after that.</p>
 
-    <div class="price">
-      <span class="n">$20</span>
-      <span class="per">per month &middot; founding rate</span>
-    </div>
-    <div class="strike">First 200 businesses. Held for as long as your membership stays active.<br>
-    Or <b>$200 for the year</b> &mdash; the founding annual rate, and it stays yours on every renewal.
-    <span style="color:#8A7A97">Standard is $30 a month or $300 a year once the 200 are gone.</span></div>
+    <div class="pricerow"><b>$20</b><span>a month</span></div>
+    <p class="note">Or $200 for the year. Three months to start, then cancel any time.</p>
 
-    <a class="cta" href="#brief">Start with the form &rarr;</a>
-    <div class="under">One form. Live in <b>3 business days</b>. No meeting required to get started.<br>
-    Three months minimum, or pay for the year and it is cheaper.</div>
+    <a class="btn" href="/site-brief.html">Start the form</a>
+    <p class="after">Takes 15 minutes. Nothing to pay yet.</p>
   </div>
 
-  <!-- THE SIGNATURE ELEMENT. Type a name, watch it get painted on the window. -->
-  <div>
-    <div class="shop">
-      <div class="awning"></div><div class="awning-lip"></div>
-      <div class="window">
-        <div class="signname" id="sign">Your Business</div>
-        <div class="signrule"></div>
-        <div class="signsub">Est. right here</div>
-        <div class="urlchip" id="url">www.<i>yourbusiness</i>.com</div>
+  <div class="stage">
+    <div class="phone">
+      <div class="notch"><i></i></div>
+      <div class="ph-bar">
+        <div class="ph-name" id="pname">Your Business</div>
+        <div class="ph-sub" id="purl">yourbusiness.com</div>
       </div>
-      <div class="sill"></div>
+      <div class="ph-body">
+        <div class="ph-open">● Open today, 8am – 5pm</div>
+        <div class="ph-line"></div><div class="ph-line s"></div>
+        <a class="ph-cta" href="#" onclick="return false">Call us</a>
+        <div class="ph-item">What we do</div>
+        <div class="ph-item">Where we work</div>
+        <div class="ph-item">Get a quote</div>
+      </div>
     </div>
     <div class="tryit">
       <label for="biz">Type your business name</label>
-      <input id="biz" type="text" maxlength="34" placeholder="e.g. Turner &amp; Sons Auto" autocomplete="organization">
+      <input id="biz" maxlength="30" placeholder="Turner &amp; Sons Auto" autocomplete="organization">
     </div>
   </div>
 </div></div></div>
 
-<section class="band"><div class="wrap">
-  <div class="eyebrow">Why this exists</div>
-  <h2>Most quotes for a small-business website start at a thousand dollars.</h2>
-  <p class="lede">That price is real, and for a big build it is fair. It is also why so many good
-  businesses are still running on a phone number and a page they do not control. This membership is
-  the other answer: a straightforward site, built properly, for the price of a couple of lunches a
-  month &mdash; because a business with twelve customers a week still deserves to be findable.</p>
-  <div class="cols">
-    <div class="tile"><h3>You are not renting a template</h3>
-      <p>A person reads your form, writes your words, and builds your pages. A principal looks at it
-      before it goes live. Nothing publishes automatically.</p></div>
-    <div class="tile"><h3>It stays up</h3>
-      <p>Hosting is included and checked every day by the same system that watches NESO's own sites.
-      If yours goes down, we find out before you do.</p></div>
-    <div class="tile"><h3>You own your name</h3>
-      <p>Your domain is yours. If you ever leave, it transfers to you at no charge. We will put that
-      in writing before you pay anything.</p></div>
-  </div>
-</div></section>
-
-<section><div class="wrap">
-  <div class="eyebrow">How it goes</div>
-  <h2>Four steps, and three of them are ours</h2>
+<section><div class="wrap narrow">
+  <h2>How it works</h2>
+  <p>Three steps. Two of them are ours.</p>
   <div class="steps">
-    <div class="step"><h3>You fill in the brief</h3>
-      <p>Fifteen minutes, on your phone. What you do, what you charge for, where you work, your hours,
-      and how people reach you. If a question does not apply, say so &mdash; that is an answer.</p></div>
-    <div class="step"><h3>We build it and show you</h3>
-      <p>You get a link to look at before anything is public. The clock starts the moment your form is in
-      &mdash; three business days &mdash; and if you filled the form in before joining, it starts when
-      you join.</p></div>
-    <div class="step"><h3>You ask for one round of changes</h3>
-      <p>Wording, photos, hours, prices, contact details. One revision is included and it is a real
-      revision, not a typo fix.</p></div>
-    <div class="step"><h3>It goes live and we keep it current</h3>
-      <p>New hours, a new phone number, a price change, a seasonal note. Send it over. Small changes are
-      what the monthly fee is for.</p></div>
+    <div class="step"><div class="n">1</div><h3>You fill in the form</h3>
+      <p>What you do, your hours, how people reach you. 15 minutes on your phone.</p></div>
+    <div class="step"><div class="n">2</div><h3>We build it</h3>
+      <p>A person writes your words and builds your pages. You see it in three business days.</p></div>
+    <div class="step"><div class="n">3</div><h3>You say what to change</h3>
+      <p>One round of changes is included. Then it goes live, and we keep it current.</p></div>
   </div>
 </div></section>
 
-<section><div class="wrap">
-  <div class="eyebrow">Plainly</div>
-  <h2>What $20 a month includes, and what it does not</h2>
+<section class="band"><div class="wrap narrow">
+  <h2>What you get</h2>
   <div class="two">
-    <div class="card"><h3 style="color:var(--open);margin-bottom:12px">Included</h3>
-      <ul class="list yes">
-        <li>A site of up to five pages, built from your brief</li>
-        <li>Written for you &mdash; you do not have to supply the words</li>
-        <li>Works properly on a phone, which is where your customers are</li>
-        <li>Hosting, security certificate, and daily uptime checking</li>
-        <li>Your hours, services, service area and contact details</li>
-        <li>Click-to-call, click-to-text and a direct email link &mdash; no form to break</li>
-        <li>Email forwarding at your own name &mdash; you@yourbusiness.com straight to the inbox you already use</li>
-        <li>We check your site against your Google listing so the two agree &mdash; and tell you exactly what to fix if they do not</li>
-        <li>One full revision round after the first build</li>
-        <li>Small changes as you go &mdash; hours, prices, a new phone number</li>
-        <li>Live in three business days &mdash; counted from the moment you send the form</li>
-      </ul></div>
-    <div class="card"><h3 style="margin-bottom:12px">Not included &mdash; each is a quote</h3>
-      <ul class="list no">
-        <li>Taking payments or a shopping cart &mdash; that is a separate quote, and your card
-            processor would be in your name, never ours</li>
-        <li>Customer logins, portals or memberships</li>
-        <li>A mailbox to send from. We set up forwarding so mail to your address reaches the inbox
-            you already use; a mailbox you can send <i>from</i> is a Google or Microsoft product and we
-            do not set those up or support them</li>
-        <li>A redesign, or a second site</li>
-        <li>Logo design and brand identity work</li>
-        <li>Ongoing SEO or ad management</li>
-        <li>Writing your prices for you &mdash; we publish what you tell us</li>
-        <li>Photography. We will use yours, and tell you which ones to take</li>
-      </ul></div>
+    <div>
+      <ul class="plain yes">
+        <li>Up to five pages, written for you</li>
+        <li>Looks right on a phone</li>
+        <li>Hosting and security, checked daily</li>
+        <li>Your hours, services and prices</li>
+        <li>Tap to call, tap to text, tap to email</li>
+        <li>Email at your own name, forwarded to you</li>
+        <li>One full round of changes</li>
+        <li>Small edits any time you need them</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-bottom:6px">Not included</h3>
+      <p style="font-size:15px;margin-bottom:6px">We will price these for you first. You can say no.</p>
+      <ul class="plain no">
+        <li>Taking payments online</li>
+        <li>Customer logins</li>
+        <li>Logo and branding</li>
+        <li>SEO or ads</li>
+        <li>Photography — we use yours</li>
+      </ul>
+    </div>
   </div>
+
+  <details style="margin-top:30px">
+    <summary>Extras, if you need them</summary>
+    <ul>
+      <li><b>New name for your site</b> — $39, and about $12 a year after that, at cost.</li>
+      <li><b>Use a name you already own</b> — $25. We stay on the phone while you change two settings. We never ask for your password.</li>
+      <li><b>Menu page</b> — $79. Built so prices are easy to change.</li>
+      <li><b>Menu or price changes</b> — $19 each.</li>
+      <li><b>Extra pages</b> — $49 each.</li>
+      <li><b>Photo gallery</b> — $59. Best thing you can add if you do hands-on work.</li>
+      <li><b>Take the site with you</b> — $100, any time. The files are yours.</li>
+    </ul>
+  </details>
 </div></section>
 
-<section><div class="wrap">
-  <div class="eyebrow">If you need more</div>
-  <h2>Add-ons, priced before we start</h2>
-  <p class="lede">Short list on purpose. Everything here we can build and keep running ourselves, at no
-  cost we would have to pass on to you later. You get a written price before any of it begins, and you
-  can say no and keep your membership exactly as it is.</p>
-  <table class="addons">
-    <tr><th>Add-on</th><th>Who it is for</th><th>Price</th></tr>
-    <tr><td><b>A new domain, registered and connected</b>
-        <small>We buy it in your name, not ours, and hand you the login. Year one is in the price;
-        after that it renews at cost &mdash; about $12 a year, billed when it falls due, never marked up.</small></td>
-      <td>You do not have a web address yet</td><td class="p">$39 once<br><small>+ ~$12/yr at cost</small></td></tr>
-    <tr><td><b>Point the domain you already own at your new site</b>
-        <small>We tell you the two settings to change and stay on the phone while you change them,
-        usually ten minutes. <b>We never ask for your registrar password</b> and we do not log in as you.
-        If you cannot find who your domain is with, we will help you work it out &mdash; and if it turns
-        out to be gone or unrecoverable, we register a fresh one and put the $25 toward it.</small></td>
-      <td>You own a name already</td><td class="p">$25 once</td></tr>
-    <tr><td><b>Menu page</b>
-        <small>Sections, prices, dietary notes, and a printable version. Built to be changed.</small></td>
-      <td>Restaurants, cafés, food trucks, caterers</td><td class="p">$79 once</td></tr>
-    <tr><td><b>Menu or price updates</b>
-        <small>Or use your included revision. Seasonal menus, four a year, $59.</small></td>
-      <td>Anyone whose prices move</td><td class="p">$19 each</td></tr>
-    <tr><td><b>Extra pages beyond five</b>
-        <small>A service page, a location page, a staff page.</small></td>
-      <td>More to say than five pages hold</td><td class="p">$49 each</td></tr>
-    <tr><td><b>Photo gallery or before-and-after</b>
-        <small>The single best add-on for a trade. Your work is your argument.</small></td>
-      <td>Contractors, salons, landscapers, detailers</td><td class="p">$59 once</td></tr>
-    <tr><td><b>Take the site with you</b>
-        <small>The files, yours to host anywhere. We would rather hand them over than have you feel stuck.</small></td>
-      <td>Anyone leaving, or moving in-house</td><td class="p">$100 once</td></tr>
-    <tr><td><b>Anything larger</b>
-        <small>Taking payments, a real store, multi-location, something custom. Quoted in credits at $50
-        each, so you can check the arithmetic yourself &mdash; and priced before a minute of it starts.</small></td>
-      <td>You already know what you want</td><td class="p">quoted</td></tr>
+<section><div class="wrap narrow">
+  <h2>What other people charge</h2>
+  <p>Almost everything cheaper than this makes you build it yourself.</p>
+  <table class="cmp">
+    <tr><th>Where</th><th>Who builds it</th><th style="text-align:right">A month</th></tr>
+    <tr><td>GoDaddy</td><td>You do</td><td class="p">$11–25</td></tr>
+    <tr><td>Squarespace</td><td>You do</td><td class="p">$16–33</td></tr>
+    <tr><td>Wix</td><td>You do</td><td class="p">$17–36</td></tr>
+    <tr class="us"><td>NESO</td><td>We do</td><td class="p">$20</td></tr>
+    <tr><td>A design agency</td><td>They do, once</td><td class="p">$1,500+ once</td></tr>
+    <tr><td>A managed web service</td><td>They do, and keep doing it</td><td class="p">$99–149</td></tr>
   </table>
+  <p style="font-size:14.5px;color:var(--soft);margin-top:18px">Builder prices are for paying a year up front.
+  Month to month costs 20–40% more. Their free web address lasts one year, then $15–20 a year.
+  Checked August 2026.</p>
 </div></section>
 
-<section><div class="wrap">
-  <div class="eyebrow">What it costs elsewhere</div>
-  <h2>Nearly everything cheaper than this makes you build it yourself.</h2>
-  <p class="lede">The column that matters is the middle one. A website builder rents you an empty editor
-  and a weekend. What we do &mdash; design it, write it, put it up, keep it current &mdash; is normally
-  sold as a managed service, and managed services start around a hundred dollars a month.</p>
-  <table class="addons" style="margin-top:22px">
-    <tr><th>What you would pay</th><th>Who designs and builds it</th><th>Per month</th></tr>
-    <tr><td>GoDaddy Website Builder</td><td>You do, on their templates</td><td class="p">$11&ndash;25</td></tr>
-    <tr><td>Squarespace</td><td>You do, on their templates</td><td class="p">$16&ndash;33</td></tr>
-    <tr><td>Wix</td><td>You do, on their templates</td><td class="p">$17&ndash;36</td></tr>
-    <tr style="background:#FBF7FC"><td><b>NESO founding rate</b>
-        <small>Built from your form in three business days, hosted, kept current, one revision included.</small></td>
-      <td><b>We do &mdash; a person, then a principal checks it</b></td><td class="p"><b>$20</b></td></tr>
-    <tr><td>A freelancer to build it once
-        <small>Then it is yours to host, update and fix.</small></td>
-      <td>They do, once</td><td class="p">$80&ndash;700 once</td></tr>
-    <tr><td>A design agency
-        <small>Then a separate maintenance retainer on top.</small></td>
-      <td>They do, once</td><td class="p">$1,500&ndash;5,000 once</td></tr>
-    <tr><td><b>A managed website service</b>
-        <small>Free build, hosting, maintenance, a few content changes a month. The same shape as this.</small></td>
-      <td>They do, and keep doing it</td><td class="p">$99&ndash;149</td></tr>
-  </table>
-  <p class="audnote" style="font-size:12.5px;color:var(--dim);margin-top:16px">
-  Builder prices are entry plans on <b>annual billing</b> &mdash; paying month to month runs 20&ndash;40%
-  higher, so the real monthly figure is nearer $21&ndash;24. Their free domain covers the first year only;
-  renewal runs $15&ndash;20 a year after that. Neither Wix nor Squarespace refunds a monthly subscription
-  at all. Prices checked August 2026 &mdash; look them up, they change.</p>
-</div></section>
+<section class="band"><div class="wrap narrow">
+  <h2>Straight answers</h2>
 
-<section class="band"><div class="wrap">
-  <div class="eyebrow">Who owns what</div>
-  <h2>Your name is yours. The catch is that there isn't one.</h2>
-  <p class="lede">Most people have been burned by somebody holding their website hostage, so here it is
-  in three lines before you ask.</p>
-  <div class="cols">
-    <div class="tile"><h3>Your domain and your words</h3>
-      <p>Registered to you, not to us. Your text, your photos, your prices and every enquiry that comes
-      in are yours. If you leave, the domain goes with you the same week, at no charge, and we will not
-      hold it for a day.</p></div>
-    <div class="tile"><h3>The site we build is ours, licensed to you</h3>
-      <p>The same arrangement every website platform runs on. While you are a member it is yours to use,
-      we keep it working, and you never think about it again.</p></div>
-    <div class="tile"><h3>And you can buy it outright for $100</h3>
-      <p>Changed your mind, or found someone in-house? Pay it once and the files are yours to host
-      anywhere you like. We would rather hand them over than have you feel stuck.</p></div>
-  </div>
-  <p class="lede" style="margin-top:26px"><b style="color:#fff">The one commitment we do ask for:</b>
-  three months, or pay for the year. A build is real work and it happens before your second payment, so
-  three months is the fair version of that for both of us &mdash; and after three months you can leave
-  whenever you like, with your name and your files. Founding members who prepay pay <b>$200 a year</b>
-  and keep that rate on every renewal; the standard annual rate is $300.</p>
-</div></section>
+  <details open><summary>Who owns it?</summary>
+    <p>Your web address is in your name. Your words and photos are yours. If you leave, the address goes
+    with you the same week, free. The site we build stays ours and you use it while you are a member —
+    the same way Wix or Squarespace works. If you want to keep the site itself, it is $100 and the files
+    are yours to take anywhere.</p></details>
 
-<section id="brief" style="padding-bottom:56px"><div class="wrap" style="max-width:760px">
-  <div class="eyebrow">The next step</div>
-  <h2>Fill in the brief. We will tell you what we would build.</h2>
-  <p class="lede" style="margin-bottom:8px">The form is the whole start of it. There is no call to book
-  and nothing to pay before you see what you are buying &mdash; a person reads what you send and comes
-  back to you with what your site would say and what it would cost, which for almost everyone is
-  $20 a month and nothing else.</p>
-  <p class="lede"><b style="color:var(--ink)">Three business days, counted from the moment you press
-  send on this form.</b> Not from a phone call, not from a date we pick later. If you filled the form in
-  before joining, the three days start when you join. Your revision round is a further two business days
-  after you send notes, and if we ever need something from you the clock pauses until it arrives &mdash;
-  day for day, never as a penalty.</p>
-  <p class="lede"><b style="color:var(--ink)">Take your time on one question:</b> what you would want a
-  stranger to know about your business in three sentences. That answer is the site.</p>
-  <a class="cta" href="/site-brief.html">Open the brief form &rarr;</a>
-  <a class="cta ghost" href="https://nesohq.gumroad.com/l/hlxgiw" style="margin-left:8px">See the membership listing</a>
-  <div class="under">Prefer to talk first? Text (901) 295-0322 and say what you do. That works too.</div>
+  <details><summary>Why three months to start?</summary>
+    <p>We build the whole site before your second payment. One month would mean building a website for
+    twenty dollars. After three months you can stop any time you like.</p></details>
 
-  <div style="margin-top:40px">
-    <details class="q"><summary>Do I have to have a domain already?</summary>
-      <p>No. Tell us on the form and we will register one in your name for $39, which covers the first
-      year. If you already own one and cannot remember where, say so — finding it is part of the job.</p></details>
-    <details class="q"><summary>What if I already have a website I hate?</summary>
-      <p>Then you are the easiest kind of client, because you already know what is wrong with it. We
-      build a new one and point your existing address at it. Your old site stays untouched until you
-      say go live.</p></details>
-    <details class="q"><summary>How long does it take?</summary>
-      <p><b>Three business days</b> from the moment you send the form to a site you can look at, and two
-      more after you send your revision notes. The form is the starting gun, which is why it asks for
-      everything it asks for &mdash; there is nothing else we need to begin. If you filled it in before
-      joining, the three days start when you join. And if we are ever going to be slower than three days,
-      you hear it before you pay rather than after.</p></details>
-    <details class="q"><summary>What happens if I cancel?</summary>
-      <p>After the three-month minimum you can cancel any month. The site comes down, your domain
-      transfers to you at no cost, and your content is yours. There is no exit fee and nothing is held
-      hostage. If you want to keep the site itself, that is the $100 handover &mdash; the files, yours to
-      take anywhere. Refunds follow the published policy: 14 days, closing when your site goes live,
-      which is the point where the work has actually been done.</p></details>
-    <details class="q"><summary>Why a three-month minimum?</summary>
-      <p>Because the whole build happens before your second payment. One month would mean building a
-      site for twenty dollars, and a price that only works if people leave immediately is not a
-      price, it is a trick. Three months is the honest version. If you would rather not commit monthly,
-      pay $200 for the year as a founding member &mdash; ten months for twelve, and that rate is yours on
-      every renewal after it.</p></details>
-    <details class="q"><summary>Why is it this cheap?</summary>
-      <p>Because we built the machinery for our own eight products first, and the same intake, review
-      and hosting layer runs your site at nearly no extra cost to us. What you are paying for is the
-      hour a person spends on your words and the fact that somebody senior looks at it. Two hundred
-      founding members is where this price stops.</p></details>
-    <details class="q"><summary>Who is actually doing this?</summary>
-      <p>NESO HQ LLC, a Kentucky company run by two principals — one who has built and sold real
-      estate and runs our software, and one with seventeen years in planning and economic development
-      who reviews everything before it leaves. We are not a marketplace and there is no account
-      manager. You will be talking to one of the two of us.</p></details>
+  <details><summary>What if I already have a website?</summary>
+    <p>Then you already know what is wrong with it, which makes this easy. We build the new one and point
+    your address at it when you say go. Your old site stays up until then.</p></details>
+
+  <details><summary>How fast, really?</summary>
+    <p>Three business days from the minute you send the form. Not from a phone call. Your round of
+    changes takes two more days after you send them. If we are ever going to be slower, you hear it
+    before you pay.</p></details>
+
+  <details><summary>Who are you?</summary>
+    <p>Two people. Mallory builds and runs the software. Charles has spent seventeen years in planning
+    and land use, and he checks work before it goes out. There is no account manager. You will be
+    talking to one of us.</p></details>
+
+  <div style="margin-top:34px">
+    <a class="btn" href="/site-brief.html">Start the form</a>
+    <a class="btn ghost" href="https://nesohq.gumroad.com/l/hlxgiw" style="margin-left:8px">See the listing</a>
+    <p class="after">Or text <a href="tel:+19012950322">(901) 295-0322</a> and tell us what your business does.</p>
   </div>
 </div></section>
 
 <footer><div class="wrap">
-  <b style="color:#fff;font-family:var(--display);text-transform:uppercase;letter-spacing:.02em">NESO HQ LLC</b><br>
+  <b style="color:#fff;font-size:17px">NESO HQ LLC</b><br>
+  <a href="tel:+19012950322">(901) 295-0322</a> ·
+  <a href="mailto:hello@nesohq.com">hello@nesohq.com</a> ·
+  <a href="https://nesohq.com/">nesohq.com</a><br>
   5300 Scottsville Rd #50148, Bowling Green, KY 42102<br>
-  <a href="https://nesohq.com/">nesohq.com</a> &middot;
-  <a href="mailto:hello@nesohq.com">hello@nesohq.com</a> &middot;
-  <a href="tel:+19012950322">(901) 295-0322</a> — texts reach us fastest<br>
-  <a href="/legal/terms.html">Terms</a> &middot;
-  <a href="/legal/refund.html">Refund policy</a> &middot;
-  <a href="/legal/privacy.html">Privacy</a><br>
-  <span style="color:#7E6C90">Founding rate applies to the first 200 memberships and is held for as long as the
-  membership stays active. Three-month minimum on the monthly tier, or $200 prepaid annually at the
-  founding rate; the standard rate after the first 200 memberships is $30 a month or $300 a year. The site
-  build is licensed for the term of the membership; your domain and your content are yours throughout and
-  transfer to you at no charge. A copy of the built site may be purchased outright for $100. Turnaround of
-  three business days runs from submission of the website intake form, or from the start of the membership
-  where the form was submitted first; pauses run day for day while NESO is waiting on the client.
-  Add-on prices are current to 17 August 2026; the listing governs.</span>
+  <a href="/legal/terms.html">Terms</a> ·
+  <a href="/legal/refund.html">Refunds</a> ·
+  <a href="/legal/privacy.html">Privacy</a>
+  <div class="fine">$20 a month is the founding rate for the first 200 businesses and is held for as long as
+  your membership stays active. After that the rate is $30 a month or $300 a year. Three months minimum on
+  monthly, or $200 paid for the year. If you cancel inside three months the site comes down and your web
+  address goes with you — we do not invoice you for the rest. The site we build is licensed to you while
+  you are a member; a copy can be bought outright for $100 at any time. Three business days runs from the
+  form being sent. Refunds: 14 days, closing when the site goes live. Extras priced August 2026.</div>
 </div></footer>
 
 <script>
-/* The signature element. Nothing here is required for the page to work — with
-   JavaScript off the window reads "Your Business" and the CTA still goes to the
-   form, which is the only thing this page has to do. */
+/* The phone preview. Not required for the page to work: with JavaScript off it
+   reads "Your Business" and the form button still goes to the form. */
 (function(){
-  var input = document.getElementById('biz'),
-      sign  = document.getElementById('sign'),
-      url   = document.getElementById('url');
-  if(!input) return;
-
+  var i=document.getElementById('biz'), n=document.getElementById('pname'), u=document.getElementById('purl');
+  if(!i) return;
   function slug(s){
-    return s.toLowerCase()
-      .replace(/&/g,'and')
-      .replace(/['’.,]/g,'')
-      .replace(/[^a-z0-9]+/g,'')
-      .slice(0,26);
+    return s.toLowerCase().replace(/&/g,'and').replace(/['’.,]/g,'')
+            .replace(/[^a-z0-9]+/g,'').slice(0,24);
   }
   function paint(){
-    var v = input.value.trim();
-    sign.textContent = v || 'Your Business';
-    var s = slug(v);
-    url.innerHTML = 'www.<i>' + (s || 'yourbusiness') + '</i>.com';
+    var v=i.value.trim();
+    n.textContent = v || 'Your Business';
+    u.textContent = (slug(v) || 'yourbusiness') + '.com';
   }
-  input.addEventListener('input', paint);
-  paint();
+  i.addEventListener('input', paint); paint();
 })();
 </script>
 </body></html>
