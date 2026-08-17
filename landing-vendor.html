@@ -6,7 +6,10 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-8F80E2D56H');
+  // Preview hostnames (*.pages.dev) must not enter the traffic baseline.
+  if (location.hostname === 'nesohq.com' || location.hostname.endsWith('.nesohq.com')) {
+    gtag('config', 'G-8F80E2D56H');
+  }
 </script><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Occupier Services vendors — NESO finds the work; you do the work.</title>
 <meta name="description" content="For landscaping, pressure washing, janitorial, junk removal and property-service contractors: NESO searches its bid database and its network of agents and building owners for work in up to five areas you choose, and puts your profile in front of the people who hire.">
@@ -52,7 +55,7 @@ footer{border-top:1px solid var(--line);padding:16px 0 34px;font-size:12.5px;col
 <div class="hero">
 <div class="eye">Occupier Services · founding vendors</div>
 <h1>You do the work. NESO looks for it.</h1>
-<p class="lead">Landscaping, pressure washing, janitorial, junk removal, mowing, exterior maintenance — the work buildings need on a schedule. NESO already crawls thirty-five public bid sources daily and already talks to real-estate agents and building owners. A vendor membership puts that machinery and that network to work finding <em>you</em> the next job, in the areas you choose.</p>
+<p class="lead">Landscaping, pressure washing, janitorial, junk removal, mowing, exterior maintenance — the work buildings need on a schedule. NESO already tracks thirty-five public bid sources daily and already talks to real-estate agents and building owners. A vendor membership puts that machinery and that network to work finding <em>you</em> the next job, in the areas you choose.</p>
 </div>
 
 <div class="cardrow">
