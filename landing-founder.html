@@ -6,7 +6,10 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-8F80E2D56H');
+  // Preview hostnames (*.pages.dev) must not enter the traffic baseline.
+  if (location.hostname === 'nesohq.com' || location.hostname.endsWith('.nesohq.com')) {
+    gtag('config', 'G-8F80E2D56H');
+  }
 </script><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>NESO for founders and small business owners — Start with the free version. Buy the thing you ac</title>
 <meta name="description" content="Every NESO tool runs free in a browser with no account, and shows the complete analysis with your own numbers. Nothing here asks you to price a missing half sight-unseen. When you need work…">
