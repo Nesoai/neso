@@ -6,7 +6,10 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-8F80E2D56H');
+  // Preview hostnames (*.pages.dev) must not enter the traffic baseline.
+  if (location.hostname === 'nesohq.com' || location.hostname.endsWith('.nesohq.com')) {
+    gtag('config', 'G-8F80E2D56H');
+  }
 </script><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>NESO for real-estate developers and landowners — Test the deal before you spend money proving i</title>
 <meta name="description" content="Most projects die on something knowable in an afternoon: the parcel is not entitled for what you want, the lot cannot hold the program, or the income will not cover the debt. NESO sells the…">
