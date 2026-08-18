@@ -176,10 +176,17 @@ footer a{color:#D9C7E8}
 .tw i{font-style:normal;font-size:14px;color:var(--soft);display:block;margin-top:3px}
 .tw.soon{background:var(--bg-2);border-style:dashed}
 .tw.soon b{color:var(--soft)}
-.who{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-.who a{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 16px;
-  font-size:15.5px;text-decoration:none;color:var(--ink);transition:border-color .12s}
-.who a:hover{border-color:var(--plum);color:var(--plum)}
+.whogrp{margin-top:22px}
+.whogrp h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);
+  font-weight:700;margin-bottom:10px}
+.whogrp+.whogrp{margin-top:24px}
+.who{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:10px}
+.who a{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+  font-size:16px;text-decoration:none;color:var(--ink);display:flex;align-items:center;
+  justify-content:space-between;gap:10px;transition:border-color .12s,transform .12s}
+.who a:hover{border-color:var(--plum);color:var(--plum);transform:translateY(-1px)}
+.who a::after{content:"\2192";color:var(--soft);flex:0 0 auto}
+.who a:hover::after{color:var(--plum)}
 
 @media (max-width:860px){
   .people{grid-template-columns:1fr;gap:26px}
@@ -472,7 +479,7 @@ footer a{color:#D9C7E8}
 </div></section>
 
 <section><div class="wrap narrow">
-  <h2>Twenty dollars a month, if that is what you need.</h2>
+  <h2>$20/month, if that is what you need.</h2>
   <p>Four things we do on a schedule. Each one is twenty dollars, each one stops any month you like,
   and none of them has a setup fee.</p>
   <div class="twenty">
@@ -490,16 +497,31 @@ footer a{color:#D9C7E8}
 <section class="band"><div class="wrap narrow">
   <h2>Or start with the page written for you</h2>
   <p>Same firm, said the way it matters to your kind of work. Two minutes each.</p>
-  <div class="who">
-    <a href="https://nesohq.com/landing-founder.html">I run a small business</a>
-    <a href="https://nesohq.com/landing-contractor.html">I bid on public work</a>
-    <a href="https://nesohq.com/landing-developer.html">I develop or own land</a>
-    <a href="https://nesohq.com/landing-municipality.html">I work for a city or county</a>
-    <a href="https://nesohq.com/landing-nonprofit.html">I run a nonprofit</a>
-    <a href="https://nesohq.com/landing-energy.html">I site large-load projects</a>
-    <a href="https://nesohq.com/landing-vendor.html">I do property-service work</a>
-    <a href="https://nesohq.com/landing-occupier.html">I manage or own buildings</a>
-    <a href="https://partners.nesohq.com/">I want to refer people and be paid for it</a>
+  <div class="whogrp">
+    <h3>I run a business</h3>
+    <div class="who">
+      <a href="https://nesohq.com/landing-founder.html">A small business</a>
+      <a href="https://nesohq.com/landing-contractor.html">A contracting or trade business</a>
+      <a href="https://nesohq.com/landing-vendor.html">A property-service business</a>
+    </div>
+  </div>
+
+  <div class="whogrp">
+    <h3>I work with land or buildings</h3>
+    <div class="who">
+      <a href="https://nesohq.com/landing-developer.html">I develop or own land</a>
+      <a href="https://nesohq.com/landing-occupier.html">I manage or own buildings</a>
+      <a href="https://nesohq.com/landing-energy.html">I site large-load projects</a>
+    </div>
+  </div>
+
+  <div class="whogrp">
+    <h3>I work for an organisation</h3>
+    <div class="who">
+      <a href="https://nesohq.com/landing-municipality.html">A city, county or agency</a>
+      <a href="https://nesohq.com/landing-nonprofit.html">A nonprofit</a>
+      <a href="https://partners.nesohq.com/">I want to refer people and be paid</a>
+    </div>
   </div>
 </div></section>
 
