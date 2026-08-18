@@ -1,37 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  NESO HQ LLC — sitemap entries for the website membership, 17 August 2026.
+  NESO HQ LLC — sitemap.xml
+  COMPLETE FILE. Paste this over the deployed sitemap.xml. Rebuilt 18 August 2026.
 
-  THIS IS A FRAGMENT, NOT A REPLACEMENT. The live sitemap.xml is not held in this
-  workspace, so this file cannot be pasted over it — doing so would delete every
-  existing URL. Open the deployed sitemap.xml in the hub repo and paste the two
-  <url> blocks below inside the existing <urlset>, then commit.
+  WHAT HAPPENED, so it does not happen again.
+  On 17 August a two-URL FRAGMENT was uploaded over the live sitemap. Its own
+  comment said not to do that; the instruction was to paste the two <url> blocks
+  inside the existing <urlset>. Uploaded whole, it replaced the file and every
+  other URL on the site vanished from it. This file restores a complete sitemap.
 
-  Both pages are indexable by decision: they are a promotion meant to spread, unlike
-  the six audience pages, which are noindex and shared by link. Neither carries a
-  noindex tag, and both are in the sitemap for that reason.
+  Lesson, and it is a general one: never ship a file that looks like a whole
+  document but is not one. A fragment should be delivered as a fragment — a code
+  block in a note, not an .xml file with a <?xml?> header, because a file that
+  parses is a file somebody will upload.
 
-  lastmod is the deploy date. Update it whenever either page changes materially —
-  a stale lastmod is a small lie a crawler notices.
+  WHAT IS DELIBERATELY NOT IN HERE. A sitemap lists pages you want indexed.
+  These are noindex by decision and must stay out, or Google is being asked to
+  crawl pages that tell it not to:
+    · hello.html                 noindex,nofollow — sent to a named person
+    · academy.html               noindex,nofollow — partners only
+    · the eight landing-*.html   noindex,follow  — sent, not crawled
+    · examples/*.html (8)        noindex,nofollow — invented businesses that
+                                 must never surface in a search result
+    · examples.html              INDEXABLE and included: the gallery is real
+                                 NESO marketing, unlike the sites it indexes
 
-  After deploying: add both URLs to neso-linkcheck WITH BODY ASSERTIONS. A missing
-  page on Cloudflare Pages serves the hub and returns 200, so a status-code check
-  passes on a page that does not exist.
+  TWO ENTRIES ARE UNVERIFIED and marked below. I can see them in the repository
+  listing but I do not know whether they are live, public, or carry a noindex
+  tag. Open each one, and delete the block if it is not a page you want found.
+
+  lastmod is the date the page last changed materially. A stale lastmod is a
+  small lie a crawler notices, so update it when you edit a page.
+
+  AFTER DEPLOYING: add every URL here to neso-linkcheck WITH BODY ASSERTIONS.
+  A missing page on Cloudflare Pages serves the hub and returns 200, so a
+  status-code check passes on a page that does not exist.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- The hub. The one page everything else points back at. -->
   <url>
-    <loc>https://nesohq.com/website-membership.html</loc>
-    <lastmod>2026-08-17</lastmod>
+    <loc>https://nesohq.com/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- The recurring services, named for the price. -->
+  <url>
+    <loc>https://nesohq.com/twenty.html</loc>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
+  <!-- The website service and its intake. -->
+  <url>
+    <loc>https://nesohq.com/website-membership.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <url>
     <loc>https://nesohq.com/site-brief.html</loc>
-    <lastmod>2026-08-17</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nesohq.com/examples.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- The Bid Desk. The board itself is free to read, which is the point. -->
+  <url>
+    <loc>https://nesohq.com/bid-desk.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nesohq.com/bid-desk-profile.html</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Occupier Services, both doors. -->
+  <url>
+    <loc>https://nesohq.com/vendor-profile.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nesohq.com/vendor-pricing.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- The chat surface. -->
+  <url>
+    <loc>https://nesohq.com/ask.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Legal. Low priority, but a real page a person may search for. -->
+  <url>
+    <loc>https://nesohq.com/legal/terms.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://nesohq.com/legal/refund.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://nesohq.com/legal/privacy.html</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- UNVERIFIED — open each and delete the block if it is not public.
+       cards.html appears in the repository listing; purpose unconfirmed.
+       tk.html is very likely the Trojan K client form, which should NOT be
+       indexed at all if so. Check before leaving this in. -->
+  <url>
+    <loc>https://nesohq.com/cards.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
 
 </urlset>
