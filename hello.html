@@ -165,6 +165,22 @@ footer a{color:#D9C7E8}
 .copied{color:var(--green);font-size:15px;margin-left:10px;opacity:0;transition:opacity .2s}
 .copied.on{opacity:1}
 
+/* ---- the $20 strip and the audience router. Both deliberately small: this page
+   already has one router (the picker), and a second one that shouts would compete
+   with it. These are doors, not arguments. ---- */
+.twenty{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:10px;margin-top:24px}
+.tw{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+  text-decoration:none;color:inherit;transition:border-color .12s,transform .12s;display:block}
+.tw:hover{border-color:var(--plum);transform:translateY(-1px)}
+.tw b{display:block;font-size:16.5px}
+.tw i{font-style:normal;font-size:14px;color:var(--soft);display:block;margin-top:3px}
+.tw.soon{background:var(--bg-2);border-style:dashed}
+.tw.soon b{color:var(--soft)}
+.who{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.who a{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 16px;
+  font-size:15.5px;text-decoration:none;color:var(--ink);transition:border-color .12s}
+.who a:hover{border-color:var(--plum);color:var(--plum)}
+
 @media (max-width:860px){
   .people{grid-template-columns:1fr;gap:26px}
   section{padding:54px 0}
@@ -455,7 +471,39 @@ footer a{color:#D9C7E8}
   </div>
 </div></section>
 
+<section><div class="wrap narrow">
+  <h2>Twenty dollars a month, if that is what you need.</h2>
+  <p>Four things we do on a schedule. Each one is twenty dollars, each one stops any month you like,
+  and none of them has a setup fee.</p>
+  <div class="twenty">
+    <a class="tw" href="https://nesohq.com/website-membership.html"><b>Your website</b>
+      <i>Built from one form, live in three days</i></a>
+    <a class="tw" href="https://nesohq.com/bid-desk.html"><b>Bid Desk</b>
+      <i>The week&rsquo;s public jobs, shortlisted</i></a>
+    <span class="tw soon"><b>Funding Watch</b><i>Grant programmes matched to you &middot; soon</i></span>
+    <span class="tw soon"><b>Parcel Watch</b><i>A parcel watched for changes &middot; soon</i></span>
+  </div>
+  <p class="after"><a href="https://nesohq.com/twenty.html">See all of them, and the rules that apply to
+  each &rarr;</a></p>
+</div></section>
+
 <section class="band"><div class="wrap narrow">
+  <h2>Or start with the page written for you</h2>
+  <p>Same firm, said the way it matters to your kind of work. Two minutes each.</p>
+  <div class="who">
+    <a href="https://nesohq.com/landing-founder.html">I run a small business</a>
+    <a href="https://nesohq.com/landing-contractor.html">I bid on public work</a>
+    <a href="https://nesohq.com/landing-developer.html">I develop or own land</a>
+    <a href="https://nesohq.com/landing-municipality.html">I work for a city or county</a>
+    <a href="https://nesohq.com/landing-nonprofit.html">I run a nonprofit</a>
+    <a href="https://nesohq.com/landing-energy.html">I site large-load projects</a>
+    <a href="https://nesohq.com/landing-vendor.html">I do property-service work</a>
+    <a href="https://nesohq.com/landing-occupier.html">I manage or own buildings</a>
+    <a href="https://partners.nesohq.com/">I want to refer people and be paid for it</a>
+  </div>
+</div></section>
+
+<section><div class="wrap narrow">
   <h2>The ones people ask first</h2>
 
   <details open><summary>What does free really mean?</summary>
