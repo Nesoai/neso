@@ -191,13 +191,22 @@ footer a{color:#D9C7E8}
   <div class="checks">
     <label class="chk"><input type="checkbox" value="menu" class="addon"> A menu page ($79)</label>
     <label class="chk"><input type="checkbox" value="gallery" class="addon"> Photo gallery ($59)</label>
-    <label class="chk"><input type="checkbox" value="pages" class="addon"> More than five pages ($49 ea.)</label>
+    <label class="chk"><input type="checkbox" value="pages" class="addon"> More than two pages ($49 ea.)</label>
     <label class="chk"><input type="checkbox" value="domain" class="addon"> Register a domain for me ($39)</label>
     <label class="chk"><input type="checkbox" value="payments" class="addon"> I want to take payments — quote me</label>
     <label class="chk"><input type="checkbox" value="talk" class="addon"> I would rather talk it through</label>
   </div>
   <div class="f"><label for="colours">Colours, or a business whose site you like</label>
     <input id="colours" placeholder="Our truck is dark green and cream. Or paste a link you like."></div>
+  <div class="f"><label for="logo">Do you already have a logo?</label>
+    <select id="logo">
+      <option value="">Choose one</option>
+      <option value="have">Yes &mdash; I will email it over</option>
+      <option value="have-bad">I have one but I do not like it</option>
+      <option value="need">No &mdash; design three and I will pick one</option>
+    </select>
+    <p class="hint">Three designs, you pick one, colour changes only. It is a logo rather than a full
+    brand, and we do not check whether a name or mark is free to use.</p></div>
   <div class="f"><label for="notes">Anything else we should know</label>
     <textarea id="notes" style="min-height:84px" placeholder="Busy season, a rebrand coming, a competitor you want to sit beside, a deadline."></textarea></div>
 </fieldset>
@@ -291,6 +300,7 @@ $("send").addEventListener("click", async function(){
     web_existing:  v("existing"),
     web_addons:    addons.join(", "),
     web_colours:   v("colours"),
+    web_logo:      v("logo"),
     web_notes:     v("notes"),
     web_plan:      "founding $20/mo · 3-month minimum, or $200/yr prepaid (founding annual)",
     web_turnaround:"3 business days from this submission (or from membership start if sent before joining)",
