@@ -141,4 +141,23 @@
     <priority>0.4</priority>
   </url>
 
+
+  <!-- Free assets from The NESO Brief. Public, linked from issues and from the
+       landing pages, and worth finding on their own — a checklist somebody
+       searches for is a person who has not heard of NESO yet. -->
+  <url><loc>https://nesohq.com/assets/site-selector-questions.pdf</loc><lastmod>2026-08-18</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://nesohq.com/assets/lender-questions.pdf</loc><lastmod>2026-08-18</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://nesohq.com/assets/bid-bond-plain.pdf</loc><lastmod>2026-08-18</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://nesohq.com/assets/four-photos.pdf</loc><lastmod>2026-08-18</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://nesohq.com/assets/before-you-buy-land.pdf</loc><lastmod>2026-08-18</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://nesohq.com/assets/before-you-register.pdf</loc><lastmod>2026-08-18</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://nesohq.com/assets/where-disaster-money-comes-from.pdf</loc><lastmod>2026-08-18</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://nesohq.com/assets/infrastructure-or-programme.pdf</loc><lastmod>2026-08-18</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://nesohq.com/assets/what-to-send-your-district.pdf</loc><lastmod>2026-08-18</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+
+  <!-- The Brief itself. Its archive is on a custom domain, so it needs its own
+       sitemap there; this entry is the free issue's designed PDF, which lives
+       on the main site. Member issue PDFs are deliberately never published. -->
+  <url><loc>https://nesohq.com/brief-pdfs/2026-08-18.pdf</loc><lastmod>2026-08-18</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+
 </urlset>
