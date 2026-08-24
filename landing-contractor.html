@@ -35,7 +35,14 @@
      string no visitor could ever see. Reworded here; the generator's template
      still emits the old wording.
 
-  AUDIENCE: Trades, contractors and bidders — 58 of the warm list
+  AUDIENCE: Trades, contractors and bidders3. 23 August 2026: the source count is no longer stated on this page. It went
+     35 -> 37 when neso-primes v3.1 added KYTC lettings and Kentucky eProcurement,
+     and it will keep moving. A number that drifts silently in two places is a
+     number worth removing: the page now says "every public source we can reach",
+     and neso-primes /health stays the only place the figure is derived. Do not
+     reintroduce it here.
+
+   — 58 of the warm list
   Prices restate the Product Book. If they disagree, the Product Book is right.
   noindex,follow by decision: these pages are sent to a named person, not left
   for a search engine to find. The hub is the indexable surface.
@@ -69,6 +76,17 @@ section{padding:62px 0;border-top:1px solid var(--line)}
 .lock{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:#fff;font-weight:700}
 
 .hero{background:#16141A;color:#fff;padding:56px 0 62px}
+.hero .wrap{display:grid;grid-template-columns:1fr 380px;gap:34px;align-items:center}
+.heroart{width:100%;height:auto;display:block}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr}.heroart{max-width:420px;margin:6px auto 0}}
+.trackhead{display:grid;grid-template-columns:64px 1fr;gap:18px;align-items:center;
+  background:var(--plum);color:#fff;border-radius:18px;padding:18px 22px;margin-bottom:24px}
+.trackhead .n{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.14);
+  display:flex;align-items:center;justify-content:center}
+.trackhead .n svg{width:36px;height:36px;color:var(--gold)}
+.trackhead .k{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:#E7B84B;font-weight:700}
+.trackhead b{display:block;font-size:23px;line-height:1.2;margin-top:3px}
+.trackhead p{color:#E4DAF0;font-size:15px;margin:5px 0 0}
 .hero h1{color:#fff}
 .hero .lead{color:#C6BFD0;font-size:19px;margin-top:18px;max-width:52ch}
 .hero .kicker{display:inline-flex;align-items:center;gap:8px;background:rgba(183,139,222,.16);
@@ -92,6 +110,8 @@ section{padding:62px 0;border-top:1px solid var(--line)}
 
 .offer{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 30px;margin-top:26px}
 .offer .tagline{font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--soft);font-weight:600}
+.trackart{display:block;width:100%;max-width:620px;height:auto;margin:0 auto 26px}
+
 .offer h3{font-size:24px;margin:8px 0 6px}
 .offer .price{display:inline-block;background:var(--plum-w);color:var(--plum);font-weight:700;
   border-radius:999px;padding:6px 15px;font-size:15px;margin-bottom:14px}
@@ -128,41 +148,118 @@ footer a{color:#D9C7E8}
 </div></div>
 
 <div class="hero"><div class="wrap">
+  <div class="herotext">
   <span class="kicker"><i></i> For contractors, trades and bidders</span>
   <h1>Somebody in your corner.</h1>
-  <p class="lead">You run the crew and you write the bid. Ours is the looking, the sorting and the reading that eats an evening — so you sit down to it with what you need already in front of you.</p>
-  <a class="btn gold" href="sms:+19012950322?&body=Hi%20NESO%20%E2%80%94%20">Text us a question first</a>
-  <a class="btn ghost" href="https://nesohq.com/#/opportunities" style="margin-left:8px">See the board</a>
-  <p class="after">One reply, from a principal, within a business day.</p>
+  <p class="lead">You run the crew and you write the bid. Ours is the looking, the sorting and the reading that eats an evening &mdash; so you sit down to it with what you need already in front of you.</p>
+  <p class="lead" style="font-size:19px;margin-top:14px"><b>Work reaches you two ways, and we cover both</b> &mdash;
+  <a href="#bid" style="color:#E7B84B">put out to bid</a>, or
+  <a href="#direct" style="color:#E7B84B">handed out by an owner</a>.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px">
+    <a class="btn gold" href="https://nesohq.gumroad.com/l/rbflbir">Send me the week&rsquo;s jobs &mdash; $20/mo</a>
+    <a class="btn gold" href="https://nesohq.com/vendor-profile.html">Put me in front of owners &mdash; $20/mo</a>
+  </div>
+  <div style="margin-top:12px">
+    <a class="btn ghost" href="https://nesohq.com/vendor-profile.html?plan=both"
+      style="border-color:#E7B84B;color:#E7B84B">Do both &mdash; $35/mo, save $5</a>
+  </div>
+  <p class="after">Cancel any month, no setup fee, no contract.<br>
+  Questions first? Text <a href="sms:+19012950322?&body=Hi%20NESO%20%E2%80%94%20" style="color:#E7B84B">(901) 295-0322</a>
+  &mdash; a principal answers within a business day. Or <a href="https://nesohq.com/opportunities.html" style="color:#E7B84B">read the board free</a>.</p>
+  </div>
+  <svg class="heroart" viewBox="0 0 380 320" role="img" aria-label="A crew, a bid sheet and the buildings the work sits in">
+    <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A2233"/><stop offset="1" stop-color="#1B1720"/></linearGradient></defs>
+    <rect x="8" y="8" width="364" height="304" rx="22" fill="url(#hg)"/>
+    <g stroke="#3A3145" stroke-width="1"><path d="M8 250h364M8 210h364M8 170h364M8 130h364M8 90h364"/></g>
+
+    <!-- the buildings: where the work is -->
+    <g fill="none" stroke="#8B5AAE" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M214 250v-92h84v92"/>
+      <path d="M232 178h16M264 178h16M232 202h16M264 202h16M232 226h16M264 226h16"/>
+      <path d="M300 250v-56h30v56"/><path d="M310 210h10M310 228h10"/>
+    </g>
+    <g fill="none" stroke="#E7B84B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M150 250v-58h58v58"/><path d="M150 192l29-22 29 22"/><path d="M170 250v-28h18v28"/>
+    </g>
+
+    <!-- the truck: your crew -->
+    <g fill="none" stroke="#E7B84B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M36 236v-30h62v30"/><path d="M98 214h20l14 16v6h-34z"/>
+      <path d="M28 236h116"/>
+      <circle cx="60" cy="244" r="9"/><circle cx="116" cy="244" r="9"/>
+    </g>
+    <g fill="none" stroke="#B78BDE" stroke-width="2" stroke-linecap="round"><path d="M44 206v-8h26v8"/></g>
+
+    <!-- the bid sheet -->
+    <g fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="40" y="48" width="112" height="104" rx="9"/>
+      <path d="M80 48v-9h32v9"/><path d="M58 78h76M58 100h76M58 122h44"/>
+    </g>
+    <circle cx="140" cy="122" r="6" fill="#E7B84B"/>
+
+    <!-- match -->
+    <path d="M172 100h34" stroke="#E7B84B" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M199 93l8 7-8 7" fill="none" stroke="#E7B84B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="240" cy="100" r="20" fill="none" stroke="#B78BDE" stroke-width="2.2"/>
+    <path d="M232 100l6 6 11-13" fill="none" stroke="#B78BDE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <text x="96" y="285" text-anchor="middle" font-family="system-ui" font-size="12.5" fill="#9A93A5">your crew</text>
+    <text x="262" y="285" text-anchor="middle" font-family="system-ui" font-size="12.5" fill="#9A93A5">the work</text>
+  </svg>
 </div></div>
 
-<section><div class="wrap narrow">
-  <div class="warm"><p>If you run a crew in Tennessee, Mississippi or Alabama, the problem is rarely that the work is hidden. It is that finding the three jobs worth your week takes an evening you do not have — and by the time you find them the walkthrough has been and gone.</p></div>
+<section id="bid"><div class="wrap narrow">
+  <div class="trackhead">
+    <div class="n"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="5" width="24" height="30" rx="3"/><path d="M14 14h12M14 21h12M14 28h7"/></svg></div>
+    <div><span class="k">Track one</span><b>Work put out to bid</b>
+      <p>Counties, cities, agencies and primes. Posted in public, on a deadline.</p></div>
+  </div>
+  <svg class="trackart" viewBox="0 0 620 118" role="img" aria-label="Many postings narrowed to a few that fit">
+  <g fill="none" stroke="#C9BFD6" stroke-width="1.8" stroke-linejoin="round">
+    <rect x="14" y="16" width="46" height="60" rx="5"/><rect x="30" y="30" width="46" height="60" rx="5"/>
+    <rect x="46" y="44" width="46" height="60" rx="5"/></g>
+  <text x="60" y="114" text-anchor="middle" font-family="system-ui" font-size="12" fill="#6E6878">everything posted</text>
+  <path d="M120 60h44" stroke="#6E6878" stroke-width="2" stroke-linecap="round"/>
+  <path d="M157 54l7 6-7 6" fill="none" stroke="#6E6878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="none" stroke="#8B5AAE" stroke-width="2"><circle cx="212" cy="60" r="24"/><path d="M229 77l14 14"/></g>
+  <text x="212" y="114" text-anchor="middle" font-family="system-ui" font-size="12" fill="#6E6878">read against you</text>
+  <path d="M268 60h44" stroke="#6E6878" stroke-width="2" stroke-linecap="round"/>
+  <path d="M305 54l7 6-7 6" fill="none" stroke="#6E6878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="none" stroke="#E7B84B" stroke-width="2.2" stroke-linejoin="round">
+    <rect x="336" y="20" width="120" height="26" rx="6"/><rect x="336" y="52" width="120" height="26" rx="6"/>
+    <rect x="336" y="84" width="120" height="22" rx="6"/></g>
+  <g stroke="#E7B84B" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M350 33l5 5 9-10"/><path d="M350 65l5 5 9-10"/></g>
+  <text x="478" y="52" font-family="system-ui" font-size="13" font-weight="700" fill="#16141A">three to eight</text>
+  <text x="478" y="72" font-family="system-ui" font-size="12" fill="#6E6878">worth your week</text>
+</svg>
+  <div class="warm"><p>If you run a crew, the problem is rarely that the work is hidden. It is that finding the three jobs worth your week takes an evening you do not have — and by the time you find them the walkthrough has been and gone.</p></div>
 
   <div class="offer">
     <div class="tagline">Start here</div>
     <h3>NESO Bid Desk</h3>
-    <div class="price">$20/month · the board itself is free</div>
-    <p>Every listing we find is free to read, always. The membership buys the weekly curated shortlist matched to your trades, your states, the buyer types you work with and the contract size worth your time — in your own dashboard and in your inbox. Agency, deadline and a direct link to the issuing portal on every item. If the week is quiet we say the week was quiet; we do not pad a list to look busy.</p>
+    <div class="price">$20/month · FREE Bid Board</div>
+    <p>Every listing we find is free to read, always. The membership buys the weekly curated shortlist matched to your trades, your states, the buyer types you work with and the contract size worth your time — in your own dashboard and in your inbox. Agency, deadline and a direct link to the issuing portal on every item.</p>
     <a class="btn" href="https://nesohq.com/bid-desk.html">See the Bid Desk</a>
   </div>
 
-  <div class="three"><div class="mini"><b>Bid Proposal — Assembly</b><div class="p">1 credit · $50</div><p>You supply the documents and content; we check it against the requirements, format it, and return it submission-ready in 2–3 days.</p></div><div class="mini"><b>Occupier Services</b><div class="p">$11/mo founding</div><p>Property-service work — landscaping, janitorial, pressure washing, junk removal. We look for it; you do it, at your prices.</p></div><div class="mini"><b>Website Service</b><div class="p">$20/mo</div><p>A real website in three business days, built from one form. Photo gallery add-on is the best thing a trade can put on one.</p></div></div>
+  <div class="three"><div class="mini"><b>Your own dashboard</b><div class="p">Included with the membership</div><p>Open jobs matched to your trades and areas, what you have sent out and what is still open, and your files in one place. One link, no password, private to you.</p></div><div class="mini"><b>Bid Proposal — Assembly</b><div class="p">1 credit · $50</div><p>You supply the documents and content; we check it against the requirements, format it, and return it submission-ready in 2–3 days.</p></div></div>
 </div></section>
 
 <section class="band"><div class="wrap narrow">
-  <h2>Thirty-five sources, three worth your week</h2>
+  <h2>Every source we watch, three worth your week</h2>
   <p>The board is the raw feed. The shortlist is the part that saves the evening.</p>
   <figure>
 <svg viewBox="0 0 620 210" role="img" aria-label="Flow">
 <rect x="0" y="30" width="189" height="110" rx="14" fill="#EFE7F6"/>
-<text x="95" y="81.0" text-anchor="middle" font-size="26" font-weight="700" fill="#5B2A86">35</text>
-<text x="95" y="102.0" text-anchor="middle" font-size="12.5" fill="#5B2A86" opacity=".85">sources</text>
-<text x="95" y="117.0" text-anchor="middle" font-size="12.5" fill="#5B2A86" opacity=".85">checked daily</text>
+<text x="95" y="78.0" text-anchor="middle" font-size="21" font-weight="700" fill="#5B2A86">every</text>
+<text x="95" y="99.0" text-anchor="middle" font-size="12.5" fill="#5B2A86" opacity=".85">public source</text>
+<text x="95" y="114.0" text-anchor="middle" font-size="12.5" fill="#5B2A86" opacity=".85">we can reach, daily</text>
 <path d="M195.33333333333334 85.0 L209.33333333333334 85.0" stroke="#6E6878" stroke-width="2" stroke-linecap="round"/>
 <path d="M204.33333333333334 80.0 L210.33333333333334 85.0 L204.33333333333334 90.0" fill="none" stroke="#6E6878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <rect x="215" y="37" width="189" height="98" rx="14" fill="#EFE7F6"/>
-<text x="310" y="82.0" text-anchor="middle" font-size="26" font-weight="700" fill="#5B2A86">~120</text>
+<text x="310" y="82.0" text-anchor="middle" font-size="22" font-weight="700" fill="#5B2A86">what is open</text>
 <text x="310" y="103.0" text-anchor="middle" font-size="12.5" fill="#5B2A86" opacity=".85">open in</text>
 <text x="310" y="118.0" text-anchor="middle" font-size="12.5" fill="#5B2A86" opacity=".85">your states</text>
 <path d="M410.6666666666667 86.0 L424.6666666666667 86.0" stroke="#6E6878" stroke-width="2" stroke-linecap="round"/>
@@ -172,16 +269,123 @@ footer a{color:#D9C7E8}
 <text x="525" y="104.0" text-anchor="middle" font-size="12.5" fill="#fff" opacity=".85">matched</text>
 <text x="525" y="119.0" text-anchor="middle" font-size="12.5" fill="#fff" opacity=".85">to you</text>
 </svg>
-    <figcaption>We do not score whether you will win — that is a different product. We narrow the list to what fits your trades, your states and your size.</figcaption>
   </figure>
 </div></section>
 
+
+<section id="direct"><div class="wrap narrow">
+  <div class="trackhead">
+    <div class="n"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34h28"/><path d="M9 34V18l11-8 11 8v16"/><path d="M16 34v-9h8v9"/></svg></div>
+    <div><span class="k">Track two</span><b>Work owners hand out directly</b>
+      <p>Never posted anywhere. An owner or a manager asks somebody they trust.</p></div>
+  </div>
+  <svg class="trackart" viewBox="0 0 620 118" role="img" aria-label="An owner asks who can do the work and your profile answers">
+  <g fill="none" stroke="#8B5AAE" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M22 100V44l40-26 40 26v56"/><path d="M46 100V72h32v28"/><path d="M36 56h14M74 56h14"/></g>
+  <text x="62" y="114" text-anchor="middle" font-family="system-ui" font-size="12" fill="#6E6878">an owner or agent</text>
+  <g fill="none" stroke="#6E6878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M132 34h96a8 8 0 0 1 8 8v34a8 8 0 0 1-8 8h-56l-18 14V84h-22a8 8 0 0 1-8-8V42a8 8 0 0 1 8-8z"/></g>
+  <text x="184" y="64" text-anchor="middle" font-family="system-ui" font-size="12.5" fill="#4C4753">who can do this?</text>
+  <path d="M258 60h40" stroke="#6E6878" stroke-width="2" stroke-linecap="round"/>
+  <path d="M291 54l7 6-7 6" fill="none" stroke="#6E6878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="none" stroke="#E7B84B" stroke-width="2.2" stroke-linejoin="round">
+    <rect x="320" y="24" width="150" height="72" rx="10"/>
+    <circle cx="352" cy="52" r="12"/><path d="M338 84c4-9 24-9 28 0"/>
+    <path d="M382 44h72M382 60h72M382 76h48"/></g>
+  <text x="395" y="114" text-anchor="middle" font-family="system-ui" font-size="12" fill="#6E6878">your profile answers</text>
+  <path d="M486 60h34" stroke="#E7B84B" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M513 54l7 6-7 6" fill="none" stroke="#E7B84B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="574" y="54" text-anchor="middle" font-family="system-ui" font-size="13" font-weight="700" fill="#16141A">you</text>
+  <text x="574" y="74" text-anchor="middle" font-family="system-ui" font-size="12" fill="#6E6878">get the call</text>
+</svg>
+  <h2>Not everything goes out to bid.</h2>
+  <p class="lead" style="font-size:19px">Mowing, janitorial, pressure washing, junk removal, snow, small repairs &mdash;
+  most of that work never reaches a bid board. An owner, an agent or a property manager just asks somebody they trust
+  who can do it. <b>Occupier Services makes you the answer to that question.</b></p>
+
+  <div class="offer">
+    <div class="tagline">Founding vendor rate &mdash; first 40 only</div>
+    <h3>Occupier Services &mdash; vendors</h3>
+    <div class="price">$20/month or $199/year &middot; held while active</div>
+    <p>We search for work matching your services in up to five areas you choose, across the bid database and the
+    principals&rsquo; own contacts among agents, owners and property managers. When one of them asks who can do the
+    work, your profile is what we answer with. Clients pay you directly at your prices. NESO is not a party to the job
+    and takes no cut.</p>
+    <a class="btn" href="https://nesohq.com/vendor-profile.html">Start your profile</a>
+  </div>
+
+  <div class="three">
+    <div class="mini"><b>We search for you</b><div class="p">Across the bid database</div>
+      <p>When something fits your services and your areas, we send it. You decide whether to bid; the work and the
+      client are yours.</p></div>
+    <div class="mini"><b>Your profile, in the right hands</b><div class="p">When someone asks</div>
+      <p>Agents and owners ask us who can do the work. Members are who we answer with.</p></div>
+    <div class="mini"><b>You stay the business</b><div class="p">No cut, ever</div>
+      <p>Clients pay you directly at your prices. NESO is not a party to the job and takes nothing from it.</p></div>
+  </div>
+
+  <div class="limits" style="margin-top:26px">
+    <h3>One track you join. One track you apply for.</h3>
+    <p>Track one you join and start reading the same day. Track two we read your profile first &mdash; same or next
+    business day &mdash; because your profile is what we hand to an owner, and it has to be right. The check is
+    completeness and coverage, not merit: are the services yours rather than subcontracted, and do the areas you chose
+    have work we can reach. <b>If one of your areas is thin today, we say so before you join</b>, start on the areas
+    that are not, and keep working the thin one &mdash; that search is part of what you are paying for.</p>
+  </div>
+
+  <ul class="plain" style="margin-top:22px">
+    <li>Up to five areas &mdash; cities, counties or a radius &mdash; and we match against those</li>
+    <li>Opportunities when they exist</li>
+    <li>Introductions, not exclusivity. More than one member may cover an area and a trade</li>
+    <li>Your pricing stays yours</li>
+    <li>Insurance is recorded and provided by you</li>
+  </ul>
+</div></section>
+
+<section class="band"><div class="wrap narrow">
+  <div class="offer" style="margin-top:0">
+    <div class="tagline">Both tracks, one price</div>
+    <h3>Do both &mdash; $35 a month</h3>
+    <div class="price">$35/month &middot; saves $5 on the two &middot; cancel any month</div>
+    <p>Most crews are in both worlds. You bid the county mowing contract in the spring and you take the call from a
+    property manager in the fall, and the same truck does both. One profile covers both tracks: the weekly shortlist of
+    jobs put out to bid, and your profile in front of the owners and agents who hand work out directly. The dashboard
+    comes with it.</p>
+    <a class="btn" href="https://nesohq.com/vendor-profile.html?plan=both">Start both &mdash; $35 a month</a>
+    <p class="after" style="margin-top:14px">One profile, one payment, one place to look. If you would rather start
+    with one and add the other later, that is a text away and the price adjusts from that month.</p>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap narrow">
+  <h2>The office side of the job</h2>
+  <p class="lead" style="font-size:19px">Winning the work is one job. Looking the part, quoting it and getting paid for it
+  is another &mdash; and that is the one that happens at nine at night. NESO already does this for other clients, and the
+  same office is open to you.</p>
+
+  <div class="three">
+    <div class="mini"><b>Your invoices, sent for you</b><div class="p">$50 per invoice</div>
+      <p>You tell us what was done and for whom. We prepare the invoice on your letterhead, send it to the client, and
+      keep the record. The money goes to you &mdash; NESO never sits in the payment path and never holds your
+      banking.</p></div>
+    <div class="mini"><b>A website that answers for you</b><div class="p">$20/month</div>
+      <p>A real website in three business days, built from one form. The photo gallery add-on is the best thing a trade
+      can put on one &mdash; the work speaks for itself once somebody can see it.</p></div>
+    <div class="mini"><b>Proposals for your leads</b><div class="p">1 credit &middot; $50</div>
+      <p>Somebody asked you to quote and it has been sitting for a week. Send us the details; you get back something
+      written, formatted and ready to send, in two to three business days.</p></div>
+  </div>
+
+  <div style="margin-top:26px">
+    <a class="btn" href="mailto:hello@nesohq.com?subject=Invoice%20to%20prepare&body=Who%20it%20goes%20to%3A%0AWhat%20was%20done%3A%0AAmount%3A%0ADue%20date%3A">Send us an invoice to prepare &mdash; $50</a>
+    <a class="btn ghost" href="https://nesohq.gumroad.com/l/gwfnx" style="margin-left:8px">Buy a credit for a proposal &mdash; $50</a>
+  </div>
+</div></section>
+
 <section><div class="wrap narrow">
-  <h2>What the membership is, plainly</h2>
-  <ul class="plain"><li>Access is free and stays free. You are paying for the filtering, not the door</li><li>A two-minute profile sets it: trades, states, buyer types, size band, certifications</li><li>A quiet week is reported as a quiet week</li><li>It does not write the bid. That is the Bid Proposal, from one credit</li><li>It does not warrant a listing is still open — the issuing agency's portal governs</li></ul>
   <div class="limits">
     <h3>Free, and worth having before you bid</h3>
-    <p><b><a href='https://nesohq.com/assets/bid-bond-plain.pdf' style='color:var(--plum)'>What a bid bond is, and what it is not</a></b> — one page, no sign-up. The item most people get wrong is on it: a bond protects the owner, and if the surety pays out it comes after you. <br><br><b>The honest limit today:</b> the matching pass is not automated yet. Right now the weekly shortlist is a person reading the board with your profile open — which is defensible to start and is exactly why the price is what it is. We will not describe it as a system until it is one.</p>
+    <p><b><a href='https://nesohq.com/assets/bid-bond-plain.pdf' style='color:var(--plum)'>What a bid bond is, and what it is not</a></b> — one page, no sign-up. The item most people get wrong is on it: a bond protects the owner, and if the surety pays out it comes after you.</p>
   </div>
   <div style="margin-top:30px">
     <a class="btn" href="https://nesohq.com/#/opportunities">Read the board — free</a>
