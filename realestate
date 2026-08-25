@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1240 Riverwood Cir S | Exclusive Listing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-navy: #1A2B4C;
+            --accent-gold: #C5A880;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --bg-light: #F8F9FA;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            height: 85vh;
+            background: linear-gradient(rgba(26, 43, 76, 0.4), rgba(26, 43, 76, 0.7)), url('image_11.png') center/cover no-repeat fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .badge {
+            background-color: var(--accent-gold);
+            color: var(--primary-navy);
+            padding: 8px 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 4px 8px rgba(0,0,0,0.5);
+            line-height: 1.1;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .price {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--accent-gold);
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-navy);
+        }
+
+        /* --- Stats Bar --- */
+        .stats-container {
+            max-width: 1000px;
+            margin: -50px auto 40px auto;
+            position: relative;
+            z-index: 10;
+            padding: 0 20px;
+        }
+
+        .stats-bar {
+            background-color: var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-around;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--primary-navy);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-gray);
+            font-weight: 700;
+        }
+
+        /* --- Main Content --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 15px;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-gold);
+            margin: 0 auto 50px auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .feature-box {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-gold);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-box h4 {
+            font-size: 1.3rem;
+            color: var(--primary-navy);
+            margin-bottom: 15px;
+            font-family: 'Cinzel', serif;
+        }
+
+        .feature-box p {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        /* --- Gallery --- */
+        .gallery {
+            background-color: var(--white);
+            padding: 80px 20px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 250px;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.08);
+        }
+
+        /* Highlight specific images to span 2 columns/rows if desired */
+        .wide { grid-column: span 2; }
+        .tall { grid-row: span 2; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .price { font-size: 2rem; }
+            .stats-bar { flex-direction: column; gap: 20px; }
+            .wide { grid-column: span 1; }
+            .tall { grid-row: span 1; }
+        }
+
+        /* --- Footer / Contact --- */
+        .footer {
+            background-color: var(--primary-navy);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer h2 {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        .footer h3 {
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            letter-spacing: 3px;
+            font-size: 1rem;
+            margin-bottom: 40px;
+            color: #D0D0D0;
+        }
+
+        .contact-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: block;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-number:hover {
+            color: var(--accent-gold);
+        }
+
+        .copyright {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="badge">Exclusive Listing</div>
+            <h1>1240 Riverwood Cir S</h1>
+            <h2>Robinsonville, MS 38664</h2>
+            <div class="price serif">$210,000</div>
+            <a href="#contact" class="btn">Schedule a Showing</a>
+        </div>
+    </header>
+
+    <!-- Floating Stats Bar -->
+    <div class="stats-container">
+        <div class="stats-bar">
+            <div class="stat-item">
+                <h3 class="serif">3</h3>
+                <p>Bedrooms</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="serif">2</h3>
+                <p>Bathrooms</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="serif">2</h3>
+                <p>Car Garage</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="serif">1,436</h3>
+                <p>Square Feet</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="serif">0.19</h3>
+                <p>Acres</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="container">
+        <h2 class="section-title">Property Upgrades & Details</h2>
+        <div class="section-divider"></div>
+
+        <div class="features-grid">
+            <div class="feature-box">
+                <h4>Included Appliances</h4>
+                <p>Move-in ready! This home includes the refrigerator, washer and dryer, microwave, and dishwasher, offering ultimate convenience from day one.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>Gourmet Kitchen</h4>
+                <p>Features a centerpiece massive butcher-block island, pristine white shaker cabinetry, brilliant stainless steel appliances, and highly durable tile flooring.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>Luxury Primary Retreat</h4>
+                <p>A striking custom wood-accented vanity wall with dual vessel sinks, a dedicated deep soaking tub, separate custom-tiled walk-in shower, and a spacious walk-in closet.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>Architectural Elegance</h4>
+                <p>A breathtaking two-story stairwell accented by rich dark wood treads against crisp white risers, enhanced by extensive classic wainscoting throughout.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>Premium Finishes</h4>
+                <p>Warm wood-look laminate floors gracing the living areas and bedrooms, illuminated by energy-efficient recessed lighting and chic modern fixtures.</p>
+            </div>
+
+            <div class="feature-box">
+                <h4>Property Highlights</h4>
+                <p>Built in 2020 and beautifully maintained. Includes a spacious 2-car garage. Estimated 2025 Property Taxes are highly reasonable at $2,093.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <h2 class="section-title">Home Gallery</h2>
+        <div class="section-divider"></div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item wide"><img src="image_9.png" alt="Gourmet Kitchen"></div>
+            <div class="gallery-item tall"><img src="image_10.png" alt="Entryway"></div>
+            <div class="gallery-item"><img src="image_8.png" alt="Stairwell"></div>
+            <div class="gallery-item"><img src="image.png" alt="Stairs Detail"></div>
+            <div class="gallery-item tall"><img src="image_4.png" alt="Primary Bath Vanity"></div>
+            <div class="gallery-item wide"><img src="image_6.png" alt="Walk-in Shower"></div>
+            <div class="gallery-item"><img src="image_5.png" alt="Soaking Tub & Closet"></div>
+            <div class="gallery-item"><img src="image_7.png" alt="Second Bath"></div>
+            <div class="gallery-item wide"><img src="image_3.png" alt="Hallway Detail"></div>
+            <div class="gallery-item"><img src="image_2.png" alt="Bedroom"></div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact Section -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <h2>MALLORY BAILEY</h2>
+            <h3>FOR SALE BY OWNER</h3>
+            <p style="margin-bottom: 20px; font-size: 1.2rem;">Interested in a private tour? Call or text today.</p>
+            <a href="tel:6623824084" class="contact-number">662.382.4084</a>
+
+            <div class="copyright">
+                &copy; 2026 For Sale By Owner. All information deemed reliable but not guaranteed.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
