@@ -111,6 +111,15 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
 .incl h4{font-family:Inter,sans-serif;font-size:.95rem;font-weight:700;margin-bottom:5px;color:var(--forest)}
 .incl p{font-size:.89rem;color:var(--muted)}
 
+/* ---- room dimensions ---- */
+.rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:13px;margin-top:24px}
+.rm{background:#fff;border:1px solid var(--line);border-radius:11px;padding:19px 20px}
+.rm .nm{font-size:.78rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--clay)}
+.rm .dm{font-family:Fraunces,serif;font-size:1.65rem;font-weight:600;color:var(--forest);
+  line-height:1.05;margin-top:6px}
+.rm .sf{font-size:.83rem;color:var(--muted);margin-top:3px}
+.rmnote{font-size:.85rem;color:var(--muted);margin-top:16px;max-width:640px}
+
 /* ---- gallery ---- */
 .gal{display:grid;grid-template-columns:repeat(12,1fr);gap:11px;margin-top:26px}
 .shot{position:relative;overflow:hidden;border-radius:11px;cursor:zoom-in;background:var(--sand);
@@ -283,10 +292,29 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
   <div class="incl" style="margin-top:14px">
     <div><h4>Built in 2020</h4><p>Five years old, single owner. Roof, systems and windows are original to construction.</p></div>
     <div><h4>Two-car garage</h4><p>Attached, with driveway and interior entry.</p></div>
+    <div><h4>Mudroom</h4><p>A separate entry room off the main living space.</p></div>
     <div><h4>Storage</h4><p>Walk-in closet with fitted shelving off the primary bath; shelved closets in the bedrooms.</p></div>
     <div><h4>Second full bathroom</h4><p>Tub and shower with sliding glass enclosure, vanity, and an exterior window.</p></div>
     <div><h4>Custom finishes</h4><p>Butcher-block island, wood accent walls, beadboard wainscoting, tiled baths.</p></div>
   </div>
+</div></section>
+
+<!-- ============ ROOMS ============ -->
+<section class="blk" style="padding-top:0"><div class="wrap">
+  <div class="eyebrow">Room dimensions</div>
+  <h2 class="big">Measured room by room</h2>
+  <p class="lede">Named rooms total 866 square feet. The balance of the 1,436 covers two full baths, the mudroom,
+  the laundry closet, hallways and the stairwell.</p>
+  <div class="rooms">
+    <div class="rm"><div class="nm">Living room</div><div class="dm">20 × 13</div><div class="sf">260 sq ft</div></div>
+    <div class="rm"><div class="nm">Third bedroom</div><div class="dm">11 × 22</div><div class="sf">242 sq ft</div></div>
+    <div class="rm"><div class="nm">Primary bedroom</div><div class="dm">12 × 12</div><div class="sf">144 sq ft</div></div>
+    <div class="rm"><div class="nm">Kitchen &amp; dining</div><div class="dm">10 × 12</div><div class="sf">120 sq ft</div></div>
+    <div class="rm"><div class="nm">Second bedroom</div><div class="dm">10 × 10</div><div class="sf">100 sq ft</div></div>
+    <div class="rm"><div class="nm">Mudroom</div><div class="dm">Included</div><div class="sf">Dimensions on request</div></div>
+  </div>
+  <p class="rmnote"><b>Dimensions are approximate</b>, measured by the owner and stated in feet. Verify before
+  relying on them for furniture, flooring or appliances.</p>
 </div></section>
 
 <!-- ============ GALLERY ============ -->
@@ -315,13 +343,13 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
 <section class="blk" style="padding-top:0"><div class="wrap">
   <div class="eyebrow">Location</div>
   <h2 class="big">Robinsonville, Tunica County</h2>
-  <p class="lede">Situated off Highway 61 north of Tunica. Drive times below are approximate and should be
-  independently verified.</p>
+  <p class="lede">Situated off Highway 61 in northern Tunica County, a few minutes from the DeSoto County line.
+  Distances are approximate and should be independently verified.</p>
   <div class="loc">
+    <div><b>~3 min</b><span>DeSoto County line</span></div>
     <div><b>~10 min</b><span>Tunica resort corridor</span></div>
-    <div><b>~30 min</b><span>Southaven &amp; the state line</span></div>
-    <div><b>~40 min</b><span>Downtown Memphis</span></div>
-    <div><b>0.19 ac</b><span>Level lot, two-car drive</span></div>
+    <div><b>~25 min</b><span>Southaven &amp; the Tennessee line</span></div>
+    <div><b>33 miles</b><span>Downtown Memphis</span></div>
   </div>
 </div></section>
 

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>1240 Riverwood Cir S — For Sale By Owner</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#1E3D32; --forest-d:#14291F; --sage:#8AA394; --sage-l:#DDE5DE;
+  --clay:#C05F35; --cream:#FBF8F3; --sand:#F0E9DE; --line:#E2D9CB;
+  --ink:#23211E; --muted:#6B6459;
+}
+@page{ size:Letter; margin:0 }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sheet{width:8.5in;height:11in;position:relative;overflow:hidden;background:var(--cream);display:flex;flex-direction:column}
+img{display:block}
+
+/* hero */
+.hero{position:relative;height:3.75in;flex:none;overflow:hidden;background:var(--forest-d)}
+.hero img{width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;top:.3in;left:.42in;background:var(--clay);color:#fff;padding:7px 16px;
+  border-radius:99px;font-size:8.5pt;font-weight:700;letter-spacing:1.4px;text-transform:uppercase}
+
+/* headline card */
+.card{margin:-.72in .42in 0;background:#fff;border-radius:12px;
+  box-shadow:0 12px 30px rgba(20,41,31,.15);padding:.3in .34in;position:relative;z-index:5;
+  display:flex;justify-content:space-between;align-items:flex-end;gap:.2in}
+.addr{font-family:Fraunces,serif;font-size:25pt;font-weight:600;line-height:1.06;color:var(--ink)}
+.city{color:var(--muted);font-size:10pt;margin-top:3px}
+.right{text-align:right;white-space:nowrap}
+.price{font-family:Fraunces,serif;font-size:29pt;font-weight:700;color:var(--forest);line-height:1}
+.mo{display:inline-block;background:var(--sage-l);color:var(--forest);padding:4px 11px;
+  border-radius:99px;font-size:8.5pt;font-weight:600;margin-top:7px}
+
+/* spec strip */
+.specs{margin:.2in .42in 0;display:grid;grid-template-columns:repeat(6,1fr);gap:1px;
+  background:var(--line);border-radius:9px;overflow:hidden}
+.specs div{background:#fff;padding:.13in 4px;text-align:center}
+.specs b{display:block;font-family:Fraunces,serif;font-size:14.5pt;color:var(--forest);line-height:1}
+.specs span{display:block;font-size:6.6pt;text-transform:uppercase;letter-spacing:.8px;
+  color:var(--muted);font-weight:600;margin-top:4px}
+
+/* body */
+.body{margin:.2in .42in 0;display:grid;grid-template-columns:1fr 3.05in;gap:.28in}
+h3{font-family:Fraunces,serif;font-size:13pt;font-weight:600;color:var(--forest);margin-bottom:.1in}
+ul{list-style:none}
+li{position:relative;padding-left:15px;margin-bottom:5px;font-size:8.8pt;line-height:1.42;color:#3B3833}
+li::before{content:"";position:absolute;left:0;top:6px;width:6px;height:6px;border-radius:2px;background:var(--clay)}
+li b{color:var(--ink);font-weight:700}
+.grid4{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.grid4 img{width:100%;height:1.24in;object-fit:cover;border-radius:7px}
+
+/* footer */
+.foot{margin-top:auto;flex:none;background:var(--forest-d);color:#fff;
+  padding:.26in .42in;display:flex;align-items:center;justify-content:space-between;gap:.24in}
+.foot .who{font-family:Fraunces,serif;font-size:19pt;font-weight:600;letter-spacing:.5px;line-height:1.1}
+.foot .role{font-size:8pt;letter-spacing:2.2px;text-transform:uppercase;color:var(--sage);margin-top:3px}
+.foot .num{font-family:Fraunces,serif;font-size:25pt;font-weight:700;line-height:1}
+.foot .sub{font-size:8pt;color:#A9B5AD;margin-top:3px;text-align:right}
+.qr{background:#fff;padding:6px;border-radius:8px;width:.95in;height:.95in}
+.qr img{width:100%;height:100%}
+.qrlab{font-size:6.4pt;color:#A9B5AD;text-align:center;margin-top:4px;letter-spacing:.4px}
+.disc{margin:.1in .42in .1in;font-size:6.2pt;color:var(--muted);line-height:1.5}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="hero">
+    <span class="tag">For Sale By Owner</span>
+    <img src="flyer-hero.jpg" alt="">
+  </div>
+
+  <div class="card">
+    <div>
+      <div class="addr">1240 Riverwood Cir S</div>
+      <div class="city">Robinsonville, Mississippi 38664 · Tunica County<br>
+      <span style="font-size:8.5pt">Single owner · 2025 assessed taxes $2,093</span></div>
+    </div>
+    <div class="right">
+      <div class="price">$210,000</div>
+      <div class="mo">Est. $1,700/mo at 3.5% down</div>
+    </div>
+  </div>
+
+  <div class="specs">
+    <div><b>3</b><span>Beds</span></div>
+    <div><b>2</b><span>Baths</span></div>
+    <div><b>1,436</b><span>Sq Ft</span></div>
+    <div><b>2</b><span>Car Garage</span></div>
+    <div><b>2020</b><span>Built</span></div>
+    <div><b>0.19</b><span>Acres</span></div>
+  </div>
+
+  <div class="body">
+    <div>
+      <h3>Property details</h3>
+      <ul>
+        <li><b>Appliances convey.</b> Refrigerator, washer, dryer, range, microwave and dishwasher remain with the property.</li>
+        <li><b>Kitchen.</b> Butcher-block island with seating and integrated table end, white shaker cabinetry, stainless appliances.</li>
+        <li><b>Primary bath.</b> Wood-accented vanity wall with dual vessel sinks, deep soaking tub, separate tiled walk-in shower, fitted walk-in closet.</li>
+        <li><b>Second full bath.</b> Tub and shower with sliding glass enclosure, vanity and exterior window.</li>
+        <li><b>Interior.</b> Open stairwell with dark treads over wood risers, shiplap and beadboard wainscoting, wood-look flooring.</li>
+        <li><b>Storage.</b> Walk-in closet off the primary bath, shelved bedroom closets, interior laundry closet, and a mudroom.</li>
+        <li><b>Rooms.</b> Living 20&times;13 · third bedroom 11&times;22 · primary 12&times;12 · kitchen and dining 10&times;12 · second bedroom 10&times;10 . Approximate, in feet.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Interior</h3>
+      <div class="grid4">
+        <img src="kitchen.jpg" alt="">
+        <img src="primary-bath.jpg" alt="">
+        <img src="laundry.jpg" alt="">
+        <img src="shower.jpg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="disc">
+    Offered for sale by the owner personally. NESO HQ LLC is not a real estate broker, agent or licensee, is not a
+    party to any transaction, and receives no commission or fee. Payment figure is an estimate only and is not a loan
+    offer. Information is deemed reliable but not guaranteed and should be independently verified.
+  </div>
+
+  <div class="foot">
+    <div>
+      <div class="who">Mallory Bailey</div>
+      <div class="role">For Sale By Owner</div>
+    </div>
+    <div style="text-align:center">
+      <div class="qr"><img src="qr.png" alt=""></div>
+      <div class="qrlab">Scan for photos</div>
+    </div>
+    <div class="right">
+      <div class="num">662.382.4084</div>
+      <div class="sub">nesohq.com/realestate/1240 · call or text</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
