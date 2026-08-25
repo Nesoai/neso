@@ -46,7 +46,7 @@ a{color:inherit}
 
 /* ---- hero ---- */
 .hero{position:relative;background:var(--forest-d)}
-.hero-img{width:100%;height:min(64vh,540px);object-fit:cover;opacity:.9}
+.hero-img{width:100%;aspect-ratio:2/1;max-height:600px;object-fit:cover;opacity:.94}
 .hero-tag{position:absolute;top:20px;left:22px;background:var(--clay);color:#fff;
   padding:7px 15px;border-radius:99px;font-size:.72rem;font-weight:700;letter-spacing:1.3px;
   text-transform:uppercase}
@@ -106,10 +106,17 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
 .fine{font-size:.74rem;color:#9DB2A6;margin-top:14px;line-height:1.55}
 
 /* ---- included ---- */
-.incl{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;margin-top:26px}
-.incl div{background:#fff;border:1px solid var(--line);border-radius:11px;padding:18px 20px}
-.incl h4{font-family:Inter,sans-serif;font-size:.95rem;font-weight:700;margin-bottom:5px;color:var(--forest)}
-.incl p{font-size:.89rem;color:var(--muted)}
+.incl{display:grid;gap:13px;margin-top:24px}
+.incl.four{grid-template-columns:repeat(4,1fr)}
+.incl.six{grid-template-columns:repeat(6,1fr)}
+.incl div{background:#fff;border:1px solid var(--line);border-radius:11px;padding:17px 18px}
+.incl h4{font-family:Inter,sans-serif;font-size:.94rem;font-weight:700;margin-bottom:5px;color:var(--forest)}
+.incl p{font-size:.87rem;color:var(--muted)}
+.incl.six div{padding:15px 14px}
+.incl.six h4{font-size:.85rem;margin-bottom:4px}
+.incl.six p{font-size:.78rem;line-height:1.45}
+@media(max-width:1000px){.incl.four{grid-template-columns:repeat(2,1fr)}.incl.six{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.incl.four,.incl.six{grid-template-columns:repeat(2,1fr)}}
 
 /* ---- room dimensions ---- */
 .rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:13px;margin-top:24px}
@@ -120,18 +127,26 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
 .rm .sf{font-size:.83rem;color:var(--muted);margin-top:3px}
 .rmnote{font-size:.85rem;color:var(--muted);margin-top:16px;max-width:640px}
 
-/* ---- gallery ---- */
-.gal{display:grid;grid-template-columns:repeat(12,1fr);gap:11px;margin-top:26px}
-.shot{position:relative;overflow:hidden;border-radius:11px;cursor:zoom-in;background:var(--sand);
-  grid-column:span 4;aspect-ratio:4/3}
-.shot.big{grid-column:span 8;aspect-ratio:16/10}
-.shot.tall{grid-column:span 4;aspect-ratio:3/4}
-.shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.shot:hover img{transform:scale(1.05)}
-.shot span{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 11px;color:#fff;
-  font-size:.76rem;font-weight:600;background:linear-gradient(transparent,rgba(20,41,31,.82))}
-@media(max-width:760px){.shot,.shot.big,.shot.tall{grid-column:span 6;aspect-ratio:4/3}}
-@media(max-width:450px){.shot,.shot.big,.shot.tall{grid-column:span 12}}
+/* ---- gallery carousel ---- */
+.carousel{margin-top:24px}
+.stage{position:relative;aspect-ratio:16/10;max-height:540px;border-radius:13px;overflow:hidden;
+  background:var(--forest-d);cursor:zoom-in}
+.stage img{width:100%;height:100%;object-fit:contain}
+.nav{position:absolute;top:50%;transform:translateY(-50%);border:none;width:46px;height:46px;
+  border-radius:50%;background:rgba(255,255,255,.92);color:var(--forest);font-size:1.7rem;
+  line-height:1;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.28);padding:0}
+.nav:hover{background:#fff}
+.nav.p{left:13px} .nav.n{right:13px}
+.ccap{position:absolute;left:0;right:0;bottom:0;padding:30px 18px 13px;display:flex;
+  justify-content:space-between;align-items:flex-end;gap:12px;color:#fff;font-size:.87rem;
+  font-weight:600;background:linear-gradient(transparent,rgba(20,41,31,.88));pointer-events:none}
+.ccap .n{opacity:.8;font-variant-numeric:tabular-nums;white-space:nowrap}
+.thumbs{display:flex;gap:8px;overflow-x:auto;padding:11px 2px 5px;-webkit-overflow-scrolling:touch}
+.thumbs img{width:94px;height:68px;object-fit:cover;border-radius:7px;cursor:pointer;flex:none;
+  opacity:.5;outline:2px solid transparent;outline-offset:-2px;transition:opacity .2s,outline-color .2s}
+.thumbs img:hover{opacity:.85}
+.thumbs img.on{opacity:1;outline-color:var(--clay)}
+@media(max-width:560px){.thumbs img{width:74px;height:54px}.nav{width:38px;height:38px;font-size:1.4rem}}
 
 /* ---- lightbox ---- */
 .lb{position:fixed;inset:0;background:rgba(16,26,21,.97);z-index:100;display:none;
@@ -204,7 +219,7 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
 
 <header class="hero">
   <span class="hero-tag">For Sale By Owner</span>
-  <img class="hero-img" src="exterior.jpg" alt="Front exterior of 1240 Riverwood Cir S">
+  <img class="hero-img" src="hero.jpg" alt="Front exterior of 1240 Riverwood Cir S">
 </header>
 
 <div class="wrap">
@@ -219,6 +234,7 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
       <a href="#tour" class="btn btn-a">Request a Tour</a>
       <a href="tel:+16623824084" class="btn btn-b">Call 662.382.4084</a>
       <a href="#gallery" class="btn btn-o">See All Photos</a>
+      <a href="1240-riverwood-flyer.pdf" class="btn btn-o" download>Download Flyer</a>
     </div>
     <div class="facts">
       <div><b>3</b><span>Beds</span></div>
@@ -231,8 +247,31 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
   </div>
 </div>
 
+
+<!-- ============ INCLUDED ============ -->
+<section class="blk" style="padding-top:0"><div class="wrap">
+  <div class="eyebrow">Included in the sale</div>
+  <h2 class="big">Appliances and features conveyed</h2>
+  <p class="lede">The following remain with the property at closing.</p>
+  <div class="incl four">
+    <div><h4>Refrigerator</h4><p>Stainless, french-door, in-door ice and water.</p></div>
+    <div><h4>Washer &amp; dryer</h4><p>Full-size Whirlpool front-load pair, stacked in a dedicated interior closet.</p></div>
+    <div><h4>Range &amp; microwave</h4><p>Stainless range with vented over-range microwave.</p></div>
+    <div><h4>Dishwasher</h4><p>Stainless, built in adjacent to the island sink.</p></div>
+  </div>
+
+  <div class="incl six" style="margin-top:13px">
+    <div><h4>Built in 2020</h4><p>Five years old, single owner. Roof, systems and windows are original to construction.</p></div>
+    <div><h4>Two-car garage</h4><p>Attached, with driveway and interior entry.</p></div>
+    <div><h4>Mudroom</h4><p>A separate entry room off the main living space.</p></div>
+    <div><h4>Storage</h4><p>Walk-in closet with fitted shelving off the primary bath; shelved closets in the bedrooms.</p></div>
+    <div><h4>Second full bathroom</h4><p>Tub and shower with sliding glass enclosure, vanity, and an exterior window.</p></div>
+    <div><h4>Custom finishes</h4><p>Butcher-block island, wood accent walls, beadboard wainscoting, tiled baths.</p></div>
+  </div>
+</div></section>
+
 <!-- ============ PAYMENT ============ -->
-<section class="blk"><div class="wrap">
+<section class="blk" style="padding-top:0"><div class="wrap">
   <div class="pay">
     <div>
       <div class="eyebrow" style="color:var(--clay)">Monthly payment</div>
@@ -277,34 +316,12 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
   </div>
 </div></section>
 
-<!-- ============ INCLUDED ============ -->
-<section class="blk" style="padding-top:0"><div class="wrap">
-  <div class="eyebrow">Included in the sale</div>
-  <h2 class="big">Appliances and features conveyed</h2>
-  <p class="lede">The following remain with the property at closing.</p>
-  <div class="incl">
-    <div><h4>Refrigerator</h4><p>Stainless, french-door, in-door ice and water.</p></div>
-    <div><h4>Washer &amp; dryer</h4><p>Full-size Whirlpool front-load pair, stacked in a dedicated interior closet.</p></div>
-    <div><h4>Range &amp; microwave</h4><p>Stainless range with vented over-range microwave.</p></div>
-    <div><h4>Dishwasher</h4><p>Stainless, built in adjacent to the island sink.</p></div>
-  </div>
-
-  <div class="incl" style="margin-top:14px">
-    <div><h4>Built in 2020</h4><p>Five years old, single owner. Roof, systems and windows are original to construction.</p></div>
-    <div><h4>Two-car garage</h4><p>Attached, with driveway and interior entry.</p></div>
-    <div><h4>Mudroom</h4><p>A separate entry room off the main living space.</p></div>
-    <div><h4>Storage</h4><p>Walk-in closet with fitted shelving off the primary bath; shelved closets in the bedrooms.</p></div>
-    <div><h4>Second full bathroom</h4><p>Tub and shower with sliding glass enclosure, vanity, and an exterior window.</p></div>
-    <div><h4>Custom finishes</h4><p>Butcher-block island, wood accent walls, beadboard wainscoting, tiled baths.</p></div>
-  </div>
-</div></section>
-
 <!-- ============ ROOMS ============ -->
 <section class="blk" style="padding-top:0"><div class="wrap">
   <div class="eyebrow">Room dimensions</div>
   <h2 class="big">Measured room by room</h2>
-  <p class="lede">Named rooms total 866 square feet. The balance of the 1,436 covers two full baths, the mudroom,
-  the laundry closet, hallways and the stairwell.</p>
+  <p class="lede">The living room runs a full twenty feet, and the largest bedroom is upstairs at 11 by 22 —
+  bigger than the primary.</p>
   <div class="rooms">
     <div class="rm"><div class="nm">Living room</div><div class="dm">20 × 13</div><div class="sf">260 sq ft</div></div>
     <div class="rm"><div class="nm">Third bedroom</div><div class="dm">11 × 22</div><div class="sf">242 sq ft</div></div>
@@ -321,21 +338,16 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
 <section class="blk" id="gallery" style="padding-top:0"><div class="wrap">
   <div class="eyebrow">Photographs</div>
   <h2 class="big">Interior and exterior</h2>
-  <p class="lede">Photographed unoccupied and unedited. Select any image to enlarge.</p>
-  <div class="gal" id="grid">
-    <figure class="shot big"><img src="exterior.jpg" alt="Front exterior" loading="lazy"><span>Front exterior</span></figure>
-    <figure class="shot tall"><img src="stairwell.jpg" alt="Open stairwell" loading="lazy"><span>Stairwell</span></figure>
-    <figure class="shot"><img src="primary-bath.jpg" alt="Primary bath with dual vessel sinks" loading="lazy"><span>Primary bath</span></figure>
-    <figure class="shot"><img src="shower.jpg" alt="Tiled walk-in shower" loading="lazy"><span>Walk-in shower</span></figure>
-    <figure class="shot"><img src="tub-closet.jpg" alt="Soaking tub and walk-in closet" loading="lazy"><span>Soaking tub &amp; closet</span></figure>
-    <figure class="shot tall"><img src="hallway.jpg" alt="Hallway with beadboard wainscoting" loading="lazy"><span>Hall &amp; wainscoting</span></figure>
-    <figure class="shot"><img src="bedroom.jpg" alt="Bedroom with wood-look flooring" loading="lazy"><span>Bedroom</span></figure>
-    <figure class="shot tall"><img src="bedroom-closet.jpg" alt="Closet in the second bedroom, with shelf and hanging rod" loading="lazy"><span>Second bedroom closet</span></figure>
-    <figure class="shot tall"><img src="laundry.jpg" alt="Stacked washer and dryer, included" loading="lazy"><span>Laundry — included</span></figure>
-    <figure class="shot tall"><img src="second-bath.jpg" alt="Second full bathroom" loading="lazy"><span>Second bathroom</span></figure>
-    <figure class="shot tall"><img src="second-shower.jpg" alt="Tub and shower in the second bathroom" loading="lazy"><span>Second bath — tub &amp; shower</span></figure>
-    <figure class="shot tall"><img src="second-vanity.jpg" alt="Vanity and mirror in the second bathroom" loading="lazy"><span>Second bath — vanity</span></figure>
-    <figure class="shot big"><img src="kitchen.jpg" alt="Kitchen with butcher-block island" loading="lazy"><span>Kitchen &amp; island</span></figure>
+  <p class="lede">Thirteen photographs, unoccupied and unedited. Use the arrows or pick a thumbnail; select the
+  photograph itself to enlarge it.</p>
+  <div class="carousel">
+    <div class="stage" id="stage">
+      <img id="cimg" src="hero.jpg" alt="Front exterior">
+      <button class="nav p" id="cprev" type="button" aria-label="Previous photograph">&#8249;</button>
+      <button class="nav n" id="cnext" type="button" aria-label="Next photograph">&#8250;</button>
+      <div class="ccap"><span id="ccap">Front exterior</span><span class="n" id="ccount">1 / 13</span></div>
+    </div>
+    <div class="thumbs" id="thumbs"></div>
   </div>
 </div></section>
 
@@ -348,7 +360,7 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
   <div class="loc">
     <div><b>~3 min</b><span>DeSoto County line</span></div>
     <div><b>~10 min</b><span>Tunica resort corridor</span></div>
-    <div><b>~25 min</b><span>Southaven &amp; the Tennessee line</span></div>
+    <div><b>~25 min</b><span>Southaven</span></div>
     <div><b>33 miles</b><span>Downtown Memphis</span></div>
   </div>
 </div></section>
@@ -502,28 +514,84 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
   ['dp','rate','term','ins'].forEach(function(id){ $(id).addEventListener('input', calc); });
   calc();
 
-  /* ---------- gallery ---------- */
-  var figs = [].slice.call(document.querySelectorAll('#grid .shot'));
-  var lb = $('lb'), lbimg = $('lbimg'), cap = $('cap'), i = 0;
+  /* ---------- gallery: one carousel, one lightbox, one source of truth ---------- */
+  var PHOTOS = [
+    ['hero.jpg',           'Front exterior'],
+    ['kitchen.jpg',        'Kitchen & island'],
+    ['stairwell.jpg',      'Stairwell'],
+    ['primary-bath.jpg',   'Primary bath'],
+    ['shower.jpg',         'Walk-in shower'],
+    ['tub-closet.jpg',     'Soaking tub & closet'],
+    ['hallway.jpg',        'Hall & wainscoting'],
+    ['bedroom.jpg',        'Bedroom'],
+    ['bedroom-closet.jpg', 'Second bedroom closet'],
+    ['laundry.jpg',        'Laundry — included'],
+    ['second-bath.jpg',    'Second bathroom'],
+    ['second-shower.jpg',  'Second bath — tub & shower'],
+    ['second-vanity.jpg',  'Second bath — vanity']
+  ];
+  var i = 0;
+  var cimg = $('cimg'), ccap = $('ccap'), ccount = $('ccount'), thumbs = $('thumbs');
+
+  PHOTOS.forEach(function(p, n){
+    var t = document.createElement('img');
+    t.src = p[0]; t.alt = p[1]; t.loading = 'lazy';
+    t.addEventListener('click', function(){ go(n); });
+    thumbs.appendChild(t);
+  });
+
+  function go(n){
+    i = (n + PHOTOS.length) % PHOTOS.length;
+    cimg.src = PHOTOS[i][0]; cimg.alt = PHOTOS[i][1];
+    ccap.textContent = PHOTOS[i][1];
+    ccount.textContent = (i+1) + ' / ' + PHOTOS.length;
+    var ts = thumbs.children;
+    for(var k=0;k<ts.length;k++){ ts[k].className = (k===i ? 'on' : ''); }
+    // keep the active thumbnail in view without yanking the page around
+    var a = ts[i];
+    if(a){
+      var l = a.offsetLeft, r = l + a.offsetWidth;
+      if(l < thumbs.scrollLeft) thumbs.scrollLeft = l - 8;
+      else if(r > thumbs.scrollLeft + thumbs.clientWidth) thumbs.scrollLeft = r - thumbs.clientWidth + 8;
+    }
+  }
+  $('cprev').addEventListener('click', function(e){ e.stopPropagation(); go(i-1); });
+  $('cnext').addEventListener('click', function(e){ e.stopPropagation(); go(i+1); });
+  go(0);
+
+  /* swipe the stage on a phone */
+  var sx = null, stage = $('stage');
+  stage.addEventListener('touchstart', function(e){ sx = e.changedTouches[0].clientX; }, {passive:true});
+  stage.addEventListener('touchend', function(e){
+    if(sx === null) return;
+    var dx = e.changedTouches[0].clientX - sx;
+    if(Math.abs(dx) > 45) go(dx < 0 ? i+1 : i-1);
+    sx = null;
+  }, {passive:true});
+
+  /* ---------- lightbox, driven by the same array ---------- */
+  var lb = $('lb'), lbimg = $('lbimg'), cap = $('cap');
   function show(n){
-    i = (n + figs.length) % figs.length;
-    var f = figs[i];
-    lbimg.src = f.querySelector('img').getAttribute('src');
-    lbimg.alt = f.querySelector('img').alt;
-    cap.textContent = f.querySelector('span').textContent + '  ·  ' + (i+1) + ' of ' + figs.length;
+    go(n);
+    lbimg.src = PHOTOS[i][0]; lbimg.alt = PHOTOS[i][1];
+    cap.textContent = PHOTOS[i][1] + '  ·  ' + (i+1) + ' of ' + PHOTOS.length;
     lb.classList.add('on'); document.body.style.overflow = 'hidden';
   }
   function hide(){ lb.classList.remove('on'); document.body.style.overflow = ''; }
-  figs.forEach(function(f,n){ f.addEventListener('click', function(){ show(n); }); });
+  stage.addEventListener('click', function(){ show(i); });
   $('x').addEventListener('click', hide);
   $('next').addEventListener('click', function(e){ e.stopPropagation(); show(i+1); });
   $('prev').addEventListener('click', function(e){ e.stopPropagation(); show(i-1); });
   lb.addEventListener('click', function(e){ if(e.target === lb || e.target === lbimg) hide(); });
   document.addEventListener('keydown', function(e){
-    if(!lb.classList.contains('on')) return;
-    if(e.key === 'Escape') hide();
-    if(e.key === 'ArrowRight') show(i+1);
-    if(e.key === 'ArrowLeft') show(i-1);
+    if(lb.classList.contains('on')){
+      if(e.key === 'Escape') hide();
+      if(e.key === 'ArrowRight') show(i+1);
+      if(e.key === 'ArrowLeft') show(i-1);
+    } else if(e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
+      var r = stage.getBoundingClientRect();
+      if(r.top < window.innerHeight && r.bottom > 0) go(e.key === 'ArrowRight' ? i+1 : i-1);
+    }
   });
   var x0 = null;
   lb.addEventListener('touchstart', function(e){ x0 = e.changedTouches[0].clientX; }, {passive:true});
