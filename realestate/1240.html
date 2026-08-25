@@ -439,7 +439,7 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
     <div class="msg fall" id="fall">
       <b>The request could not be submitted. Nothing has been lost.</b><br>
       Either option below opens with the request already composed. Send it and it reaches the owner directly.
-      <div><a class="btn" id="sms" href="#">Send as a Text</a><a class="btn" id="mail" href="#">Send as an Email</a></div>
+      <div><button class="btn" id="sms" type="button">Send as a Text</button><button class="btn" id="mail" type="button">Send as an Email</button></div>
     </div>
   </div>
 </div></section>
@@ -483,10 +483,52 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
      ========================================================== */
   var QUEUE_URL = 'https://neso-queue.nesoai-us.workers.dev/submit';
   var PHONE = '+16623824084';
+
+  /* ================================================================
+     GOOGLE ANALYTICS. Put the measurement ID between the quotes and
+     analytics turns on. Leave it empty and NOTHING loads — no script,
+     no cookie, no request to Google. The page works either way.
+     ================================================================ */
+  var GA_ID = 'G-8F80E2D56H';   // NESO — all public surfaces · stream 15382875163
   var PRICE = 210000, TAX_YEAR = 2093;
 
   var $ = function(id){ return document.getElementById(id); };
   var usd = function(n){ return '$' + Math.round(n).toLocaleString('en-US'); };
+
+  /* ---------- analytics: loads only if GA_ID is set ---------- */
+  var SRC = 'direct';
+  try {
+    var q = new URLSearchParams(location.search).get('src');
+    if (q) SRC = q.slice(0, 40).replace(/[^\w.-]/g, '');
+    else if (document.referrer) SRC = new URL(document.referrer).hostname || 'direct';
+  } catch (e) {}
+
+  function track(name, params){
+    if (!GA_ID || typeof gtag !== 'function') return;
+    params = params || {};
+    params.src = SRC;
+    params.listing = '1240-riverwood';
+    gtag('event', name, params);
+  }
+
+  if (GA_ID) {
+    var g = document.createElement('script');
+    g.async = true;
+    g.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(g);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', GA_ID, {
+      /* the visitor's own address is never useful here and is worth not collecting */
+      anonymize_ip: true,
+      /* the tour form's fallback links carry a name and phone number.
+         GA must never be handed a URL containing them. */
+      allow_google_signals: false,
+      page_title: '1240 Riverwood Cir S — FSBO',
+      src: SRC
+    });
+  }
 
   /* ---------- payment estimator ---------- */
   function calc(){
@@ -618,11 +660,13 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
     url  : location.href.split('#')[0]
   };
   $('shareBtn').addEventListener('click', function(){
+    track('share', {method: navigator.share ? 'native' : 'facebook'});
     if(navigator.share){ navigator.share(SHARE).catch(function(){}); }
     else { window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(SHARE.url),
            '_blank','noopener,width=640,height=520'); }
   });
   $('copyBtn').addEventListener('click', function(){
+    track('share', {method:'copy_link'});
     var done = function(){ $('copied').classList.add('on');
       setTimeout(function(){ $('copied').classList.remove('on'); }, 3200); };
     if(navigator.clipboard && navigator.clipboard.writeText){
@@ -658,14 +702,19 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
     if(val('m')) o.push('Notes: ' + val('m'));
     return o.join('\n');
   }
-  function refreshFallback(){
-    var b = message();
-    $('sms').href  = 'sms:' + PHONE + '?&body=' + encodeURIComponent(b);
-    $('mail').href = 'mailto:?subject=' + encodeURIComponent('Tour request — 1240 Riverwood Cir S') +
-                     '&body=' + encodeURIComponent(b);
-  }
+  function refreshFallback(){ /* nothing to prepare: the address is built on click */ }
+  $('sms').addEventListener('click', function(){
+    track('tour_fallback_send', {method:'sms'});
+    location.href = 'sms:' + PHONE + '?&body=' + encodeURIComponent(message());
+  });
+  $('mail').addEventListener('click', function(){
+    track('tour_fallback_send', {method:'email'});
+    location.href = 'mailto:?subject=' + encodeURIComponent('Tour request — 1240 Riverwood Cir S') +
+                    '&body=' + encodeURIComponent(message());
+  });
   var form = $('tourform'), go = $('go'), ok = $('ok'), fall = $('fall');
   function showFallback(){
+    track('tour_form_fallback');
     refreshFallback(); fall.classList.add('on');
     go.disabled = false; go.textContent = 'Send the Request';
     fall.scrollIntoView({behavior:'smooth', block:'center'});
@@ -687,12 +736,26 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
     var timer = setTimeout(function(){ if(!done){ done = true; showFallback(); } }, 8000);
     fetch(QUEUE_URL, {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ form:'tour', status_hint:'tour requested',
-        name:val('n'), phone:val('p'), email:val('e'),
-        message:message(), source:'realestate/1240' })
+      /* neso-queue /submit builds its transcript from b.fields and reads the
+         contact from fields.email / fields.phone. Anything else falls through
+         to JSON.stringify(b) and an extractContact() guess at the blob. */
+      body: JSON.stringify({
+        form: 'tour',
+        fields: {
+          property:      '1240 Riverwood Cir S, Robinsonville MS 38664',
+          name:          val('n'),
+          phone:         val('p'),
+          email:         val('e'),
+          first_choice:  slot('d1','t1'),
+          alternate:     slot('d2','t2'),
+          notes:         val('m'),
+          came_from:     SRC
+        }
+      })
     }).then(function(r){
       if(done) return; done = true; clearTimeout(timer);
       if(r && r.ok){ form.style.display='none'; ok.classList.add('on');
+        track('generate_lead', {method:'tour_form'});
         ok.scrollIntoView({behavior:'smooth', block:'center'}); }
       else { showFallback(); }
     }).catch(function(){
@@ -704,6 +767,24 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
     if(el){ el.addEventListener('input', refreshFallback); el.addEventListener('change', refreshFallback); }
   });
   refreshFallback();
+
+  /* ---------- the four clicks that mean something on a listing ---------- */
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
+    a.addEventListener('click', function(){ track('call_click'); });
+  });
+  document.querySelectorAll('a[href^="sms:"]').forEach(function(a){
+    /* only the plain Text buttons; the composed fallback is a <button>, not a link */
+    a.addEventListener('click', function(){ track('text_click'); });
+  });
+  document.querySelectorAll('a[href$=".pdf"]').forEach(function(a){
+    a.addEventListener('click', function(){ track('flyer_download', {file_name:'1240-riverwood-flyer'}); });
+  });
+  var seen = false;
+  window.addEventListener('scroll', function(){
+    if(seen) return;
+    var t = document.getElementById('tour');
+    if(t && t.getBoundingClientRect().top < window.innerHeight){ seen = true; track('reached_tour_form'); }
+  }, {passive:true});
 })();
 </script>
 </body>
