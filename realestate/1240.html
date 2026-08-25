@@ -64,6 +64,15 @@ a{color:inherit}
   font-size:.96rem;cursor:pointer;border:2px solid transparent;font-family:Inter,sans-serif;
   transition:background .2s,color .2s,transform .12s;text-align:center}
 .btn:active{transform:translateY(1px)}
+/* phones only: the four hero buttons sit 2 x 2 instead of a four-deep stack.
+   Desktop and tablet keep the flex row above 560px. */
+@media(max-width:560px){
+  .hero-cta{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .hero-cta .btn{padding:13px 6px;font-size:.86rem;white-space:nowrap}
+}
+@media(max-width:340px){
+  .hero-cta .btn{font-size:.78rem;padding:12px 4px}
+}
 .btn-a{background:var(--clay);color:#fff}.btn-a:hover{background:var(--clay-d)}
 .btn-b{background:var(--forest);color:#fff}.btn-b:hover{background:var(--forest-d)}
 .btn-o{background:transparent;color:var(--forest);border-color:var(--sage)}
