@@ -82,8 +82,8 @@ a{color:inherit}
 section.blk{padding:64px 0}
 .eyebrow{font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
   color:var(--clay);margin-bottom:9px}
-h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-width:760px}
-.lede{color:var(--muted);max-width:640px;margin-top:11px;font-size:1.02rem}
+h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
+.lede{color:var(--muted);margin-top:11px;font-size:1.02rem}
 
 /* ---- payment ---- */
 .pay{background:var(--forest);color:#fff;border-radius:16px;padding:34px 32px;
@@ -119,19 +119,24 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
 @media(max-width:560px){.incl.four,.incl.six{grid-template-columns:repeat(2,1fr)}}
 
 /* ---- room dimensions ---- */
-.rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:13px;margin-top:24px}
-.rm{background:#fff;border:1px solid var(--line);border-radius:11px;padding:19px 20px}
+.rooms{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:24px}
+.rm{padding:16px 15px}
+.rm .dm{font-size:1.45rem}
+@media(max-width:1040px){.rooms{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.rooms{grid-template-columns:repeat(2,1fr)}}
+.rm{background:#fff;border:1px solid var(--line);border-radius:11px}
 .rm .nm{font-size:.78rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--clay)}
-.rm .dm{font-family:Fraunces,serif;font-size:1.65rem;font-weight:600;color:var(--forest);
-  line-height:1.05;margin-top:6px}
+.rm .dm{font-family:Fraunces,serif;font-weight:600;color:var(--forest);line-height:1.05;margin-top:6px}
 .rm .sf{font-size:.83rem;color:var(--muted);margin-top:3px}
-.rmnote{font-size:.85rem;color:var(--muted);margin-top:16px;max-width:640px}
+.rmnote{font-size:.85rem;color:var(--muted);margin-top:16px}
 
 /* ---- gallery carousel ---- */
 .carousel{margin-top:24px}
-.stage{position:relative;aspect-ratio:16/10;max-height:540px;border-radius:13px;overflow:hidden;
-  background:var(--forest-d);cursor:zoom-in}
-.stage img{width:100%;height:100%;object-fit:contain}
+.stage{position:relative;aspect-ratio:3/2;max-height:520px;border-radius:13px;overflow:hidden;
+  background:var(--sand);cursor:zoom-in}
+.stage .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:blur(26px) brightness(.7);transform:scale(1.18)}
+.stage .fg{position:relative;z-index:1;width:100%;height:100%;object-fit:contain}
 .nav{position:absolute;top:50%;transform:translateY(-50%);border:none;width:46px;height:46px;
   border-radius:50%;background:rgba(255,255,255,.92);color:var(--forest);font-size:1.7rem;
   line-height:1;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.28);padding:0}
@@ -249,7 +254,7 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
 
 
 <!-- ============ INCLUDED ============ -->
-<section class="blk" style="padding-top:0"><div class="wrap">
+<section class="blk" style="padding-top:58px"><div class="wrap">
   <div class="eyebrow">Included in the sale</div>
   <h2 class="big">Appliances and features conveyed</h2>
   <p class="lede">The following remain with the property at closing.</p>
@@ -338,11 +343,12 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
 <section class="blk" id="gallery" style="padding-top:0"><div class="wrap">
   <div class="eyebrow">Photographs</div>
   <h2 class="big">Interior and exterior</h2>
-  <p class="lede">Thirteen photographs, unoccupied and unedited. Use the arrows or pick a thumbnail; select the
+  <p class="lede">Photographed unoccupied and unedited. Use the arrows or pick a thumbnail; select the
   photograph itself to enlarge it.</p>
   <div class="carousel">
     <div class="stage" id="stage">
-      <img id="cimg" src="hero.jpg" alt="Front exterior">
+      <img class="bg" id="cbg" src="exterior.jpg" alt="" aria-hidden="true">
+      <img class="fg" id="cimg" src="exterior.jpg" alt="Front exterior">
       <button class="nav p" id="cprev" type="button" aria-label="Previous photograph">&#8249;</button>
       <button class="nav n" id="cnext" type="button" aria-label="Next photograph">&#8250;</button>
       <div class="ccap"><span id="ccap">Front exterior</span><span class="n" id="ccount">1 / 13</span></div>
@@ -360,7 +366,7 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
   <div class="loc">
     <div><b>~3 min</b><span>DeSoto County line</span></div>
     <div><b>~10 min</b><span>Tunica resort corridor</span></div>
-    <div><b>~25 min</b><span>Southaven</span></div>
+    <div><b>~20 min</b><span>Southaven</span></div>
     <div><b>33 miles</b><span>Downtown Memphis</span></div>
   </div>
 </div></section>
@@ -516,7 +522,7 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
 
   /* ---------- gallery: one carousel, one lightbox, one source of truth ---------- */
   var PHOTOS = [
-    ['hero.jpg',           'Front exterior'],
+    ['exterior.jpg',       'Front exterior'],
     ['kitchen.jpg',        'Kitchen & island'],
     ['stairwell.jpg',      'Stairwell'],
     ['primary-bath.jpg',   'Primary bath'],
@@ -536,13 +542,14 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
   PHOTOS.forEach(function(p, n){
     var t = document.createElement('img');
     t.src = p[0]; t.alt = p[1]; t.loading = 'lazy';
-    t.addEventListener('click', function(){ go(n); });
+    t.addEventListener('click', function(){ slide(n); });
     thumbs.appendChild(t);
   });
 
-  function go(n){
+  function slide(n){
     i = (n + PHOTOS.length) % PHOTOS.length;
     cimg.src = PHOTOS[i][0]; cimg.alt = PHOTOS[i][1];
+    $('cbg').src = PHOTOS[i][0];
     ccap.textContent = PHOTOS[i][1];
     ccount.textContent = (i+1) + ' / ' + PHOTOS.length;
     var ts = thumbs.children;
@@ -555,9 +562,9 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
       else if(r > thumbs.scrollLeft + thumbs.clientWidth) thumbs.scrollLeft = r - thumbs.clientWidth + 8;
     }
   }
-  $('cprev').addEventListener('click', function(e){ e.stopPropagation(); go(i-1); });
-  $('cnext').addEventListener('click', function(e){ e.stopPropagation(); go(i+1); });
-  go(0);
+  $('cprev').addEventListener('click', function(e){ e.stopPropagation(); slide(i-1); });
+  $('cnext').addEventListener('click', function(e){ e.stopPropagation(); slide(i+1); });
+  slide(0);
 
   /* swipe the stage on a phone */
   var sx = null, stage = $('stage');
@@ -565,14 +572,14 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
   stage.addEventListener('touchend', function(e){
     if(sx === null) return;
     var dx = e.changedTouches[0].clientX - sx;
-    if(Math.abs(dx) > 45) go(dx < 0 ? i+1 : i-1);
+    if(Math.abs(dx) > 45) slide(dx < 0 ? i+1 : i-1);
     sx = null;
   }, {passive:true});
 
   /* ---------- lightbox, driven by the same array ---------- */
   var lb = $('lb'), lbimg = $('lbimg'), cap = $('cap');
   function show(n){
-    go(n);
+    slide(n);
     lbimg.src = PHOTOS[i][0]; lbimg.alt = PHOTOS[i][1];
     cap.textContent = PHOTOS[i][1] + '  ·  ' + (i+1) + ' of ' + PHOTOS.length;
     lb.classList.add('on'); document.body.style.overflow = 'hidden';
@@ -590,7 +597,7 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2;max-w
       if(e.key === 'ArrowLeft') show(i-1);
     } else if(e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
       var r = stage.getBoundingClientRect();
-      if(r.top < window.innerHeight && r.bottom > 0) go(e.key === 'ArrowRight' ? i+1 : i-1);
+      if(r.top < window.innerHeight && r.bottom > 0) slide(e.key === 'ArrowRight' ? i+1 : i-1);
     }
   });
   var x0 = null;
