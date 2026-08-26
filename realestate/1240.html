@@ -139,7 +139,7 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
 @media(max-width:560px){.incl.four,.incl.six{grid-template-columns:repeat(2,1fr)}}
 
 /* ---- room dimensions ---- */
-.rooms{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:24px}
+.rooms{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:24px}
 .rm{padding:16px 15px}
 .rm .dm{font-size:1.45rem}
 @media(max-width:1040px){.rooms{grid-template-columns:repeat(3,1fr)}}
@@ -233,8 +233,11 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
 .foot{background:var(--forest-d);color:#fff;padding:58px 22px 40px;text-align:center;margin-top:20px}
 .foot h2{font-size:clamp(1.4rem,4vw,2rem);color:#fff;font-weight:600}
 .foot .role{font-size:.8rem;letter-spacing:2px;text-transform:uppercase;color:var(--sage);margin-top:6px}
-.foot .num{display:inline-block;font-family:Fraunces,serif;font-size:clamp(1.7rem,6vw,2.6rem);
-  font-weight:700;margin:22px 0 4px;color:#fff;text-decoration:none}
+.foot .nums{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;
+  gap:10px 18px;margin:22px 0 4px}
+.foot .num{font-family:Fraunces,serif;font-size:clamp(1.45rem,5vw,2.3rem);
+  font-weight:700;color:#fff;text-decoration:none}
+.foot .numsep{color:var(--sage);font-size:.9rem}
 .foot .num:hover{color:var(--clay)}
 .disc{max-width:720px;margin:36px auto 0;padding-top:22px;border-top:1px solid rgba(255,255,255,.13);
   font-size:.76rem;color:#8C978F;line-height:1.7}
@@ -367,7 +370,6 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
     <div class="rm"><div class="nm">Primary bedroom</div><div class="dm">12 × 12</div><div class="sf">144 sq ft</div></div>
     <div class="rm"><div class="nm">Kitchen &amp; dining</div><div class="dm">10 × 12</div><div class="sf">120 sq ft</div></div>
     <div class="rm"><div class="nm">Second bedroom</div><div class="dm">10 × 10</div><div class="sf">100 sq ft</div></div>
-    <div class="rm"><div class="nm">Mudroom</div><div class="dm">Included</div></div>
   </div>
   <p class="rmnote"><b>Dimensions are approximate</b>, measured by the owner and stated in feet. Verify before
   relying on them for furniture, flooring or appliances.</p>
@@ -429,7 +431,8 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
     <div class="eyebrow">Showings</div>
     <h2 class="big" style="margin:0 auto">Request a tour</h2>
     <p class="lede" style="margin:11px auto 0">Private showings by appointment. Provide a first choice and an
-    alternate; the owner will confirm a time.</p>
+    alternate; the owner will confirm a time. To speak to someone now, call or text <b>662.382.4084</b> or
+    <b>901.295.0322</b>.</p>
   </div>
 
   <div class="form-card">
@@ -468,7 +471,8 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
     </form>
 
     <div class="msg good" id="ok"><b>Request received.</b><br>The owner will confirm a time. For a faster response,
-      call or text <a href="tel:+16623824084" style="color:#1E4A36;font-weight:700">662.382.4084</a>.</div>
+      call or text <a href="tel:+16623824084" style="color:#1E4A36;font-weight:700">662.382.4084</a>
+      or <a href="tel:+19012950322" style="color:#1E4A36;font-weight:700">901.295.0322</a>.</div>
 
     <div class="msg fall" id="fall">
       <b>The request could not be submitted. Nothing has been lost.</b><br>
@@ -481,8 +485,12 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
 <footer class="foot">
   <h2 class="disp">Mallory Bailey</h2>
   <div class="role">For Sale By Owner</div>
-  <a class="num" href="tel:+16623824084">662.382.4084</a>
-  <div style="font-size:.9rem;color:#A9B5AD">Call or text · private showings by appointment</div>
+  <div class="nums">
+    <a class="num" href="tel:+16623824084">662.382.4084</a>
+    <span class="numsep">or</span>
+    <a class="num" href="tel:+19012950322">901.295.0322</a>
+  </div>
+  <div style="font-size:.9rem;color:#A9B5AD">Call or text either number · private showings by appointment</div>
   <p class="disc">
     This property is offered <b>for sale by the owner personally.</b> NESO HQ LLC is not a real estate broker,
     agent or licensee, is not a party to any transaction arising from this page, and receives no commission or fee.
