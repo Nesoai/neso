@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>1240 Riverwood Cir S, Robinsonville MS — $212,000 | For Sale By Owner</title>
-<meta name="description" content="Modern Farmhouse, 3 bed, 2 bath, 1,436 sq ft built in 2020. Central heat and air, insulated two-car garage, appliances stay. Robinsonville MS. $212,000.">
+<meta name="description" content="Modern Farmhouse, 3 bed, 2 bath, 1,436 sq ft built in 2020. Central heat and air, insulated two-car garage, fenced yard, appliances stay. Robinsonville MS. $212,000.">
 <link rel="canonical" href="https://nesohq.com/realestate/1240">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nesohq.com/realestate/1240">
 <meta property="og:title" content="1240 Riverwood Cir S — $212,000 · For Sale By Owner">
-<meta property="og:description" content="Modern Farmhouse · 3 bed · 2 bath · 1,436 sq ft · built 2020. Central heat and air, appliances stay. Robinsonville, MS.">
+<meta property="og:description" content="Modern Farmhouse · 3 bed · 2 bath · 1,436 sq ft · built 2020. Central heat and air, fenced yard, appliances stay. Robinsonville, MS.">
 <meta property="og:image" content="https://nesohq.com/realestate/share.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -86,6 +86,15 @@ a{color:inherit}
 .facts span{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.9px;
   color:var(--muted);font-weight:600;margin-top:6px}
 @media(max-width:700px){.facts{grid-template-columns:repeat(3,1fr)}}
+
+/* ---- listing status strip ---- */
+.status{display:flex;flex-wrap:wrap;gap:0 26px;align-items:baseline;margin-top:16px;
+  padding-top:14px;border-top:1px solid var(--line);font-size:.84rem;color:var(--muted)}
+.status b{color:var(--forest);font-weight:600}
+.status .dot{color:var(--sage)}
+.status .fresh{background:var(--sage-l);color:var(--forest);padding:3px 10px;border-radius:99px;
+  font-size:.76rem;font-weight:600}
+@media(max-width:560px){.status{gap:0 16px;font-size:.79rem}}
 
 /* ---- sections ---- */
 section.blk{padding:64px 0}
@@ -258,6 +267,16 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
       <div><b>2020</b><span>Built</span></div>
       <div><b>0.19</b><span>Acres</span></div>
     </div>
+    <div class="status">
+      <span>Listed <b id="stListed">—</b></span>
+      <span class="dot">·</span>
+      <span>Updated <b id="stUpdated">—</b></span>
+      <span class="dot" id="stDomDot">·</span>
+      <span id="stDomWrap"><b id="stDom">—</b> on market</span>
+      <span class="dot" id="stViewsDot" style="display:none">·</span>
+      <span id="stViewsWrap" style="display:none"><b id="stViews">—</b> views</span>
+      <span class="fresh" id="stFresh" style="display:none">New listing</span>
+    </div>
   </div>
 </div>
 
@@ -276,8 +295,8 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
 
   <div class="incl six" style="margin-top:13px">
     <div><h4>Modern Farmhouse</h4><p>Board-and-batten gables, lap siding and a stone veneer base, with Craftsman detailing.</p></div>
-    <div><h4>Central heat &amp; air</h4><p>Ducted central heating and air conditioning throughout.</p></div>
-    <div><h4>Insulated garage</h4><p>Two-car, attached, with an insulated door and ceiling.</p></div>
+    <div><h4>Fenced yard</h4><p>Wood privacy fence enclosing the back yard, with a gate to the drive.</p></div>
+    <div><h4>Systems &amp; garage</h4><p>Central heat and air throughout. Insulated two-car garage with an insulated door and ceiling.</p></div>
     <div><h4>Mudroom</h4><p>A separate entry room off the main living space.</p></div>
     <div><h4>Storage</h4><p>Walk-in closet off the primary bath, shelved bedroom closets, and under-stair storage.</p></div>
     <div><h4>Second full bathroom</h4><p>Tub and shower with sliding glass enclosure, vanity, and an exterior window.</p></div>
@@ -501,8 +520,66 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
   var GA_ID = 'G-8F80E2D56H';   // NESO — all public surfaces · stream 15382875163
   var PRICE = 212000, TAX_YEAR = 2093;
 
+  /* ================================================================
+     LISTING STATUS. Change LISTED once. Change UPDATED every time you
+     alter the price, the photographs or the disclosures — a stale
+     "updated" date is worse than none.
+     SHOW_DOM: days on market. Read the note before turning this on
+     past week three.
+     VIEWS_URL: leave empty and the view count stays hidden. There is
+     no counter on a static page; it needs an endpoint that returns
+     {"views": <number>}.
+     ================================================================ */
+  var LISTED    = '2026-08-26';   // set this to the day it actually goes live
+  var UPDATED   = '2026-08-26';   // bump on every price, photo or disclosure change
+  var SHOW_DOM  = true;
+  var VIEWS_URL = '';
+
   var $ = function(id){ return document.getElementById(id); };
   var usd = function(n){ return '$' + Math.round(n).toLocaleString('en-US'); };
+
+  /* ---------- listing status ---------- */
+  (function(){
+    function pretty(iso){
+      var b = String(iso).split('-');
+      if (b.length !== 3) return iso;
+      var d = new Date(+b[0], +b[1]-1, +b[2]);
+      return isNaN(d) ? iso : d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    }
+    function daysSince(iso){
+      var b = String(iso).split('-');
+      if (b.length !== 3) return null;
+      var start = new Date(+b[0], +b[1]-1, +b[2]);
+      var now = new Date(); now.setHours(0,0,0,0); start.setHours(0,0,0,0);
+      return Math.max(0, Math.round((now - start) / 86400000));
+    }
+    $('stListed').textContent  = pretty(LISTED);
+    $('stUpdated').textContent = pretty(UPDATED);
+
+    var dom = daysSince(LISTED);
+    if (SHOW_DOM && dom !== null){
+      $('stDom').textContent = dom === 0 ? 'Today' : dom + (dom === 1 ? ' day' : ' days');
+      if (dom === 0) $('stDomWrap').innerHTML = '<b>Listed today</b>';
+    } else {
+      $('stDomWrap').style.display = 'none';
+      $('stDomDot').style.display = 'none';
+    }
+    if (dom !== null && dom <= 7) $('stFresh').style.display = '';
+
+    /* the count only appears if an endpoint actually answers */
+    if (VIEWS_URL){
+      fetch(VIEWS_URL, {method:'POST'})
+        .then(function(r){ return r.ok ? r.json() : null; })
+        .then(function(j){
+          if (j && typeof j.views === 'number'){
+            $('stViews').textContent = j.views.toLocaleString('en-US');
+            $('stViewsWrap').style.display = '';
+            $('stViewsDot').style.display = '';
+          }
+        })
+        .catch(function(){ /* silent: a missing counter must never break the page */ });
+    }
+  })();
 
   /* ---------- analytics: loads only if GA_ID is set ---------- */
   var SRC = 'direct';
@@ -571,6 +648,7 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
   /* ---------- gallery: one carousel, one lightbox, one source of truth ---------- */
   var PHOTOS = [
     ['exterior.jpg',       'Front exterior'],
+    ['exterior-clear.jpg', 'Front exterior — full facade'],
     ['backyard.jpg',       'Fenced back yard'],
     ['entry.jpg',          'Entry & open plan'],
     ['kitchen.jpg',        'Kitchen & island'],
@@ -579,7 +657,7 @@ h2.big{font-size:clamp(1.5rem,4vw,2.15rem);font-weight:600;line-height:1.2}
     ['shower.jpg',         'Primary walk-in shower'],
     ['tub-closet.jpg',     'Soaking tub & walk-in closet'],
     ['hallway.jpg',        'Hall & wainscoting'],
-    ['bedroom.jpg',        'Bedroom'],
+    ['bedroom.jpg',        'Primary bedroom'],
     ['bedroom-closet.jpg', 'Second bedroom closet'],
     ['understairs.jpg',    'Under-stair storage'],
     ['utility-closet.jpg', 'Utility closet'],
