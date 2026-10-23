@@ -617,25 +617,35 @@ footer{border-top:1px solid var(--line);padding:20px 0 16px;margin-top:10px}
      and recreated in YouTube Studio, replace 4TKeFn0Offg in all five places below.
      endDate is required by Google for a stream that has no planned end; move it a year
      forward each October (The Live Book, section 7). -->
+<!-- NESO Now · state map (23 October 2026). Visitors tap a state for its latest government-published
+     numbers; the figures refresh every hour from now.nesohq.com. Nothing here needs editing:
+     to change which figures show, edit data-measures (payrolls, jobs, construction, permits, homeprices). -->
+<section id="state-numbers" aria-labelledby="neso-map-h" style="max-width:1040px;margin:48px auto;padding:0 16px">
+  <h2 id="neso-map-h" style="margin:0 0 6px">The latest official numbers, state by state</h2>
+  <p style="margin:0 0 14px;opacity:.85">Jobs, unemployment, building permits, construction jobs and home prices for every state, as the government last published them. Tap a state, or choose one from the list.</p>
+  <div data-neso-map data-measures="payrolls,jobs,permits,construction,homeprices" data-stream="hub"><a href="https://now.nesohq.com/map/">See the latest official numbers for every state</a></div>
+  <script src="https://now.nesohq.com/map/neso-map.js" charset="utf-8" defer></script>
+</section>
+
 <section class="neso-live" id="watch-live" aria-labelledby="neso-live-h">
   <style>
     .neso-live{max-width:960px;margin:48px auto;padding:0 16px}
     .neso-live h2{margin:0 0 6px}
     .neso-live p{margin:0 0 14px;opacity:.85}
-    .neso-live .frame{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#111}
+    .neso-live .nl-frame{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#111}
     .neso-live iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-    .neso-live .badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;color:#fff;background:#c4302b;border-radius:4px;padding:2px 8px;margin-right:8px;vertical-align:2px}
-    .neso-live .links{margin-top:12px;font-size:15px}
-    .neso-live .links a{margin-right:18px}
+    .neso-live .nl-badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;color:#fff;background:#c4302b;border-radius:4px;padding:2px 8px;margin-right:8px;vertical-align:2px}
+    .neso-live .nl-links{margin-top:12px;font-size:15px}
+    .neso-live .nl-links a{margin-right:18px}
   </style>
-  <h2 id="neso-live-h"><span class="badge">LIVE</span>Watch live</h2>
+  <h2 id="neso-live-h"><span class="nl-badge">LIVE</span>Watch live</h2>
   <p>Grants, public bids and the official numbers behind small business, read live around the clock. The voice is computer-generated.</p>
-  <div class="frame">
+  <div class="nl-frame">
     <iframe src="https://www.youtube.com/embed/4TKeFn0Offg" title="NESO Now · Live 24/7 · Grants, public bids and the numbers behind small business and development" loading="lazy"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
-  <p class="links"><a href="https://www.youtube.com/watch?v=4TKeFn0Offg">Open on YouTube</a><a href="https://www.youtube.com/@nesonow?sub_confirmation=1">Subscribe to NESO Now</a><a href="https://www.youtube.com/@nesonow/streams">All three streams</a><a href="https://now.nesohq.com/">Today's figures, rules and lessons</a></p>
+  <p class="nl-links"><a href="https://www.youtube.com/watch?v=4TKeFn0Offg">Open on YouTube</a><a href="https://www.youtube.com/@nesonow?sub_confirmation=1">Subscribe to NESO Now</a><a href="https://www.youtube.com/@nesonow/streams">All three streams</a><a href="https://now.nesohq.com/">Today's figures, rules and lessons</a></p>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -668,7 +678,7 @@ footer{border-top:1px solid var(--line);padding:20px 0 16px;margin-top:10px}
     <a class="brand" onclick="go('/')" style="cursor:pointer;font-size:18px"><svg class="brand-mark" width="26" height="26" viewBox="0 0 44 44" aria-hidden="true"><path d="M4 22 L22 19 L40 22 L22 25 Z" fill="#5B2A86"/><path d="M22 4 L25 22 L22 40 L19 22 Z" fill="#E7B84B"/><circle cx="22" cy="22" r="2.6" fill="#f2ecf7"/></svg> <span style="letter-spacing:.06em">NESO</span></a>
     <nav class="flinks">
       <a onclick="go('/how')">How it works</a><a href="https://nesohq.com/ask.html?source=hub-footer">Ask NESO</a><a onclick="go('/opportunities')">Bids &amp; grants</a><a href="https://nesohq.gumroad.com/" target="_blank" rel="noopener">Store</a><a onclick="go('/faq')">FAQ</a><a onclick="go('/birdseye')">Bird&rsquo;s Eye</a><a href="https://nesohq.com/twenty.html">$20 a month</a><a onclick="go('/book')">Ask our MPA</a><a href="https://nesohq.com/legal/terms.html">Terms</a><a href="https://nesohq.com/legal/refund.html">Refunds</a><a href="https://nesohq.com/legal/privacy.html">Privacy</a><a href="https://nesohq.com/landing-occupier.html">Occupier Services</a><a href="https://nesohq.com/landing-vendor.html">Become a vendor</a><a href="https://partners.nesohq.com/" target="_blank" rel="noopener">Partner with NESO</a><a href="https://brief.nesohq.com/" target="_blank" rel="noopener">The NESO Brief</a><a href="https://neso-queue.nesoai-us.workers.dev/form/feedback" target="_blank" rel="noopener">Feedback</a><a href="#" onclick="openTally({source:'website'});return false">Contact</a>
-    <a href="https://now.nesohq.com/">NESO Now</a><a onclick="document.getElementById('watch-live').scrollIntoView({behavior:'smooth'})" style="cursor:pointer">Watch live</a>
+    <a href="https://now.nesohq.com/">NESO Now</a><a href="https://now.nesohq.com/map/">State numbers</a><a onclick="document.getElementById('watch-live').scrollIntoView({behavior:'smooth'})" style="cursor:pointer">Watch live</a>
     </nav>
   </div>
   <div class="fcontact" style="border-top:1px solid var(--line);margin-top:10px;padding-top:12px;display:flex;gap:8px 22px;flex-wrap:wrap;font-size:13px;color:var(--muted)"><span><b style="color:var(--ink)">Customer support (text us):</b> <a href="sms:+19012950322">(901) 295-0322</a></span></div><div class="fbot"><span>© 2026 NESO · Northeast &amp; the South · projects US-wide</span><span class="fcreed">Your team for business and real estate.</span><span id="vstamp"></span></div>
