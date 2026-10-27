@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Trojan K Services &mdash; two website demos from NESO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --jet:#0A0D10; --steel:#14181C; --steel-3:#2C353D;
+  --hi:#F26522; --hi-2:#FF8A3D; --hi-dk:#B14310; --water:#2E9BC6; --water-dk:#1E7295;
+  --bg:#F3F5F6; --surface:#fff; --line:#DCE1E4; --muted:#5A656D;
+  --pad:clamp(1.2rem,5vw,2.2rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Inter Tight",system-ui,sans-serif;background:var(--bg);color:var(--steel);
+  line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,.wm{font-family:"Archivo","Inter Tight",sans-serif;font-variation-settings:"wdth" 112;
+  font-weight:700;line-height:1.08;letter-spacing:-.018em;text-transform:uppercase}
+.mn{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+a{color:var(--hi-dk)}
+:focus-visible{outline:3px solid var(--hi);outline-offset:3px;border-radius:8px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 var(--pad)}
+
+.hero{background:var(--steel);color:#fff;padding:clamp(2.6rem,7vw,4rem) 0 clamp(3.8rem,8vw,5.2rem);
+  position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(880px 430px at 8% -20%,rgba(242,101,34,.3),transparent 60%),
+             radial-gradient(700px 370px at 96% 118%,rgba(46,155,198,.22),transparent 62%)}
+.hero .wrap{position:relative}
+.top{display:flex;align-items:center;gap:.85rem;margin-bottom:1.8rem}
+.wm{font-size:1.2rem;color:#fff}
+.top small{display:block;font-family:"IBM Plex Mono",monospace;font-size:.58rem;letter-spacing:.19em;
+  text-transform:uppercase;color:#8C979E;margin-top:.16rem;font-weight:400}
+.kick{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.17em;
+  text-transform:uppercase;color:#150701;background:var(--hi);padding:.34rem .8rem;border-radius:4px;margin-bottom:1.1rem;font-weight:500}
+.hero h1{font-size:clamp(2.1rem,6.8vw,3.5rem);color:#fff;max-width:17ch;font-variation-settings:"wdth" 118}
+.hero p{color:#B7C1C7;font-size:clamp(1.02rem,2.2vw,1.16rem);max-width:48ch;margin-top:1.1rem}
+
+.cards{display:grid;gap:1.2rem;grid-template-columns:1fr;margin-top:clamp(-2.8rem,-5vw,-3.6rem);
+  position:relative;z-index:3;padding-bottom:clamp(2.5rem,6vw,3.5rem)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  display:flex;flex-direction:column;border-top:6px solid var(--hi);
+  box-shadow:0 2px 5px rgba(10,13,16,.06),0 26px 50px -30px rgba(10,13,16,.7)}
+.card.two{border-top-color:var(--water)}
+.card .hd{padding:1.6rem 1.6rem 1.2rem;border-bottom:1px solid #EBEEF0}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--hi-dk);font-weight:500}
+.card.two .kicker{color:var(--water-dk)}
+.card h2{font-size:1.55rem;margin-top:.5rem}
+.card .tag{color:var(--muted);margin-top:.6rem;font-size:1rem}
+.card ul{list-style:none;padding:1.2rem 1.6rem .4rem}
+.card li{position:relative;padding:.32rem 0 .32rem 1.5rem;font-size:.95rem;line-height:1.5}
+.card li::before{content:"";position:absolute;left:.15rem;top:.82rem;width:.45rem;height:.45rem;
+  border-radius:2px;background:var(--hi)}
+.card.two li::before{background:var(--water)}
+.price{margin-top:auto;padding:1.3rem 1.6rem;background:#FCF1EA;border-top:1px solid #F3DECF}
+.card.two .price{background:#EDF6FA;border-top-color:#CFE6F1}
+.price .big{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:-.02em}
+.price .note{font-size:.9rem;color:var(--muted);margin-top:.5rem}
+.plan{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.67rem;letter-spacing:.07em;
+  background:#F7E1D3;color:var(--hi-dk);padding:.3rem .7rem;border-radius:99px;margin-top:.8rem}
+.card.two .plan{background:#D9EDF6;color:var(--water-dk)}
+.go{display:block;margin:1.1rem 1.6rem 1.6rem;text-align:center;background:var(--steel);color:#fff;
+  font-family:"Archivo",sans-serif;font-weight:700;font-size:.98rem;padding:.9rem 1.2rem;border-radius:99px;
+  text-decoration:none;text-transform:uppercase;transition:background .16s,transform .16s}
+.go:hover{background:var(--jet);transform:translateY(-2px)}
+.card .go{background:var(--hi);color:#150701} .card .go:hover{background:var(--hi-2)}
+.card.two .go{background:var(--water-dk);color:#fff} .card.two .go:hover{background:#175E7C}
+.foot{border-top:1px solid var(--line);padding:1.6rem 0 3rem;font-size:.86rem;color:var(--muted)}
+@media (min-width:48rem){ .cards{grid-template-columns:1fr 1fr;align-items:stretch} }
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="top">
+      <svg width="40" height="40" viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="3" y="3" width="42" height="42" rx="7" fill="#F26522"/>
+        <path d="M24 10 L36 15v10c0 8-6 12.5-12 14-6-1.5-12-6-12-14V15z" fill="#0A0D10"/>
+        <path d="M18 25l4.5 4.5L31 21" stroke="#F26522" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span><span class="wm">Trojan K Services</span><small>Tunica County &middot; Mississippi</small></span>
+    </div>
+    <span class="kick">Two website demos</span>
+    <h1>Two versions for a cleaning contractor.</h1>
+    <p>Both are working demos. Look at them on your phone, because that is where a facility
+      manager will open a contractor&rsquo;s link. Neither is indexed by search engines.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="cards">
+
+    <div class="card">
+      <div class="hd">
+        <div class="kicker">Demo 1</div>
+        <h2>The Front Gate</h2>
+        <div class="tag">Somebody searches for a cleaning contractor in Tunica County and finds Trojan K &mdash; not a Yelp page you do not control.</div>
+      </div>
+      <ul>
+        <li>A two-page site, written for the business</li>
+        <li>All four services with what is actually included</li>
+        <li>Real rates on the page &mdash; $500, $1,100, $1,200&ndash;$2,200</li>
+        <li>The counties you cover, named</li>
+        <li>Tap to call, tap to text, tap to email</li>
+        <li>How a job goes from a phone call to an invoice</li>
+        <li>Original artwork &mdash; no stock photos, nothing to license</li>
+        <li>Set up so Google shows the phone number, hours and service area</li>
+        <li>Hosting, security certificate and a daily uptime check</li>
+        <li>One full round of changes, then small edits any time</li>
+      </ul>
+      <div class="price">
+        <div class="big">$20 a month</div>
+        <div class="note">Or $200 for the year. Founding rate for the first 200 businesses, held for as
+          long as you stay &mdash; it goes to $30 after that. Three consecutive months minimum, or twelve
+          prepaid. Live within three business days of the brief.</div>
+        <span class="plan">No contact form &mdash; phone, text and email instead</span>
+      </div>
+      <a class="go" href="demo-1.html">Open The Front Gate &rarr;</a>
+    </div>
+
+    <div class="card two">
+      <div class="hd">
+        <div class="kicker">Demo 2</div>
+        <h2>The Service Record</h2>
+        <div class="tag">Everything above, plus the thing that wins the next contract: proof of every visit, on one screen.</div>
+      </div>
+      <ul>
+        <li>Everything in The Front Gate</li>
+        <li>A quote request form that reaches your phone in a minute</li>
+        <li>Every request gets a reference number and an acknowledgement</li>
+        <li>A field log &mdash; submit the job from the site before you leave</li>
+        <li>Before-and-after photos attached to the job, date-stamped</li>
+        <li>A private portal for each client: schedule, service history, invoice status</li>
+        <li>Feeds the invoice builder you already have, so nothing is retyped</li>
+        <li>A capability statement page built for county purchasing officers</li>
+        <li>Your own domain &mdash; we register it and set every record</li>
+      </ul>
+      <div class="price">
+        <div class="big">$900 to build, then $20 a month</div>
+        <div class="note">Fifteen to twenty business days. The domain is $39 to set up and about
+          $12 a year after that, at cost. Sending email for the acknowledgements is included.
+          Payments, if you ever add them, go into your own account &mdash; we are never in that path.</div>
+        <span class="plan">Payment plan available &mdash; 30% to start, balance within 8 weeks</span>
+      </div>
+      <a class="go" href="demo-2.html">Open The Service Record &rarr;</a>
+    </div>
+
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="foot">
+    Prepared for Trojan K Services LLC by
+    <a href="https://nesohq.com" target="_blank" rel="noopener">NESO HQ LLC</a> &middot;
+    <a href="mailto:mallory@nesohq.com">mallory@nesohq.com</a> &middot; <a href="tel:+19012950322">(901) 295-0322</a><br>
+    <a href="https://nesohq.com/#/opportunities?source=examples" target="_blank" rel="noopener">Live bids and opportunities</a>, including janitorial and building-services contracts &middot;
+    <a href="https://deltacircle.nesohq.com/?source=examples" target="_blank" rel="noopener">Delta Circle</a> &middot;
+    <a href="/examples.html">All examples</a><br>
+    Both demos are samples and are not indexed by search engines.
+  </div>
+</div>
+
+</body>
+</html>
