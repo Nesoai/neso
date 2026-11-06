@@ -206,6 +206,7 @@ const fDate=iso=>{if(!iso)return"";const d=new Date(iso+"T12:00:00");if(isNaN(d)
 const fTime=t=>{if(!t)return"";const[h,m]=t.split(":").map(Number);if(isNaN(h))return t;const ap=h>=12?"PM":"AM";return((h%12)||12)+":"+String(m||0).padStart(2,"0")+" "+ap};
 const daysUntil=iso=>{if(!iso)return null;const a=new Date(todayISO()+"T12:00:00"),b=new Date(iso+"T12:00:00");return Math.round((b-a)/864e5)};
 const telHref=p=>"tel:"+String(p||"").replace(/[^0-9+]/g,"");
+const smsHref=(p,body)=>{let d=String(p||"").replace(/[^0-9+]/g,"");if(d&&d[0]!=="+"&&d.length===10)d="+1"+d;return"sms:"+d+"?&body="+encodeURIComponent(body)};
 const mapsHref=j=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent([j.address,j.city,j.state,j.zip].filter(Boolean).join(", "));
 const fullAddr=j=>[j.address,[j.city,j.state].filter(Boolean).join(", ")+(j.zip?" "+j.zip:"")].filter(s=>s&&s.trim()).join(", ");
 const visitLine=j=>{let s=fDate(j.visitDate);if(j.visitStart)s+=", "+fTime(j.visitStart)+(j.visitEnd?" – "+fTime(j.visitEnd):"");return s};
@@ -429,11 +430,12 @@ async function contractorPage(code){
     let shortened=false;
     if(href.length>1900){shortened=true;const shortBody="Quote for "+(j.ref||"")+" "+(j.title||"")+"\nCompany: "+q.company+"\nTotal: "+money(q.total)+"\nEarliest start: "+startText(q)+"\nJob length: "+durText(q)+"\n\nFull details are in the code below."+tail;
       href="mailto:"+encodeURIComponent(to)+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(shortBody)}
+    const smsBody="Quote for "+(j.ref||"")+" "+(j.title||"")+" from "+q.company+": "+money(q.total)+" ("+(q.priceType||"Fixed price")+"), start "+startText(q)+", "+durText(q)+". Full details: NESO-QUOTE:"+code+":END";
     app.innerHTML=`<section class="sheet">
       <span class="eyebrow">Almost done</span>
       <h1>Send your quote to NESO</h1>
-      <p style="margin:0">Tap the button to open an email to NESO with everything filled in, then press <b>Send</b> in your email app.</p>
-      <div class="row"><a class="btn primary big" href="${esc(href)}">Open email to NESO</a><button type="button" class="btn" data-act="cq-copy">Copy quote</button><button type="button" class="btn ghost" data-act="cq-edit">Make changes</button></div>
+      <p style="margin:0">Tap a button to open an email or a text to NESO with everything filled in, then press <b>Send</b>.</p>
+      <div class="row"><a class="btn primary big" href="${esc(href)}">Open email to NESO</a>${neso.phone?`<a class="btn big" href="${esc(smsHref(neso.phone,smsBody))}">Text it instead</a>`:""}<button type="button" class="btn" data-act="cq-copy">Copy quote</button><button type="button" class="btn ghost" data-act="cq-edit">Make changes</button></div>
       <div class="note"><b>If no email opens,</b> copy the quote and email it to <b style="user-select:all">${esc(to)}</b>, or text ${esc(neso.name||"NESO")} at <span style="user-select:all">${esc(neso.phone||"")}</span>.${shortened?" Your email will show a short summary plus a code that carries every detail.":""}</div>
       <textarea id="cqText" class="copyarea" readonly hidden aria-label="Quote text"></textarea>
       <div class="facts">
@@ -606,15 +608,16 @@ function viewJob(){
     ${cons.length?`<div class="sendlist">${cons.map(c=>{const s=sent.find(x=>x.cid===c.id);const has=qs.some(q=>q.cid===c.id);
       return`<div class="sendrow"><div class="who"><b>${esc(c.company||c.name)}</b>${c.company&&c.name?` <span class="muted">· ${esc(c.name)}</span>`:""}<div class="muted small">${esc([c.email,c.phone].filter(Boolean).join(" · ")||"No email or phone yet")}${(c.trades||[]).length?" · "+esc(c.trades.join(", ")):""}</div>
       ${s?`<div class="small" style="color:var(--good)">${has?"Quote received":"Sent "+esc(fDate((s.at||"").slice(0,10)))+(s.how?" by "+esc(s.how):"")}</div>`:""}</div>
-      <div class="row" style="gap:6px"><button class="btn" type="button" data-act="gmail-rfq" data-cid="${esc(c.id)}" ${c.email?"":"disabled title=\"Add an email for this contractor first\""}>Gmail draft</button><button class="btn" type="button" data-act="copy-rfq" data-cid="${esc(c.id)}">Copy email</button><button class="btn ghost" type="button" data-act="copy-link" data-cid="${esc(c.id)}">Copy link</button>${s?"":`<button class="btn ghost" type="button" data-act="mark-sent" data-cid="${esc(c.id)}">Mark sent</button>`}</div></div>`}).join("")}</div>`
+      <div class="row" style="gap:6px"><button class="btn" type="button" data-act="gmail-rfq" data-cid="${esc(c.id)}" ${c.email?"":"disabled title=\"Add an email for this contractor first\""}>Gmail draft</button><button class="btn" type="button" data-act="copy-rfq" data-cid="${esc(c.id)}">Copy email</button><button class="btn" type="button" data-act="text-rfq" data-cid="${esc(c.id)}">Text</button><button class="btn ghost" type="button" data-act="copy-link" data-cid="${esc(c.id)}">Copy link</button>${s?"":`<button class="btn ghost" type="button" data-act="mark-sent" data-cid="${esc(c.id)}">Mark sent</button>`}</div></div>`}).join("")}</div>`
     :`<p style="margin:0">Add the contractors you work with (TKS and others) once, then send each one this job in a click.</p><div><button class="btn primary" type="button" data-act="nav" data-v="contractors">Add contractors</button></div>`}
     <textarea id="copyFallback" class="copyarea" readonly hidden aria-label="Text to copy"></textarea>
-    <p class="muted small" style="margin:0">Each contractor gets their own link to the job sheet and quote form at ${esc(S.settings.formUrl)}. “Gmail draft” saves a draft in your Gmail for you to review and send.</p>
+    <div id="smsPanel"></div>
+    <p class="muted small" style="margin:0">Each contractor gets their own link to the job sheet and quote form at ${esc(S.settings.formUrl)}. “Gmail draft” saves a draft in your Gmail for you to review and send. “Text” writes a short text message with the link for you to send from your phone.</p>
   </section>
 
   <section class="stack">
     <div class="row between"><h2>2 · Quotes received</h2><div class="row"><button class="btn" type="button" data-act="addquote" data-id="${esc(j.id)}">Add a returned quote</button></div></div>
-    ${qs.length?compareHTML(j,qs):`<div class="empty"><p style="margin:0"><b style="color:var(--ink)">No quotes yet.</b> When a contractor sends their quote, NESO gets an email that ends with a quote code. Open “Add a returned quote”, paste the email, and it lands here side by side with the others.</p></div>`}
+    ${qs.length?compareHTML(j,qs):`<div class="empty"><p style="margin:0"><b style="color:var(--ink)">No quotes yet.</b> When a contractor sends their quote, NESO gets an email or text that ends with a quote code. Open “Add a returned quote”, paste it, and it lands here side by side with the others.</p></div>`}
   </section>
 
   ${qs.length?ownerSectionHTML(j,qs):""}
@@ -716,6 +719,15 @@ async function rfqEmail(j,c){
   <p>The form takes about five minutes on a phone. If you'd rather, reply to this email with your total price, earliest start date, how long the job will take, and what's included and not included.${j.routeThroughNeso!==false?" Please send pricing to NESO rather than the owner or tenant.":""}</p><p>Thank you,</p>`+sigHTML());
   return{to:c.email,subject:"Quote request: "+(j.title||"")+" — "+[j.city,j.state].filter(Boolean).join(", ")+(j.dueDate?" (due "+fDate(j.dueDate).replace(/^\w+, /,"")+")":""),html,text:T.join("\n"),link};
 }
+async function rfqText(j,c){
+  const link=await contractorLink(j,S.settings,c);const first=(c.name||"").split(" ")[0]||c.company||"";
+  const parts=["Hi"+(first?" "+first:"")+", this is "+S.settings.nesoName+" with NESO. We have a job for you to quote: "+(j.title||"")+(j.city?" in "+j.city:"")+"."];
+  if(j.visitDate)parts.push("Site visit "+visitLine(j)+(j.siteName?", meet "+j.siteName:"")+".");
+  if(j.dueDate)parts.push("Quote due "+fDate(j.dueDate)+".");
+  parts.push("Job details and the quote form: "+link);
+  parts.push("Or just text me back your price, start date and how long it'll take.");
+  return{text:parts.join(" "),link,phone:c.phone||""};
+}
 async function gmailDraft(mail){
   if(!S.mcp){toast("Gmail isn't available on this page right now. Use Copy email instead.");return false}
   try{const r=await S.mcp.callTool("Gmail","create_draft",{to:[mail.to],subject:mail.subject,body:mail.text,htmlBody:mail.html});
@@ -742,7 +754,7 @@ function viewAddQuote(){
   const j=jid?S.jobs[jid]:null;
   app.innerHTML=`
   <div class="row between"><h1>${editing?"Edit quote":"Add a returned quote"}</h1><button class="btn ghost" type="button" data-act="${j?"open":"nav"}" data-v="jobs" data-id="${esc(jid)}">Cancel</button></div>
-  ${editing?"":`<section class="panel stack"><h2>Paste the contractor's email</h2><p class="muted small" style="margin:0">Paste the whole email (or just the part from <b>NESO-QUOTE:</b> to <b>:END</b>). The job and every detail fill in for you.</p>
+  ${editing?"":`<section class="panel stack"><h2>Paste the contractor's email or text</h2><p class="muted small" style="margin:0">Paste the whole email or text message (or just the part from <b>NESO-QUOTE:</b> to <b>:END</b>). The job and every detail fill in for you.</p>
   <textarea id="pasteQuote" placeholder="Paste here" style="min-height:120px"></textarea><div class="row"><button class="btn primary" type="button" data-act="read-quote">Read quote</button><span id="pasteMsg" class="small"></span></div></section>
   <p class="muted" style="margin:0">Got the price by phone, text or a PDF instead? Pick the job and type it in below.</p>`}
   <label class="f" style="max-width:520px"><span class="req">Job</span><select id="qjob" ${editing?"disabled":""}><option value=""></option>${jobs.map(x=>`<option value="${esc(x.id)}"${x.id===jid?" selected":""}>${esc((x.ref||"")+" · "+(x.title||""))}</option>`).join("")}</select></label>
@@ -802,6 +814,14 @@ async function onDeskClick(e){
   if(a==="copy-link"){const c=S.contractors[b.dataset.cid];return copyText(await contractorLink(j,S.settings,c),$("#copyFallback"))}
   if(a==="copy-rfq"){const c=S.contractors[b.dataset.cid];const m=await rfqEmail(j,c);await copyText("Subject: "+m.subject+"\n\n"+m.text,$("#copyFallback"));return}
   if(a==="gmail-rfq"){const c=S.contractors[b.dataset.cid];b.disabled=true;const m=await rfqEmail(j,c);const ok=await gmailDraft(m);b.disabled=false;if(ok)await markSent(j,c.id,"Gmail draft");return}
+  if(a==="text-rfq"){const c=S.contractors[b.dataset.cid];const m=await rfqText(j,c);const panel=$("#smsPanel");
+    panel.innerHTML=`<div class="sheet" style="gap:10px;margin-top:8px"><div class="row between"><b style="color:var(--ink)">Text message to ${esc(c.company||c.name)}</b><button class="btn ghost" type="button" data-act="close-sms">Close</button></div>
+    <textarea id="smsText" readonly style="min-height:120px;font-size:14px">${esc(m.text)}</textarea>
+    <div class="row"><button class="btn primary" type="button" data-act="copy-sms" data-cid="${esc(c.id)}">Copy text message</button>${m.phone?`<a class="btn" href="${esc(smsHref(m.phone,m.text))}" data-act="open-sms" data-cid="${esc(c.id)}">Open in Messages</a>`:""}<span class="muted small">${m.phone?"Send to <span style=\"user-select:all\">"+esc(m.phone)+"</span>":"Add a phone number for this contractor on the Contractors screen."}</span></div>
+    <p class="muted small" style="margin:0">“Open in Messages” works on a phone, or on a Mac linked to your iPhone. If nothing opens, copy the message and paste it into a text. The link is long because it carries the whole job; phones send it fine.</p></div>`;panel.scrollIntoView({block:"nearest",behavior:"smooth"});return}
+  if(a==="copy-sms"){const ok=await copyText($("#smsText").value,$("#smsText"));if(ok)await markSent(j,b.dataset.cid,"text");return}
+  if(a==="open-sms"){await markSent(j,b.dataset.cid,"text");return}
+  if(a==="close-sms"){$("#smsPanel").innerHTML="";return}
   if(a==="mark-sent"){await markSent(j,b.dataset.cid,"");toast("Marked as sent");return}
   if(a==="del-job"){const box=$("#delConfirm");box.innerHTML=` <span class="small">Delete this request and its quotes? </span><button class="btn danger" type="button" data-act="del-job-yes">Delete</button>`;return}
   if(a==="del-job-yes"){const id=S.id;for(const q of jobQuotes(id))await remove("quotes",q.id);await remove("jobs",id);delete S.jobs[id];toast("Deleted");return go("jobs")}
