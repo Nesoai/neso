@@ -1,0 +1,856 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>NESO Request for Quote</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Poppins:wght@400;500;600&display=swap">
+<style>
+/* Layout: a purple NESO band on top, one centered working column below; the desk lists jobs, the contractor sees one job sheet with the quote form under it. */
+:root{
+  --band:#3D1A5C; --accent:#5B2A86; --accent-btn:#5B2A86; --on-accent:#FFFFFF;
+  --gold:#E7B84B; --gold-soft:#FDF7E7; --gold-ink:#7A5A12;
+  --ink:#16141A; --text:#3E3947; --muted:#6E6878; --line:#E4DEEA;
+  --bg:#FFFFFF; --panel:#F7F3FB; --field:#FFFFFF;
+  --good:#2F6B4F; --good-soft:#E8F2EC; --bad:#9B2C2C; --bad-soft:#F7E6E6;
+  --f-display:"Lora",Georgia,"Times New Roman",serif;
+  --f-body:"Poppins",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --r:8px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --band:#2A1240; --accent:#C9A2EC; --accent-btn:#8450B5; --on-accent:#FFFFFF;
+  --gold:#E7B84B; --gold-soft:#33290F; --gold-ink:#F0CF7E;
+  --ink:#F3EEF8; --text:#D8D1E1; --muted:#A49CB0; --line:#382F42;
+  --bg:#131017; --panel:#1D1823; --field:#1A1520;
+  --good:#86CDA7; --good-soft:#16271E; --bad:#EE9A9A; --bad-soft:#2E1616; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --band:#2A1240; --accent:#C9A2EC; --accent-btn:#8450B5; --on-accent:#FFFFFF;
+  --gold:#E7B84B; --gold-soft:#33290F; --gold-ink:#F0CF7E;
+  --ink:#F3EEF8; --text:#D8D1E1; --muted:#A49CB0; --line:#382F42;
+  --bg:#131017; --panel:#1D1823; --field:#1A1520;
+  --good:#86CDA7; --good-soft:#16271E; --bad:#EE9A9A; --bad-soft:#2E1616; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:15px;line-height:1.55}
+a{color:var(--accent)}
+h1,h2,h3{color:var(--ink);text-wrap:balance;margin:0}
+h1{font-family:var(--f-display);font-weight:600;font-size:clamp(24px,4vw,32px);line-height:1.2}
+h2{font-family:var(--f-display);font-weight:600;font-size:21px;line-height:1.3}
+h3{font-size:15px;font-weight:600}
+.band{background:var(--band);color:#fff}
+.band-in{max-width:980px;margin:0 auto;padding-block:14px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.mark{display:flex;flex-direction:column;gap:4px}
+.mark b{font-family:var(--f-display);font-size:20px;letter-spacing:.06em}
+.mark i{display:flex;gap:0;height:3px}
+.mark i::before{content:"";width:44px;background:#B48AD9}
+.mark i::after{content:"";width:24px;background:var(--gold)}
+.band small{opacity:.8;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+.nav button{background:transparent;border:1px solid transparent;color:#fff;font:inherit;font-size:14px;padding:6px 12px;border-radius:999px;cursor:pointer;opacity:.85}
+.nav button[aria-current="true"]{border-color:rgba(255,255,255,.45);opacity:1}
+.nav button:hover{opacity:1}
+.wrap{max-width:980px;margin:0 auto;padding-block:24px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:20px}
+.wrap.narrow{max-width:780px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.row.between{justify-content:space-between}
+.stack{display:flex;flex-direction:column;gap:12px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.btn{font:inherit;font-size:14px;font-weight:500;border-radius:var(--r);padding:9px 16px;cursor:pointer;border:1px solid var(--line);background:var(--bg);color:var(--ink);display:inline-flex;align-items:center;gap:6px;text-decoration:none;min-height:40px}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent-btn);border-color:var(--accent-btn);color:var(--on-accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--accent);padding-inline:8px}
+.btn.danger{color:var(--bad)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.big{font-size:16px;padding:12px 22px;min-height:48px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.panel{background:var(--panel);border-radius:var(--r);padding:18px}
+.sheet{border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:18px;background:var(--bg)}
+.note{border-left:3px solid var(--gold);background:var(--gold-soft);color:var(--text);padding:12px 14px;border-radius:0 var(--r) var(--r) 0}
+.note b{color:var(--ink)}
+.note.good{border-color:var(--good);background:var(--good-soft)}
+.note.bad{border-color:var(--bad);background:var(--bad-soft)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:2px 10px;border-radius:999px;border:1px solid var(--line);color:var(--text);white-space:nowrap}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--muted)}
+.pill.s-draft::before{background:var(--muted)}
+.pill.s-out::before,.pill.s-new::before{background:var(--gold)}
+.pill.s-quotes::before,.pill.s-shortlist::before{background:var(--accent)}
+.pill.s-owner::before{background:#4F7FD9}
+.pill.s-awarded::before,.pill.s-selected::before{background:var(--good)}
+.pill.s-closed::before,.pill.s-passed::before{background:var(--bad)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px 22px}
+.fact{display:flex;flex-direction:column;gap:2px;min-width:0}
+.fact .k{font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.fact .v{color:var(--ink);overflow-wrap:anywhere}
+.fact .v a{font-weight:500}
+.prose{white-space:pre-wrap;overflow-wrap:anywhere;max-width:68ch}
+.items{width:100%;border-collapse:collapse;font-size:14px}
+.items th{text-align:left;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:6px 8px;border-bottom:1px solid var(--line)}
+.items td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+.items td.num,.items th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.checks{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.checks li{display:flex;gap:8px;align-items:flex-start}
+.checks li::before{content:"";flex:none;width:8px;height:8px;margin-top:8px;border-radius:2px;background:var(--accent)}
+/* forms */
+form{display:flex;flex-direction:column;gap:22px}
+fieldset{border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;min-width:0}
+legend{font-family:var(--f-display);font-size:19px;font-weight:600;color:var(--ink);padding:0;margin-bottom:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.grid.three{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+label.f{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:500;color:var(--ink);min-width:0}
+label.f .hint{font-weight:400;color:var(--muted);font-size:12px}
+input[type=text],input[type=email],input[type=tel],input[type=date],input[type=time],input[type=number],input[type=url],select,textarea{font:inherit;font-size:15px;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:6px;padding:9px 11px;width:100%;min-height:42px}
+textarea{min-height:92px;resize:vertical;line-height:1.5}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.req::after{content:" *";color:var(--bad)}
+.cb{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--text);cursor:pointer}
+.cb input{width:18px;height:18px;margin-top:2px;accent-color:var(--accent-btn);flex:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px;cursor:pointer;color:var(--text)}
+.chip input:checked+span{background:var(--accent-btn);border-color:var(--accent-btn);color:var(--on-accent)}
+.chip input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.itemrow{display:grid;grid-template-columns:1fr 170px 40px;gap:8px;align-items:start}
+.pricerow{display:grid;grid-template-columns:1fr 150px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.pricerow .d{min-width:0;overflow-wrap:anywhere}
+.money{position:relative}
+.money::before{content:"$";position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.money input{padding-left:24px;text-align:right;font-variant-numeric:tabular-nums}
+.total{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px;border-radius:var(--r);background:var(--panel)}
+.total .money{width:200px;max-width:100%}
+.total .money input{font-size:20px;font-weight:600}
+.err{color:var(--bad);font-size:13px}
+.sticky-submit{position:sticky;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding-block:12px calc(12px + env(safe-area-inset-bottom,0px));display:flex;gap:12px;align-items:center;flex-wrap:wrap;z-index:5}
+/* jobs list */
+.jobs{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.job{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 16px;padding:14px 4px;border-bottom:1px solid var(--line);cursor:pointer;text-align:left;background:none;border-left:0;border-right:0;border-top:0;font:inherit;color:inherit;width:100%}
+.job:hover{background:var(--panel)}
+.job .t{font-weight:600;color:var(--ink);font-size:16px}
+.job .meta{font-size:13px;color:var(--muted);display:flex;gap:6px 14px;flex-wrap:wrap}
+.job .right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;font-size:13px}
+.ref{font-variant-numeric:tabular-nums;font-size:12px;color:var(--muted);letter-spacing:.04em}
+.due-late{color:var(--bad);font-weight:500}
+.due-soon{color:var(--gold-ink);font-weight:500}
+/* compare */
+.cmp{border-collapse:collapse;font-size:14px;min-width:100%}
+.cmp th,.cmp td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;min-width:170px}
+.cmp th:first-child,.cmp td:first-child{min-width:130px;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;position:sticky;left:0;background:var(--bg)}
+.cmp .big{font-size:20px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.cmp .low{color:var(--good);font-size:12px;font-weight:600}
+.cmp input,.cmp select{min-height:36px;padding:6px 8px;font-size:14px}
+.sendlist{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+.sendrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}
+.sendrow .who{min-width:0}
+.sendrow .who b{color:var(--ink)}
+.linkbox{font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;z-index:50;max-width:calc(100% - 32px)}
+.copyarea{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;min-height:160px}
+.empty{padding:28px;text-align:left;border:1px dashed var(--line);border-radius:var(--r);display:flex;flex-direction:column;gap:10px}
+.owner-prev{border:1px solid var(--line);border-radius:var(--r);padding:20px;background:var(--bg)}
+.opt{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+.opt h3{font-family:var(--f-display);font-size:18px}
+.opt .price{font-size:22px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+footer.foot{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:560px){
+  .itemrow{grid-template-columns:1fr 40px}
+  .itemrow .qty{grid-column:1/2}
+  .pricerow{grid-template-columns:1fr 120px}
+  .job{grid-template-columns:1fr}
+  .job .right{align-items:flex-start;flex-direction:row;flex-wrap:wrap}
+  .sendrow{grid-template-columns:1fr}
+}
+@media print{
+  .band,.nav,.noprint,.sticky-submit{display:none!important}
+  body{background:#fff;color:#000}
+  .sheet{border:0;padding:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="band"><div class="band-in">
+  <div class="mark"><b>NESO</b><i></i></div>
+  <small id="bandLabel">Request for quote</small>
+  <nav class="nav" id="nav" hidden>
+    <button type="button" data-act="nav" data-v="jobs">Jobs</button>
+    <button type="button" data-act="nav" data-v="contractors">Contractors</button>
+    <button type="button" data-act="nav" data-v="settings">Settings</button>
+  </nav>
+</div></header>
+<main id="app" class="wrap"><p class="muted">Loading…</p></main>
+<div id="toast" class="toast" role="status" hidden></div>
+
+<script>
+(function(){
+"use strict";
+/* ---------- defaults ---------- */
+const DEFAULTS={formUrl:"https://nesohq.com/quote.html",company:"NESO HQ LLC",nesoName:"Mallory Bailey",nesoPhone:"(901) 295-0322",nesoEmail:"mallory@nesohq.com",website:"nesohq.com"};
+const WORK_TYPES=["Renovation","Landscape","Hardscape","Painting","Flooring","Roofing","Plumbing","Electrical","HVAC","Cleanup / hauling","Other"];
+const JOB_STATUS=[["draft","Draft"],["out","Out for quotes"],["quotes","Quotes in"],["owner","Sent to owner"],["awarded","Awarded"],["closed","Closed"]];
+const Q_STATUS=[["new","New"],["shortlist","Shortlist"],["selected","Selected"],["passed","Passed"]];
+const PERMITS=["Contractor pulls any permits","Owner pulls permits","No permits expected","Not sure — contractor to advise"];
+const MATERIALS=["Contractor supplies all materials","Owner supplies some materials (see notes)","Contractor to advise"];
+const PRICE_TYPES=["Fixed price","Estimate","Not-to-exceed","Time and materials"];
+
+/* ---------- small helpers ---------- */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const app=$("#app");
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const rid=(n=10)=>{const a="abcdefghijkmnpqrstuvwxyz23456789";let s="";const b=crypto.getRandomValues(new Uint8Array(n));b.forEach(x=>s+=a[x%a.length]);return s};
+const num=v=>{const n=parseFloat(String(v==null?"":v).replace(/[^0-9.\-]/g,""));return isFinite(n)?n:null};
+const money=v=>{const n=num(v);return n==null?"—":"$"+n.toLocaleString("en-US",{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2})};
+const todayISO=()=>{const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)};
+const addDays=(iso,n)=>{const d=new Date(iso+"T12:00:00");d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
+const fDate=iso=>{if(!iso)return"";const d=new Date(iso+"T12:00:00");if(isNaN(d))return iso;return d.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric",year:"numeric"})};
+const fTime=t=>{if(!t)return"";const[h,m]=t.split(":").map(Number);if(isNaN(h))return t;const ap=h>=12?"PM":"AM";return((h%12)||12)+":"+String(m||0).padStart(2,"0")+" "+ap};
+const daysUntil=iso=>{if(!iso)return null;const a=new Date(todayISO()+"T12:00:00"),b=new Date(iso+"T12:00:00");return Math.round((b-a)/864e5)};
+const telHref=p=>"tel:"+String(p||"").replace(/[^0-9+]/g,"");
+const mapsHref=j=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent([j.address,j.city,j.state,j.zip].filter(Boolean).join(", "));
+const fullAddr=j=>[j.address,[j.city,j.state].filter(Boolean).join(", ")+(j.zip?" "+j.zip:"")].filter(s=>s&&s.trim()).join(", ");
+const visitLine=j=>{let s=fDate(j.visitDate);if(j.visitStart)s+=", "+fTime(j.visitStart)+(j.visitEnd?" – "+fTime(j.visitEnd):"");return s};
+function toast(msg){const t=$("#toast");t.textContent=msg;t.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>t.hidden=true,3200)}
+async function copyText(text,fallbackEl){
+  try{await navigator.clipboard.writeText(text);toast("Copied");return true}
+  catch(e){if(fallbackEl){fallbackEl.hidden=false;fallbackEl.value=text;fallbackEl.focus();fallbackEl.select()}toast("Select the text and copy it");return false}
+}
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+
+/* ---------- compact codes for links and returned quotes ---------- */
+const b64u={enc(bytes){let s="";for(let i=0;i<bytes.length;i++)s+=String.fromCharCode(bytes[i]);return btoa(s).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")},
+  dec(str){str=str.replace(/-/g,"+").replace(/_/g,"/");while(str.length%4)str+="=";const bin=atob(str);const out=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)out[i]=bin.charCodeAt(i);return out}};
+async function pack(obj){
+  const raw=new TextEncoder().encode(JSON.stringify(obj));
+  if(typeof CompressionStream!=="undefined"){try{const s=new Blob([raw]).stream().pipeThrough(new CompressionStream("deflate-raw"));return"z"+b64u.enc(new Uint8Array(await new Response(s).arrayBuffer()))}catch(e){}}
+  return"j"+b64u.enc(raw);
+}
+async function unpack(code){
+  code=String(code).replace(/[\s>]/g,"");
+  const kind=code[0];let bytes=b64u.dec(code.slice(1));
+  if(kind==="z"){const s=new Blob([bytes]).stream().pipeThrough(new DecompressionStream("deflate-raw"));bytes=new Uint8Array(await new Response(s).arrayBuffer())}
+  else if(kind!=="j")throw new Error("Unknown code");
+  return JSON.parse(new TextDecoder().decode(bytes));
+}
+const PUBLIC_JOB_FIELDS=["id","ref","title","workTypes","propType","occupied","address","city","state","zip","scope","items","visitDate","visitStart","visitEnd","visitAlt","siteName","siteRole","sitePhone","siteEmail","access","callAhead","dueDate","targetStart","targetFinish","permits","materials","reqLicense","reqInsurance","reqCleanup","reqPhotos","reqLineItems","routeThroughNeso","links","notes"];
+function publicJob(job,settings,contractor){
+  const p={v:1};PUBLIC_JOB_FIELDS.forEach(k=>{if(job[k]!==undefined&&job[k]!==""&&!(Array.isArray(job[k])&&!job[k].length))p[k]=job[k]});
+  p.neso={company:settings.company,name:settings.nesoName,phone:settings.nesoPhone,email:settings.nesoEmail,website:settings.website};
+  if(contractor)p.to={cid:contractor.id,name:contractor.name||"",company:contractor.company||"",email:contractor.email||"",phone:contractor.phone||""};
+  return p;
+}
+async function contractorLink(job,settings,contractor){return(settings.formUrl||DEFAULTS.formUrl)+"#r="+await pack(publicJob(job,settings,contractor))}
+
+/* ---------- shared renderers: job sheet + quote form (used by desk and contractor page) ---------- */
+function jobSheetHTML(j,opts={}){
+  const neso=j.neso||{};
+  const items=(j.items||[]).filter(i=>i&&i.d);
+  const reqs=[];
+  if(j.permits)reqs.push("Permits: "+j.permits);
+  if(j.materials)reqs.push("Materials: "+j.materials);
+  if(j.reqLicense)reqs.push("Include your contractor license number");
+  if(j.reqInsurance)reqs.push("Certificate of insurance (general liability; workers' comp if you have employees) before work starts");
+  if(j.reqCleanup)reqs.push("Daily cleanup and haul-away of debris included in price");
+  if(j.reqPhotos)reqs.push("Before and after photos of the work");
+  if(j.reqLineItems&&items.length)reqs.push("Price each line item separately");
+  const links=String(j.links||"").split(/\n+/).map(s=>s.trim()).filter(Boolean);
+  const due=j.dueDate?daysUntil(j.dueDate):null;
+  return `
+  <section class="sheet" aria-label="Job details">
+    <div class="stack" style="gap:6px">
+      <div class="row between"><span class="eyebrow">Request for quote${j.ref?" · "+esc(j.ref):""}</span>${opts.extra||""}</div>
+      <h1>${esc(j.title||"Untitled job")}</h1>
+      ${(j.workTypes||[]).length?`<div class="chips">${j.workTypes.map(w=>`<span class="pill">${esc(w)}</span>`).join("")}</div>`:""}
+    </div>
+    ${j.dueDate?`<div class="note"><b>Quote due ${esc(fDate(j.dueDate))}</b>${due!=null&&due>=0?` <span class="muted">(${due===0?"today":due===1?"tomorrow":"in "+due+" days"})</span>`:""}. ${j.routeThroughNeso!==false?"Please send your price to NESO, not to the owner or tenant. We share it with the property owner.":""}</div>`:""}
+    <div class="facts">
+      <div class="fact"><span class="k">Property</span><span class="v">${esc(fullAddr(j))||"—"}${fullAddr(j)?`<br><a href="${esc(mapsHref(j))}" target="_blank" rel="noopener">Open in Maps</a>`:""}</span></div>
+      <div class="fact"><span class="k">Site visit</span><span class="v">${esc(visitLine(j))||"Call to set a time"}${j.visitAlt?`<br><span class="muted small">Other times: ${esc(j.visitAlt)}</span>`:""}</span></div>
+      <div class="fact"><span class="k">Meet on site</span><span class="v">${esc(j.siteName||"—")}${j.siteRole?` <span class="muted">· ${esc(j.siteRole)}</span>`:""}${j.sitePhone?`<br><a href="${esc(telHref(j.sitePhone))}">${esc(j.sitePhone)}</a>`:""}${j.siteEmail?`<br><span class="small">${esc(j.siteEmail)}</span>`:""}</span></div>
+      <div class="fact"><span class="k">Property type</span><span class="v">${esc([j.propType,j.occupied].filter(Boolean).join(" · ")||"—")}</span></div>
+      ${(j.targetStart||j.targetFinish)?`<div class="fact"><span class="k">Owner's timing</span><span class="v">${j.targetStart?"Start around "+esc(fDate(j.targetStart)):""}${j.targetStart&&j.targetFinish?"<br>":""}${j.targetFinish?"Finish by "+esc(fDate(j.targetFinish)):""}</span></div>`:""}
+      <div class="fact"><span class="k">NESO contact</span><span class="v">${esc(neso.name||"")}${neso.phone?`<br><a href="${esc(telHref(neso.phone))}">${esc(neso.phone)}</a>`:""}${neso.email?`<br><span class="small">${esc(neso.email)}</span>`:""}</span></div>
+    </div>
+    ${j.callAhead||j.access?`<div class="note"><b>Getting in.</b> ${j.callAhead?"Call the site contact before you go. ":""}${esc(j.access||"")}</div>`:""}
+    <div class="stack"><h2>Scope of work</h2><div class="prose">${esc(j.scope||"See line items.")}</div></div>
+    ${items.length?`<div class="scroll"><table class="items"><thead><tr><th style="width:40px">#</th><th>Item</th><th>Quantity / size</th></tr></thead><tbody>${items.map((it,i)=>`<tr><td class="muted">${i+1}</td><td>${esc(it.d)}</td><td>${esc(it.q||"")}</td></tr>`).join("")}</tbody></table></div>`:""}
+    ${reqs.length?`<div class="stack"><h3>What to include</h3><ul class="checks">${reqs.map(r=>`<li>${esc(r)}</li>`).join("")}</ul></div>`:""}
+    ${j.notes?`<div class="stack"><h3>Notes from NESO</h3><div class="prose">${esc(j.notes)}</div></div>`:""}
+    ${links.length?`<div class="stack"><h3>Photos, plans and files</h3><ul class="checks">${links.map(l=>/^https?:\/\//i.test(l)?`<li><a href="${esc(l)}" target="_blank" rel="noopener">${esc(l)}</a></li>`:`<li>${esc(l)}</li>`).join("")}</ul></div>`:""}
+  </section>`;
+}
+
+function quoteFormHTML(j,q,mode){
+  q=q||{};const items=(j.items||[]).filter(i=>i&&i.d);const ip=q.itemPrices||[];
+  const to=j.to||{};
+  const v=(k,d="")=>esc(q[k]!=null&&q[k]!==""?q[k]:d);
+  return `
+  <form id="qform" novalidate>
+    <fieldset>
+      <legend>Your company</legend>
+      <div class="grid">
+        <label class="f"><span class="req">Company name</span><input type="text" id="q_company" name="company" value="${v("company",to.company)}" autocomplete="organization"></label>
+        <label class="f"><span class="req">Your name</span><input type="text" id="q_contact" name="contact" value="${v("contact",to.name)}" autocomplete="name"></label>
+        <label class="f"><span class="req">Phone</span><input type="tel" id="q_phone" name="phone" value="${v("phone",to.phone)}" autocomplete="tel"></label>
+        <label class="f"><span>Email</span><input type="email" id="q_email" name="email" value="${v("email",to.email)}" autocomplete="email"></label>
+        <label class="f"><span${j.reqLicense?' class="req"':""}>License number</span><input type="text" id="q_license" name="license" value="${v("license")}"></label>
+        <label class="f"><span>Insurance</span><select id="q_insured" name="insured">${["","Insured — can send certificate","Insured — certificate on file with NESO","Not insured"].map(o=>`<option${(q.insured||"")===o?" selected":""}>${esc(o)}</option>`).join("")}</select></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Your price</legend>
+      <div class="grid three">
+        <label class="f"><span>Date you visited the site</span><input type="date" id="q_visited" name="visited" value="${v("visited")}"></label>
+        <label class="f"><span>Type of price</span><select id="q_priceType" name="priceType">${PRICE_TYPES.map(o=>`<option${(q.priceType||"Fixed price")===o?" selected":""}>${esc(o)}</option>`).join("")}</select></label>
+        <label class="f"><span>Price good until</span><input type="date" id="q_validUntil" name="validUntil" value="${v("validUntil",addDays(todayISO(),30))}"></label>
+      </div>
+      ${items.length?`<div class="stack" style="gap:0">
+        <span class="eyebrow">Price by line item ${j.reqLineItems?"":"<span class=\"muted\" style=\"text-transform:none;letter-spacing:0;font-weight:400\">(optional)</span>"}</span>
+        ${items.map((it,i)=>`<div class="pricerow"><div class="d">${i+1}. ${esc(it.d)}${it.q?` <span class="muted small">· ${esc(it.q)}</span>`:""}</div><div class="money"><input type="text" inputmode="decimal" id="q_ip${i}" data-ip="${i}" value="${esc(ip[i]!=null?ip[i]:"")}" aria-label="Price for item ${i+1}"></div></div>`).join("")}
+        <div class="pricerow"><div class="d">Anything else not listed above <span class="muted small">(describe in “Included”)</span></div><div class="money"><input type="text" inputmode="decimal" id="q_other" name="other" value="${v("other")}" aria-label="Other cost"></div></div>
+      </div>`:""}
+      <div class="total"><div><b style="color:var(--ink)" class="req">Total price</b><div class="muted small" id="sumHint"></div></div><div class="money"><input type="text" inputmode="decimal" id="q_total" name="total" value="${v("total")}" aria-label="Total price" ${q.total?'data-touched="1"':""}></div></div>
+      <label class="f"><span>Deposit and payment terms</span><input type="text" id="q_deposit" name="deposit" value="${v("deposit")}" placeholder="e.g. 30% to schedule, balance on completion"></label>
+    </fieldset>
+    <fieldset>
+      <legend>When you can do it</legend>
+      <div class="grid three">
+        <label class="f"><span>Earliest start date</span><input type="date" id="q_earliestStart" name="earliestStart" value="${v("earliestStart")}"></label>
+        <label class="f"><span>Or: how soon after approval</span><input type="text" id="q_startWithin" name="startWithin" value="${v("startWithin")}" placeholder="e.g. within 2 weeks"></label>
+        <label class="f"><span class="req">How long the job takes</span><div class="row" style="gap:8px;flex-wrap:nowrap"><input type="number" min="0" step="0.5" id="q_duration" name="duration" value="${v("duration")}" style="flex:1"><select id="q_durationUnit" name="durationUnit" style="width:auto">${["days","weeks","hours"].map(o=>`<option${(q.durationUnit||"days")===o?" selected":""}>${o}</option>`).join("")}</select></div></label>
+        <label class="f"><span>Crew size</span><input type="number" min="0" id="q_crew" name="crew" value="${v("crew")}"></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Details for the owner</legend>
+      <label class="f"><span>What's included</span><textarea id="q_included" name="included" placeholder="Labor, materials, disposal, permits…">${v("included")}</textarea></label>
+      <label class="f"><span>What's not included</span><textarea id="q_excluded" name="excluded" placeholder="Anything the owner should expect to handle or pay for separately">${v("excluded")}</textarea></label>
+      <label class="f"><span>What you found on site <span class="hint">Damage, hidden problems, access issues, anything that could change the price</span></span><textarea id="q_findings" name="findings">${v("findings")}</textarea></label>
+      <label class="f"><span>Options or upgrades <span class="hint">With a price for each, if you'd suggest any</span></span><textarea id="q_alternates" name="alternates">${v("alternates")}</textarea></label>
+      <div class="grid">
+        <label class="f"><span>Warranty</span><input type="text" id="q_warranty" name="warranty" value="${v("warranty")}" placeholder="e.g. 1 year labor; manufacturer on materials"></label>
+        <label class="f"><span>Link to your photos or written quote</span><input type="url" id="q_photos" name="photos" value="${v("photos")}" placeholder="Google Drive, Dropbox, iCloud…"></label>
+      </div>
+      <label class="f"><span>Questions for NESO or the owner</span><textarea id="q_questions" name="questions" style="min-height:70px">${v("questions")}</textarea></label>
+    </fieldset>
+    ${mode==="desk"?`<fieldset><legend>NESO only</legend><label class="f"><span>Internal note</span><textarea id="q_nesoNote" name="nesoNote" style="min-height:60px">${v("nesoNote")}</textarea></label></fieldset>`:`
+    <fieldset>
+      <legend>Confirm</legend>
+      <label class="cb"><input type="checkbox" id="q_ack1" name="ackShare" ${q.ackShare?"checked":""}><span>NESO may share this quote with the property owner.</span></label>
+      <label class="cb"><input type="checkbox" id="q_ack2" name="ackNoStart" ${q.ackNoStart?"checked":""}><span>I understand this is not an approval to start. I won't start work or buy materials until NESO confirms in writing.</span></label>
+      <label class="f"><span class="req">Type your name to sign</span><input type="text" id="q_sign" name="signName" value="${v("signName")}"></label>
+    </fieldset>`}
+    <div id="qerr" class="err" hidden></div>
+  </form>`;
+}
+function wireQuoteForm(root){
+  const total=$("#q_total",root);if(!total)return;
+  const ips=$$("[data-ip]",root),other=$("#q_other",root),hint=$("#sumHint",root);
+  total.addEventListener("input",()=>{total.dataset.touched=total.value?"1":""});
+  const recalc=()=>{let s=0,any=false;[...ips,other].forEach(i=>{if(!i)return;const n=num(i.value);if(n!=null){s+=n;any=true}});
+    if(!hint)return;if(!any){hint.textContent="";return}
+    hint.textContent="Line items add up to "+money(s);
+    if(total.dataset.touched!=="1")total.value=String(Math.round(s*100)/100)};
+  [...ips,other].forEach(i=>i&&i.addEventListener("input",recalc));recalc();
+}
+function readQuoteForm(root,j){
+  const f=$("#qform",root);const q={};
+  $$("input[name],select[name],textarea[name]",f).forEach(el=>{q[el.name]=el.type==="checkbox"?el.checked:el.value.trim()});
+  q.itemPrices=$$("[data-ip]",f).map(i=>i.value.trim());
+  q.itemLabels=(j.items||[]).filter(i=>i&&i.d).map(i=>i.d);
+  return q;
+}
+function validateQuote(q,j,mode){
+  const miss=[];
+  if(!q.company)miss.push("company name");
+  if(mode!=="desk"){if(!q.contact)miss.push("your name");if(!q.phone&&!q.email)miss.push("a phone or email");}
+  if(num(q.total)==null)miss.push("total price");
+  if(!q.duration)miss.push("how long the job takes");
+  if(mode!=="desk"){if(j.reqLicense&&!q.license)miss.push("license number");if(!q.ackShare||!q.ackNoStart)miss.push("both confirmation boxes");if(!q.signName)miss.push("your typed name");}
+  return miss;
+}
+const startText=q=>[q.earliestStart?fDate(q.earliestStart):"",q.startWithin||""].filter(Boolean).join(" · ")||"—";
+const durText=q=>q.duration?q.duration+" "+(q.durationUnit||"days"):"—";
+
+function quoteAsText(j,q){
+  const L=[];const add=(k,v)=>{if(v)L.push(k+": "+v)};
+  L.push("QUOTE FOR NESO — "+(j.ref||"")+" "+(j.title||""));
+  L.push(fullAddr(j));L.push("");
+  add("Company",q.company);add("Contact",q.contact);add("Phone",q.phone);add("Email",q.email);add("License",q.license);add("Insurance",q.insured);add("Site visited",q.visited?fDate(q.visited):"");
+  L.push("");add("TOTAL",money(q.total)+" ("+(q.priceType||"Fixed price")+")");
+  (q.itemLabels||[]).forEach((d,i)=>{if(q.itemPrices&&q.itemPrices[i])L.push("  "+(i+1)+". "+d+" — "+money(q.itemPrices[i]))});
+  if(q.other)L.push("  Other — "+money(q.other));
+  add("Deposit / terms",q.deposit);add("Price good until",q.validUntil?fDate(q.validUntil):"");
+  L.push("");add("Earliest start",startText(q));add("Job length",durText(q));add("Crew",q.crew);
+  const block=(k,v)=>{if(v){L.push("");L.push(k+":");L.push(v)}};
+  block("Included",q.included);block("Not included",q.excluded);block("Found on site",q.findings);block("Options",q.alternates);
+  add("Warranty",q.warranty);add("Photos / written quote",q.photos);block("Questions",q.questions);
+  if(q.signName){L.push("");L.push("Signed: "+q.signName+" on "+fDate(todayISO()))}
+  return L.join("\n");
+}
+
+/* ---------- CONTRACTOR PAGE ---------- */
+async function contractorPage(code){
+  $("#bandLabel").textContent="Request for quote";
+  let j;try{j=await unpack(code)}catch(e){app.className="wrap narrow";app.innerHTML=`<div class="note bad"><b>This link didn't open.</b> It may have been cut off when it was copied. Ask NESO to send it again, or reply to their email with your price.</div>`;return}
+  const neso=j.neso||DEFAULTS;const key="neso-quote-"+(j.id||j.ref);
+  let draft=store.get(key)||{};
+  const inArtifact=typeof window.claude!=="undefined";
+  app.className="wrap narrow";
+  const render=()=>{
+    app.innerHTML=jobSheetHTML(j,{extra:inArtifact?"":`<button type="button" class="btn ghost noprint" data-act="print">Print job sheet</button>`})+
+    `<section class="stack noprint" style="gap:16px"><div class="stack" style="gap:4px"><span class="eyebrow">After your site visit</span><h2>Send NESO your quote</h2><p class="muted" style="margin:0">Fill this in from your phone or computer. Your answers save on this device as you type, so you can come back to finish.</p></div>`+
+    quoteFormHTML(j,draft,"contractor")+
+    `<div class="sticky-submit"><button type="button" class="btn primary big" data-act="cq-submit">Review and send quote</button><span class="muted small">Questions? Call ${esc(neso.name||"NESO")} at <a href="${esc(telHref(neso.phone))}">${esc(neso.phone||"")}</a></span></div></section>
+    <footer class="foot">${esc(neso.company||"NESO HQ LLC")} · ${esc(neso.website||"nesohq.com")}. This request is not a contract or a promise of work.</footer>`;
+    wireQuoteForm(app);
+    $("#qform").addEventListener("input",()=>{draft=readQuoteForm(app,j);store.set(key,draft)});
+  };
+  render();
+  if(contractorPage._wired)return;contractorPage._wired=true;
+  app.addEventListener("click",async e=>{
+    const b=e.target.closest("[data-act]");if(!b)return;
+    if(b.dataset.act==="print"){window.print();return}
+    if(b.dataset.act==="cq-submit"){
+      const q=readQuoteForm(app,j);const miss=validateQuote(q,j,"contractor");const er=$("#qerr");
+      if(miss.length){er.hidden=false;er.textContent="Please add: "+miss.join(", ")+".";er.scrollIntoView({block:"center",behavior:"smooth"});return}
+      store.set(key,q);draft=q;await showSend(q);
+    }
+    if(b.dataset.act==="cq-edit"){render();window.scrollTo(0,0)}
+    if(b.dataset.act==="cq-copy"){copyText(b._text,$("#cqText"))}
+  });
+  async function showSend(q){
+    const payload={v:1,job:j.id,ref:j.ref,cid:(j.to||{}).cid||"",q:Object.assign({},q,{submittedAt:new Date().toISOString()})};
+    const code=await pack(payload);
+    const tail="\n\n— Do not edit below this line. NESO's quote desk reads it. —\nNESO-QUOTE:"+code+":END";
+    const subject="Quote: "+(j.ref?j.ref+" — ":"")+(j.title||"")+" — "+q.company;
+    let body=quoteAsText(j,q)+tail;
+    const to=neso.email||DEFAULTS.nesoEmail;
+    let href="mailto:"+encodeURIComponent(to)+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+    let shortened=false;
+    if(href.length>1900){shortened=true;const shortBody="Quote for "+(j.ref||"")+" "+(j.title||"")+"\nCompany: "+q.company+"\nTotal: "+money(q.total)+"\nEarliest start: "+startText(q)+"\nJob length: "+durText(q)+"\n\nFull details are in the code below."+tail;
+      href="mailto:"+encodeURIComponent(to)+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(shortBody)}
+    app.innerHTML=`<section class="sheet">
+      <span class="eyebrow">Almost done</span>
+      <h1>Send your quote to NESO</h1>
+      <p style="margin:0">Tap the button to open an email to NESO with everything filled in, then press <b>Send</b> in your email app.</p>
+      <div class="row"><a class="btn primary big" href="${esc(href)}">Open email to NESO</a><button type="button" class="btn" data-act="cq-copy">Copy quote</button><button type="button" class="btn ghost" data-act="cq-edit">Make changes</button></div>
+      <div class="note"><b>If no email opens,</b> copy the quote and email it to <b style="user-select:all">${esc(to)}</b>, or text ${esc(neso.name||"NESO")} at <span style="user-select:all">${esc(neso.phone||"")}</span>.${shortened?" Your email will show a short summary plus a code that carries every detail.":""}</div>
+      <textarea id="cqText" class="copyarea" readonly hidden aria-label="Quote text"></textarea>
+      <div class="facts">
+        <div class="fact"><span class="k">Total</span><span class="v" style="font-size:20px;font-weight:600">${esc(money(q.total))}</span></div>
+        <div class="fact"><span class="k">Earliest start</span><span class="v">${esc(startText(q))}</span></div>
+        <div class="fact"><span class="k">Job length</span><span class="v">${esc(durText(q))}</span></div>
+        <div class="fact"><span class="k">Price good until</span><span class="v">${esc(fDate(q.validUntil)||"—")}</span></div>
+      </div>
+      <p class="muted small" style="margin:0">NESO will review your quote with the owner and get back to you. Please don't start work or buy materials until NESO confirms in writing.</p>
+    </section>`;
+    $("[data-act=cq-copy]")._text=body;
+    window.scrollTo(0,0);
+  }
+}
+
+/* ---------- PUBLIC LANDING (site, no job in link) ---------- */
+function publicLanding(){
+  $("#bandLabel").textContent="Request for quote";
+  app.className="wrap narrow";
+  app.innerHTML=`<section class="sheet"><h1>Quote a NESO job</h1><p style="margin:0">This page opens from the link in a NESO quote request email. Tap the link in that email to see the job and send your price.</p><p class="muted" style="margin:0">If the link didn't work, paste it below.</p><div class="row" style="flex-wrap:nowrap"><input type="text" id="pasteLink" placeholder="Paste the full link here" aria-label="Quote request link"><button class="btn primary" type="button" id="openLink">Open</button></div></section>`;
+  $("#openLink").onclick=()=>{const m=$("#pasteLink").value.match(/#r=([A-Za-z0-9_\-]+)/);if(m){location.hash="r="+m[1];contractorPage(m[1])}else toast("That doesn't look like a NESO quote link")};
+}
+
+/* ---------- DESK ---------- */
+const S={db:null,mcp:null,jobs:{},quotes:{},contractors:{},settings:Object.assign({},DEFAULTS),view:"jobs",id:null,loaded:false,ownerOpts:{}};
+const sortedJobs=()=>Object.values(S.jobs).sort((a,b)=>(b.updatedAt||"").localeCompare(a.updatedAt||""));
+const jobQuotes=id=>Object.values(S.quotes).filter(q=>q.job===id).sort((a,b)=>(num(a.total)||0)-(num(b.total)||0));
+const statusPill=(list,v)=>{const s=list.find(x=>x[0]===v)||list[0];return`<span class="pill s-${s[0]}">${esc(s[1])}</span>`};
+function go(view,id){S.view=view;S.id=id||null;renderDesk();window.scrollTo(0,0)}
+function nextRef(){const d=todayISO().replace(/-/g,"").slice(2);const n=Object.values(S.jobs).filter(j=>(j.ref||"").includes(d)).length+1;return"RFQ-"+d+"-"+String(n).padStart(2,"0")}
+async function save(col,id,data){
+  if(!S.db){toast("Can't save: sign in to claude.ai to use the desk");throw new Error("no db")}
+  try{await S.db.collection(col).doc(id).set(data)}catch(e){toast("Save didn't go through: "+(e&&e.message||"try again"));throw e}
+}
+async function remove(col,id){try{await S.db.collection(col).doc(id).delete()}catch(e){toast("Couldn't delete: "+(e&&e.message||""));throw e}}
+
+async function desk(){
+  $("#nav").hidden=false;app.className="wrap";
+  app.innerHTML=`<div class="empty"><h2>Opening the quote desk…</h2><p class="muted" style="margin:0">Loading your jobs, contractors and quotes.</p></div>`;
+  let db=null;try{db=await window.claude.use("db")}catch(e){}
+  if(!db){app.innerHTML=`<div class="note"><b>Sign in to use the quote desk.</b> Jobs and quotes are saved to NESO's private desk, which needs a signed-in claude.ai account with access to this page. Contractors use the separate quote link and never need an account.</div>`;return}
+  S.db=db;
+  window.claude.use("mcp").then(m=>{S.mcp=m}).catch(()=>{});
+  let got=0;const done=()=>{if(++got>=3){S.loaded=true;clearTimeout(timer);renderDesk()}};
+  const timer=setTimeout(()=>{if(!S.loaded){S.loaded=true;renderDesk();toast("Still connecting — showing what's loaded")}},10000);
+  const sub=(col,key)=>db.collection(col).onSnapshot(snap=>{const m={};snap.docs.forEach(d=>{m[d.id]=Object.assign({id:d.id},d.data())});S[key]=m;if(!S.loaded)done();else renderDeskSoft()},err=>{toast("Lost connection to the desk: "+(err&&err.message||""));if(!S.loaded)done()});
+  sub("jobs","jobs");sub("quotes","quotes");sub("contractors","contractors");
+  db.doc("settings/main").onSnapshot(s=>{if(s.exists)S.settings=Object.assign({},DEFAULTS,s.data());if(S.loaded)renderDeskSoft()},()=>{});
+}
+function renderDeskSoft(){const a=document.activeElement;if(a&&a.closest&&a.closest("#app")&&/INPUT|TEXTAREA|SELECT/.test(a.tagName))return;if(S.view==="edit"||S.view==="addquote")return;renderDesk()}
+
+function renderDesk(){
+  $$("#nav button").forEach(b=>b.setAttribute("aria-current",String(b.dataset.v===S.view||(S.view!=="contractors"&&S.view!=="settings"&&b.dataset.v==="jobs"))));
+  const v=S.view;
+  if(v==="jobs")return viewJobs();
+  if(v==="edit")return viewEdit();
+  if(v==="job")return viewJob();
+  if(v==="preview")return viewPreview();
+  if(v==="addquote")return viewAddQuote();
+  if(v==="contractors")return viewContractors();
+  if(v==="settings")return viewSettings();
+}
+
+function viewJobs(){
+  const jobs=sortedJobs();
+  const open=jobs.filter(j=>!["awarded","closed"].includes(j.status));
+  const qIn=Object.values(S.quotes).filter(q=>(q.status||"new")==="new").length;
+  app.innerHTML=`
+  <div class="row between"><div class="stack" style="gap:2px"><h1>Quote requests</h1><span class="muted">${open.length} open · ${qIn} new ${qIn===1?"quote":"quotes"} to review</span></div>
+  <div class="row"><button class="btn" type="button" data-act="addquote">Add a returned quote</button><button class="btn primary" type="button" data-act="new">New quote request</button></div></div>
+  ${jobs.length?`<div class="jobs">${jobs.map(j=>{const qs=jobQuotes(j.id);const sent=(j.sent||[]).length;const d=daysUntil(j.dueDate);
+    const dueCls=d==null?"":d<0?"due-late":d<=2?"due-soon":"";
+    return`<button type="button" class="job" data-act="open" data-id="${esc(j.id)}">
+      <div class="stack" style="gap:3px;min-width:0"><span class="ref">${esc(j.ref||"")}</span><span class="t">${esc(j.title||"Untitled job")}</span>
+      <span class="meta"><span>${esc(fullAddr(j)||"No address yet")}</span>${j.visitDate?`<span>Visit ${esc(fDate(j.visitDate))}</span>`:""}</span></div>
+      <div class="right">${statusPill(JOB_STATUS,j.status)}<span class="muted">${sent} sent · ${qs.length} ${qs.length===1?"quote":"quotes"}</span>${j.dueDate?`<span class="${dueCls}">Due ${esc(fDate(j.dueDate))}</span>`:""}</div></button>`}).join("")}</div>`
+  :`<div class="empty"><h2>No quote requests yet</h2><p style="margin:0">Start one for a property: add the scope, the site-visit time and who meets the contractor. You'll get a link and an email for each contractor, and their quotes come back here to compare and share with the owner.</p><div><button class="btn primary" type="button" data-act="new">New quote request</button></div></div>`}`;
+}
+
+/* --- job editor --- */
+function itemRowHTML(it,i){return`<div class="itemrow" data-item><input type="text" aria-label="Item ${i+1}" placeholder="What needs doing" value="${esc(it.d||"")}" data-k="d"><input class="qty" type="text" aria-label="Quantity for item ${i+1}" placeholder="Qty / size" value="${esc(it.q||"")}" data-k="q"><button type="button" class="btn ghost danger" data-act="rm-item" aria-label="Remove item">✕</button></div>`}
+function viewEdit(){
+  const isNew=!S.id;const j=isNew?{id:rid(),ref:nextRef(),status:"draft",routeThroughNeso:true,reqInsurance:true,reqCleanup:true,dueDate:addDays(todayISO(),7),items:[]}:Object.assign({},S.jobs[S.id]);
+  const val=k=>esc(j[k]||"");const chk=k=>j[k]?"checked":"";
+  const sel=(id,opts,cur)=>`<select id="${id}" name="${id}"><option value=""></option>${opts.map(o=>`<option${cur===o?" selected":""}>${esc(o)}</option>`).join("")}</select>`;
+  app.innerHTML=`
+  <div class="row between"><div class="stack" style="gap:2px"><span class="ref">${esc(j.ref)}</span><h1>${isNew?"New quote request":"Edit quote request"}</h1></div><button type="button" class="btn ghost" data-act="${isNew?"nav":"open"}" data-v="jobs" data-id="${esc(j.id)}">Cancel</button></div>
+  <form id="jform" novalidate>
+    <fieldset><legend>The job</legend>
+      <label class="f"><span class="req">Job name</span><input type="text" id="title" name="title" value="${val("title")}" placeholder="e.g. Front yard refresh and porch repair"></label>
+      <div class="stack" style="gap:6px"><span class="eyebrow">Type of work</span><div class="chips">${WORK_TYPES.map(w=>`<label class="chip"><input type="checkbox" name="workTypes" value="${esc(w)}" ${(j.workTypes||[]).includes(w)?"checked":""}><span>${esc(w)}</span></label>`).join("")}</div></div>
+      <label class="f"><span class="req">Scope of work <span class="hint">What the owner wants done, in plain words. Contractors see this.</span></span><textarea id="scope" name="scope" style="min-height:130px">${val("scope")}</textarea></label>
+      <div class="stack" style="gap:8px"><span class="eyebrow">Line items <span class="muted" style="text-transform:none;letter-spacing:0;font-weight:400">(optional; lets you compare prices item by item)</span></span><div id="items" class="stack" style="gap:8px">${(j.items||[]).map(itemRowHTML).join("")}</div><div><button type="button" class="btn" data-act="add-item">Add line item</button></div></div>
+    </fieldset>
+    <fieldset><legend>Property</legend>
+      <div class="grid"><label class="f"><span class="req">Street address</span><input type="text" id="address" name="address" value="${val("address")}" autocomplete="off"></label>
+      <label class="f"><span>City</span><input type="text" id="city" name="city" value="${val("city")}"></label></div>
+      <div class="grid three"><label class="f"><span>State</span><input type="text" id="state" name="state" value="${val("state")}" maxlength="2" placeholder="TN"></label><label class="f"><span>ZIP</span><input type="text" id="zip" name="zip" value="${val("zip")}" inputmode="numeric"></label>
+      <label class="f"><span>Property type</span>${sel("propType",["Single-family home","Multi-family","Commercial","Vacant land","Other"],j.propType)}</label>
+      <label class="f"><span>Occupied?</span>${sel("occupied",["Vacant","Tenant lives there","Owner lives there","Business open during work"],j.occupied)}</label></div>
+    </fieldset>
+    <fieldset><legend>Site visit</legend>
+      <div class="grid three"><label class="f"><span>Visit date</span><input type="date" id="visitDate" name="visitDate" value="${val("visitDate")}"></label>
+      <label class="f"><span>From</span><input type="time" id="visitStart" name="visitStart" value="${val("visitStart")}"></label>
+      <label class="f"><span>Until</span><input type="time" id="visitEnd" name="visitEnd" value="${val("visitEnd")}"></label></div>
+      <label class="f"><span>Other times that work</span><input type="text" id="visitAlt" name="visitAlt" value="${val("visitAlt")}" placeholder="e.g. Any weekday after 3 PM; Saturday morning"></label>
+      <div class="grid"><label class="f"><span>Who to meet on site</span><input type="text" id="siteName" name="siteName" value="${val("siteName")}"></label>
+      <label class="f"><span>Their role</span><input type="text" id="siteRole" name="siteRole" value="${val("siteRole")}" placeholder="Owner, tenant, property manager…"></label>
+      <label class="f"><span>Their phone</span><input type="tel" id="sitePhone" name="sitePhone" value="${val("sitePhone")}"></label>
+      <label class="f"><span>Their email</span><input type="email" id="siteEmail" name="siteEmail" value="${val("siteEmail")}"></label></div>
+      <label class="f"><span>Access and parking <span class="hint">Gate or lockbox code, pets, where to park, what to avoid</span></span><textarea id="access" name="access" style="min-height:70px">${val("access")}</textarea></label>
+      <label class="cb"><input type="checkbox" id="callAhead" name="callAhead" ${chk("callAhead")}><span>Contractor must call the site contact before going</span></label>
+    </fieldset>
+    <fieldset><legend>Timing and requirements</legend>
+      <div class="grid three"><label class="f"><span class="req">Quote due</span><input type="date" id="dueDate" name="dueDate" value="${val("dueDate")}"></label>
+      <label class="f"><span>Owner wants to start</span><input type="date" id="targetStart" name="targetStart" value="${val("targetStart")}"></label>
+      <label class="f"><span>Finish by</span><input type="date" id="targetFinish" name="targetFinish" value="${val("targetFinish")}"></label></div>
+      <div class="grid"><label class="f"><span>Permits</span>${sel("permits",PERMITS,j.permits)}</label><label class="f"><span>Materials</span>${sel("materials",MATERIALS,j.materials)}</label></div>
+      <div class="stack" style="gap:8px">
+        <label class="cb"><input type="checkbox" id="reqLicense" name="reqLicense" ${chk("reqLicense")}><span>Require a contractor license number</span></label>
+        <label class="cb"><input type="checkbox" id="reqInsurance" name="reqInsurance" ${chk("reqInsurance")}><span>Require a certificate of insurance before work starts</span></label>
+        <label class="cb"><input type="checkbox" id="reqCleanup" name="reqCleanup" ${chk("reqCleanup")}><span>Cleanup and haul-away included in price</span></label>
+        <label class="cb"><input type="checkbox" id="reqPhotos" name="reqPhotos" ${chk("reqPhotos")}><span>Before and after photos</span></label>
+        <label class="cb"><input type="checkbox" id="reqLineItems" name="reqLineItems" ${chk("reqLineItems")}><span>Ask for a price on each line item</span></label>
+        <label class="cb"><input type="checkbox" id="routeThroughNeso" name="routeThroughNeso" ${j.routeThroughNeso!==false?"checked":""}><span>Tell contractors to send pricing to NESO, not the owner</span></label>
+      </div>
+    </fieldset>
+    <fieldset><legend>For the contractor</legend>
+      <label class="f"><span>Notes</span><textarea id="notes" name="notes" style="min-height:70px">${val("notes")}</textarea></label>
+      <label class="f"><span>Photo, plan or file links <span class="hint">One per line. Use share links anyone can open.</span></span><textarea id="links" name="links" style="min-height:60px">${val("links")}</textarea></label>
+    </fieldset>
+    <fieldset><legend>Owner <span class="muted small" style="font-family:var(--f-body);font-weight:400">· NESO only, never sent to contractors</span></legend>
+      <div class="grid"><label class="f"><span>Owner name</span><input type="text" id="ownerName" name="ownerName" value="${val("ownerName")}"></label>
+      <label class="f"><span>Owner phone</span><input type="tel" id="ownerPhone" name="ownerPhone" value="${val("ownerPhone")}"></label>
+      <label class="f"><span>Owner email</span><input type="email" id="ownerEmail" name="ownerEmail" value="${val("ownerEmail")}"></label></div>
+      <label class="f"><span>Internal notes</span><textarea id="internal" name="internal" style="min-height:60px">${val("internal")}</textarea></label>
+    </fieldset>
+    <div id="jerr" class="err" hidden></div>
+    <div class="sticky-submit"><button type="button" class="btn primary big" data-act="save-job" data-id="${esc(j.id)}" data-new="${isNew?1:""}">Save request</button><span class="muted small">Next you'll pick contractors and send it.</span></div>
+  </form>`;
+  S._editing=j;
+}
+function readJobForm(){
+  const f=$("#jform");const j=Object.assign({},S._editing);
+  $$("input[name],select[name],textarea[name]",f).forEach(el=>{if(el.name==="workTypes")return;j[el.name]=el.type==="checkbox"?el.checked:el.value.trim()});
+  j.workTypes=$$("input[name=workTypes]:checked",f).map(i=>i.value);
+  j.items=$$("[data-item]",f).map(r=>({d:$("[data-k=d]",r).value.trim(),q:$("[data-k=q]",r).value.trim()})).filter(i=>i.d);
+  j.state=(j.state||"").toUpperCase();
+  return j;
+}
+
+/* --- job detail --- */
+function viewJob(){
+  const j=S.jobs[S.id];if(!j)return go("jobs");
+  const qs=jobQuotes(j.id);const sent=j.sent||[];
+  const cons=Object.values(S.contractors).sort((a,b)=>(a.company||a.name||"").localeCompare(b.company||b.name||""));
+  const sentIds=new Set(sent.map(s=>s.cid));
+  app.innerHTML=`
+  <div class="row between noprint"><button class="btn ghost" type="button" data-act="nav" data-v="jobs">← All jobs</button>
+    <div class="row"><label class="f" style="flex-direction:row;align-items:center;gap:8px"><span class="muted small">Status</span><select id="jobStatus" data-id="${esc(j.id)}" style="width:auto;min-height:36px;padding:4px 8px">${JOB_STATUS.map(s=>`<option value="${s[0]}"${(j.status||"draft")===s[0]?" selected":""}>${s[1]}</option>`).join("")}</select></label>
+    <button class="btn" type="button" data-act="edit" data-id="${esc(j.id)}">Edit</button><button class="btn" type="button" data-act="preview" data-id="${esc(j.id)}">Contractor view</button></div></div>
+
+  <div id="draftSlot"></div>
+  <section class="stack" style="gap:6px"><span class="ref">${esc(j.ref||"")}</span><h1>${esc(j.title||"Untitled job")}</h1>
+    <span class="muted">${esc(fullAddr(j)||"No address")}${j.visitDate?" · Visit "+esc(visitLine(j)):""}${j.dueDate?" · Quotes due "+esc(fDate(j.dueDate)):""}</span>
+    ${j.ownerName?`<span class="small">Owner: <b style="color:var(--ink)">${esc(j.ownerName)}</b>${j.ownerPhone?" · "+esc(j.ownerPhone):""}${j.ownerEmail?" · "+esc(j.ownerEmail):""}</span>`:""}</section>
+
+  <section class="panel stack">
+    <div class="row between"><h2>1 · Send to contractors</h2><button class="btn ghost" type="button" data-act="nav" data-v="contractors">Manage contractors</button></div>
+    ${cons.length?`<div class="sendlist">${cons.map(c=>{const s=sent.find(x=>x.cid===c.id);const has=qs.some(q=>q.cid===c.id);
+      return`<div class="sendrow"><div class="who"><b>${esc(c.company||c.name)}</b>${c.company&&c.name?` <span class="muted">· ${esc(c.name)}</span>`:""}<div class="muted small">${esc([c.email,c.phone].filter(Boolean).join(" · ")||"No email or phone yet")}${(c.trades||[]).length?" · "+esc(c.trades.join(", ")):""}</div>
+      ${s?`<div class="small" style="color:var(--good)">${has?"Quote received":"Sent "+esc(fDate((s.at||"").slice(0,10)))+(s.how?" by "+esc(s.how):"")}</div>`:""}</div>
+      <div class="row" style="gap:6px"><button class="btn" type="button" data-act="gmail-rfq" data-cid="${esc(c.id)}" ${c.email?"":"disabled title=\"Add an email for this contractor first\""}>Gmail draft</button><button class="btn" type="button" data-act="copy-rfq" data-cid="${esc(c.id)}">Copy email</button><button class="btn ghost" type="button" data-act="copy-link" data-cid="${esc(c.id)}">Copy link</button>${s?"":`<button class="btn ghost" type="button" data-act="mark-sent" data-cid="${esc(c.id)}">Mark sent</button>`}</div></div>`}).join("")}</div>`
+    :`<p style="margin:0">Add the contractors you work with (TKS and others) once, then send each one this job in a click.</p><div><button class="btn primary" type="button" data-act="nav" data-v="contractors">Add contractors</button></div>`}
+    <textarea id="copyFallback" class="copyarea" readonly hidden aria-label="Text to copy"></textarea>
+    <p class="muted small" style="margin:0">Each contractor gets their own link to the job sheet and quote form at ${esc(S.settings.formUrl)}. “Gmail draft” saves a draft in your Gmail for you to review and send.</p>
+  </section>
+
+  <section class="stack">
+    <div class="row between"><h2>2 · Quotes received</h2><div class="row"><button class="btn" type="button" data-act="addquote" data-id="${esc(j.id)}">Add a returned quote</button></div></div>
+    ${qs.length?compareHTML(j,qs):`<div class="empty"><p style="margin:0"><b style="color:var(--ink)">No quotes yet.</b> When a contractor sends their quote, NESO gets an email that ends with a quote code. Open “Add a returned quote”, paste the email, and it lands here side by side with the others.</p></div>`}
+  </section>
+
+  ${qs.length?ownerSectionHTML(j,qs):""}
+
+  <details class="noprint"><summary class="muted small" style="cursor:pointer">Request details as the contractor sees them</summary><div style="margin-top:12px">${jobSheetHTML(publicJob(j,S.settings))}</div></details>
+  <div class="noprint"><button class="btn ghost danger" type="button" data-act="del-job" data-id="${esc(j.id)}">Delete this request</button><span id="delConfirm"></span></div>`;
+}
+function compareHTML(j,qs){
+  const low=Math.min(...qs.map(q=>num(q.total)).filter(n=>n!=null));
+  const items=(j.items||[]).filter(i=>i&&i.d);
+  const row=(label,f)=>`<tr><td>${label}</td>${qs.map(q=>`<td>${f(q)}</td>`).join("")}</tr>`;
+  return`<div class="scroll"><table class="cmp"><thead><tr><th></th>${qs.map(q=>`<th><b style="color:var(--ink)">${esc(q.company||"—")}</b><div class="muted small" style="font-weight:400">${esc(q.contact||"")}${q.phone?" · "+esc(q.phone):""}</div></th>`).join("")}</tr></thead><tbody>
+  ${row("Total",q=>`<div class="big">${esc(money(q.total))}</div>${num(q.total)===low&&qs.length>1?`<div class="low">Lowest</div>`:""}<div class="muted small">${esc(q.priceType||"")}</div>`)}
+  ${items.map((it,i)=>row(esc((i+1)+". "+it.d.slice(0,40)),q=>esc(q.itemPrices&&q.itemPrices[i]?money(q.itemPrices[i]):"—"))).join("")}
+  ${row("Earliest start",q=>esc(startText(q)))}
+  ${row("Job length",q=>esc(durText(q))+(q.crew?`<div class="muted small">Crew of ${esc(q.crew)}</div>`:""))}
+  ${row("Price good until",q=>{const d=daysUntil(q.validUntil);return esc(fDate(q.validUntil)||"—")+(d!=null&&d<0?` <span class="due-late">expired</span>`:"")})}
+  ${row("Deposit / terms",q=>esc(q.deposit||"—"))}
+  ${row("Insurance",q=>esc(q.insured||"—")+(q.license?`<div class="muted small">Lic. ${esc(q.license)}</div>`:""))}
+  ${row("Visited site",q=>esc(q.visited?fDate(q.visited):"—"))}
+  ${row("Warranty",q=>esc(q.warranty||"—"))}
+  ${row("Included",q=>`<div class="prose small">${esc(q.included||"—")}</div>`)}
+  ${row("Not included",q=>`<div class="prose small">${esc(q.excluded||"—")}</div>`)}
+  ${row("Found on site",q=>`<div class="prose small">${esc(q.findings||"—")}</div>`)}
+  ${row("Options",q=>`<div class="prose small">${esc(q.alternates||"—")}</div>`)}
+  ${row("Questions",q=>`<div class="prose small">${esc(q.questions||"—")}</div>`)}
+  ${row("Photos",q=>q.photos&&/^https?:/i.test(q.photos)?`<a href="${esc(q.photos)}" target="_blank" rel="noopener">Open</a>`:esc(q.photos||"—"))}
+  ${row("NESO status",q=>`<select data-act-change="q-status" data-qid="${esc(q.id)}">${Q_STATUS.map(s=>`<option value="${s[0]}"${(q.status||"new")===s[0]?" selected":""}>${s[1]}</option>`).join("")}</select>`)}
+  ${row("Price to owner",q=>`<div class="money"><input type="text" inputmode="decimal" data-act-change="q-owner" data-qid="${esc(q.id)}" value="${esc(q.ownerPrice||"")}" placeholder="${esc(String(ownerPriceOf(j,q)||""))}" aria-label="Price to owner for ${esc(q.company)}"></div><div class="muted small">Blank uses the markup below</div>`)}
+  ${row("",q=>`<div class="row" style="gap:4px"><button class="btn ghost" type="button" data-act="edit-quote" data-qid="${esc(q.id)}">Edit</button><button class="btn ghost danger" type="button" data-act="del-quote" data-qid="${esc(q.id)}">Remove</button></div><div class="muted small">${q.receivedAt?"Received "+esc(fDate(q.receivedAt.slice(0,10))):""}${q.source==="manual"?" · entered by hand":""}</div>`)}
+  </tbody></table></div>`;
+}
+function ownerPriceOf(j,q){const o=num(q.ownerPrice);if(o!=null)return o;const t=num(q.total);if(t==null)return null;const m=num(j.markupPct)||0;return Math.round(t*(1+m/100))}
+function ownerQuotes(j,qs){const pick=qs.filter(q=>["shortlist","selected"].includes(q.status));return(pick.length?pick:qs.filter(q=>q.status!=="passed")).slice().sort((a,b)=>(ownerPriceOf(j,a)||0)-(ownerPriceOf(j,b)||0))}
+function ownerSectionHTML(j,qs){
+  const list=ownerQuotes(j,qs);
+  return`<section class="panel stack">
+    <h2>3 · Share with the owner</h2>
+    <p class="muted small" style="margin:0">Options include shortlisted and selected quotes; if none are marked, every quote not passed on. Prices to the owner use your markup unless you typed a price above.</p>
+    <div class="grid three">
+      <label class="f"><span>NESO markup on contractor price</span><div class="row" style="gap:6px;flex-wrap:nowrap"><input type="number" min="0" step="0.5" id="markup" data-id="${esc(j.id)}" value="${esc(j.markupPct||0)}" style="flex:1"><span class="muted">%</span></div></label>
+      <label class="cb" style="align-self:end"><input type="checkbox" id="showNames" data-id="${esc(j.id)}" ${j.showNames?"checked":""}><span>Show contractor names to the owner</span></label>
+    </div>
+    <div class="owner-prev" id="ownerPrev">${ownerSummaryHTML(j,list)}</div>
+    <div class="row"><button class="btn primary" type="button" data-act="gmail-owner" data-id="${esc(j.id)}" ${j.ownerEmail?"":"disabled title=\"Add the owner's email in Edit\""}>Gmail draft to owner</button><button class="btn" type="button" data-act="copy-owner" data-id="${esc(j.id)}">Copy summary</button>${j.ownerEmail?"":`<span class="muted small">Add the owner's email (Edit) to draft it in Gmail.</span>`}</div>
+  </section>`;
+}
+function ownerSummaryHTML(j,list){
+  const letters="ABCDEFGHIJ";const S2=S.settings;
+  return`<div style="font-family:var(--f-body);color:var(--text)"><div class="eyebrow">${esc(S2.company)} · ${esc(j.ref||"")}</div>
+  <h2 style="margin-top:4px">Your options for ${esc(j.title||"the project")}</h2>
+  <p class="small muted" style="margin:6px 0 0">${esc(fullAddr(j))}</p>
+  ${j.scope?`<p class="prose small" style="margin:12px 0 0">${esc(j.scope)}</p>`:""}
+  ${list.map((q,i)=>`<div class="opt"><div class="row between"><h3>Option ${letters[i]}${j.showNames&&q.company?" · "+esc(q.company):""}</h3><span class="price">${esc(money(ownerPriceOf(j,q)))}</span></div>
+    <div class="small" style="margin-top:6px">${esc(q.priceType||"Fixed price")} · Can start ${esc(startText(q))} · About ${esc(durText(q))}${q.warranty?" · Warranty: "+esc(q.warranty):""}${q.validUntil?" · Price good until "+esc(fDate(q.validUntil)):""}</div>
+    ${q.included?`<div class="small" style="margin-top:6px"><b style="color:var(--ink)">Included:</b> <span class="prose">${esc(q.included)}</span></div>`:""}
+    ${q.excluded?`<div class="small" style="margin-top:4px"><b style="color:var(--ink)">Not included:</b> <span class="prose">${esc(q.excluded)}</span></div>`:""}
+    ${q.findings?`<div class="small" style="margin-top:4px"><b style="color:var(--ink)">Noted on site:</b> <span class="prose">${esc(q.findings)}</span></div>`:""}</div>`).join("")}
+  <p class="small" style="margin:16px 0 0">Reply with the option you'd like and we'll confirm the schedule with you. Questions: ${esc(S2.nesoName)}, ${esc(S2.nesoPhone)}, ${esc(S2.nesoEmail)}.</p></div>`;
+}
+function ownerSummaryText(j,list){
+  const letters="ABCDEFGHIJ";const L=[];
+  L.push("Your options for "+(j.title||"the project")+" ("+(j.ref||"")+")");L.push(fullAddr(j));if(j.scope){L.push("");L.push(j.scope)}
+  list.forEach((q,i)=>{L.push("");L.push("OPTION "+letters[i]+(j.showNames&&q.company?" — "+q.company:"")+": "+money(ownerPriceOf(j,q))+" ("+(q.priceType||"Fixed price")+")");
+    L.push("Can start: "+startText(q)+" · About "+durText(q));if(q.warranty)L.push("Warranty: "+q.warranty);if(q.validUntil)L.push("Price good until "+fDate(q.validUntil));
+    if(q.included)L.push("Included: "+q.included);if(q.excluded)L.push("Not included: "+q.excluded);if(q.findings)L.push("Noted on site: "+q.findings)});
+  L.push("");L.push("Reply with the option you'd like and we'll confirm the schedule with you.");
+  L.push("");L.push(S.settings.nesoName);L.push(S.settings.company);L.push(S.settings.nesoPhone+" · "+S.settings.nesoEmail+" · "+S.settings.website);
+  return L.join("\n");
+}
+function emailWrap(inner){return`<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:21px;color:#16141A;max-width:620px">${inner}</div>`}
+function sigHTML(){const s=S.settings;return`<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#16141A;margin-top:18px"><tr><td style="font-family:Georgia,serif;font-size:19px;font-weight:bold;padding-bottom:2px">${esc(s.nesoName)}</td></tr><tr><td style="font-size:13px;color:#6E6878;padding-bottom:8px">${esc(s.company)}</td></tr><tr><td style="padding-bottom:8px"><table cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td width="88" height="3" style="background:#5B2A86;font-size:0;line-height:0">&nbsp;</td><td width="48" height="3" style="background:#E7B84B;font-size:0;line-height:0">&nbsp;</td></tr></table></td></tr><tr><td style="font-size:13px"><a href="${esc(telHref(s.nesoPhone))}" style="color:#5B2A86">${esc(s.nesoPhone)}</a> &nbsp;·&nbsp; <a href="mailto:${esc(s.nesoEmail)}" style="color:#5B2A86">${esc(s.nesoEmail)}</a> &nbsp;·&nbsp; <a href="https://${esc(s.website)}/" style="color:#5B2A86">${esc(s.website)}</a></td></tr></table>`}
+function ownerEmail(j){const list=ownerQuotes(j,jobQuotes(j.id));
+  const letters="ABCDEFGHIJ";
+  const html=emailWrap(`<p>Hi ${esc((j.ownerName||"").split(" ")[0]||"there")},</p><p>We've received quotes for <b>${esc(j.title||"your project")}</b> at ${esc(fullAddr(j))}. Here are your options:</p>`+
+    list.map((q,i)=>`<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="width:100%;border-top:1px solid #E4DEEA;margin-top:10px"><tr><td style="padding-top:10px"><b style="font-size:16px">Option ${letters[i]}${j.showNames&&q.company?" · "+esc(q.company):""}</b></td><td align="right" style="padding-top:10px;font-size:18px;font-weight:bold">${esc(money(ownerPriceOf(j,q)))}</td></tr><tr><td colspan="2" style="font-size:13px;color:#3E3947;padding-top:4px">${esc(q.priceType||"Fixed price")} · Can start ${esc(startText(q))} · About ${esc(durText(q))}${q.warranty?" · Warranty: "+esc(q.warranty):""}${q.validUntil?" · Price good until "+esc(fDate(q.validUntil)):""}${q.included?"<br><b>Included:</b> "+esc(q.included).replace(/\n/g,"<br>"):""}${q.excluded?"<br><b>Not included:</b> "+esc(q.excluded).replace(/\n/g,"<br>"):""}${q.findings?"<br><b>Noted on site:</b> "+esc(q.findings).replace(/\n/g,"<br>"):""}</td></tr></table>`).join("")+
+    `<p style="margin-top:18px">Reply with the option you'd like and we'll confirm the schedule with you.</p><p>Best,</p>`+sigHTML());
+  return{to:j.ownerEmail,subject:"Your quotes for "+(j.title||"your project"),html,text:"Hi "+((j.ownerName||"").split(" ")[0]||"there")+",\n\n"+ownerSummaryText(j,list)};
+}
+async function rfqEmail(j,c){
+  const link=await contractorLink(j,S.settings,c);const s=S.settings;const first=(c.name||"").split(" ")[0]||c.company||"there";
+  const items=(j.items||[]).filter(i=>i&&i.d);
+  const T=[];T.push("Hi "+first+",");T.push("");T.push("NESO has a job we'd like you to quote. Please visit the site, then send us your price and when you could do the work.");T.push("");
+  T.push("JOB: "+(j.title||"")+" ("+(j.ref||"")+")");T.push("WHERE: "+fullAddr(j));T.push("SITE VISIT: "+(visitLine(j)||"Call the site contact to set a time")+(j.visitAlt?" (other times: "+j.visitAlt+")":""));
+  if(j.siteName||j.sitePhone)T.push("MEET: "+[j.siteName,j.siteRole,j.sitePhone].filter(Boolean).join(", "));
+  if(j.callAhead)T.push("Please call the site contact before you go.");if(j.access)T.push("ACCESS: "+j.access);
+  if(j.dueDate)T.push("QUOTE DUE: "+fDate(j.dueDate));T.push("");T.push("SCOPE:");T.push(j.scope||"");
+  items.forEach((it,i)=>T.push((i+1)+". "+it.d+(it.q?" ("+it.q+")":"")));
+  T.push("");T.push("Full job sheet and quote form:");T.push(link);T.push("");
+  T.push("The form takes about five minutes on a phone. If you'd rather, reply to this email with your total price, earliest start date, how long the job will take, and what's included and not included.");
+  if(j.routeThroughNeso!==false){T.push("");T.push("Please send pricing to NESO rather than the owner or tenant.")}
+  T.push("");T.push("Thank you,");T.push(s.nesoName);T.push(s.company);T.push(s.nesoPhone+" · "+s.nesoEmail+" · "+s.website);
+  const li=items.length?`<ol style="margin:6px 0 0;padding-left:20px">${items.map(it=>`<li>${esc(it.d)}${it.q?` <span style="color:#6E6878">(${esc(it.q)})</span>`:""}</li>`).join("")}</ol>`:"";
+  const fact=(k,v)=>v?`<tr><td style="padding:4px 14px 4px 0;font-size:12px;color:#6E6878;text-transform:uppercase;letter-spacing:.06em;vertical-align:top;white-space:nowrap">${k}</td><td style="padding:4px 0;font-size:14px;color:#16141A">${v}</td></tr>`:"";
+  const html=emailWrap(`<p>Hi ${esc(first)},</p><p>NESO has a job we'd like you to quote. Please visit the site, then send us your price and when you could do the work.</p>
+  <table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;margin:6px 0 12px">${fact("Job",`<b>${esc(j.title||"")}</b> <span style="color:#6E6878">${esc(j.ref||"")}</span>`)}${fact("Where",esc(fullAddr(j)))}${fact("Site visit",esc(visitLine(j)||"Call the site contact to set a time")+(j.visitAlt?`<br><span style="color:#6E6878">Other times: ${esc(j.visitAlt)}</span>`:""))}${fact("Meet",esc([j.siteName,j.siteRole].filter(Boolean).join(", "))+(j.sitePhone?` · <a href="${esc(telHref(j.sitePhone))}" style="color:#5B2A86">${esc(j.sitePhone)}</a>`:""))}${fact("Access",(j.callAhead?"<b>Call before you go.</b> ":"")+esc(j.access||""))}${fact("Quote due",j.dueDate?`<b>${esc(fDate(j.dueDate))}</b>`:"")}</table>
+  <p style="margin:0"><b>Scope</b></p><p style="margin:4px 0 0;white-space:pre-wrap">${esc(j.scope||"")}</p>${li}
+  <p style="margin:18px 0"><a href="${esc(link)}" style="display:inline-block;background:#5B2A86;color:#FFFFFF;text-decoration:none;font-weight:bold;padding:12px 20px;border-radius:6px">Open the job sheet and send your quote</a></p>
+  <p>The form takes about five minutes on a phone. If you'd rather, reply to this email with your total price, earliest start date, how long the job will take, and what's included and not included.${j.routeThroughNeso!==false?" Please send pricing to NESO rather than the owner or tenant.":""}</p><p>Thank you,</p>`+sigHTML());
+  return{to:c.email,subject:"Quote request: "+(j.title||"")+" — "+[j.city,j.state].filter(Boolean).join(", ")+(j.dueDate?" (due "+fDate(j.dueDate).replace(/^\w+, /,"")+")":""),html,text:T.join("\n"),link};
+}
+async function gmailDraft(mail){
+  if(!S.mcp){toast("Gmail isn't available on this page right now. Use Copy email instead.");return false}
+  try{const r=await S.mcp.callTool("Gmail","create_draft",{to:[mail.to],subject:mail.subject,body:mail.text,htmlBody:mail.html});
+    let url="";try{const p=r.payload||r.structuredContent||JSON.parse((r.content||[]).map(c=>c.text||"").join(""));url=(p&&(p.viewUrl||(p.draft&&p.draft.viewUrl)))||""}catch(e){}
+    toast("Draft saved in Gmail. Review it there and press Send.");
+    if(url){const slot=$("#draftSlot");if(slot)slot.innerHTML=`<div class="note good"><b>Draft saved in Gmail.</b> <a href="${esc(url)}" target="_blank" rel="noopener">Open it to review and send</a>.</div>`}
+    return true}
+  catch(e){const code=e&&e.code;toast(code==="server_not_connected"||code==="server_not_found"?"Connect Gmail in claude.ai to make drafts. Copy email works now.":code==="not_granted"||code==="consent_required"?"Gmail access wasn't allowed for this page. Copy email works now.":"Gmail draft didn't save: "+(e&&e.message||"try Copy email"));return false}
+}
+async function markSent(j,cid,how){const sent=(j.sent||[]).filter(s=>s.cid!==cid);const c=S.contractors[cid]||{};sent.push({cid,name:c.company||c.name||"",at:new Date().toISOString(),how});
+  const status=(j.status||"draft")==="draft"?"out":j.status;await save("jobs",j.id,Object.assign({},j,{sent,status,updatedAt:new Date().toISOString()}))}
+
+function viewPreview(){
+  const j=S.jobs[S.id];if(!j)return go("jobs");
+  const pj=publicJob(j,S.settings,{id:"preview",name:"",company:""});
+  app.innerHTML=`<div class="note noprint"><b>Contractor view.</b> This is what a contractor sees at their link. Nothing here is saved. <button class="btn ghost" type="button" data-act="open" data-id="${esc(j.id)}">Back to the job</button></div>`+jobSheetHTML(pj)+`<section class="stack"><h2>Send NESO your quote</h2>${quoteFormHTML(pj,{},"contractor")}</section>`;
+  wireQuoteForm(app);
+}
+
+/* --- add a returned quote --- */
+function viewAddQuote(){
+  const jobs=sortedJobs();const editing=S._editQuote||null;
+  const jid=editing?editing.job:(S.id&&S.jobs[S.id]?S.id:"");
+  const j=jid?S.jobs[jid]:null;
+  app.innerHTML=`
+  <div class="row between"><h1>${editing?"Edit quote":"Add a returned quote"}</h1><button class="btn ghost" type="button" data-act="${j?"open":"nav"}" data-v="jobs" data-id="${esc(jid)}">Cancel</button></div>
+  ${editing?"":`<section class="panel stack"><h2>Paste the contractor's email</h2><p class="muted small" style="margin:0">Paste the whole email (or just the part from <b>NESO-QUOTE:</b> to <b>:END</b>). The job and every detail fill in for you.</p>
+  <textarea id="pasteQuote" placeholder="Paste here" style="min-height:120px"></textarea><div class="row"><button class="btn primary" type="button" data-act="read-quote">Read quote</button><span id="pasteMsg" class="small"></span></div></section>
+  <p class="muted" style="margin:0">Got the price by phone, text or a PDF instead? Pick the job and type it in below.</p>`}
+  <label class="f" style="max-width:520px"><span class="req">Job</span><select id="qjob" ${editing?"disabled":""}><option value=""></option>${jobs.map(x=>`<option value="${esc(x.id)}"${x.id===jid?" selected":""}>${esc((x.ref||"")+" · "+(x.title||""))}</option>`).join("")}</select></label>
+  <div id="qformWrap">${j?quoteFormHTML(j,editing||{},"desk"):`<p class="muted">Pick the job first.</p>`}</div>
+  ${j?`<div class="sticky-submit"><button class="btn primary big" type="button" data-act="save-quote">Save quote</button></div>`:""}`;
+  if(j)wireQuoteForm(app);
+  const sel=$("#qjob");if(sel&&!editing)sel.onchange=()=>{S.id=sel.value;S._pasted=null;viewAddQuote()};
+  if(S._pasted&&j){fillQuoteForm(S._pasted.q);$("#pasteMsg").innerHTML=`<span style="color:var(--good)">Read quote from ${esc(S._pasted.q.company||"contractor")}. Check it, then save.</span>`}
+}
+function fillQuoteForm(q){Object.keys(q).forEach(k=>{const el=$("#qform [name='"+k+"']");if(!el)return;if(el.type==="checkbox")el.checked=!!q[k];else el.value=q[k]});(q.itemPrices||[]).forEach((v,i)=>{const el=$("#q_ip"+i);if(el)el.value=v});const t=$("#q_total");if(t&&q.total)t.dataset.touched="1"}
+
+/* --- contractors --- */
+function viewContractors(){
+  const cons=Object.values(S.contractors).sort((a,b)=>(a.company||a.name||"").localeCompare(b.company||b.name||""));
+  const e=S._editCon||{};
+  app.innerHTML=`<div class="stack" style="gap:2px"><h1>Contractors</h1><span class="muted">The people you send jobs to. Their details fill in on each quote form.</span></div>
+  <section class="panel stack"><h2>${e.id?"Edit contractor":"Add a contractor"}</h2>
+  <div class="grid"><label class="f"><span class="req">Company</span><input type="text" id="c_company" value="${esc(e.company||"")}" placeholder="e.g. TKS"></label>
+  <label class="f"><span>Contact name</span><input type="text" id="c_name" value="${esc(e.name||"")}"></label>
+  <label class="f"><span>Email</span><input type="email" id="c_email" value="${esc(e.email||"")}"></label>
+  <label class="f"><span>Phone</span><input type="tel" id="c_phone" value="${esc(e.phone||"")}"></label></div>
+  <div class="chips">${WORK_TYPES.map(w=>`<label class="chip"><input type="checkbox" name="c_trades" value="${esc(w)}" ${(e.trades||[]).includes(w)?"checked":""}><span>${esc(w)}</span></label>`).join("")}</div>
+  <label class="f"><span>Notes</span><input type="text" id="c_notes" value="${esc(e.notes||"")}" placeholder="Areas served, license, insurance on file…"></label>
+  <div class="row"><button class="btn primary" type="button" data-act="save-con">${e.id?"Save changes":"Add contractor"}</button>${e.id?`<button class="btn ghost" type="button" data-act="cancel-con">Cancel</button>`:""}</div></section>
+  ${cons.length?`<div class="sendlist">${cons.map(c=>`<div class="sendrow"><div class="who"><b>${esc(c.company||c.name)}</b>${c.company&&c.name?` <span class="muted">· ${esc(c.name)}</span>`:""}<div class="muted small">${esc([c.email,c.phone].filter(Boolean).join(" · ")||"No email or phone yet")}${(c.trades||[]).length?" · "+esc(c.trades.join(", ")):""}</div>${c.notes?`<div class="small">${esc(c.notes)}</div>`:""}</div><div class="row" style="gap:6px"><button class="btn" type="button" data-act="edit-con" data-cid="${esc(c.id)}">Edit</button><button class="btn ghost danger" type="button" data-act="del-con" data-cid="${esc(c.id)}">Remove</button></div></div>`).join("")}</div>`:`<div class="empty"><p style="margin:0">No contractors yet. Add TKS and the other renovation and landscape crews you use.</p></div>`}`;
+}
+function viewSettings(){
+  const s=S.settings;
+  app.innerHTML=`<div class="stack" style="gap:2px"><h1>Settings</h1><span class="muted">Who contractors reply to, and where the quote form lives.</span></div>
+  <section class="panel stack">
+  <div class="grid"><label class="f"><span>NESO contact name</span><input type="text" id="s_nesoName" value="${esc(s.nesoName)}"></label>
+  <label class="f"><span>Phone</span><input type="tel" id="s_nesoPhone" value="${esc(s.nesoPhone)}"></label>
+  <label class="f"><span>Email quotes go to</span><input type="email" id="s_nesoEmail" value="${esc(s.nesoEmail)}"></label>
+  <label class="f"><span>Company</span><input type="text" id="s_company" value="${esc(s.company)}"></label>
+  <label class="f"><span>Website</span><input type="text" id="s_website" value="${esc(s.website)}"></label></div>
+  <label class="f"><span>Quote form address <span class="hint">Where the public copy of this page is hosted. Contractor links point here.</span></span><input type="url" id="s_formUrl" value="${esc(s.formUrl)}"></label>
+  <div><button class="btn primary" type="button" data-act="save-settings">Save settings</button></div></section>`;
+}
+
+/* --- desk events --- */
+async function onDeskClick(e){
+  const b=e.target.closest("[data-act]");if(!b||b.disabled)return;const a=b.dataset.act;
+  try{
+  if(a==="nav"){S._editQuote=null;S._pasted=null;S._editCon=null;return go(b.dataset.v)}
+  if(a==="new"){S._editing=null;return go("edit",null)}
+  if(a==="open")return go("job",b.dataset.id);
+  if(a==="edit")return go("edit",b.dataset.id);
+  if(a==="preview")return go("preview",b.dataset.id);
+  if(a==="addquote"){S._editQuote=null;S._pasted=null;return go("addquote",b.dataset.id||S.id)}
+  if(a==="add-item"){const box=$("#items");box.insertAdjacentHTML("beforeend",itemRowHTML({},box.children.length));$("[data-item]:last-child input",box).focus();return}
+  if(a==="rm-item"){b.closest("[data-item]").remove();return}
+  if(a==="save-job"){const j=readJobForm();const miss=[];if(!j.title)miss.push("job name");if(!j.scope&&!j.items.length)miss.push("scope of work");if(!j.address)miss.push("street address");if(!j.dueDate)miss.push("quote due date");
+    if(miss.length){const er=$("#jerr");er.hidden=false;er.textContent="Please add: "+miss.join(", ")+".";return}
+    j.createdAt=j.createdAt||new Date().toISOString();j.updatedAt=new Date().toISOString();b.disabled=true;
+    await save("jobs",j.id,j);S.jobs[j.id]=j;toast("Saved");return go("job",j.id)}
+  const j=S.jobs[S.id];
+  if(a==="copy-link"){const c=S.contractors[b.dataset.cid];return copyText(await contractorLink(j,S.settings,c),$("#copyFallback"))}
+  if(a==="copy-rfq"){const c=S.contractors[b.dataset.cid];const m=await rfqEmail(j,c);await copyText("Subject: "+m.subject+"\n\n"+m.text,$("#copyFallback"));return}
+  if(a==="gmail-rfq"){const c=S.contractors[b.dataset.cid];b.disabled=true;const m=await rfqEmail(j,c);const ok=await gmailDraft(m);b.disabled=false;if(ok)await markSent(j,c.id,"Gmail draft");return}
+  if(a==="mark-sent"){await markSent(j,b.dataset.cid,"");toast("Marked as sent");return}
+  if(a==="del-job"){const box=$("#delConfirm");box.innerHTML=` <span class="small">Delete this request and its quotes? </span><button class="btn danger" type="button" data-act="del-job-yes">Delete</button>`;return}
+  if(a==="del-job-yes"){const id=S.id;for(const q of jobQuotes(id))await remove("quotes",q.id);await remove("jobs",id);delete S.jobs[id];toast("Deleted");return go("jobs")}
+  if(a==="edit-quote"){S._editQuote=Object.assign({},S.quotes[b.dataset.qid]);return go("addquote",S._editQuote.job)}
+  if(a==="del-quote"){if(b.dataset.sure!=="1"){b.dataset.sure="1";b.textContent="Tap again to remove";return}await remove("quotes",b.dataset.qid);toast("Removed");return}
+  if(a==="copy-owner"){const list=ownerQuotes(j,jobQuotes(j.id));return copyText(ownerSummaryText(j,list),$("#copyFallback")||null)}
+  if(a==="gmail-owner"){b.disabled=true;const ok=await gmailDraft(ownerEmail(j));b.disabled=false;if(ok&&(j.status||"")!=="awarded")await save("jobs",j.id,Object.assign({},j,{status:"owner",updatedAt:new Date().toISOString()}));return}
+  if(a==="read-quote"){const txt=$("#pasteQuote").value;const m=txt.match(/NESO-QUOTE:([\s\S]*?):END/);const msg=$("#pasteMsg");
+    if(!m){msg.innerHTML=`<span class="err">No quote code found. Make sure the paste includes the line starting with NESO-QUOTE: through :END.</span>`;return}
+    try{const p=await unpack(m[1]);if(!S.jobs[p.job]){msg.innerHTML=`<span class="err">This quote is for ${esc(p.ref||"a job")} which isn't on the desk. It may have been deleted.</span>`;return}
+      S._pasted=p;S.id=p.job;viewAddQuote();}catch(err){msg.innerHTML=`<span class="err">The code is incomplete. Copy the whole email again, including the last line.</span>`}return}
+  if(a==="save-quote"){const jid=S._editQuote?S._editQuote.job:$("#qjob").value;const jj=S.jobs[jid];if(!jj)return toast("Pick the job first");
+    const q=readQuoteForm(app,jj);const miss=validateQuote(q,jj,"desk");if(miss.length){const er=$("#qerr");er.hidden=false;er.textContent="Please add: "+miss.join(", ")+".";return}
+    const base=S._editQuote||{id:rid(),job:jid,status:"new",receivedAt:new Date().toISOString(),source:S._pasted?"form":"manual",cid:S._pasted?S._pasted.cid:""};
+    if(S._pasted){["contact","phone","email","signName","ackShare","ackNoStart","submittedAt"].forEach(k=>{if(S._pasted.q[k]!=null&&q[k]==null)q[k]=S._pasted.q[k]})}
+    const rec=Object.assign({},base,q,{job:jid,ref:jj.ref});b.disabled=true;await save("quotes",rec.id,rec);
+    if(["draft","out"].includes(jj.status||"draft"))await save("jobs",jj.id,Object.assign({},jj,{status:"quotes",updatedAt:new Date().toISOString()}));
+    S._editQuote=null;S._pasted=null;toast("Quote saved");return go("job",jid)}
+  if(a==="save-con"){const c=Object.assign({},S._editCon||{id:rid()},{company:$("#c_company").value.trim(),name:$("#c_name").value.trim(),email:$("#c_email").value.trim(),phone:$("#c_phone").value.trim(),notes:$("#c_notes").value.trim(),trades:$$("input[name=c_trades]:checked").map(i=>i.value)});
+    if(!c.company&&!c.name)return toast("Add a company or contact name");await save("contractors",c.id,c);S.contractors[c.id]=c;S._editCon=null;toast("Saved");return viewContractors()}
+  if(a==="edit-con"){S._editCon=Object.assign({},S.contractors[b.dataset.cid]);return viewContractors()}
+  if(a==="cancel-con"){S._editCon=null;return viewContractors()}
+  if(a==="del-con"){if(b.dataset.sure!=="1"){b.dataset.sure="1";b.textContent="Tap again to remove";return}await remove("contractors",b.dataset.cid);return}
+  if(a==="save-settings"){const s={};["nesoName","nesoPhone","nesoEmail","company","website","formUrl"].forEach(k=>s[k]=$("#s_"+k).value.trim()||DEFAULTS[k]);await S.db.doc("settings/main").set(s);S.settings=Object.assign({},DEFAULTS,s);toast("Settings saved");return}
+  }catch(err){console.error(err)}
+}
+async function onDeskChange(e){
+  const t=e.target;
+  try{
+  if(t.id==="jobStatus"){const j=S.jobs[t.dataset.id];await save("jobs",j.id,Object.assign({},j,{status:t.value,updatedAt:new Date().toISOString()}));toast("Status updated")}
+  if(t.dataset.actChange==="q-status"){const q=S.quotes[t.dataset.qid];await save("quotes",q.id,Object.assign({},q,{status:t.value}));}
+  if(t.dataset.actChange==="q-owner"){const q=S.quotes[t.dataset.qid];await save("quotes",q.id,Object.assign({},q,{ownerPrice:t.value.trim()}));}
+  if(t.id==="markup"||t.id==="showNames"){const j=S.jobs[t.dataset.id];const upd=t.id==="markup"?{markupPct:num(t.value)||0}:{showNames:t.checked};const nj=Object.assign({},j,upd);S.jobs[j.id]=nj;await save("jobs",j.id,nj);}
+  if(S.view==="job"&&(t.dataset.actChange||t.id==="markup"||t.id==="showNames")){setTimeout(()=>{if(S.view==="job")viewJob()},50)}
+  }catch(err){console.error(err)}
+}
+
+/* ---------- boot ---------- */
+function boot(){
+  const m=(location.hash||"").match(/^#r=([A-Za-z0-9_\-]+)/);
+  if(m)return contractorPage(m[1]);
+  const hasClaude=()=>typeof window.claude!=="undefined"&&window.claude&&typeof window.claude.use==="function";
+  const startDesk=()=>{app.addEventListener("click",onDeskClick);app.addEventListener("change",onDeskChange);$("#nav").addEventListener("click",onDeskClick);desk()};
+  if(hasClaude())return startDesk();
+  publicLanding();
+  let tries=0;const t=setInterval(()=>{if(hasClaude()){clearInterval(t);$("#bandLabel").textContent="Quote Desk";startDesk()}else if(++tries>15)clearInterval(t)},200);
+}
+window.addEventListener("hashchange",()=>{const m=(location.hash||"").match(/^#r=([A-Za-z0-9_\-]+)/);if(m)contractorPage(m[1])});
+boot();
+})();
+</script>
+</body></html>
