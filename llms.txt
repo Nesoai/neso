@@ -9,8 +9,9 @@ NESO sells three distinct things, and they are priced differently:
 
 - **Free web tools** (eight) that run in the browser with no account. Each has a
   one-time Pro unlock, $19–$199, bought once and owned forever.
-- **Bird's Eye reports**: four fixed-price research reports written by a
-  principal, $350–$1,500, delivered as a PDF in 2–5 business days.
+- **Bird's Eye reports**: five research reports written by a principal, each
+  quoted in writing to its scope before work starts, delivered as a PDF in
+  2–8 business days.
 - **Advisory services** priced in credits. 1 credit = $50. Quoted and fixed in
   writing before any work starts.
 
@@ -27,7 +28,7 @@ NESO sells three distinct things, and they are priced differently:
 
 ## Reports and services
 
-- [Bird's Eye Reports](https://birdseye.nesohq.com/): zoning and entitlement readiness ($495, 2 days), site readiness and feasibility ($750, 3 days), location data audit ($350, 2 days), power and energization screen ($1,500, 5 days).
+- [Bird's Eye Reports](https://birdseye.nesohq.com/): zoning and entitlement readiness (2 days), site readiness and feasibility (3 days), location data audit (2 days), power and energization screen (5 days), site snapshot. Each is quoted in writing to its scope; the clock starts when scope is confirmed.
 - [Services and pricing](https://nesohq.com/#/pricing): advisory work quoted in credits at $50 per credit.
 - [Live bid opportunities](https://nesohq.com/#/opportunities): open federal grants, public solicitations, and every state's procurement portal.
 
