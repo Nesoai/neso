@@ -57,6 +57,9 @@ button:disabled{opacity:.55;cursor:default}
 .msg.err{color:#B3401A}
 .done{display:none;border:1px solid #CFE2D7;background:var(--green-w);border-radius:14px;padding:20px;margin-top:20px}
 .note{font-size:15px;color:var(--soft)}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5;color:var(--body);background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:12px 13px;margin:-4px 0 18px}
+.consent input{width:auto;margin:3px 0 0;flex:none}
+.consent a{color:var(--plum)}
 footer{background:var(--bg-2);border-top:1px solid var(--line);padding:34px 0;font-size:15px;color:var(--soft)}
 </style></head><body>
 
@@ -107,12 +110,13 @@ footer{background:var(--bg-2);border-top:1px solid var(--line);padding:34px 0;fo
     </div>
     <div class="row">
       <div><label for="email">Email</label><div class="hint"></div><input id="email" name="email" type="email" required></div>
-      <div><label for="phone">Phone</label><div class="hint"></div><input id="phone" name="phone" type="tel" required></div>
+      <div><label for="phone">Phone</label><div class="hint">A mobile, if you would like texts</div><input id="phone" name="phone" type="tel" required></div>
     </div>
+    <label class="consent" for="sms_consent"><input id="sms_consent" name="sms_consent" type="checkbox" value="yes"><span>I agree to receive text messages from NESO about my inquiry or engagement, including quotes and project updates. Message frequency varies, typically fewer than 10 per month. Message and data rates may apply. Reply STOP to unsubscribe, HELP for help. Consent is not a condition of purchase. <a href="/legal/privacy.html">Privacy Policy</a> &middot; <a href="/legal/terms.html">Terms</a></span></label>
       <label for="org_type">What kind of organisation</label><select id="org_type" name="org_type"><option>City or county</option><option>Special district</option><option>Nonprofit</option><option>Small business</option><option>Tribal</option><option>Other</option></select>
       <label for="geography">Where you work</label><div class="hint">County and state, or a list of them</div><input id="geography" name="geography" type="text" required>
       <label for="programmes">What you would apply for</label><div class="hint">Housing, water, broadband, workforce, brownfields — whatever is realistic for you</div><textarea id="programmes" name="programmes" required></textarea>
-      <label for="notes">Anything else we should know</label><div class="hint">Optional.</div><textarea id="notes" name="notes" required></textarea>
+      <label for="notes">Anything else we should know</label><div class="hint">Optional.</div><textarea id="notes" name="notes"></textarea>
     <button id="b" type="submit">Start Funding Watch &mdash; $20 a month</button>
     <div class="msg" id="m"></div>
     <p class="note" style="margin-top:12px">Cancel any month. No setup fee. Nothing renews for a year without
@@ -144,9 +148,9 @@ f.addEventListener('submit', function(e){
   d.source=location.hostname+location.pathname;
   d.submitted_at=new Date().toISOString();
   d.message="MEMBERSHIP START \u2014 for principal review\nService: "+SERVICE+" \u2014 $20 a month\n\n"+
-    "WHO\n"+(d.name||"")+(d.company?" \u2014 "+d.company:"")+"\n"+(d.email||"")+(d.phone?" \u2014 "+d.phone:"")+"\n\n"+
+    "WHO\n"+(d.name||"")+(d.company?" \u2014 "+d.company:"")+"\n"+(d.email||"")+(d.phone?" \u2014 "+d.phone:"")+"\n"+(d.sms_consent==="yes"?"Ticked the text box: may be texted":"Did not tick the text box: email or call")+"\n\n"+
     "PROFILE\n"+Object.keys(d).filter(function(k){
-      return ["form","report","status_hint","source","submitted_at","message","name","company","email","phone"].indexOf(k)<0;
+      return ["form","report","status_hint","source","submitted_at","message","name","company","email","phone","sms_consent"].indexOf(k)<0;
     }).map(function(k){ return k+": "+d[k]; }).join("\n")+"\n\n"+
     "NEXT: confirm coverage, then send the payment link. Do not charge before coverage is confirmed.";
   b.disabled=true; m.className='msg'; m.textContent='Sending\u2026';
