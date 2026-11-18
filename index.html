@@ -1,4 +1,11 @@
-<!DOCTYPE html><html lang="en"><head>
+
+<!DOCTYPE html><html lang="en"><head><script>/* 18 Nov 2026: the home page always opens at the top. The browser no longer restores an old scroll
+   position, and for the first few seconds nothing but the visitor can move the page (a link to #watch-live still
+   goes straight to that section). */
+(function(){try{if('scrollRestoration' in history)history.scrollRestoration='manual';}catch(e){}
+var moved=false;['wheel','touchstart','keydown','mousedown'].forEach(function(t){addEventListener(t,function(){moved=true;},{passive:true,once:true,capture:true});});
+function toTop(){var h=location.hash;if(!moved&&(!h||h.charAt(1)==='/'))window.scrollTo(0,0);}
+addEventListener('load',function(){toTop();setTimeout(toTop,400);setTimeout(toTop,1500);setTimeout(toTop,3000);});})();</script>
 <meta charset="utf-8">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8F80E2D56H"></script>
