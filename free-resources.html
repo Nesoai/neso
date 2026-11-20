@@ -38,7 +38,7 @@ h2{font-size:15px;letter-spacing:.07em;text-transform:uppercase;color:var(--soft
 .item p{color:var(--body);font-size:15.5px;grid-column:1/2}
 .item .go{grid-row:1/3;grid-column:2;align-self:center;white-space:nowrap;font-weight:600;color:var(--plum);text-decoration:none;border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;font-size:15px}
 .item .go:hover{border-color:var(--plum)}
-.url{display:none}
+.url{display:block;grid-column:1/2;font-size:14px;color:var(--soft);font-weight:600;letter-spacing:.01em}
 .states{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .states a{font-size:13.5px;border:1px solid var(--line);border-radius:999px;padding:3px 10px;text-decoration:none;color:var(--plum)}
 .note{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-top:26px;color:var(--body);font-size:15.5px}
@@ -55,11 +55,11 @@ footer{padding:30px 0 40px;color:var(--soft);font-size:14px}
   h1{font-size:20pt}
   .lead{font-size:10.5pt;margin-top:6px}
   .kicker{display:none}
-  .list{gap:5px}
-  .item{break-inside:avoid;border-color:#ccc;padding:6px 10px;border-radius:8px}
+  .list{gap:5px;grid-template-columns:1fr 1fr}
+  .item{break-inside:avoid;border-color:#ccc;padding:5px 9px;border-radius:8px;gap:2px 12px}
   .item h3{font-size:11pt}
-  .item p{font-size:9.5pt}
-  .note{font-size:9.5pt;padding:8px 10px;margin-top:10px}
+  .item p{font-size:9pt;line-height:1.3}
+  .note{font-size:9pt;padding:7px 10px;margin-top:8px}
   footer{padding:8px 0 0;font-size:9pt}
   .item .go{display:none}
   .url{display:block;color:#000;font-size:10.5pt}
@@ -73,7 +73,7 @@ footer{padding:30px 0 40px;color:var(--soft);font-size:14px}
 <header class="hero">
   <span class="kicker">One page to hand out</span>
   <h1>Free resources for small-business owners</h1>
-  <p class="lead">For counselors, advisors and program staff. Every tool below is free, runs in the browser, and needs no account. Print this page or forward the link.</p>
+  <p class="lead">For counselors, advisors and program staff. Every tool below is free, runs in the browser, and needs no account. Print this page (it fits on one sheet, with every web address) or forward the link.</p>
   <div class="actions"><button class="btn" type="button" onclick="window.print()">Print this page</button><a class="btn ghost" href="mailto:?subject=Free%20resources%20for%20your%20business&amp;body=A%20list%20of%20free%20tools%20for%20small%20businesses%3A%20https%3A%2F%2Fnesohq.com%2Ffree-resources.html">Email it to an owner</a></div>
 </header>
 
