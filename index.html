@@ -582,7 +582,7 @@ footer{border-top:1px solid var(--line);padding:20px 0 16px;margin-top:10px}
 
 <h2>Memberships and a live conversation</h2>
 <ul>
-<li><a href="https://brief.nesohq.com/">The NESO Brief</a> — $4.99 a month. One deal, one lesson, one move, weekly, with a free issue every four weeks.</li>
+<li><a href="https://brief.nesohq.com/">The NESO Brief</a> — two editions. <b>Brief: Free Letter</b>, a full issue free every four weeks; and <b>Brief Weekly Member</b>, $4.99 a month: one deal, one lesson, one move, every week, plus the archive.</li>
 <li><a href="https://nesohq.gumroad.com/l/rbflbir">NESO Bid Desk</a> — $20 a month. Every public solicitation NESO tracks is free to read on this site; the membership is the weekly shortlist matched to your trades, your states and the size of job worth your time, in your own dashboard and by email. On 21 November 2026 the board carried current bids from Alabama, Georgia, Louisiana, Massachusetts, Mississippi, New Jersey, New York, South Carolina and Tennessee, and it grows before it is advertised.</li>
 <li><b><a href="https://nesohq.com/twenty.html">Everything at $20 a month, on one page</a></b> — the Website Service, the Bid Desk, and two more coming. Each one twenty dollars, each one cancellable any month, no setup fee.</li>
 <li><a href="https://nesohq.com/website-membership.html">NESO Website Service</a> — $20 a month, the founding rate for the first 200 businesses, then $30; or $200 a year. A small-business website built from one intake form: up to two pages written for you, live in three business days from the form, hosted, checked daily and kept current, with one full revision round included. Three months minimum, then cancel any month. The web address is registered in the client&rsquo;s name and transfers to them free if they leave. Eight example sites, one per kind of business, at <a href="https://nesohq.com/examples.html">nesohq.com/examples.html</a>.</li>
@@ -999,7 +999,7 @@ function briefTeaser(){
       <div class="brief-copy">
         <div class="brief-k"><span class="livedot"></span>Now publishing &middot; The NESO Brief</div>
         <h3>One deal, one lesson, one move &mdash; every week.</h3>
-        <p>A short letter for owners and builders: a real opportunity worth chasing, a lesson from 17 years of entitlement and land-use work, and one thing to do this week. No fluff, no selling. A full issue is free to read every 28 days &mdash; members get every weekly issue plus the archive for $4.99 a month.</p>
+        <p>A short letter for owners and builders: a real opportunity worth chasing, a lesson from 17 years of entitlement and land-use work, and one thing to do this week. No fluff, no selling. The <b>Brief: Free Letter</b> is a full issue, free, every 28 days. <b>Brief Weekly Member</b> gets every weekly issue plus the archive for $4.99 a month.</p>
         <div class="brief-form" id="briefForm">
           <input id="bmail" type="email" placeholder="you@company.com" autocomplete="email" onkeydown="if(event.key==='Enter')briefSub()">
           <select id="bint" aria-label="What are you into?"><option value="">I'm into&hellip; (optional)</option><option>Real estate &amp; land</option><option>Business &amp; grants</option><option>Bids &amp; procurement</option><option>A bit of everything</option></select>
@@ -1008,11 +1008,11 @@ function briefTeaser(){
         <div class="brief-paid">
           <a class="brief-buy" href="https://nesohq.gumroad.com/l/aizvrd" target="_blank" rel="noopener"
              onclick="try{if(typeof gtag==='function')gtag('event','brief_membership_click',{source:'hub-teaser'});}catch(e){}">
-            Get every week &mdash; $4.99/mo &rarr;</a>
-          <span class="brief-paid-note">Free issue every 28 days, or every weekly issue plus the archive.</span>
+            Brief Weekly Member &mdash; $4.99/mo &rarr;</a>
+          <span class="brief-paid-note">Brief: Free Letter every 28 days, or Brief Weekly Member: every weekly issue plus the archive.</span>
         </div>
         <div class="brief-ok" id="briefOk"></div>
-        <div class="brief-fine"><a href="https://hq.nesohq.com/go/brief?to=https%3A%2F%2Fbrief.nesohq.com%2F&amp;source=site" target="_blank" rel="noopener" style="color:var(--plum);font-weight:700">Read The Brief &rarr;</a> &middot; <a href="https://hq.nesohq.com/go/brief?to=https%3A%2F%2Fbrief.nesohq.com%2F&amp;source=site" target="_blank" rel="noopener" style="color:var(--plum);font-weight:700">Already a member? Read the archive &rarr;</a> &middot; <a href="https://nesohq.gumroad.com/l/aizvrd" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700">Every week &mdash; $4.99/mo &rarr;</a> &middot; Unsubscribe anytime &middot; we never sell your email</div>
+        <div class="brief-fine"><a href="https://hq.nesohq.com/go/brief?to=https%3A%2F%2Fbrief.nesohq.com%2F&amp;source=site" target="_blank" rel="noopener" style="color:var(--plum);font-weight:700">Read The Brief &rarr;</a> &middot; <a href="https://hq.nesohq.com/go/brief?to=https%3A%2F%2Fbrief.nesohq.com%2F&amp;source=site" target="_blank" rel="noopener" style="color:var(--plum);font-weight:700">Already a member? Read the archive &rarr;</a> &middot; <a href="https://nesohq.gumroad.com/l/aizvrd" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700">Brief Weekly Member &mdash; $4.99/mo &rarr;</a> &middot; Unsubscribe anytime &middot; we never sell your email</div>
       </div>
       <div class="brief-art" aria-hidden="true">${logoMark(46)}<span class="ba1"></span><span class="ba2"></span><span class="ba3"></span></div>
     </div>
@@ -1025,7 +1025,7 @@ async function briefSub(){
   try{
     var r=await fetch('https://neso-queue.nesoai-us.workers.dev/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,interest:($('bint').value||''),source:'hub-teaser'})});
     var j=await r.json();
-    if(j.ok){ $('briefForm').style.display='none'; $('briefOk').innerHTML=(j.already?'You\u2019re already on the list. \u2713':'You\u2019re in \u2014 the next issue hits your inbox. \u2713')+' <a href="https://nesohq.gumroad.com/l/aizvrd" target="_blank" rel="noopener" style="color:var(--gold);font-weight:800">Want it weekly? $4.99/mo &rarr;</a>'; try{if(typeof gtag==='function')gtag('event','brief_subscribe',{source:'hub-teaser'});}catch(e){} }
+    if(j.ok){ $('briefForm').style.display='none'; $('briefOk').innerHTML=(j.already?'You\u2019re already on the list. \u2713':'You\u2019re in \u2014 the next issue hits your inbox. \u2713')+' <a href="https://nesohq.gumroad.com/l/aizvrd" target="_blank" rel="noopener" style="color:var(--gold);font-weight:800">Brief Weekly Member: every week, $4.99/mo &rarr;</a>'; try{if(typeof gtag==='function')gtag('event','brief_subscribe',{source:'hub-teaser'});}catch(e){} }
     else { $('briefOk').innerHTML='<span class="bad">'+(j.error==='bad_email'?'That email looks off.':'Hmm, that didn\u2019t go through &mdash; text us at (901) 295-0322.')+'</span>'; btn.disabled=false; btn.textContent='Get the next issue \u2192'; }
   }catch(e){ $('briefOk').innerHTML='<span class="bad">Network hiccup &mdash; try again in a moment.</span>'; btn.disabled=false; btn.textContent='Get the next issue \u2192'; }
 }
