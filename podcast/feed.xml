@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>NESO Now: Main Street to Public Works</title>
+    <link>https://nesohq.com/podcast/</link>
+    <atom:link href="https://nesohq.com/podcast/feed.xml" rel="self" type="application/rss+xml"/>
+    <language>en-us</language>
+    <copyright>© 2026 NESO HQ LLC</copyright>
+    <description>Grants, public bids and the money behind main street, explained plainly for small businesses, contractors, nonprofits and towns. From NESO, the team behind the NESO Brief and NESO for Contractors. Episodes start as the NESO Brief&#x27;s free letter, read in full. The voice is computer-generated. Nothing here is legal, tax, engineering or investment advice.</description>
+    <lastBuildDate>Sat, 21 Nov 2026 12:00:00 +0000</lastBuildDate>
+    <itunes:author>NESO</itunes:author>
+    <itunes:summary>Grants, public bids and the money behind main street, explained plainly for small businesses, contractors, nonprofits and towns. From NESO, the team behind the NESO Brief and NESO for Contractors. Episodes start as the NESO Brief&#x27;s free letter, read in full. The voice is computer-generated.</itunes:summary>
+    <itunes:type>episodic</itunes:type>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:image href="https://nesohq.com/podcast/cover.jpg"/>
+    <image><url>https://nesohq.com/podcast/cover.jpg</url><title>NESO Now: Main Street to Public Works</title><link>https://nesohq.com/podcast/</link></image>
+    <itunes:category text="Business"><itunes:category text="Entrepreneurship"/></itunes:category>
+    <itunes:category text="News"><itunes:category text="Business News"/></itunes:category>
+    <itunes:owner><itunes:name>NESO HQ LLC</itunes:name><itunes:email>hello@nesohq.com</itunes:email></itunes:owner>
+    <podcast:locked owner="hello@nesohq.com">yes</podcast:locked>
+  </channel>
+</rss>
