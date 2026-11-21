@@ -63,6 +63,12 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://nesohq.com/food-trucks.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://nesohq.com/site-brief.html</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
