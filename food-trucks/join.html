@@ -52,6 +52,9 @@
   .done { background:#fff; border:2px solid var(--ember); border-radius:16px; padding:20px; }
   .done code { display:block; background:var(--cream); padding:10px; border-radius:8px; overflow-wrap:anywhere; margin:8px 0; font-size:13px; }
   .hp { position:absolute; left:-9999px; }
+  .vals { background:var(--char); color:#e9ddcd; border-radius:16px; padding:18px; margin:0 0 18px; } .vals h2 { color:#fff; }
+  .vg { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px; } .vg .v { border:1px solid #3a2f28; border-radius:12px; padding:12px; }
+  .vg b { color:var(--ember2); display:block; margin-bottom:2px; } .vg p { margin:0; font-size:14.5px; }
   footer { padding:24px 0; color:#6e6878; font-size:14px; }
   footer a { color:var(--neso); }
   @media (max-width:640px) { .two, .three { grid-template-columns:1fr; } .day .grid { grid-template-columns:1fr 1fr; } .menu-row { grid-template-columns:1fr .7fr auto; } .menu-row .d { grid-column:1 / -1; } }
@@ -62,6 +65,7 @@
 <main class="wrap">
   <h1 class="disp" id="title">List your truck, free.</h1>
   <p class="lead" id="lead">One form, about five minutes. NESO checks each new listing before it goes live, usually within a business day. You'll get a private link to change your stops, hours and menu any time. No account, no password, no cost.</p>
+  <div class="vals" id="vals"><h2 class="disp" style="font-size:34px;line-height:1;margin:0 0 10px">How NESO helps you get found</h2><div class="vg"><div class="v"><b>Your own page, made for search</b><p>A page at nesohq.com with your name, food, hours, menu and photos, written so Google can read it, and listed in NESO's sitemap so search engines find it.</p></div><div class="v"><b>Found by hungry people nearby</b><p>People look trucks up by kind of food, by town or ZIP, by "near me", by who's open now or today, and on a map.</p></div><div class="v"><b>Lookers become customers</b><p>A call button, directions to today's spot, your menu and special, and links to your Instagram and online ordering, all one tap away.</p></div><div class="v"><b>Catering leads</b><p>Tick "we do catering" and people planning offices, weddings and parties can find you with the catering filter and reach you directly.</p></div><div class="v"><b>Always current</b><p>Change your stops, hours and menu any time with your private link. "Open now" updates by the clock, so nobody drives to an empty lot.</p></div><div class="v"><b>Free, and checked</b><p>No cost, no account, no password. NESO checks every listing, so the directory stays real trucks with real food.</p></div></div></div>
   <div id="out"></div>
   <form id="f" novalidate>
     <fieldset><legend>Your truck</legend>
@@ -144,7 +148,7 @@
     try { var r = await fetch(FT.API + (EID ? "/edit" : ""), { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(b) }); var j = await r.json();
       if (!r.ok || j.error) throw new Error(j.error || "Something went wrong. Try again.");
       if (EID) { say(j.status === "approved" ? "Saved. Your listing is updated in the directory." : "Saved. NESO will check it before it goes live.", "good"); }
-      else { var link = location.origin + location.pathname + "?id=" + j.id + "&key=" + j.key; $("f").style.display = "none"; $("lead").style.display = "none"; $("title").textContent = "Thanks. You're in line.";
+      else { var link = location.origin + location.pathname + "?id=" + j.id + "&key=" + j.key; $("f").style.display = "none"; $("lead").style.display = "none"; $("vals").style.display = "none"; $("title").textContent = "Thanks. You're in line.";
         var d = document.createElement("div"); d.className = "done"; d.innerHTML = "<b>NESO will check your listing, usually within a business day, and then it goes live in the directory.</b><p>This is your private link to change your stops, hours, menu and photos any time. Save it now: it's the only way in, and NESO can't see it.</p><code></code><p><button class='btn fire' type='button' id='copy'>Copy the link</button> <a class='btn ghost' id='mail'>Email it to myself</a></p>";
         d.querySelector("code").textContent = link; $("out").appendChild(d);
         d.querySelector("#copy").onclick = function () { navigator.clipboard && navigator.clipboard.writeText(link); this.textContent = "Copied"; };
@@ -152,7 +156,7 @@
     } catch (x) { say(x.message, "bad"); }
     $("send").disabled = false; $("send").textContent = EID ? "Save changes" : "Send my listing"; };
   if (EID) {
-    $("title").textContent = "Change your listing"; $("lead").textContent = "Update your stops, hours, menu and photos. Changes show in the directory within a minute. A new truck name is checked by NESO again."; $("send").textContent = "Save changes";
+    $("title").textContent = "Change your listing"; $("vals").style.display = "none"; $("lead").textContent = "Update your stops, hours, menu and photos. Changes show in the directory within a minute. A new truck name is checked by NESO again."; $("send").textContent = "Save changes";
     fetch(FT.API + "/own?id=" + encodeURIComponent(EID) + "&key=" + encodeURIComponent(EKEY || "")).then(function (r) { return r.json(); }).then(function (j) {
       if (!j.truck) { say("This edit link isn't right. Use the private link you saved when you listed your truck, or write to hello@nesohq.com.", "bad"); $("f").style.display = "none"; return; }
       var t = j.truck; imgKey = j.imgKey || ""; ["name", "blurb", "city", "state", "zip", "special", "phone", "email", "instagram", "facebook", "website", "order"].forEach(function (k) { $(k).value = t[k] || ""; });
