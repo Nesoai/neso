@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://nesohq.com/sitemap.xml
+Sitemap: https://nesohq.com/food-trucks/sitemap.xml

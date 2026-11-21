@@ -3,340 +3,210 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Websites for food trucks and carts | NESO</title>
-<meta name="description" content="A website for your food truck or cart: today's spot and hours, your menu with photos, catering requests and a tap-to-call button. See a full example, then have yours built before you pay. $20 a month.">
+<title>Food trucks near you: find one open today | NESO</title>
+<meta name="description" content="Find food trucks and carts near you by cuisine, town and who's open today. Truck owners list free. A free directory from NESO.">
 <link rel="canonical" href="https://nesohq.com/food-trucks.html">
-<meta property="og:title" content="Websites for food trucks and carts | NESO">
-<meta property="og:description" content="See what a food truck's own page can look like: today's spot, the menu, catering and a call button. Built before you pay.">
+<meta property="og:title" content="Food trucks near you | NESO">
+<meta property="og:description" content="Find food trucks by cuisine, town and who's open today. Owners list free.">
 <meta property="og:url" content="https://nesohq.com/food-trucks.html">
 <meta property="og:image" content="https://images.pexels.com/photos/5920734/pexels-photo-5920734.jpeg?auto=compress&cs=tinysrgb&w=1200">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
-  :root { --char:#1c1613; --char2:#2a211c; --ember:#e2552b; --ember2:#f08a3a; --cream:#fbf3e6; --paper:#fffaf2; --ink:#221a15; --muted:#6f6259;
-          --neso:#5b2a86; --neso-soft:#f3ecf9; --line:#eadfce; }
+  :root { --char:#1c1613; --ember:#e2552b; --ember2:#f08a3a; --cream:#fbf3e6; --paper:#fffaf2; --ink:#221a15; --muted:#6f6259; --line:#eadfce; --neso:#5b2a86; --neso-soft:#f3ecf9; --good:#2fb35a; }
   * { box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.6 Inter, Arial, Helvetica, sans-serif; }
+  body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.55 Inter, Arial, Helvetica, sans-serif; }
   a { color:inherit; }
   img { max-width:100%; display:block; }
-  .wrap { max-width:1040px; margin:0 auto; padding:0 16px; }
-  .disp { font-family:"Bebas Neue", Impact, "Arial Narrow", sans-serif; letter-spacing:.02em; font-weight:400; }
-
-  /* NESO's strip: this page is an example */
-  .neso-bar { background:var(--neso); color:#fff; font-size:14px; }
-  .neso-bar .wrap { display:flex; gap:10px; align-items:center; justify-content:space-between; padding-top:9px; padding-bottom:9px; flex-wrap:wrap; }
-  .neso-bar b { font-family:Georgia, "Times New Roman", serif; font-size:17px; }
-  .neso-bar a.cta { background:#fff; color:var(--neso); text-decoration:none; font-weight:800; padding:7px 14px; border-radius:999px; white-space:nowrap; }
-  .tag { display:inline-flex; gap:6px; align-items:center; background:var(--neso-soft); color:var(--neso); border:1px solid #d9c8ea; font:600 12.5px/1.3 Inter, sans-serif; padding:5px 10px; border-radius:999px; margin:0 0 12px; }
-  .tag::before { content:"NESO"; font-weight:800; letter-spacing:.06em; font-size:10.5px; background:var(--neso); color:#fff; padding:2px 6px; border-radius:999px; }
-  .dark .tag { background:rgba(255,255,255,.12); color:#fff; border-color:rgba(255,255,255,.25); }
-
-  /* the truck's own page */
-  .truck-top { background:var(--char); color:var(--cream); position:sticky; top:0; z-index:5; box-shadow:0 2px 10px rgba(0,0,0,.25); }
-  .truck-top .wrap { display:flex; align-items:center; justify-content:space-between; height:58px; gap:10px; }
-  .brand { font-size:30px; color:var(--cream); text-decoration:none; line-height:1; white-space:nowrap; }
+  .wrap { max-width:1100px; margin:0 auto; padding:0 16px; }
+  .disp { font-family:"Bebas Neue", Impact, "Arial Narrow", sans-serif; font-weight:400; letter-spacing:.02em; }
+  header.top { background:var(--char); color:var(--cream); }
+  header.top .wrap { display:flex; align-items:center; justify-content:space-between; height:58px; gap:12px; }
+  .brand { text-decoration:none; color:var(--cream); font-size:28px; line-height:1; white-space:nowrap; }
+  .brand small { font-family:Georgia, serif; font-size:13px; color:#cdbfae; letter-spacing:0; margin-left:6px; }
   .brand span { color:var(--ember2); }
-  .truck-top nav { display:flex; gap:16px; font-weight:600; font-size:14px; }
-  .truck-top nav a { text-decoration:none; color:var(--cream); opacity:.85; }
-  .call { background:var(--ember); color:#fff; text-decoration:none; font-weight:800; padding:9px 14px; border-radius:10px; white-space:nowrap; font-size:14px; }
-
-  .hero { position:relative; min-height:560px; display:flex; align-items:flex-end; color:#fff; background:#3a2a20; }
+  .toplink { color:var(--cream); font-weight:800; font-size:14px; text-decoration:none; background:var(--ember); padding:8px 13px; border-radius:10px; white-space:nowrap; }
+  .hero { position:relative; color:#fff; background:#3a2a20; }
   .hero > img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,12,8,.15) 0%, rgba(20,12,8,.55) 38%, rgba(20,12,8,.9) 100%); }
-  .hero .wrap { position:relative; z-index:1; padding-top:120px; padding-bottom:36px; width:100%; }
-  .status { display:inline-flex; align-items:center; gap:9px; background:rgba(255,255,255,.95); color:var(--ink); padding:8px 14px; border-radius:999px; font-weight:600; font-size:14.5px; }
-  .dot { width:10px; height:10px; border-radius:50%; background:#2fb35a; box-shadow:0 0 0 4px rgba(47,179,90,.25); animation:pulse 1.8s infinite; }
-  .dot.closed { background:#c9813a; box-shadow:0 0 0 4px rgba(201,129,58,.25); animation:none; }
-  @keyframes pulse { 50% { box-shadow:0 0 0 8px rgba(47,179,90,0); } }
-  @media (prefers-reduced-motion: reduce) { .dot { animation:none; } html { scroll-behavior:auto; } }
-  .hero h1 { font-size:clamp(54px, 11vw, 104px); line-height:.9; margin:16px 0 8px; }
-  .hero p.lead { font-size:clamp(17px, 2.4vw, 21px); max-width:620px; margin:0 0 20px; color:#fff7ec; }
-  .btns { display:flex; gap:10px; flex-wrap:wrap; }
-  .btn { display:inline-block; text-decoration:none; font-weight:800; padding:13px 20px; border-radius:12px; font-size:15.5px; }
+  .hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,12,8,.45), rgba(20,12,8,.88)); }
+  .hero .wrap { position:relative; z-index:1; padding-top:54px; padding-bottom:30px; }
+  .hero h1 { font-size:clamp(48px, 9vw, 86px); line-height:.92; margin:0 0 10px; }
+  .hero p { margin:0 0 18px; max-width:620px; font-size:18px; color:#fff3e4; }
+  .search { background:#fff; color:var(--ink); border-radius:16px; padding:12px; display:grid; grid-template-columns:1.4fr 1fr auto; gap:10px; box-shadow:0 10px 30px rgba(0,0,0,.25); }
+  .search input, .search select { font:inherit; padding:12px; border:1px solid var(--line); border-radius:10px; width:100%; background:#fff; color:var(--ink); }
+  .btn { display:inline-block; text-decoration:none; font:800 15px Inter, sans-serif; padding:12px 18px; border-radius:10px; border:0; cursor:pointer; }
   .btn.fire { background:var(--ember); color:#fff; }
-  .btn.light { background:rgba(255,255,255,.14); color:#fff; border:2px solid rgba(255,255,255,.55); }
-  .btn.dark { background:var(--char); color:var(--cream); }
+  .btn.ghost { background:transparent; color:var(--ink); border:2px solid var(--line); }
   .btn.neso { background:var(--neso); color:#fff; }
-  .btn.neso-ghost { color:var(--neso); border:2px solid var(--neso); }
-
-  section { padding:54px 0; }
-  h2 { font-size:clamp(40px, 6vw, 58px); line-height:.95; margin:0 0 6px; }
-  .kick { color:var(--ember); font-weight:800; letter-spacing:.08em; text-transform:uppercase; font-size:13px; }
-  .sub { color:var(--muted); margin:0 0 24px; max-width:640px; }
-
-  /* this week */
-  .week { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:10px; }
-  .day { background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px; }
-  .day .d { font-weight:800; font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
-  .day .w { font-weight:800; margin:4px 0 2px; line-height:1.3; }
-  .day .h { font-size:14px; color:var(--muted); }
-  .day.today { background:var(--char); color:var(--cream); border-color:var(--char); }
-  .day.today .d { color:var(--ember2); }
-  .day.today .h { color:#d9cbbb; }
-  .day.off { opacity:.55; }
-
-  /* menu */
-  .menu-wrap { background:var(--cream); }
-  .feature { display:grid; grid-template-columns:1.1fr 1fr; gap:22px; align-items:stretch; margin-bottom:26px; }
-  .feature img { width:100%; height:100%; min-height:280px; object-fit:cover; border-radius:18px; }
-  .feature .card { background:var(--char); color:var(--cream); border-radius:18px; padding:26px; display:flex; flex-direction:column; justify-content:center; }
-  .feature .card .disp { font-size:44px; line-height:.95; margin:6px 0 8px; color:#fff; }
-  .badge { display:inline-block; background:var(--ember); color:#fff; font-weight:800; font-size:12px; letter-spacing:.06em; text-transform:uppercase; padding:4px 10px; border-radius:999px; }
-  .price { font-family:"Bebas Neue", Impact, sans-serif; font-size:30px; color:var(--ember2); }
-  .menu { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; }
-  .item { background:#fff; border-radius:16px; overflow:hidden; border:1px solid var(--line); display:flex; flex-direction:column; }
-  .item img { height:190px; width:100%; object-fit:cover; }
-  .item .body { padding:14px 16px 16px; }
-  .item .row { display:flex; justify-content:space-between; gap:10px; align-items:baseline; }
-  .item h3 { margin:0; font-size:18px; }
-  .item .price { font-size:24px; color:var(--ember); }
-  .item p { margin:4px 0 0; color:var(--muted); font-size:14.5px; }
-  .sides { margin-top:18px; background:#fff; border:1px dashed #d8c7ad; border-radius:16px; padding:16px; display:flex; flex-wrap:wrap; gap:8px 22px; font-weight:600; }
-  .sides span em { font-style:normal; color:var(--ember); margin-left:6px; }
-
-  /* people */
-  .people { display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; }
-  .people figure { margin:0; position:relative; border-radius:16px; overflow:hidden; }
-  .people img { width:100%; height:260px; object-fit:cover; }
-  .people figcaption { position:absolute; left:10px; bottom:10px; background:rgba(28,22,19,.85); color:#fff; font-size:13px; font-weight:600; padding:5px 10px; border-radius:999px; }
-  .people .wide { grid-column:span 2; }
-
-  /* catering */
-  .cater { background:var(--char); color:var(--cream); }
-  .cater .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:26px; align-items:center; }
-  .cater img { border-radius:18px; width:100%; height:360px; object-fit:cover; }
-  .cater ul { padding-left:20px; margin:12px 0 20px; }
-  .cater li { margin:4px 0; }
-
-  .find { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; }
-  .find div { background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px; }
-  .find b { display:block; font-size:17px; margin-bottom:4px; }
-  .truck-foot { background:var(--char2); color:#cdbfae; font-size:14px; padding:22px 0; }
-
-  /* NESO: get a page like this */
-  .neso-part { background:#fff; border-top:6px solid var(--neso); }
-  .neso-part h2 { font-family:Georgia, "Times New Roman", serif; font-weight:bold; font-size:clamp(30px, 5vw, 42px); line-height:1.15; color:var(--ink); }
-  .neso-part .kick { color:var(--neso); }
-  .cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin-top:8px; }
-  .cards div { background:var(--neso-soft); border-radius:14px; padding:16px; }
-  .cards b { display:block; margin-bottom:4px; }
-  .steps { counter-reset:s; list-style:none; padding:0; margin:0; }
-  .steps li { counter-increment:s; position:relative; padding:0 0 16px 48px; }
-  .steps li::before { content:counter(s); position:absolute; left:0; top:0; width:32px; height:32px; border-radius:50%; background:var(--neso); color:#fff; display:grid; place-items:center; font-weight:bold; }
-  .nprice { font:bold 42px Georgia, serif; margin:0; }
-  details { border-bottom:1px solid #ece6f1; padding:12px 0; }
-  summary { cursor:pointer; font-weight:bold; }
+  .filters { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  .chip { font:600 14px Inter, sans-serif; padding:8px 13px; border-radius:999px; border:1px solid rgba(255,255,255,.5); background:rgba(255,255,255,.12); color:#fff; cursor:pointer; }
+  .chip[aria-pressed="true"] { background:#fff; color:var(--ink); border-color:#fff; }
+  main section { padding:30px 0; }
+  .count { color:var(--muted); margin:0 0 14px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:16px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; text-decoration:none; }
+  .card .ph { height:170px; background:var(--cream); position:relative; }
+  .card .ph img { width:100%; height:100%; object-fit:cover; }
+  .card .ph .ex { position:absolute; left:10px; top:10px; background:var(--neso); color:#fff; font:800 11px Inter, sans-serif; letter-spacing:.06em; padding:4px 8px; border-radius:999px; }
+  .card .body { padding:14px 16px 16px; display:flex; flex-direction:column; gap:4px; flex:1; }
+  .card h3 { margin:0; font-size:19px; }
+  .card .cu { color:var(--muted); font-size:14px; }
+  .st { display:flex; align-items:flex-start; gap:8px; font-size:14px; font-weight:600; margin-top:4px; }
+  .dot { width:9px; height:9px; border-radius:50%; background:#c9813a; flex:none; margin-top:6px; }
+  .dot.on { background:var(--good); box-shadow:0 0 0 3px rgba(47,179,90,.25); }
+  .card .dist { color:var(--muted); font-size:13px; }
+  .card .row { display:flex; gap:8px; margin-top:auto; padding-top:10px; }
+  .card .row a { flex:1; text-align:center; padding:9px; border-radius:9px; font-weight:800; font-size:14px; text-decoration:none; }
+  .card .row .c { background:var(--ember); color:#fff; } .card .row .m { background:var(--cream); color:var(--ink); }
+  #map { height:340px; border-radius:16px; border:1px solid var(--line); margin-bottom:18px; display:none; }
+  .empty { background:#fff; border:1px dashed #d8c7ad; border-radius:16px; padding:22px; }
+  .owners { background:var(--char); color:var(--cream); }
+  .owners .two { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .owners .box { background:#2a211c; border-radius:16px; padding:22px; }
+  .owners h2 { font-size:clamp(36px, 6vw, 52px); line-height:.95; margin:0 0 12px; color:#fff; }
+  .owners h3 { margin:0 0 6px; color:#fff; font-size:20px; }
+  .owners p { color:#e9ddcd; margin:0 0 14px; }
+  .owners ul { margin:0 0 16px; padding-left:20px; color:#e9ddcd; }
   .note { color:var(--muted); font-size:13.5px; }
-  footer.neso-foot { border-top:1px solid #ece6f1; padding:28px 0; color:#6e6878; font-size:14px; background:#fff; }
-  footer.neso-foot a { color:var(--neso); }
-
-  @media (max-width:760px) {
-    .truck-top nav { display:none; }
-    .hero { min-height:620px; }
-    .feature, .cater .grid2 { grid-template-columns:1fr; }
-    .feature img { min-height:240px; }
-    .people { grid-template-columns:1fr 1fr; }
-    .people img { height:200px; }
-    .cater img { height:260px; }
-    section { padding:42px 0; }
-  }
+  footer { padding:24px 0; color:#6e6878; font-size:14px; background:#fff; border-top:1px solid #ece6f1; }
+  footer a { color:var(--neso); }
+  @media (max-width:760px) { .search { grid-template-columns:1fr; } .owners .two { grid-template-columns:1fr; } }
+  @media (max-width:420px) { .brand { font-size:24px; } .brand small { display:none; } .toplink { padding:8px 10px; font-size:13px; } }
 </style>
 </head>
 <body>
-
-<div class="neso-bar"><div class="wrap">
-  <span><b>NESO</b> &nbsp;This is an example of a food truck's own website. Want one like it for your truck?</span>
-  <a class="cta" href="#get-yours">Get yours</a>
-</div></div>
-
-<!-- ===================== The example truck's page ===================== -->
-<header class="truck-top"><div class="wrap">
-  <a class="brand disp" href="#top">Big Ember <span>BBQ</span></a>
-  <nav aria-label="Example truck page"><a href="#week">This week</a><a href="#menu">Menu</a><a href="#catering">Catering</a><a href="#find">Find us</a></nav>
-  <a class="call" href="#call" aria-label="Call to order (example button)">Call to order</a>
+<header class="top"><div class="wrap">
+  <a class="brand disp" href="https://nesohq.com/food-trucks.html">Food <span>Trucks</span><small>by NESO</small></a>
+  <a class="toplink" href="food-trucks/join.html">List your truck free</a>
 </div></header>
 
-<main id="top">
+<main>
   <div class="hero">
-    <img src="https://images.pexels.com/photos/5920734/pexels-photo-5920734.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="A smiling food truck worker greets customers eating burgers and fries beside the truck" fetchpriority="high">
+    <img src="https://images.pexels.com/photos/5920734/pexels-photo-5920734.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="" fetchpriority="high">
     <div class="wrap">
-      <span class="status" id="status" aria-live="polite"><i class="dot" id="dot"></i><span id="status-text">Open today 11 to 7 at Courthouse Square</span></span>
-      <h1 class="disp">Low &amp; slow,<br>right on your corner.</h1>
-      <p class="lead">Brisket smoked 14 hours over oak, pulled pork, ribs and all the sides. Find today's spot, see the menu, and call ahead so it's hot when you walk up.</p>
-      <div class="btns">
-        <a class="btn fire" href="#call">Call to order</a>
-        <a class="btn light" href="#menu">See the menu</a>
-        <a class="btn light" href="#week">Where we'll be</a>
+      <h1 class="disp">Find a food truck<br>near you.</h1>
+      <p>Search by what you're hungry for, your town, or what's open right now. Every truck here was listed by its owner and checked by NESO.</p>
+      <form class="search" id="f" role="search" onsubmit="return false">
+        <input id="q" type="search" placeholder="Town, ZIP or truck name" aria-label="Town, ZIP or truck name" autocomplete="off">
+        <select id="cu" aria-label="Kind of food"><option value="">Any kind of food</option></select>
+        <button class="btn fire" id="near" type="button">Near me</button>
+      </form>
+      <div class="filters" role="group" aria-label="When">
+        <button class="chip" id="fNow" type="button" aria-pressed="false">Open now</button>
+        <button class="chip" id="fToday" type="button" aria-pressed="false">Open today</button>
+        <button class="chip" id="fCater" type="button" aria-pressed="false">Does catering</button>
+        <button class="chip" id="fMap" type="button" aria-pressed="false">Show map</button>
       </div>
     </div>
   </div>
 
-  <section id="week"><div class="wrap">
-    <p class="tag">Your spots and hours, kept current. The open-now line updates by the clock.</p>
-    <div class="kick">Find the smoke</div>
-    <h2 class="disp">Where we'll be this week</h2>
-    <p class="sub">We park in the same spots each week. Today is highlighted. Sold out early? We'll say so here.</p>
-    <div class="week" id="weekgrid"></div>
+  <section><div class="wrap">
+    <p class="count" id="count" aria-live="polite">Loading trucks…</p>
+    <div id="map" role="region" aria-label="Map of trucks"></div>
+    <div class="grid" id="list"></div>
   </div></section>
 
-  <section id="menu" class="menu-wrap"><div class="wrap">
-    <p class="tag">Your menu with photos and prices, and a special called out.</p>
-    <div class="kick">From the smoker</div>
-    <h2 class="disp">The menu</h2>
-    <p class="sub">Everything's smoked fresh each morning. When it's gone, it's gone.</p>
-
-    <div class="feature">
-      <img src="https://images.pexels.com/photos/9397270/pexels-photo-9397270.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Smoked brisket with a dark bark being sliced on a wooden board" loading="lazy">
-      <div class="card">
-        <span class="badge">This week's special</span>
-        <div class="disp">Burnt end brisket plate</div>
-        <p style="margin:0 0 10px">A half pound of sliced brisket and burnt ends, two sides, pickles, onions and white bread. Usually gone by 2.</p>
-        <span class="price">$18</span>
+  <section class="owners" id="owners"><div class="wrap">
+    <h2 class="disp">Own a food truck or cart?</h2>
+    <div class="two">
+      <div class="box">
+        <h3>List your truck here, free</h3>
+        <p>Your own page in this directory: where you'll be each day, your hours, your menu and photos, and a call button. People find you by cuisine, town and who's open now.</p>
+        <ul><li>Free, no account and no password</li><li>Change your stops any time with your private link</li><li>Checked by NESO before it goes live</li></ul>
+        <a class="btn fire" href="food-trucks/join.html">List your truck free</a>
       </div>
-    </div>
-
-    <div class="menu">
-      <div class="item"><img src="https://images.pexels.com/photos/34495427/pexels-photo-34495427.jpeg?auto=compress&cs=tinysrgb&w=800" alt="A brisket sandwich in a red checkered basket with coleslaw" loading="lazy">
-        <div class="body"><div class="row"><h3>Brisket sandwich</h3><span class="price">$13</span></div><p>Chopped or sliced, on a toasted bun with slaw on the side.</p></div></div>
-      <div class="item"><img src="https://images.pexels.com/photos/34495401/pexels-photo-34495401.jpeg?auto=compress&cs=tinysrgb&w=800" alt="A pulled pork sandwich topped with coleslaw on checkered paper" loading="lazy">
-        <div class="body"><div class="row"><h3>Pulled pork sandwich</h3><span class="price">$11</span></div><p>Topped with slaw and our house sauce. Ask for it spicy.</p></div></div>
-      <div class="item"><img src="https://images.pexels.com/photos/8250732/pexels-photo-8250732.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Racks of ribs on an outdoor grill with smoke" loading="lazy" style="object-position:70% 85%">
-        <div class="body"><div class="row"><h3>Ribs, half rack</h3><span class="price">$17</span></div><p>Dry rub, a little sauce on the side, one side included.</p></div></div>
-    </div>
-    <div class="sides" aria-label="Sides">
-      <span>Mac and cheese<em>$4</em></span><span>Smoked beans<em>$4</em></span><span>Slaw<em>$3</em></span><span>Cornbread<em>$3</em></span><span>Banana pudding<em>$5</em></span><span>Sweet tea<em>$3</em></span>
-    </div>
-  </div></section>
-
-  <section id="people"><div class="wrap">
-    <p class="tag">Your own photos of your food and your regulars.</p>
-    <div class="kick">The good part</div>
-    <h2 class="disp">Come hungry. Bring friends.</h2>
-    <p class="sub">Lunch rushes, brewery nights and the regulars who know to come early.</p>
-    <div class="people">
-      <figure class="wide"><img src="https://images.pexels.com/photos/5920665/pexels-photo-5920665.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Two friends laughing as they eat at a food truck counter" loading="lazy"><figcaption>Lunch at the square</figcaption></figure>
-      <figure><img src="https://images.pexels.com/photos/5794195/pexels-photo-5794195.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Two people ordering at a red food truck" loading="lazy"><figcaption>Order up</figcaption></figure>
-      <figure><img src="https://images.pexels.com/photos/5779656/pexels-photo-5779656.jpeg?auto=compress&cs=tinysrgb&w=600" alt="A laughing couple holding baskets of food outside a food truck at night" loading="lazy"><figcaption>Brewery night</figcaption></figure>
-      <figure><img src="https://images.pexels.com/photos/27177294/pexels-photo-27177294.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Three friends laughing over a meal outdoors" loading="lazy"><figcaption>Seconds?</figcaption></figure>
-      <figure><img src="https://images.pexels.com/photos/36869213/pexels-photo-36869213.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Sliced smoked brisket on a wooden cutting board" loading="lazy"><figcaption>Fresh off the smoker</figcaption></figure>
-      <figure class="wide"><img src="https://images.pexels.com/photos/5779901/pexels-photo-5779901.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="A couple laughing as they eat beside a food truck in the evening" loading="lazy"><figcaption>Friday nights</figcaption></figure>
-    </div>
-  </div></section>
-
-  <section id="catering" class="cater dark"><div class="wrap grid2">
-    <div>
-      <p class="tag">A catering request that comes straight to you.</p>
-      <div class="kick" style="color:var(--ember2)">Catering and events</div>
-      <h2 class="disp" style="color:#fff">We'll bring the smoker to you.</h2>
-      <p>Office lunches, weddings, brewery takeovers and backyard parties, from 25 to 300 people.</p>
-      <ul><li>Pick your meats and sides, or let us plan it</li><li>Buffet trays or served from the truck</li><li>Tell us the date, the place and how many</li></ul>
-      <a class="btn fire" href="#catering-form">Ask about a date</a>
-      <p class="note" id="catering-form" style="color:#cdbfae;margin-top:10px">On a real truck's page, this opens a short form that comes straight to the owner.</p>
-    </div>
-    <img src="https://images.pexels.com/photos/16934321/pexels-photo-16934321.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Guests serving themselves from tables of food at an outdoor garden party" loading="lazy">
-  </div></section>
-
-  <section id="find"><div class="wrap">
-    <p class="tag">A call button, and the links you already use.</p>
-    <div class="kick">Say hi</div>
-    <h2 class="disp">Find us</h2>
-    <div class="find">
-      <div id="call"><b>Call or text to order</b>(555) 555-0142<br><span class="note">Example number. Yours goes here, as a button that dials.</span></div>
-      <div><b>Follow for today's spot</b>We post where we're parked every morning on Instagram.<br><span class="note">Your Instagram, Facebook and ordering app link here.</span></div>
-      <div><b>Our story</b>A backyard smoker, a lot of practice, and a truck we bought in 2019. Now we're on the road five days a week.</div>
+      <div class="box">
+        <h3>Want your own website too?</h3>
+        <p>See a full example of a truck's own site: open now and where, this week's stops, the menu with photos, catering requests and tap to call. NESO builds yours before you pay.</p>
+        <ul><li>$20 a month, hosting included</li><li>Built from one short form</li><li>You look before you pay</li></ul>
+        <a class="btn neso" href="food-trucks/example.html">See the example truck site</a>
+      </div>
     </div>
   </div></section>
 </main>
-<div class="truck-foot"><div class="wrap">Big Ember BBQ is a made-up truck, invented for this example; the photos are stock photos. Your page uses your name, your food and your photos.</div></div>
 
-<!-- ===================== NESO: get a page like this ===================== -->
-<div class="neso-part" id="get-yours">
-  <section><div class="wrap">
-    <div class="kick">NESO Website Service · for food trucks and carts</div>
-    <h2>Want a page like this for your truck?</h2>
-    <p class="sub" style="font-size:18px">Instagram is great for photos, but a hungry person searching your name needs your spot, your hours and your menu in one tap. We build a simple website for your truck or cart, host it, and keep it current.</p>
-    <div class="btns">
-      <a class="btn neso" href="https://nesohq.com/site-brief.html?source=food-trucks">Start with the short form</a>
-      <a class="btn neso-ghost" href="https://nesohq.com/website-membership.html?source=food-trucks">How the Website Service works</a>
-    </div>
-  </div></section>
-
-  <section style="padding-top:0"><div class="wrap">
-    <h2 style="font-size:28px">What your site can show</h2>
-    <div class="cards">
-      <div><b>Where and when</b>Your pod or regular spots, the days you're there, and your hours, in one place, with no conflicting lists.</div>
-      <div><b>Your menu</b>The dishes people come back for, with your specials called out.</div>
-      <div><b>Catering and events</b>A request form for weddings, offices, breweries and private parties, sent straight to you.</div>
-      <div><b>Tap to call</b>A call button that works on every phone, for orders or bookings.</div>
-      <div><b>Your story and press</b>How you started, and the lists and write-ups you've earned.</div>
-      <div><b>Links you already use</b>Instagram, your ordering app and reviews, linked from the page.</div>
-    </div>
-  </div></section>
-
-  <section style="padding-top:0"><div class="wrap">
-    <h2 style="font-size:28px">How it works</h2>
-    <ol class="steps">
-      <li><b>Fill out the short form.</b> Tell us about your truck, your spots, your hours and your menu. Photos help.</li>
-      <li><b>We build it first.</b> Up to two pages, written from your form, built and hosted. It's ready three business days after you send the form.</li>
-      <li><b>You look before you pay.</b> We build the website before you pay so you can view it, and you aren't committed to buying.</li>
-    </ol>
-  </div></section>
-
-  <section style="padding-top:0"><div class="wrap">
-    <h2 style="font-size:28px">Price</h2>
-    <p class="nprice">$20 a month</p>
-    <p>Design and hosting included. Founding rate of $20 a month or $200 a year for the first 200 members, with a three-month minimum. Full terms are on the <a href="https://nesohq.com/website-membership.html?source=food-trucks" style="color:var(--neso)">Website Service page</a>.</p>
-    <a class="btn neso" href="https://nesohq.com/site-brief.html?source=food-trucks">Start here</a>
-  </div></section>
-
-  <section style="padding-top:0"><div class="wrap">
-    <h2 style="font-size:28px">Questions</h2>
-    <details><summary>I move around. Can the site keep up?</summary><p>Yes. Tell us your regular spots and schedule on the form. When your schedule changes, send us the new one and we'll update the page.</p></details>
-    <details><summary>I already have Instagram. Why a website?</summary><p>Search engines and maps show websites first, and not everyone uses Instagram. A website gives people who search your name your spot, hours and menu without an app, and it links back to your Instagram.</p></details>
-    <details><summary>Can people book catering through it?</summary><p>Yes. The site can carry a catering and events request form that comes straight to you.</p></details>
-    <details><summary>Will my page look like this one?</summary><p>It will look like your truck: your name, colors, food and photos. This page shows the parts a truck's page usually needs. Tell us what you want on the form.</p></details>
-    <details><summary>What if I don't like it?</summary><p>We build the website before you pay so you can view it first. If it isn't right for you, you don't have to buy.</p></details>
-  </div></section>
-</div>
-
-<footer class="neso-foot"><div class="wrap">
+<footer><div class="wrap">
   NESO HQ LLC · <a href="https://nesohq.com/">nesohq.com</a> · Call or text (901) 295-0322 · <a href="mailto:hello@nesohq.com">hello@nesohq.com</a><br>
-  <a href="https://nesohq.com/legal/privacy.html">Privacy</a> · <a href="https://nesohq.com/legal/terms.html">Terms</a> · Photos from Pexels.
+  <a href="https://nesohq.com/legal/privacy.html">Privacy</a> · <a href="https://nesohq.com/legal/terms.html">Terms</a> · Open now and open today use your device's clock. Your location is used only on your device, to sort by distance, and is never sent to NESO.
 </div></footer>
 
+<script src="food-trucks/trucks.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
 <script>
-/* The example truck's week. "Open now" is worked out from the visitor's own clock. */
 (function () {
-  var week = [
-    { d: "Sunday", off: true },
-    { d: "Monday", off: true },
-    { d: "Tuesday", w: "Courthouse Square", o: 11, c: 19 },
-    { d: "Wednesday", w: "Medical Center, east lot", o: 11, c: 14 },
-    { d: "Thursday", w: "Courthouse Square", o: 11, c: 19 },
-    { d: "Friday", w: "Riverside Brewing Co.", o: 16, c: 21 },
-    { d: "Saturday", w: "Elm Street Farmers Market", o: 9, c: 14 }
-  ];
-  function hr(h) { var p = h >= 12 ? "pm" : "am"; var x = h % 12 || 12; return x + p; }
-  var now = new Date(), day = now.getDay(), t = now.getHours() + now.getMinutes() / 60;
-  var grid = document.getElementById("weekgrid");
-  for (var i = 0; i < 7; i++) {
-    var k = (2 + i) % 7, s = week[k], el = document.createElement("div");   // the week starts Tuesday, the first day out
-    el.className = "day" + (k === day ? " today" : "") + (s.off ? " off" : "");
-    el.innerHTML = "<div class='d'></div><div class='w'></div><div class='h'></div>";
-    el.children[0].textContent = (k === day ? "Today · " : "") + s.d;
-    el.children[1].textContent = s.off ? "Off: prepping the smoker" : s.w;
-    el.children[2].textContent = s.off ? "" : hr(s.o) + " to " + hr(s.c);
-    grid.appendChild(el);
+  var all = [], me = null, map = null, layer = null;
+  var $ = function (id) { return document.getElementById(id); };
+  var flags = { now: false, today: false, cater: false, map: false };
+  var EXAMPLE = { example: true, slug: "", name: "Big Ember BBQ", cuisines: ["BBQ"], city: "Example", state: "", photoUrl: "https://images.pexels.com/photos/34495427/pexels-photo-34495427.jpeg?auto=compress&cs=tinysrgb&w=600", schedule: [] };
+  function toggle(btn, key) { btn.onclick = function () { flags[key] = !flags[key]; btn.setAttribute("aria-pressed", String(flags[key])); if (key === "map") showMap(); render(); }; }
+  toggle($("fNow"), "now"); toggle($("fToday"), "today"); toggle($("fCater"), "cater"); toggle($("fMap"), "map");
+  $("q").oninput = render; $("cu").onchange = render;
+  $("near").onclick = function () {
+    if (!navigator.geolocation) { $("count").textContent = "This browser can't share a location. Type your town or ZIP instead."; return; }
+    $("near").textContent = "Finding you…";
+    navigator.geolocation.getCurrentPosition(function (p) { me = { lat: p.coords.latitude, lng: p.coords.longitude }; $("near").textContent = "Sorted by distance"; render(); },
+      function () { $("near").textContent = "Near me"; $("count").textContent = "No location shared. Type your town or ZIP instead."; }, { timeout: 10000, maximumAge: 600000 });
+  };
+  function nearest(t) {
+    if (!me) return null; var best = null;
+    (t.schedule || []).forEach(function (s) { if (!s.off && s.lat != null) { var d = FT.miles(me, s); if (best == null || d < best) best = d; } });
+    var st = FT.status(t); if (st.stop && st.stop.lat != null) best = FT.miles(me, st.stop);
+    return best;
   }
-  var st = document.getElementById("status-text"), dot = document.getElementById("dot"), today = week[day];
-  if (!today.off && t >= today.o && t < today.c) { st.textContent = "Open now until " + hr(today.c) + " at " + today.w; }
-  else {
-    dot.className = "dot closed";
-    if (!today.off && t < today.o) { st.textContent = "Opens today at " + hr(today.o) + " at " + today.w; }
-    else { for (var j = 1; j <= 7; j++) { var n = week[(day + j) % 7]; if (!n.off) { st.textContent = "Closed now · next " + (j === 1 ? "tomorrow" : n.d) + " at " + hr(n.o) + ", " + n.w; break; } } }
+  function match(t) {
+    var q = $("q").value.trim().toLowerCase(), cu = $("cu").value, st = FT.status(t);
+    if (cu && (t.cuisines || []).indexOf(cu) < 0) return false;
+    if (flags.now && !st.open) return false;
+    if (flags.today && !st.today) return false;
+    if (flags.cater && !t.catering) return false;
+    if (q) { var hay = [t.name, t.city, t.state, t.zip].concat((t.schedule || []).map(function (s) { return (s.place || "") + " " + (s.address || ""); })).join(" ").toLowerCase(); if (hay.indexOf(q) < 0) return false; }
+    return true;
   }
+  function card(t) {
+    var a = document.createElement("a"); a.className = "card";
+    if (t.example) {
+      a.href = "food-trucks/example.html";
+      a.innerHTML = "<div class='ph'><img loading='lazy' alt='A brisket sandwich in a red checkered basket' src='" + t.photoUrl + "'><span class='ex'>EXAMPLE</span></div><div class='body'><h3>Big Ember BBQ</h3><div class='cu'>BBQ · a made-up truck</div><div class='st'><i class='dot'></i><span>See what a truck's page can look like</span></div></div>";
+      return a;
+    }
+    var st = FT.status(t), d = nearest(t);
+    a.href = "food-trucks/t/" + encodeURIComponent(t.slug);
+    a.innerHTML = "<div class='ph'>" + (t.photos ? "<img loading='lazy' alt='' src='" + FT.img(t, 0) + "'>" : "") + "</div><div class='body'><h3></h3><div class='cu'></div><div class='st'><i class='dot" + (st.open ? " on" : "") + "'></i><span></span></div>" + (d != null ? "<div class='dist'></div>" : "") + "<div class='row'>" + (t.phone ? "<span class='c' data-tel>Call</span>" : "") + "<span class='m'>Menu and week</span></div></div>";
+    a.querySelector("h3").textContent = t.name;
+    a.querySelector(".cu").textContent = (t.cuisines || []).join(" · ") + " · " + t.city + (t.state ? ", " + t.state : "");
+    a.querySelector(".st span").textContent = st.text;
+    if (d != null) a.querySelector(".dist").textContent = (d < 10 ? d.toFixed(1) : Math.round(d)) + " miles away";
+    var c = a.querySelector("[data-tel]"); if (c) c.onclick = function (e) { e.preventDefault(); location.href = FT.tel(t.phone); };
+    a.querySelectorAll(".row span").forEach(function (s) { s.style.cssText = "flex:1;text-align:center;padding:9px;border-radius:9px;font-weight:800;font-size:14px;" + (s.className === "c" ? "background:#e2552b;color:#fff" : "background:#fbf3e6"); });
+    return a;
+  }
+  function render() {
+    var rows = all.filter(match);
+    rows.sort(function (a, b) { var sa = FT.status(a), sb = FT.status(b); if (me) { var da = nearest(a), db = nearest(b); if (da != null && db != null && da !== db) return da - db; } return (sb.open - sa.open) || (sb.today - sa.today) || a.name.localeCompare(b.name); });
+    var list = $("list"); list.innerHTML = "";
+    rows.forEach(function (t) { list.appendChild(card(t)); });
+    var filtering = $("q").value || $("cu").value || flags.now || flags.today || flags.cater;
+    if (!all.length) $("count").innerHTML = "The directory has just opened, so no trucks are listed yet. <a href='food-trucks/join.html' style='color:#e2552b;font-weight:800'>Own a truck? Be one of the first, free.</a>";
+    else $("count").textContent = rows.length + (rows.length === 1 ? " truck" : " trucks") + (filtering ? " match" : " listed") + (me ? ", nearest first" : "") + ".";
+    if (!rows.length && all.length) { var e = document.createElement("div"); e.className = "empty"; e.innerHTML = "No truck matches that yet. Try another kind of food or clear a filter. Know a truck that should be here? Send them <a href='https://nesohq.com/food-trucks/join.html' style='color:#e2552b;font-weight:800'>nesohq.com/food-trucks/join.html</a>."; list.appendChild(e); }
+    if (!filtering) list.appendChild(card(EXAMPLE));
+    if (flags.map) drawMap(rows);
+  }
+  function showMap() { $("map").style.display = flags.map ? "block" : "none"; if (flags.map && !map && window.L) { map = L.map("map", { scrollWheelZoom: false }).setView([36, -88], 5); L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 18, attribution: "&copy; OpenStreetMap contributors" }).addTo(map); } if (map) setTimeout(function () { map.invalidateSize(); }, 50); }
+  function drawMap(rows) {
+    if (!map) return; if (layer) layer.remove(); layer = L.layerGroup().addTo(map); var pts = [];
+    rows.forEach(function (t) { var st = FT.status(t), s = st.stop; if (!s || s.lat == null) return; pts.push([s.lat, s.lng]);
+      var m = L.circleMarker([s.lat, s.lng], { radius: 9, color: st.open ? "#2fb35a" : "#e2552b", weight: 3, fillOpacity: .8 }).addTo(layer);
+      var div = document.createElement("div"); var b = document.createElement("b"); b.textContent = t.name; var p = document.createElement("div"); p.textContent = st.text; var l = document.createElement("a"); l.href = "food-trucks/t/" + encodeURIComponent(t.slug); l.textContent = "Menu and week"; div.append(b, p, l); m.bindPopup(div); });
+    if (me) pts.push([me.lat, me.lng]);
+    if (pts.length) map.fitBounds(pts, { padding: [30, 30], maxZoom: 12 });
+  }
+  fetch(FT.API).then(function (r) { return r.json(); }).then(function (j) {
+    (j.cuisines || []).forEach(function (c) { var o = document.createElement("option"); o.value = c; o.textContent = c; $("cu").appendChild(o); });
+    all = j.trucks || []; render();
+  }).catch(function () { $("count").textContent = "The directory couldn't load just now. Try again in a minute."; all = []; $("list").appendChild(card(EXAMPLE)); });
 })();
 </script>
 </body>
