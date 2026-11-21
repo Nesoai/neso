@@ -1419,12 +1419,12 @@ function viewOpportunities(kind,query){
   return `<div class="wrap view oppwrap">
     <div class="crumb" onclick="go('/services')">${svg('compass')} Back to services</div>
     <div class="vhead"><div class="k">Updated daily</div><h1>Open bids &amp; grants &mdash; free to read</h1>
-      <p>Every solicitation NESO tracks, plus live federal grants, every state&rsquo;s procurement portal and the prime-contractor directory. No account, no key, no cap.</p>
-      <div style="margin:14px auto 0;max-width:640px;border:1.5px solid var(--gold,#e7b84b);border-radius:12px;padding:12px 16px;font-size:14px;text-align:center">Found one you want? Send us the bid docs + your details and we assemble the professional, submission-ready proposal &mdash; <b>1 credit ($50)</b>. <a href="https://neso-queue.nesoai-us.workers.dev/form/intake?track=bids&amp;services=Bid%20Proposal%20%2F%20Quote&amp;source=hub-proposal" style="font-weight:700">Bid Proposal service &rarr;</a></div></div>
+      <p>Every solicitation NESO tracks, plus live federal grants, every state&rsquo;s procurement portal and the prime-contractor directory. No account, no key, no cap.</p></div>
     <div class="opptabs">${tabs.map(t=>`<button class="tab ${f===t[0]?'on':''}" onclick="go('/opportunities/${t[0]}?q='+encodeURIComponent((document.getElementById('oppq')||{}).value||''))">${t[1]}</button>`).join('')}</div>
     <div class="oppsearch"><input id="oppq" type="text" placeholder="Keyword (e.g. roofing, janitorial, broadband, childcare)" value="${esc(query).replace(/"/g,'&quot;')}" onkeydown="if(event.key==='Enter')go('/opportunities/${f}?q='+encodeURIComponent(this.value))"><button onclick="go('/opportunities/${f}?q='+encodeURIComponent(document.getElementById('oppq').value))">Search</button></div>
     ${memberCTA()}
     <div id="oppResults"><div class="oppload">Loading live opportunities…</div></div>
+    <div style="margin:18px auto 6px;max-width:640px;border:1.5px solid var(--gold,#e7b84b);border-radius:12px;padding:12px 16px;font-size:14px;text-align:center">Found one you want? Send us the bid docs + your details and we assemble the professional, submission-ready proposal &mdash; <b>1 credit ($50)</b>. <a href="https://neso-queue.nesoai-us.workers.dev/form/intake?track=bids&amp;services=Bid%20Proposal%20%2F%20Quote&amp;source=hub-proposal" style="font-weight:700">Bid Proposal service &rarr;</a></div>
     <div class="oppcta"><div class="oc2">${svg('award')}</div><div class="om2"><h5>Found one that fits?</h5><p>We\'ll write the proposal, build the budget, and package it to win.</p></div><button onclick="go('/service/${f==='grants'?'grant':'procure'}')">Get help applying</button></div>
   </div>`;
 }
