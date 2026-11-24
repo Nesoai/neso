@@ -93,6 +93,10 @@ footer{background:var(--ink);color:#A392B4;font-family:var(--mono);font-size:12p
 footer a{color:#D9C7E8}
 @media (max-width:640px){.row{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* 24 Nov 2026: the text-message consent box, as on Funding Watch */
+.consent{display:flex;gap:10px;align-items:flex-start;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,system-ui,sans-serif;font-size:14px;font-weight:400;letter-spacing:0;text-transform:none;line-height:1.5;color:#4C4753;background:#FAF9FB;border:1px solid #E9E6EC;border-radius:10px;padding:12px 13px;margin:4px 0 18px}
+.consent input{width:auto;margin:3px 0 0;flex:none}
+.consent a{color:#5B2A86}
 </style></head><body>
 
 <div class="top"><div class="wrap">NESO HQ LLC &middot;
@@ -146,6 +150,7 @@ footer a{color:#D9C7E8}
     <div class="f"><label for="phone">Phone <span class="req">*</span></label>
       <input id="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
   </div>
+  <label class="consent" for="sms_consent"><input id="sms_consent" name="sms_consent" type="checkbox" value="yes"><span>I agree to receive text messages from NESO about my inquiry or engagement, including quotes and project updates. Message frequency varies, typically fewer than 10 per month. Message and data rates may apply. Reply STOP to unsubscribe, HELP for help. Consent is not a condition of purchase. <a href="/legal/privacy.html">Privacy Policy</a> &middot; <a href="/legal/terms.html">Terms</a></span></label>
 </fieldset>
 
 <fieldset>
@@ -304,14 +309,16 @@ $("send").addEventListener("click", async function(){
     web_notes:     v("notes"),
     web_plan:      "founding $20/mo · 3-month minimum, or $200/yr prepaid (founding annual)",
     web_turnaround:"3 business days from this submission (or from membership start if sent before joining)",
-    web_consent:   "yes — proposal requested; 3-month minimum and $100 handover acknowledged; contact by email/text/phone"
+    web_sms_consent: document.getElementById("sms_consent").checked ? "yes" : "no",
+    sms_consent:   document.getElementById("sms_consent").checked ? "yes" : "no",
+    web_consent:   "yes — proposal requested; 3-month minimum and $100 handover acknowledged; contact by email/phone" + (document.getElementById("sms_consent").checked ? "/text (ticked the text box)" : " (did not tick the text box: no texts)")
   };
 
   try{
     var r = await fetch(QUEUE, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ form: "website", fields: fields })
+      body: JSON.stringify({ form: "website", fields: fields, sms_consent: fields.sms_consent })
     });
     var j = await r.json();
     if(j && j.ok){

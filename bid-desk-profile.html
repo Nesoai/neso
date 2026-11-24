@@ -79,6 +79,10 @@ border-radius:0 12px 12px 0;padding:16px 18px;margin:22px 0 6px}
 .done ol{text-align:left;max-width:54ch;margin:12px auto 0;padding-left:20px;font-size:14.5px;color:var(--dim);line-height:1.7}
 footer{border-top:1px solid var(--line);margin-top:34px;padding:18px 0 0;font-size:12.5px;color:var(--faint);line-height:1.7}
 footer a{color:inherit}
+/* 24 Nov 2026: the text-message consent box, as on Funding Watch */
+.consent{display:flex;gap:10px;align-items:flex-start;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,system-ui,sans-serif;font-size:14px;font-weight:400;letter-spacing:0;text-transform:none;line-height:1.5;color:#4C4753;background:#FAF9FB;border:1px solid #E9E6EC;border-radius:10px;padding:12px 13px;margin:4px 0 18px}
+.consent input{width:auto;margin:3px 0 0;flex:none}
+.consent a{color:#5B2A86}
 </style></head><body>
 
 <header><div class="wrap">
@@ -119,6 +123,7 @@ the next list follows the change.</p>
         <input id="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(901) 555-0100">
         <div class="hint">Optional. Only used if something about your profile needs a quick answer.</div></div>
     </div>
+    <label class="consent" for="sms_consent"><input id="sms_consent" name="sms_consent" type="checkbox" value="yes"><span>I agree to receive text messages from NESO about my inquiry or engagement, including quotes and project updates. Message frequency varies, typically fewer than 10 per month. Message and data rates may apply. Reply STOP to unsubscribe, HELP for help. Consent is not a condition of purchase. <a href="/legal/privacy.html">Privacy Policy</a> &middot; <a href="/legal/terms.html">Terms</a></span></label>
   </div>
 
   <div class="card">
@@ -320,6 +325,8 @@ $("send").addEventListener("click", async function(){
     bd_delivery:    picked("deliver").concat(["dashboard"]).filter(function(v,i,a){ return a.indexOf(v) === i; }).join(", "),
     bd_notes:       $("notes").value.trim(),
     bd_consent:     "yes",
+    bd_sms_consent: document.getElementById("sms_consent").checked ? "yes" : "no",
+    sms_consent:    document.getElementById("sms_consent").checked ? "yes" : "no",
     bd_source:      (new URLSearchParams(location.search).get("source") || "receipt").slice(0, 40)
   };
 
@@ -327,7 +334,7 @@ $("send").addEventListener("click", async function(){
     var r = await fetch(QUEUE, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ form: "bid-desk", fields: fields })
+      body: JSON.stringify({ form: "bid-desk", fields: fields, sms_consent: fields.sms_consent })
     });
     var j = await r.json();
     if (j && j.ok){
