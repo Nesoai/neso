@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Food trucks near you: find one open today | NESO</title>
+<title>Food trucks and carts near you: find one open today | NESO</title>
 <meta name="description" content="Find food trucks and carts near you by cuisine, town and who's open today. Truck owners list free. A free directory from NESO.">
 <link rel="canonical" href="https://nesohq.com/food-trucks.html">
-<meta property="og:title" content="Food trucks near you | NESO">
-<meta property="og:description" content="Find food trucks by cuisine, town and who's open today. Owners list free.">
+<meta property="og:title" content="Food trucks and carts near you | NESO">
+<meta property="og:description" content="Find food trucks and carts by cuisine, town and who's open today. Owners list free.">
 <meta property="og:url" content="https://nesohq.com/food-trucks.html">
 <meta property="og:image" content="https://images.pexels.com/photos/5920734/pexels-photo-5920734.jpeg?auto=compress&cs=tinysrgb&w=1200">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,15 +82,15 @@
 <body>
 <header class="top"><div class="wrap">
   <a class="brand disp" href="https://nesohq.com/food-trucks.html">Food <span>Trucks</span><small>by NESO</small></a>
-  <a class="toplink" href="food-trucks/join.html">List your truck free</a>
+  <a class="toplink" href="food-trucks/join.html">List your truck or cart free</a>
 </div></header>
 
 <main>
   <div class="hero">
     <img src="https://images.pexels.com/photos/5920734/pexels-photo-5920734.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="" fetchpriority="high">
     <div class="wrap">
-      <h1 class="disp">Find a food truck<br>near you.</h1>
-      <p>Search by what you're hungry for, your town, or what's open right now. Every truck here was listed by its owner and checked by NESO.</p>
+      <h1 class="disp">Find a food truck<br>or cart near you.</h1>
+      <p>Search by what you're hungry for, your town, or what's open right now. From food trucks to lemonade stands and hot dog carts. Every one here was listed by its owner and checked by NESO.</p>
       <form class="search" id="f" role="search" onsubmit="return false">
         <input id="q" type="search" placeholder="Town, ZIP or truck name" aria-label="Town, ZIP or truck name" autocomplete="off">
         <select id="cu" aria-label="Kind of food"><option value="">Any kind of food</option></select>
@@ -106,14 +106,14 @@
   </div>
 
   <section><div class="wrap">
-    <p class="count" id="count" aria-live="polite">Loading trucks…</p>
+    <p class="count" id="count" aria-live="polite">Loading trucks and carts…</p>
     <div id="map" role="region" aria-label="Map of trucks"></div>
     <div class="grid" id="list"></div>
   </div></section>
 
   <section class="owners" id="owners"><div class="wrap band">
     <div><h2 class="disp">Own a food truck or cart?</h2><p>Get in front of people searching for your kind of food nearby. Listing is free.</p></div>
-    <a class="btn fire" href="food-trucks/join.html">For truck owners: list free</a>
+    <a class="btn fire" href="food-trucks/join.html">For truck and cart owners: list free</a>
   </div></section>
 </main>
 
@@ -178,9 +178,9 @@
     var list = $("list"); list.innerHTML = "";
     rows.forEach(function (t) { list.appendChild(card(t)); });
     var filtering = $("q").value || $("cu").value || flags.now || flags.today || flags.cater;
-    if (!all.length) $("count").innerHTML = "The directory has just opened, so no trucks are listed yet. <a href='food-trucks/join.html' style='color:#e2552b;font-weight:800'>Own a truck? Be one of the first, free.</a>";
-    else $("count").textContent = rows.length + (rows.length === 1 ? " truck" : " trucks") + (filtering ? " match" : " listed") + (me ? ", nearest first" : "") + ".";
-    if (!rows.length && all.length) { var e = document.createElement("div"); e.className = "empty"; e.innerHTML = "No truck matches that yet. Try another kind of food or clear a filter. Know a truck that should be here? Send them <a href='https://nesohq.com/food-trucks/join.html' style='color:#e2552b;font-weight:800'>nesohq.com/food-trucks/join.html</a>."; list.appendChild(e); }
+    if (!all.length) $("count").innerHTML = "We're finding food trucks and carts for you to discover right now, from taco trucks to lemonade stands and hot dog carts. Check back soon! <a href='food-trucks/join.html' style='color:#e2552b;font-weight:800'>Own a truck or cart? Be one of the first, free.</a>";
+    else $("count").textContent = rows.length + (rows.length === 1 ? " truck or cart" : " trucks and carts") + (filtering ? " match" : " listed") + (me ? ", nearest first" : "") + ".";
+    if (!rows.length && all.length) { var e = document.createElement("div"); e.className = "empty"; e.innerHTML = "No truck or cart matches that yet. Try another kind of food or clear a filter. Know a truck or cart that should be here? Send them <a href='https://nesohq.com/food-trucks/join.html' style='color:#e2552b;font-weight:800'>nesohq.com/food-trucks/join.html</a>."; list.appendChild(e); }
     if (!filtering) list.appendChild(card(EXAMPLE));
     if (flags.map) drawMap(rows);
   }
