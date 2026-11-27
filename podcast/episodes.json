@@ -3,5 +3,41 @@
     "Apple Podcasts": "",
     "Spotify": ""
   },
-  "episodes": []
+  "episodes": [
+    {
+      "title": "The new Opportunity Zone map is out. Is your property on it?",
+      "published": "2026-11-10",
+      "brief": "https://brief.nesohq.com/issue/the-new-opportunity-zone-map-is-out-is-your-property-on-it",
+      "description": "The NESO Brief, the issue of November 10, 2026, read in full as published.\n\nChapters:\n0:06 The issue\n0:27 One deal\n1:26 One lesson\n1:52 One move\n2:17 Sources\n3:04 Where to read every issue\n\nRead the issue: https://brief.nesohq.com/issue/the-new-opportunity-zone-map-is-out-is-your-property-on-it?source=podcast\nThe NESO Brief, free to read: https://brief.nesohq.com/?source=podcast\nFree tools for small businesses, contractors and towns: https://nesohq.com/?source=podcast\nOpen public bids, state by state: https://contractors.nesohq.com/?source=podcast\n\nThe voice is computer-generated. The issue as published at brief.nesohq.com governs. Each issue is dated; check any deadline in it against the current notice. Nothing here is legal, tax, engineering or investment advice.",
+      "chapters": [
+        {
+          "start": 6.2,
+          "title": "The issue"
+        },
+        {
+          "start": 26.8,
+          "title": "One deal"
+        },
+        {
+          "start": 85.8,
+          "title": "One lesson"
+        },
+        {
+          "start": 112.0,
+          "title": "One move"
+        },
+        {
+          "start": 137.1,
+          "title": "Sources"
+        },
+        {
+          "start": 184.2,
+          "title": "Where to read every issue"
+        }
+      ],
+      "seconds": 208.2,
+      "bytes": 2082964,
+      "file": "2026-11-10.mp3"
+    }
+  ]
 }

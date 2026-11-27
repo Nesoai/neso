@@ -7,7 +7,7 @@
     <language>en-us</language>
     <copyright>© 2026 NESO HQ LLC</copyright>
     <description>Grants, public bids and the money behind main street, explained plainly for small businesses, contractors, nonprofits and towns. From NESO, the team behind the NESO Brief and NESO for Contractors. Episodes start as the NESO Brief&#x27;s free letter, read in full. The voice is computer-generated. Nothing here is legal, tax, engineering or investment advice.</description>
-    <lastBuildDate>Sat, 21 Nov 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 12:00:00 +0000</lastBuildDate>
     <itunes:author>NESO</itunes:author>
     <itunes:summary>Grants, public bids and the money behind main street, explained plainly for small businesses, contractors, nonprofits and towns. From NESO, the team behind the NESO Brief and NESO for Contractors. Episodes start as the NESO Brief&#x27;s free letter, read in full. The voice is computer-generated.</itunes:summary>
     <itunes:type>episodic</itunes:type>
@@ -18,5 +18,17 @@
     <itunes:category text="News"><itunes:category text="Business News"/></itunes:category>
     <itunes:owner><itunes:name>NESO HQ LLC</itunes:name><itunes:email>hello@nesohq.com</itunes:email></itunes:owner>
     <podcast:locked owner="hello@nesohq.com">yes</podcast:locked>
+    <item>
+      <title>The new Opportunity Zone map is out. Is your property on it?</title>
+      <description><![CDATA[<p>The NESO Brief, the issue of November 10, 2026, read in full as published.</p><p>Chapters:<br>0:06 The issue<br>0:27 One deal<br>1:26 One lesson<br>1:52 One move<br>2:17 Sources<br>3:04 Where to read every issue</p><p>Read the issue: <a href="https://brief.nesohq.com/issue/the-new-opportunity-zone-map-is-out-is-your-property-on-it?source=podcast">https://brief.nesohq.com/issue/the-new-opportunity-zone-map-is-out-is-your-property-on-it?source=podcast</a><br>The NESO Brief, free to read: <a href="https://brief.nesohq.com/?source=podcast">https://brief.nesohq.com/?source=podcast</a><br>Free tools for small businesses, contractors and towns: <a href="https://nesohq.com/?source=podcast">https://nesohq.com/?source=podcast</a><br>Open public bids, state by state: <a href="https://contractors.nesohq.com/?source=podcast">https://contractors.nesohq.com/?source=podcast</a></p><p>The voice is computer-generated. The issue as published at brief.nesohq.com governs. Each issue is dated; check any deadline in it against the current notice. Nothing here is legal, tax, engineering or investment advice.</p>]]></description>
+      <link>https://brief.nesohq.com/issue/the-new-opportunity-zone-map-is-out-is-your-property-on-it</link>
+      <guid isPermaLink="false">nesonow-podcast-2026-11-10</guid>
+      <pubDate>Tue, 10 Nov 2026 12:00:00 +0000</pubDate>
+      <enclosure url="https://nesohq.com/podcast/audio/2026-11-10.mp3" length="2082964" type="audio/mpeg"/>
+      <itunes:duration>208</itunes:duration>
+      <itunes:episode>1</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
   </channel>
 </rss>
