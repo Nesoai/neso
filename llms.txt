@@ -7,8 +7,8 @@
 
 NESO sells three distinct things, and they are priced differently:
 
-- **Free web tools** (eight) that run in the browser with no account. Each has a
-  Pro in all eight tools with the NESO Tools Pro pass, $29 a month (cancel any month): https://nesohq.gumroad.com/l/niyhs
+- **Free web tools** (eight) that run in the browser with no account. Pro features in
+  all eight come with the NESO Tools Pro pass, $29 a month (cancel any month): https://nesohq.gumroad.com/l/niyhs
 - **Bird's Eye reports**: five research reports written by a principal, each
   quoted in writing to its scope before work starts, delivered as a PDF in
   2–8 business days.
