@@ -26,6 +26,19 @@ NESO sells three distinct things, and they are priced differently:
 - [ProForma](https://proforma.nesohq.com/): NOI, DSCR, yield and a 10-year cash flow for a building.
 - [SiteShaper](https://siteshaper.nesohq.com/): lot in, scheme book out — site plan and schematic floor plates.
 
+## Guides
+
+Plain-language how-to pages, each with a worked example and the free tool that does it: https://nesohq.com/guides/
+
+- [Which grants fit your organization (GrantFit)](https://nesohq.com/guides/which-grants-fit.html)
+- [How to build a capital stack and find the financing gap (CapStack)](https://nesohq.com/guides/capital-stack-financing-gap.html)
+- [Does the building pay? NOI and DSCR, worked out (ProForma)](https://nesohq.com/guides/does-the-building-pay.html)
+- [What a lender-ready market study includes (MarketScope)](https://nesohq.com/guides/lender-ready-market-study.html)
+- [From a lot to a site plan: setbacks and buildable area (SiteShaper)](https://nesohq.com/guides/lot-to-site-plan.html)
+- [How to explain a housing project to an architect, contractor or lender (BuildBrief)](https://nesohq.com/guides/housing-project-brief.html)
+- [How to size the market for a new location (MarketFit)](https://nesohq.com/guides/size-the-market-new-location.html)
+- [How to find your break-even point and runway (PlanForge)](https://nesohq.com/guides/break-even-and-runway.html)
+
 ## Reports and services
 
 - [Bird's Eye Reports](https://birdseye.nesohq.com/): zoning and entitlement readiness (2 days), site readiness and feasibility (3 days), location data audit (2 days), power and energization screen (5 days), site snapshot. Each is quoted in writing to its scope; the clock starts when scope is confirmed.

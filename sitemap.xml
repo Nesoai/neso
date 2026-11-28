@@ -168,4 +168,15 @@
   <url><loc>https://nesohq.com/brief-pdfs/2026-08-18.pdf</loc><lastmod>2026-08-18</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
 
   <url><loc>https://nesohq.com/builders.html</loc><lastmod>2026-11-24</lastmod></url>
+
+  <!-- Free guides, one per tool (27 Nov 2026) -->
+  <url><loc>https://nesohq.com/guides/</loc><lastmod>2026-11-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://nesohq.com/guides/which-grants-fit.html</loc><lastmod>2026-11-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://nesohq.com/guides/capital-stack-financing-gap.html</loc><lastmod>2026-11-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://nesohq.com/guides/does-the-building-pay.html</loc><lastmod>2026-11-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://nesohq.com/guides/lender-ready-market-study.html</loc><lastmod>2026-11-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://nesohq.com/guides/lot-to-site-plan.html</loc><lastmod>2026-11-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://nesohq.com/guides/housing-project-brief.html</loc><lastmod>2026-11-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://nesohq.com/guides/size-the-market-new-location.html</loc><lastmod>2026-11-27</lastmod><priority>0.7</priority></url>
+  <url><loc>https://nesohq.com/guides/break-even-and-runway.html</loc><lastmod>2026-11-27</lastmod><priority>0.7</priority></url>
 </urlset>
