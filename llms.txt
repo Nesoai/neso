@@ -30,14 +30,14 @@ NESO sells three distinct things, and they are priced differently:
 
 Plain-language how-to pages, each with a worked example and the free tool that does it: https://nesohq.com/guides/
 
-- [Which grants fit your organization (GrantFit)](https://nesohq.com/guides/which-grants-fit.html)
-- [How to build a capital stack and find the financing gap (CapStack)](https://nesohq.com/guides/capital-stack-financing-gap.html)
-- [Does the building pay? NOI and DSCR, worked out (ProForma)](https://nesohq.com/guides/does-the-building-pay.html)
-- [What a lender-ready market study includes (MarketScope)](https://nesohq.com/guides/lender-ready-market-study.html)
-- [From a lot to a site plan: setbacks and buildable area (SiteShaper)](https://nesohq.com/guides/lot-to-site-plan.html)
-- [How to explain a housing project to an architect, contractor or lender (BuildBrief)](https://nesohq.com/guides/housing-project-brief.html)
-- [How to size the market for a new location (MarketFit)](https://nesohq.com/guides/size-the-market-new-location.html)
-- [How to find your break-even point and runway (PlanForge)](https://nesohq.com/guides/break-even-and-runway.html)
+- [Which grants fit your organization (GrantFit)](https://nesohq.com/guides/which-grants-fit)
+- [How to build a capital stack and find the financing gap (CapStack)](https://nesohq.com/guides/capital-stack-financing-gap)
+- [Does the building pay? NOI and DSCR, worked out (ProForma)](https://nesohq.com/guides/does-the-building-pay)
+- [What a lender-ready market study includes (MarketScope)](https://nesohq.com/guides/lender-ready-market-study)
+- [From a lot to a site plan: setbacks and buildable area (SiteShaper)](https://nesohq.com/guides/lot-to-site-plan)
+- [How to explain a housing project to an architect, contractor or lender (BuildBrief)](https://nesohq.com/guides/housing-project-brief)
+- [How to size the market for a new location (MarketFit)](https://nesohq.com/guides/size-the-market-new-location)
+- [How to find your break-even point and runway (PlanForge)](https://nesohq.com/guides/break-even-and-runway)
 
 ## Reports and services
 

@@ -261,14 +261,14 @@ Educational guidance. Nothing here is legal, tax, engineering or investment advi
 
 
 def page(g):
-    url = f"https://nesohq.com/guides/{g['slug']}.html"
+    url = f"https://nesohq.com/guides/{g["slug"]}"
     go = g["url"] + "?source=guide"
     ld = [{"@context": "https://schema.org", "@type": "HowTo", "name": g["title"], "description": g["desc"],
            "step": [{"@type": "HowToStep", "position": i + 1, "name": n, "text": t} for i, (n, t) in enumerate(g["steps"])],
            "tool": [{"@type": "HowToTool", "name": g["tool"]}]},
           {"@context": "https://schema.org", "@type": "FAQPage",
            "mainEntity": [{"@type": "Question", "name": g["q"], "acceptedAnswer": {"@type": "Answer", "text": g["a"]}}]}]
-    others = "".join(f'<a href="/guides/{o["slug"]}.html">{E(o["title"])}</a>' for o in G if o is not g)
+    others = "".join(f'<a href="/guides/{o["slug"]}">{E(o["title"])}</a>' for o in G if o is not g)
     steps = "".join(f"<li><b>{E(n)}.</b> {E(t)}</li>" for n, t in g["steps"])
     ex = "".join(f"<li>{E(x)}</li>" for x in g["example"][1])
     ready = "".join(f"<li>{E(x)}</li>" for x in g["ready"])
@@ -295,8 +295,8 @@ def page(g):
 def index():
     url = "https://nesohq.com/guides/"
     ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Free guides from NESO", "url": url,
-          "hasPart": [{"@type": "HowTo", "name": g["title"], "url": f"https://nesohq.com/guides/{g['slug']}.html"} for g in G]}
-    cards = "".join(f'<a href="/guides/{g["slug"]}.html"><b>{E(g["q"])}</b>{E(g["desc"])}</a>' for g in G)
+          "hasPart": [{"@type": "HowTo", "name": g["title"], "url": f"https://nesohq.com/guides/{g["slug"]}"} for g in G]}
+    cards = "".join(f'<a href="/guides/{g["slug"]}"><b>{E(g["q"])}</b>{E(g["desc"])}</a>' for g in G)
     return (head("Free guides: grants, capital stacks, pro formas, market size and more",
                  "Plain-language guides to the questions owners, builders and towns ask, each with a worked example and a free tool to do it.",
                  url, ld) + f"""
